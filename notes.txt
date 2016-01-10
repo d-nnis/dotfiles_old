@@ -3,5 +3,5 @@ zsh
 oh-my-zsh
 cares for:
 gvim (vim with system clipboard)
-rbenv
-pyenv
+rbenv ruby-build
+pyenv pyenv-virtualenv
