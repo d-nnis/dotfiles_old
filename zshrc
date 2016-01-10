@@ -87,8 +87,15 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# ruby env
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -d $HOME/.pyenv/bin ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if [ -d $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
 
 echo ".zshrc executed"

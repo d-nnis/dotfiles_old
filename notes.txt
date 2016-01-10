@@ -2,3 +2,4 @@ dependencies:
 zsh
 oh-my-zsh
 gvim (vim with system clipboard)
+rbenv?
