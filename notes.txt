@@ -1,6 +1,7 @@
 dependencies:
 zsh
 oh-my-zsh
+git-flow
 cares for:
 vim-gnome (vim with system clipboard)
 rbenv ruby-build
