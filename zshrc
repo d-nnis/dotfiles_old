@@ -12,6 +12,7 @@ ZSH_THEME="random"
 #ZSH_THEME="darkblood"
 #ZSH_THEME="mgutz"  # schön minimalistisch
 #ZSH_THEME="kafeitu" # farbig, nciht aufdrindglich
+#ZSH_THEME="mikeh.zsh"  # viele Infos
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,12 +85,15 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vi ~/.zshrc"
+alias ohmyzsh="vi ~/.oh-my-zsh"
 alias la='ls --color=auto -lah'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+# extensions
+alias -s txt=vi
+alias -s cfg=vi
 
 # dirstacksize, s.a. https://wiki.archlinux.org/index.php/Zsh#Dirstack
 # mkdir
@@ -114,6 +118,9 @@ setopt pushdignoredups
 
 ## This reverts the +/- operators.
 setopt pushdminus
+
+
+
 if [ -d $HOME/.pyenv/bin ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
