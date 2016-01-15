@@ -9,6 +9,8 @@
 ZSH_THEME="random"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="jonathan"
+#ZSH_THEME="darkblood"
+#ZSH_THEME="mgutz"  # schön minimalistisch
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -88,6 +90,29 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# dirstacksize, s.a. https://wiki.archlinux.org/index.php/Zsh#Dirstack
+# mkdir
+if [[ ! -d "$HOME/.cache/zsh" ]]; then
+    mkdir "$HOME/.cache/zsh"
+fi
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+fi
+chpwd() {
+  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
+DIRSTACKSIZE=20
+
+setopt autopushd pushdsilent pushdtohome
+
+## Remove duplicate entries
+setopt pushdignoredups
+
+## This reverts the +/- operators.
+setopt pushdminus
 if [ -d $HOME/.pyenv/bin ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
