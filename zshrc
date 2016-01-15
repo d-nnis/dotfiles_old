@@ -11,6 +11,7 @@ ZSH_THEME="random"
 #ZSH_THEME="jonathan"
 #ZSH_THEME="darkblood"
 #ZSH_THEME="mgutz"  # schön minimalistisch
+#ZSH_THEME="kafeitu" # farbig, nciht aufdrindglich
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
