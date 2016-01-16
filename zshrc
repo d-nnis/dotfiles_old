@@ -10,6 +10,10 @@ ZSH_THEME="random"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="jonathan"
 
+
+
+#ZHS_THEME="kolo" # Ampel
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 # Uncomment the following line to use hyphen-insensitive completion. Case
