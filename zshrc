@@ -16,7 +16,8 @@ ZSH_THEME="random"
 #ZSH_THEME="fino"
 
 
-#ZHS_THEME="kolo" # Ampel
+#ZSH_THEME="kolo" # Ampel
+#ZSH_THEME="theunraveler" # minimal and nice symbols
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -98,11 +99,12 @@ alias egrep='egrep --color=auto'
 # extensions
 alias -s txt=vi
 alias -s cfg=vi
+alias -s log=vi
 
 # dirstacksize, s.a. https://wiki.archlinux.org/index.php/Zsh#Dirstack
-# mkdir
+# mkdir, mit -p eigentlich kein Überprüfungs-IF notwendig
 if [[ ! -d "$HOME/.cache/zsh" ]]; then
-    mkdir "$HOME/.cache/zsh"
+    mkdir "$HOME/.cache/zsh" -p
 fi
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
