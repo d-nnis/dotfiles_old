@@ -13,7 +13,7 @@ ZSH_THEME="random"
 #ZSH_THEME="mgutz"  # schön minimalistisch
 #ZSH_THEME="kafeitu" # farbig, nciht aufdrindglich
 #ZSH_THEME="mikeh.zsh"  # viele Infos
-#ZSH_THEME="fino"
+#ZSH_THEME="fino" # <--
 
 
 #ZSH_THEME="kolo" # Ampel
