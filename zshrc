@@ -18,6 +18,7 @@ ZSH_THEME="random"
 
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="theunraveler" # minimal and nice symbols
+# testline for commit-control
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
