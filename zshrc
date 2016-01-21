@@ -1,5 +1,11 @@
+
+
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/dennis/.oh-my-zsh
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=$ZSH/custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,14 +58,12 @@ ZSH_THEME="random"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow gitignore tmux django ruby)
+plugins=(git git-flow gitignore tmux django ruby git_auto_status)
 
 # User configuration
 
@@ -123,7 +127,9 @@ setopt pushdignoredups
 ## This reverts the +/- operators.
 setopt pushdminus
 
+setopt CORRECT
 
+setopt extendedglob
 
 if [ -d $HOME/.pyenv/bin ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
