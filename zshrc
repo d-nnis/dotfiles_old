@@ -21,8 +21,8 @@ ZSH_THEME="random"
 #ZSH_THEME="mikeh.zsh"  # viele Infos
 
 
-
-#ZHS_THEME="kolo" # Ampel
+#ZSH_THEME="amuse"  # with time
+#ZSH_THEME="kolo" # Ampel
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
