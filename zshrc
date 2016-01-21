@@ -11,8 +11,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-##ZSH_THEME="robbyrussell"
-ZSH_THEME="random"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="random"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="jonathan"
 #ZSH_THEME="darkblood"
@@ -21,7 +21,7 @@ ZSH_THEME="random"
 #ZSH_THEME="mikeh.zsh"  # viele Infos
 
 
-#ZSH_THEME="amuse"  # with time
+ZSH_THEME="amuse"  # with time
 #ZSH_THEME="kolo" # Ampel
 
 # Uncomment the following line to use case-sensitive completion.
