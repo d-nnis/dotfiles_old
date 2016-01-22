@@ -20,9 +20,9 @@
 #ZSH_THEME="kafeitu" # farbig, nciht aufdrindglich
 #ZSH_THEME="mikeh.zsh"  # viele Infos
 #ZSH_THEME="fino" # <--
+ZSH_THEME="aussiegeek"
 
-
-ZSH_THEME="amuse"  # with time
+#ZSH_THEME="amuse"  # with time
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="theunraveler" # minimal and nice symbols
