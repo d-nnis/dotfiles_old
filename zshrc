@@ -146,6 +146,7 @@ if [ -d $HOME/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
-export PATH="/usr/sbin:$PATH"
+# add sudoer dirs for us mortals to know!
+export PATH="/sbin:/usr/sbin:$PATH"
 
 echo ".zshrc executed"
