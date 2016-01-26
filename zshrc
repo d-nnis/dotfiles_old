@@ -26,6 +26,7 @@ ZSH_THEME="aussiegeek"
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="theunraveler" # minimal and nice symbols
+#ZSH_THEME="terminalparty"
 # testline for commit-control
 
 # Uncomment the following line to use case-sensitive completion.
