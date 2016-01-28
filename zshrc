@@ -74,9 +74,9 @@ plugins=(git git-flow gitignore tmux django ruby git_auto_status)
 
 # tmux
 ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOSTART_ONCE=true
+ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOCONNECT=true
-
+ZSH_TMUX_AUTOQUIT=false
 
   export PATH="/home/dennis/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
