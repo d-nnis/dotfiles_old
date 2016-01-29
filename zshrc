@@ -73,8 +73,8 @@ plugins=(git git-flow gitignore tmux django ruby git_auto_status)
 # User configuration
 
 # tmux
-#ZSH_TMUX_AUTOSTART=true
-#ZSH_TMUX_AUTOSTART_ONCE=false
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=false
 
