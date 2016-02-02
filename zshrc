@@ -156,4 +156,4 @@ fi
 # add sudoer dirs for us mortals to know!
 export PATH="/sbin:/usr/sbin:$PATH"
 
-echo ".zshrc executed"
+#echo ".zshrc executed"
