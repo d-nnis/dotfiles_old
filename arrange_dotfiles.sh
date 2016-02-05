@@ -1,19 +1,26 @@
-#! /bin/bash
+#!/bin/bash
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 ############################
 
+
+if [ -t 1 ]; then
+  echo "Are you located in home dir? (Ctrl-c to abort)"
+  read
+fi
+
+
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+dir=$PWD/dotfiles                    # dotfiles directory
+olddir=$PWD/dotfiles_old             # old dotfiles backup directory
 files="bashrc bash_profile vimrc zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 ##########
 
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+echo -n "Creating $olddir for backup of any existing dotfiles in $PWD ..."
 mkdir -p $olddir
 echo "done"
 
@@ -23,9 +30,9 @@ cd $dir
 echo "done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-echo "Moving any existing dotfiles from ~ to $olddir"
+echo "Moving any existing dotfiles from $PWD to $olddir"
 for file in $files; do
-  mv ~/.$file ~/dotfiles_old/
+  mv $PWD/.$file $PWD/dotfiles_old/
   echo "Creating symlink to $file in home directory."
   ln -s $dir/$file ~/.$file
 done
