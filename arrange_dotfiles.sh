@@ -71,4 +71,4 @@ fi
 
 install_zsh
 
-sudo apt-get install vim-gnome git-flow
+apt-get install vim-gnome git-flow
