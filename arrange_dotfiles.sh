@@ -15,7 +15,7 @@ fi
 
 dir=$PWD/dotfiles                    # dotfiles directory
 olddir=$PWD/dotfiles_old             # old dotfiles backup directory
-files="bashrc bash_profile vimrc zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="bashrc bash_profile vimrc zshrc oh-my-zsh vimperatorrc"    # list of files/folders to symlink in homedir
 
 ##########
 
