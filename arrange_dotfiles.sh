@@ -16,7 +16,8 @@ fi
 dir=$PWD/dotfiles                    # dotfiles directory
 olddir=$PWD/dotfiles_old             # old dotfiles backup directory
 files="bashrc bash_profile vimrc zshrc oh-my-zsh vimperatorrc"    # list of files/folders to symlink in homedir
-
+# tmux plugin manager
+files+=" tmux.conf"
 ##########
 
 # create dotfiles_old in homedir
@@ -72,3 +73,4 @@ fi
 install_zsh
 
 apt-get install vim-gnome git-flow
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
