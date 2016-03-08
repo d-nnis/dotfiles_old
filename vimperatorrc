@@ -14,3 +14,6 @@ map k <up><up><up>
 command! -nargs=+ maw open https://makeawish.ddns.net:8082/wiki_1262/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 map m :maw 
 
+" Good Ol' Firefox
+:map <C-p> i<C-p>
+:map <C-n> i<C-n> 
