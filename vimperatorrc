@@ -17,3 +17,6 @@ map m :maw
 " Good Ol' Firefox
 :map <C-p> i<C-p>
 :map <C-n> i<C-n> 
+
+" ignore, website-focus
+ignorekeys add duckduckgo\\.com
