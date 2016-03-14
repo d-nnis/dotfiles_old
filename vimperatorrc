@@ -19,4 +19,4 @@ map m :maw
 :map <C-n> i<C-n> 
 
 " ignore, website-focus
-ignorekeys add duckduckgo\\.com
+"ignorekeys add duckduckgo\\.com
