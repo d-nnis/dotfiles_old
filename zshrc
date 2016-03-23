@@ -26,6 +26,7 @@ ZSH_THEME="aussiegeek"
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="kolo" # Ampel
 #ZSH_THEME="theunraveler" # minimal and nice symbols
+#ZSH_THEME="terminalparty"
 # testline for commit-control
 
 # Uncomment the following line to use case-sensitive completion.
@@ -70,6 +71,12 @@ ZSH_THEME="aussiegeek"
 plugins=(git git-flow gitignore tmux django ruby git_auto_status)
 
 # User configuration
+
+# tmux
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART_ONCE=false
+ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_AUTOQUIT=false
 
   export PATH="/home/dennis/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -147,6 +154,7 @@ if [ -d $HOME/.rbenv/bin ]; then
 fi
 
 # add sudoer dirs for us mortals to know!
-export PATH="/sbin:/usr/sbin:$PATH"
+#export PATH="/sbin:/usr/sbin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
-echo ".zshrc executed"
+#echo ".zshrc executed"

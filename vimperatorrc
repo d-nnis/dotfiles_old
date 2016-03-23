@@ -1,0 +1,22 @@
+" switch tabs
+map l gt
+map h gT
+
+" accelerate scrolling
+"noremap j 5j
+"noremap k 5k
+
+" smooth fast scrolling
+map j <down><down><down>
+map k <up><up><up>
+
+" Wiki-Shortcut
+command! -nargs=+ maw open https://makeawish.ddns.net:8082/wiki_1262/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map m :maw 
+
+" Good Ol' Firefox
+:map <C-p> i<C-p>
+:map <C-n> i<C-n> 
+
+" ignore, website-focus
+"ignorekeys add duckduckgo\\.com
