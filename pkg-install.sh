@@ -29,12 +29,6 @@ while getopts ":ags" opt; do
   esac
 done
 
-#arr="eins zwei frei"
-#arr+=" vier"
-#for el in $arr; do
-#  echo $el
-#done
-
 if [ "$GUI" == 1 ]; then
   echo "install gui pkgs"
   #sudo apt-get update
@@ -46,7 +40,7 @@ fi
 if [ "$SH" == 1 ]; then
   echo "install shell pkgs"
   sudo apt-get update
-  sudo apt install git vim-gnome tmux
+  sudo apt install git git-flow pyenv pyenv-virtualenv vim-gnome tmux mc 
   #borg via jessie-backports
   echo "done"
 fi
