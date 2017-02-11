@@ -38,10 +38,38 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""
+" dennis settings "
+"""""""""""""""""""
 
-""""""""""""""""""""""""
-" my personal settings "
-""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+  Plug 'neomake/neomake'
+  augroup_neomake_config
+    au!
+    autocmd! BufWritePost * Neomake
+  augroup END
+  let g:neomake_open_list=2
+
+  " hier die github URL
+  Plug 'tpope/vim-surround'
+call plug#end()
+
+
+colorscheme solarized
+
+set shiftwidth=2
+set tabstop=2
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  set lines=60 columns=85
+  
+endif
+
+
+"""""""""""""""""
+" amix settings "
+"""""""""""""""""
 set list
 set number
 
@@ -69,7 +97,6 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -152,7 +179,7 @@ set foldcolumn=1
 syntax enable 
 
 try
-    colorscheme desert
+    " colorscheme desert
 catch
 endtry
 
@@ -192,8 +219,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+"set shiftwidth=4
+"set tabstop=4
 
 " Linebreak on 500 characters
 set lbr

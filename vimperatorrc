@@ -1,22 +1,18 @@
-" switch tabs
+"3.15.0 (created: 2016/10/05 01:11:26)
+
+command! -nargs=* ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 map l gt
 map h gT
+map j <Down><Down><Down>
+map k <Up><Up><Up>
+map e :ewiki<Space>
+map <C-p> i<C-p>
+map <C-a> i<C-a>
+map <C-c> i<C-c>
+set nofocuscontent
+set hintchars=asdfghklqwertyuiop
+set verbose=15
+" source! /home/dennis/.vimperatorrc.local
 
-" accelerate scrolling
-"noremap j 5j
-"noremap k 5k
-
-" smooth fast scrolling
-map j <down><down><down>
-map k <up><up><up>
-
-" Wiki-Shortcut
-command! -nargs=+ maw open https://makeawish.ddns.net:8082/wiki_1262/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-map m :maw 
-
-" Good Ol' Firefox
-:map <C-p> i<C-p>
-:map <C-n> i<C-n> 
-
-" ignore, website-focus
-"ignorekeys add duckduckgo\\.com
+" vim: set ft=vimperator:
