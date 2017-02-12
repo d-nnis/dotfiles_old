@@ -1,0 +1,6 @@
+.netrwhist
+#vim/.netrwhist
+tmux/resurrect
+config/mc/hotlist
+# freeze ini
+config/mc/ini
