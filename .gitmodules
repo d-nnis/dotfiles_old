@@ -1,6 +1,25 @@
-[submodule "prezto"]
-	path = prezto
-	url = https://github.com/zsh-users/prezto
 [submodule "vim/bundle/vim-less"]
-	path = vim/bundle/vim-less
-	url = https://github.com/genoma/vim-less.git
+  path = vim/bundle/vim-less
+  url = https://github.com/genoma/vim-less.git
+[submodule "tmux/plugins/tmux-continuum"]
+  path = tmux/plugins/tmux-continuum
+  url = git://github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/plugins/tmux-copycat"]
+  path = tmux/plugins/tmux-copycat
+  url = git://github.com/tmux-plugins/tmux-copycat
+[submodule "tmux/plugins/tmux-resurrect"]
+  path = tmux/plugins/tmux-resurrect
+  url = git://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux/plugins/tmux-sensible"]
+  path = tmux/plugins/tmux-sensible
+  url = git://github.com/tmux-plugins/tmux-sensible
+[submodule "tmux/plugins/tpm"]
+  path = tmux/plugins/tpm
+  url = git://github.com/tmux-plugins/tpm
+[submodule "vim/plugged/neomake"]
+  path = vim/plugged/neomake
+  url = git://github.com/neomake/neomake.git
+[submodule "vim/plugged/vim-surround"]
+  path = vim/plugged/vim-surround
+  url = git://github.com/tpope/vim-surround.git
+
