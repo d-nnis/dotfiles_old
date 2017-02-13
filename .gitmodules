@@ -1,3 +1,6 @@
+[submodule "prezto"]
+  path = prezto
+  url = git://github.com/d-nnis/prezto
 [submodule "vim/bundle/vim-less"]
   path = vim/bundle/vim-less
   url = https://github.com/genoma/vim-less.git

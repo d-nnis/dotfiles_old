@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+set -o xtrace
 
+#setup dotfiles_backup
 if [ -f $HOME/.vimrc ]; then
   rm $HOME/.vimrc
 fi
@@ -19,4 +21,9 @@ if [ -d $HOME/.vimperator ]; then
   rm -rf $HOME/.vimperator
 fi
 ln -sv $HOME/dotfiles/vimperator $HOME/.vimperator
+
+if [ -d $HOME/.zprezto ]; then
+  rm -rf $HOME/.zprezto
+fi
+ln -sv $HOME/dotfiles/prezto $HOME/.zprezto
 

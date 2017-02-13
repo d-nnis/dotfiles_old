@@ -1,3 +1,5 @@
+check on zsh files in etc/zsh?
+
 dependencies:
 zsh
 oh-my-zsh
