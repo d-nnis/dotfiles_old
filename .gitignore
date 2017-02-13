@@ -4,3 +4,9 @@ tmux/resurrect
 config/mc/hotlist
 # freeze ini
 config/mc/ini
+
+# vimperator
+!vimperator/info/default
+vimperator/info/default/*
+vimperator/info/*
+

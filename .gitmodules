@@ -25,4 +25,12 @@
 [submodule "vim/plugged/vim-surround"]
   path = vim/plugged/vim-surround
   url = git://github.com/tpope/vim-surround.git
-
+[submodule "vim/plugged/mediawiki.vim"]
+  path = vim/plugged/mediawiki.vim
+  url = git://github.com/chikamichi/mediawiki.vim.git
+[submodule "tmux/plugins/tmux-cpu"]
+  path = tmux/plugins/tmux-cpu
+  url = git://github.com/tmux-plugins/tmux-cpu
+[submodule "tmux/plugins/vim-tmux"]
+  path = tmux/plugins/vim-tmux
+  url = git://github.com/tmux-plugins/vim-tmux
