@@ -27,3 +27,7 @@ if [ -d $HOME/.zprezto ]; then
 fi
 ln -sv $HOME/dotfiles/prezto $HOME/.zprezto
 
+if [ -d $HOME/.vimperator ]; then
+  rm -rf $HOME/.vimperator
+fi
+ln -sv $HOME/dotfiles/vimperator $HOME/.vimperator
