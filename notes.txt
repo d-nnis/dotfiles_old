@@ -2,6 +2,7 @@ check on zsh files in etc/zsh?
 check in config/mc/
 checkout ini (although is ignored - frozen state)
 
+gite remote - always verbose
 
 dependencies:
 zsh
