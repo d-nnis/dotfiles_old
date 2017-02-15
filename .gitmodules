@@ -1,5 +1,5 @@
-[submodule "prezto"]
-  path = prezto
+[submodule "zprezto"]
+  path = zprezto
   url = git://github.com/d-nnis/prezto
 [submodule "vim/bundle/vim-less"]
   path = vim/bundle/vim-less
