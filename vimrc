@@ -55,7 +55,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'chikamichi/mediawiki.vim'
 call plug#end()
 
-
 colorscheme solarized
 
 set shiftwidth=2
@@ -63,8 +62,11 @@ set tabstop=2
 
 if has("gui_running")
   " GUI is running or is about to start.
-  set lines=60 columns=85
+  set lines=60 columns=100
 endif
+
+" C-s, what function else?
+inoremap <buffer> <C-s> <C-O>"+p
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -92,6 +94,7 @@ noremap <buffer> A g$a
 
 inoremap <buffer> <Up> <C-O>gk
 inoremap <buffer> <Down> <C-O>gj
+
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
@@ -360,10 +363,11 @@ catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+" do not it COMMIT_EDITMSG !?
+"autocmd BufReadPost *
+"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"     \   exe "normal! g`\"" |
+"     \ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
