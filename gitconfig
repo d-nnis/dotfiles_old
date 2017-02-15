@@ -24,3 +24,8 @@
   added = green bold
   changed = yellow bold
   untracked = red bold
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
