@@ -11,6 +11,9 @@ check on zsh files in etc/zsh?
 check in config/mc/
 checkout ini (although is ignored - frozen state)
 
+* vimperator plugins - colors
+* git abbreviation - package (prezto?)
+
 dependencies:
 zsh
 oh-my-zsh
