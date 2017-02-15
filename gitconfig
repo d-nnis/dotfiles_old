@@ -1,0 +1,26 @@
+[push]
+  default = matching
+[user]
+  name = Dennis
+  email = martymcfly@posteo.de
+[alias]
+  r = remote -v
+  l = log --graph
+  subst = submodule status --recursive
+  st = status --ignored
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold

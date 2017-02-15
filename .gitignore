@@ -12,6 +12,7 @@ tmux/resurrect/*
 ## vimperator
 vimperator/info/*
 !vimperator/info/default
+vimperator/info/default/*
 !vimperator/info/ffRoteDomain
 #vimperator/info/default/*
 #vimperator/info/ffRoteDomain/*
