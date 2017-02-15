@@ -64,7 +64,6 @@ set tabstop=2
 if has("gui_running")
   " GUI is running or is about to start.
   set lines=60 columns=85
-  
 endif
 
 """""""""""""""""""""""
@@ -122,13 +121,11 @@ inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"
 setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
 setlocal fdm=expr
 
-
-"""""""""""""""""""""""""
-" mediawiki
 map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
-  au BufRead,BufNewFile *web6.codeprobe.de.tmp** set filetype=mediawiki
+  au BufRead,BufNewFile *web6.codeprobe.de.tmp* set filetype=mediawiki
 endif
+"""""""""""""""""""""""""
 
 " watch changes in vimrc
 augroup myvimrc
@@ -165,7 +162,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+"command W w !sudo tee % > /dev/null
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -317,8 +314,8 @@ map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -363,12 +360,12 @@ catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
-" autocmd BufReadPost *
-"      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"      \   exe "normal! g`\"" |
-"      \ endif
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 " Remember info about open buffers on close
-" set viminfo^=%
+set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
