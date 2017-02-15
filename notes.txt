@@ -1,7 +1,13 @@
 check on zsh files in etc/zsh?
-check in config/mc/
-checkout ini (although is ignored - frozen state)
-
+* check in config/mc/
+** checkout ini (although is ignored - frozen state)
+* frozen
+** ini in config/mc
+** * in vimperatir/info/default
+* bright and dark settings
+** depending on time?
+* git
+** config rather than alias?
 
 dependencies:
 zsh
