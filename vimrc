@@ -126,7 +126,7 @@ setlocal fdm=expr
 
 map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
-  au BufRead,BufNewFile *web6.codeprobe.de.tmp* set filetype=mediawiki
+  au BufRead,BufNewFile *web6.codeprobe.de??.tmp* set filetype=mediawiki
 endif
 """""""""""""""""""""""""
 
