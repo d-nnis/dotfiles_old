@@ -10,7 +10,8 @@ for file in $files; do
   echo $file
   if [ -f $HOME/.$file ]; then
     mv -fv $HOME/.$file $HOME/dotfiles_backup
-    #rm $HOME/.vimrc
+  elif [ -L $HOME/.$file ]; then
+    rm $HOME/.$file
   fi
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
