@@ -23,7 +23,7 @@
 * prezto
   * in what why does the order matter?
 * vim
-  * <C-M-s> ~~ Ctrl+Alt+S ?
+  * \<C-M-s\> ~~ Ctrl+Alt+S ?
   
 * dependencies:
   * zsh
