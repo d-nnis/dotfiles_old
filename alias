@@ -10,6 +10,7 @@ if [ -x /usr/bin/dircolors ]; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+  alias less='less -R'
   alias xclip='xclip -selection clip'
 fi
 
@@ -19,9 +20,13 @@ alias la='ls -lA'
 alias l='ls -CF'
 # integrate *experimental* (suppression of warnings)
 alias pacpl='pacpl -v --to mp3'
+alias gitalias='alias | grep git | less && git al'
+
+
+## hash'd dirs
 hash -d mybin=/home/dennis/bin
 hash -d ocm=/home/dennis/owncloud_maw
-hash -d dot='~/dotfiles'
+hash -d dot=~/dotfiles
 
 alias zshreload=". ~/.zshrc"
 alias zshconfig="vi ~/.zprestorc"
