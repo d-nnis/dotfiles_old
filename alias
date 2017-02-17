@@ -3,21 +3,26 @@ alias mc='/usr/share/mc/bin/mc-wrapper.sh'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias xclip='xclip -selection clip'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+  alias xclip='xclip -selection clip'
 fi
 
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -lA'
 alias l='ls -CF'
+# integrate *experimental* (suppression of warnings)
+alias pacpl='pacpl -v --to mp3'
+hash -d mybin=/home/dennis/bin
+hash -d ocm=/home/dennis/owncloud_maw
+hash -d dot='~/dotfiles'
 
-
+alias zshreload=". ~/.zshrc"
+alias zshconfig="vi ~/.zprestorc"
 # vim: syntax=sh
