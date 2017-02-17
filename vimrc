@@ -1,5 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
+"    -> my settings
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -30,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   " hier die github URL
   Plug 'tpope/vim-surround'
   Plug 'chikamichi/mediawiki.vim'
+  Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 colorscheme solarized
@@ -108,13 +110,13 @@ map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
   au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
 endif
-"""""""""""""""""""""""""
-
-" watch changes in vimrc
+"""""""""""""""""""""""""""""""""""
+" watch changes in vimrc and load "
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
 
 """""""""""""""""
 " amix settings "
