@@ -38,5 +38,8 @@
   path = tmux/plugins/tmux-fingers
   url = git://github.com/Morantron/tmux-fingers
 [submodule "vim/plugged/vim-tmux-navigator"]
-  path = vim/plugged/vim-tmux-navigator
-  url = git://github.com/christoomey/vim-tmux-navigator
+	path = vim/plugged/vim-tmux-navigator
+	url = git://github.com/christoomey/vim-tmux-navigator
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = git://github.com/tmux-plugins/tmux-yank
