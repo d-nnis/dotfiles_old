@@ -45,7 +45,8 @@ if has("gui_running")
 endif
 
 " C-s, what function else?
-inoremap <buffer> <C-s> <C-O>"+p
+"inoremap <buffer> <C-s> <C-O>"+p
+inoremap <buffer> <C-v> <Left><C-O>"+p
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -69,14 +70,13 @@ noremap <buffer> ^ g^
 noremap <buffer> $ g$
 " ist das eine gute Idee?
 inoremap <buffer> <End> <C-o>g$
-inoremap <buffer> <Home> <C-o>g^
+inoremap <buffer> <Home> <C-o>g0
 noremap <buffer> D dg$
 noremap <buffer> C cg$
 noremap <buffer> A g$a
 
 inoremap <buffer> <Up> <C-O>gk
 inoremap <buffer> <Down> <C-O>gj
-
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
