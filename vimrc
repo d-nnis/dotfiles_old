@@ -1,28 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version: 
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
 " Sections:
+"    -> my settings
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -53,6 +31,8 @@ call plug#begin('~/.vim/plugged')
   " hier die github URL
   Plug 'tpope/vim-surround'
   Plug 'chikamichi/mediawiki.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 colorscheme solarized
@@ -65,12 +45,9 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
-"" abbreviations
-"iunmap <C-i> " no such mapping?
-"inoremap <buffer> <C-s> <Left><C-O>"+p
-inoremap <buffer> <C-i> <Left><C-O>"+p
-
- 
+" C-s, what function else?
+"inoremap <buffer> <C-s> <C-O>"+p
+inoremap <buffer> <C-v> <Left><C-O>"+p
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -91,16 +68,16 @@ noremap <buffer> <Up> gk
 noremap <buffer> <Down> gj
 noremap <buffer> 0 g0
 noremap <buffer> ^ g^
-noremap <buffer> <[[1~> g^
 noremap <buffer> $ g$
-noremap <buffer> <End>$ g$
+" ist das eine gute Idee?
+inoremap <buffer> <End> <C-o>g$
+inoremap <buffer> <Home> <C-o>g0
 noremap <buffer> D dg$
 noremap <buffer> C cg$
 noremap <buffer> A g$a
 
 inoremap <buffer> <Up> <C-O>gk
 inoremap <buffer> <Down> <C-O>gj
-
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
@@ -134,13 +111,13 @@ map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
   au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
 endif
-"""""""""""""""""""""""""
-
-" watch changes in vimrc
+"""""""""""""""""""""""""""""""""""
+" watch changes in vimrc and load "
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
 
 """""""""""""""""
 " amix settings "
@@ -537,3 +514,29 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""
+" Maintainer: 
+"       Amir Salihefendic
+"       http://amix.dk - amix@amix.dk
+"
+" Version: 
+"       5.0 - 29/05/12 15:43:36
+"
+" Blog_post: 
+"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
+"
+" Awesome_version:
+"       Get this config, nice color schemes and lots of plugins!
+"
+"       Install the awesome version from:
+"
+"           https://github.com/amix/vimrc
+"
+" Syntax_highlighted:
+"       http://amix.dk/vim/vimrc.html
+"
+" Raw_version: 
+"       http://amix.dk/vim/vimrc.txt
+"
+"""""""""""""""""""""""""""""""""""""""""""

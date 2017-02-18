@@ -108,3 +108,5 @@ fi
 
 echo '.bashrc executed'
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
