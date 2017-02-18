@@ -43,18 +43,21 @@
   * \<C-M-s\> ~~ Ctrl+Alt+S ?
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
+  * i_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
 * tmux
   * autostart session if none exists
   * ... attach if no other client is attached
   * ... do not attach else and give feedback
 * vimperator
-  * if <wiki-url-pattern>, focus on text-edit-frame (wiki), send-keys <C-i>
-  *  <Esc> - leave insert mode of ff-tab
-  *  leave note, along the lines *editing in window gvim1*
+  * if \<wiki-url-pattern\>, focus on wiki-text-edit-frame textarea#wpTextbox1, send-keys \<C-i\>
+    *  \<Esc\> - leave insert mode of ff-tab
+    *  leave note, along the lines *editing in window gvim1*
+    * opt.: position gvim-window on textarea
   *  keymapping to switch to correct window for continue editing
-  *  search in website-source
+  *  search in website-source w/o viewsource (e.g. link contents)
   *  TEXTAREA?
   *  when mouse-click retreat from INSERT mode
+  * 
 *  vimperator plugins - colors
 * dependencies:
   * zsh
