@@ -16,6 +16,12 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+mapclear
+mapclear!
+cmapclear
+imapclear
+comclear
+
 """""""""""""""""""
 " dennis settings "
 """""""""""""""""""
@@ -62,8 +68,8 @@ setlocal formatoptions-=tc formatoptions+=l
 if v:version >= 602 | setlocal formatoptions-=a | endif
 
 " Make navigation more amenable to the long wrapping lines.
-noremap <buffer> k gk
-noremap <buffer> j gj
+"noremap <buffer> k gk
+"noremap <buffer> j gj
 noremap <buffer> <Up> gk
 noremap <buffer> <Down> gj
 noremap <buffer> 0 g0
@@ -109,7 +115,12 @@ setlocal fdm=expr
 
 map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
+  " native vimperator-Plugin <C-i>
   au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
+  au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
+  " FF-Plugin-It's all text <C-e>
+  au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
+  au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
@@ -124,6 +135,7 @@ augroup END
 """""""""""""""""
 set list
 set number
+set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -148,7 +160,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-"command W w !sudo tee % > /dev/null
+command W w !sudo tee % > /dev/null
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
