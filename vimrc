@@ -65,8 +65,12 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
-" C-s, what function else?
-inoremap <buffer> <C-s> <C-O>"+p
+"" abbreviations
+"iunmap <C-i> " no such mapping?
+"inoremap <buffer> <C-s> <Left><C-O>"+p
+inoremap <buffer> <C-i> <Left><C-O>"+p
+
+ 
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -87,7 +91,9 @@ noremap <buffer> <Up> gk
 noremap <buffer> <Down> gj
 noremap <buffer> 0 g0
 noremap <buffer> ^ g^
+noremap <buffer> <[[1~> g^
 noremap <buffer> $ g$
+noremap <buffer> <End>$ g$
 noremap <buffer> D dg$
 noremap <buffer> C cg$
 noremap <buffer> A g$a
