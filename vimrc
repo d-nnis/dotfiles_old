@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   " hier die github URL
   Plug 'tpope/vim-surround'
   Plug 'chikamichi/mediawiki.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 

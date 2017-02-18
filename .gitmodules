@@ -43,3 +43,6 @@
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
 	url = git://github.com/tmux-plugins/tmux-yank
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf

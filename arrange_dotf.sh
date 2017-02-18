@@ -2,7 +2,7 @@
 set -o xtrace
 
 files="vimrc vimperatorrc vim vimperator zprezto"
-files+=" gitconfig"
+files+=" gitconfig fzf fzf.bash fzf.zsh"
 
 mkdir -p $HOME/dotfiles_backup
 
@@ -15,6 +15,10 @@ for file in $files; do
   fi
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
+
+
+echo fzf
+~/.fzf/install
 
 
 ##setup dotfiles_backup
