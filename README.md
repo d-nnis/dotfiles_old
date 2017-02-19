@@ -21,9 +21,6 @@
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
 ## todo
-* check on zsh files in etc/zsh?
-* check in config/mc/
-  * checkout ini (although is ignored - frozen state)
 * frozen
   * ini in config/mc
   * in vimperatir/info/default
@@ -43,7 +40,7 @@
   * \<C-M-s\> ~~ Ctrl+Alt+S ?
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
-  * i_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
+  * i\_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
 * tmux
   * autostart session if none exists
   * ... attach if no other client is attached
