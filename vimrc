@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chikamichi/mediawiki.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'asciidoc/vim-asciidoc'
 call plug#end()
 
 colorscheme solarized

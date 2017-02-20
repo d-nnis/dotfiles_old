@@ -20,9 +20,15 @@
 * \<C-k\> ~~ switch to pane (tmux)/ window (vim) up
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
+### Vimperator
+* <leader> is ,
+* <leader> t ~~ open URL in background
+* <leader> T ~~ open URL in background based on current URL
+
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
+  * few key bindings to not work in new window
 * frozen
   * ini in config/mc
   * in vimperatir/info/default

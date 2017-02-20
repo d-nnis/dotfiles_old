@@ -46,3 +46,6 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf
+[submodule "vim/plugged/vim-asciidoc"]
+	path = vim/plugged/vim-asciidoc
+	url = git://github.com/asciidoc/vim-asciidoc.git
