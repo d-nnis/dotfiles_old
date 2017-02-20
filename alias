@@ -19,7 +19,6 @@ alias ll='ls -l'
 alias la='ls -lA'
 alias l='ls -CF'
 # integrate *experimental* (suppression of warnings)
-alias pacpl='pacpl -v --to mp3'
 alias gitalias='alias | grep git | less && git al'
 
 
@@ -30,4 +29,11 @@ hash -d dot=~/dotfiles
 
 alias zshreload=". ~/.zshrc"
 alias zshconfig="vi ~/.zprestorc"
+
+# programs
+## pacpl
+if [ -f /usr/bin/pacpl ]; then
+  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
+fi
+
 # vim: syntax=sh
