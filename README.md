@@ -4,10 +4,19 @@
 
 *From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* [https://en.wiktionary.org/wiki/house]
 
-## The KEY NAVIGATION!
-### git
-* git al ~~ list git aliases available in current dir
+## Installation
+start zsh-shell
+run arrange_pkg.zsh
+run arrange_dotfiles.zsh
 
+start shell anew
+
+## The KEY NAVIGATION!
+### git ...
+* al ~~ list git aliases available in current dir
+* r ~~ list remotes with all information
+* l ~~ log --graph
+* st ~~ status + ignored files
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
