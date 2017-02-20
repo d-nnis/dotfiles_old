@@ -21,6 +21,8 @@
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
 ## todo
+* BROKEN
+  * start first tmux session: sourcing tmux.reset.conf
 * frozen
   * ini in config/mc
   * in vimperatir/info/default

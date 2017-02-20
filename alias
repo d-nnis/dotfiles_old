@@ -28,7 +28,7 @@ hash -d ocm=/home/dennis/owncloud_maw
 hash -d dot=~/dotfiles
 
 alias zshreload=". ~/.zshrc ~/.zpreztorc"
-alias zshconfig="vi ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc"
+alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc"
 
 # programs
 ## pacpl
