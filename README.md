@@ -38,6 +38,8 @@ start shell anew
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
   * few key bindings to not work in new window
+* To consider
+  * Updating of submodules of vim rather via vim-plug (commadn line)
 * frozen
   * ini in config/mc
   * in vimperatir/info/default
