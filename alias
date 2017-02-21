@@ -18,9 +18,10 @@ fi
 alias ll='ls -l'
 alias la='ls -lA'
 alias l='ls -CF'
-# integrate *experimental* (suppression of warnings)
-alias gitalias='alias | grep git | less && git al'
-
+# activated git aliases
+alias gital='alias | grep git | less && git al'
+# git aliases of prezto (not active)
+alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
 ## hash'd dirs
 hash -d mybin=/home/dennis/bin
