@@ -30,6 +30,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'neomake/neomake'
   augroup_neomake_config
     au!
+    " funktioniert nicht
+    " runtime! plugged/neomake/autoload/neomake.vim
     autocmd! BufWritePost * Neomake
   augroup END
   let g:neomake_open_list=2
@@ -52,9 +54,10 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
-" C-s, what function else?
-"inoremap <buffer> <C-s> <C-O>"+p
-inoremap <buffer> <C-v> <Left><C-O>"+p
+set cmdheight=2
+
+"inoremap <buffer> <C-v> <Left><C-O>"+p
+inoremap <C-v> <Left><C-O>"+p
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -125,9 +128,17 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
+"augroup myvimrc
+"    au!
+"    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
+
 augroup myvimrc
     au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | echo 'vim reloaded!'
+    if has('gui_running')
+      so $MYGVIMRC | echo 'gvim'
+    endif
 augroup END
 
 
