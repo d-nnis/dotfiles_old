@@ -13,13 +13,18 @@ let mapleader=','
 
 command! -nargs=* ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 command! -nargs=* Ewiki tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map e :ewiki<Space>
+map E :Ewiki<Space>
+
+"get url. if wiki: do it!
+"nnoremap <C-i> :echo 'etwas'<CR>
+nnoremap <C-i> :echo 'etwas'<CR>
+
 highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 map l gt
 map h gT
 map j <Down><Down><Down>
 map k <Up><Up><Up>
-map e :ewiki<Space>
-map E :Ewiki<Space>
 map <C-p> i<C-p>
 map <C-a> i<C-a>
 noremap <C-c> i<C-c>
@@ -56,10 +61,12 @@ let clock_format='(%t %d)'
 set showstatuslinks=2
 set tabnumbers
 set titlestring=Firefox
+set noerrorbells
+set visualbell
 
 nnoremap <Leader>t :tabopen! <End>
 nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!<End>
 
 source! /home/dennis/.vimperatorrc.local
 
-" vim:set ft=vim
+" vim: ft=vim
