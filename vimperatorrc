@@ -2,11 +2,11 @@
 
 " Clear all key mappings to avoid troubles when loading .vimperatorrc
 " repeatedly.
-"mapclear
-"cmapclear
-"imapclear
+mapclear
+cmapclear
+imapclear
 " Delete all user-defined commands to avoid troubles when loading .vimperatorrc repeatedly.
-"comclear
+comclear
 
 " Leader key to be used.
 let mapleader=','
@@ -17,8 +17,11 @@ map e :ewiki<Space>
 map E :Ewiki<Space>
 
 "get url. if wiki: do it!
-"nnoremap <C-i> :echo 'etwas'<CR>
-nnoremap <C-i> :echo 'etwas'<CR>
+" :map-urls
+" :mapi-silent?
+"nnoremap <silent> <C-i> :echo 'etwas'<CR>
+" its just to fast...
+noremap! <C-y> fgi:wait<CR><C-i>
 
 highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 map l gt
@@ -67,6 +70,6 @@ set visualbell
 nnoremap <Leader>t :tabopen! <End>
 nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!<End>
 
-source! /home/dennis/.vimperatorrc.local
+source /home/dennis/.vimperatorrc.local
 
 " vim: ft=vim
