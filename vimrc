@@ -129,11 +129,21 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+" problem with Neomake
+"augroup myvimrc
+"    au!
+"    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
+if !exists("*ReloadVimrc")
+  function! ReloadVimrc()
+    source ~/.vimrc
+    echo "vimrc reloaded!"
+  endfunction
+endif
+
+nnoremap <leader><F5> :call ReloadVimrc()<CR>
+"nnoremap <leader><F5> :so ~/.vimrc | echo "vimrc reloaded!"
 
 """""""""""""""""
 " amix settings "
