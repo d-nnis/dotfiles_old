@@ -142,7 +142,8 @@ if !exists("*ReloadVimrc")
   endfunction
 endif
 
-nnoremap <leader><F5> :call ReloadVimrc()<CR>
+"nnoremap <leader><F5> :call ReloadVimrc()<CR>
+nnoremap <leader>R :call ReloadVimrc()<CR>
 "nnoremap <leader><F5> :so ~/.vimrc | echo "vimrc reloaded!"
 
 """""""""""""""""
