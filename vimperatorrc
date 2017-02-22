@@ -1,52 +1,12 @@
-"3.15.0 (created: 2016/10/05 01:11:26)
-
-" Clear all key mappings to avoid troubles when loading .vimperatorrc
-" repeatedly.
-mapclear
-cmapclear
-imapclear
-" Delete all user-defined commands to avoid troubles when loading .vimperatorrc repeatedly.
-comclear
-
-command! -nargs=* ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-command! -nargs=* Ewiki tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
-map l gt
-map h gT
-map j <Down><Down><Down>
-map k <Up><Up><Up>
-map e :ewiki<Space>
-map E :Ewiki<Space>
-map <C-p> i<C-p>
-map <C-a> i<C-a>
-"map <C-c> i<C-c>
-
-" Movement of tabs.
-noremap < :tabmove! -1<CR>
-noremap > :tabmove! +1<CR>
-
-" Go to Nth tab.
-nnoremap <Leader>1 1gt
-nnoremap <Leader>2 2gt
-nnoremap <Leader>3 3gt
-nnoremap <Leader>4 4gt
-nnoremap <Leader>5 5gt
-nnoremap <Leader>6 6gt
-nnoremap <Leader>8 7gt
-nnoremap <Leader>8 8gt
-nnoremap <Leader>9 9gt
-nnoremap <Leader>0 10gt
-
-" Reload this configuration file.
-noremap <Leader><S-r> :source ~/.vimperatorrc<CR>:echo "Configuration reloaded."<CR>
-
-set focuscontent
+set nofocuscontent
 set hintchars=asdfghklqwertyuiop
 set verbose=1
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
-" Vimperator's Ctrl-i functionality).
-inoremap <C-e> <Insert><C-e><Insert><Esc>
+" Vimperator's Ctrl-i functionality). REALLY?
+"inoremap <C-e> <Insert><C-e><Insert><Esc>
 "inoremap <C-i> <C-i><Esc>
+
+let clock_format='(%t %d)'
 
 " Leader key to be used.
 let mapleader=','

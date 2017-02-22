@@ -23,6 +23,9 @@ alias gital='alias | grep git | less && git al'
 # git aliases of prezto (not active)
 alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
+
+alias ssh='ssh -Y'
+
 ## hash'd dirs
 hash -d mybin=/home/dennis/bin
 hash -d ocm=/home/dennis/owncloud_maw

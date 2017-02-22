@@ -49,3 +49,6 @@
 [submodule "vim/plugged/vim-asciidoc"]
 	path = vim/plugged/vim-asciidoc
 	url = git://github.com/asciidoc/vim-asciidoc.git
+[submodule "vimperator/colors"]
+	path = vimperator/colors
+	url = https://github.com/vimpr/vimperator-colors
