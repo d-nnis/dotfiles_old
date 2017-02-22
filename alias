@@ -16,7 +16,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -lA'
+alias la='ls -lAh'
 alias l='ls -CF'
 # activated git aliases
 alias gital='alias | grep git | less && git al'
