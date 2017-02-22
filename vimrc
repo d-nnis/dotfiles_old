@@ -52,6 +52,10 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
+set modeline
+set modelines=5
+set modeline modelines=5
+
 " C-s, what function else?
 "inoremap <buffer> <C-s> <C-O>"+p
 inoremap <buffer> <C-v> <Left><C-O>"+p
@@ -229,7 +233,7 @@ set mat=2
 
 " No annoying sound on errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set tm=500
 
