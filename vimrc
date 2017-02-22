@@ -54,7 +54,7 @@ endif
 
 set modeline
 set modelines=5
-set modeline modelines=5
+"set modeline modelines=5
 
 " C-s, what function else?
 "inoremap <buffer> <C-s> <C-O>"+p
