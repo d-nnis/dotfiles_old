@@ -76,9 +76,9 @@ noremap <buffer> <Down> gj
 noremap <buffer> 0 g0
 noremap <buffer> ^ g^
 noremap <buffer> $ g$
-" ist das eine gute Idee?
-inoremap <buffer> <End> <C-o>g$
-inoremap <buffer> <Home> <C-o>g0
+" ist das eine gute Idee? is not identical with End in NORMALMODE
+"inoremap <buffer> <End> <C-o>g$
+"inoremap <buffer> <Home> <C-o>g0
 noremap <buffer> D dg$
 noremap <buffer> C cg$
 noremap <buffer> A g$a
