@@ -40,4 +40,14 @@ if [ -f /usr/bin/pacpl ]; then
   alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 fi
 
+cmkdir() {
+    if [[ $1 == -* ]]; then
+        mkdir $1 $2
+        cd $2
+    else
+        mkdir $1
+        cd $1
+    fi
+}
+
 # vim: syntax=sh
