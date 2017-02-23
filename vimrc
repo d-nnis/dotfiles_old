@@ -89,6 +89,7 @@ if v:version >= 602 | setlocal formatoptions-=a | endif
 
 " Make navigation more amenable to the long wrapping lines.
 "noremap <buffer> k gk
+" disadvantage: counting lines and motion diverge with wrapping lines (e.g. d8j)
 noremap k gk
 noremap j gj
 noremap <Up> gk
@@ -223,7 +224,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=5
+set cmdheight=3
 
 " A buffer becomes hidden when it is abandoned
 set hid
