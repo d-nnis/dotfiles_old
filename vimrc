@@ -54,10 +54,26 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
-set cmdheight=2
+set modeline
+set modelines=5
+"set modeline modelines=5
 
-"inoremap <buffer> <C-v> <Left><C-O>"+p
-inoremap <C-v> <Left><C-O>"+p
+" C-s, what function else?
+"inoremap <buffer> <C-s> <C-O>"+p
+inoremap <buffer> <C-v> <Left><C-O>"+p
+
+" cursorshape, turn color when entering INSERT-/ NORMALMODE
+"if &term =~ "xterm"
+if &term =~ "screen-256color"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+if &term =~ "builtin_gui"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+
+
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -73,21 +89,23 @@ if v:version >= 602 | setlocal formatoptions-=a | endif
 
 " Make navigation more amenable to the long wrapping lines.
 "noremap <buffer> k gk
-"noremap <buffer> j gj
-noremap <buffer> <Up> gk
-noremap <buffer> <Down> gj
-noremap <buffer> 0 g0
-noremap <buffer> ^ g^
-noremap <buffer> $ g$
-" ist das eine gute Idee?
-inoremap <buffer> <End> <C-o>g$
-inoremap <buffer> <Home> <C-o>g0
-noremap <buffer> D dg$
-noremap <buffer> C cg$
-noremap <buffer> A g$a
+noremap k gk
+noremap j gj
+noremap <Up> gk
+noremap <Down> gj
+noremap <End> <C-o>g$
+noremap <Home> <C-o>g0
+noremap 0 g0
+noremap ^ g^
+noremap $ g$
+noremap D dg$
+noremap C cg$
+noremap A g$a
 
-inoremap <buffer> <Up> <C-O>gk
-inoremap <buffer> <Down> <C-O>gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+inoremap <End> <C-o>g$
+inoremap <Home> <C-o>g0
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
@@ -128,19 +146,28 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
+" already set with autoread?
+" problem with Neomake
 "augroup myvimrc
 "    au!
 "    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 "augroup END
 
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | echo 'vim reloaded!'
-    if has('gui_running')
-      so $MYGVIMRC | echo 'gvim'
-    endif
-augroup END
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
+if !exists("*ReloadVimrc")
+  function! ReloadVimrc()
+    source ~/.vimrc
+    echo "vimrc reloaded!"
+  endfunction
+endif
+
+"nnoremap <leader><F5> :call ReloadVimrc()<CR>
+nnoremap <leader>R :call ReloadVimrc()<CR>
+"nnoremap <leader><F5> :so ~/.vimrc | echo "vimrc reloaded!"
 
 """""""""""""""""
 " amix settings "
@@ -161,11 +188,6 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -201,7 +223,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=5
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -240,7 +262,7 @@ set mat=2
 
 " No annoying sound on errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set tm=500
 
