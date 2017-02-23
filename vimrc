@@ -91,8 +91,8 @@ noremap k gk
 noremap j gj
 noremap <Up> gk
 noremap <Down> gj
-noremap <End> <C-o>g$
-noremap <Home> <C-o>g0
+noremap <End> g$
+noremap <Home> g0
 noremap 0 g0
 noremap ^ g^
 noremap $ g$
