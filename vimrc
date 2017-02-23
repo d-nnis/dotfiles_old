@@ -60,6 +60,13 @@ set modelines=5
 "inoremap <buffer> <C-s> <C-O>"+p
 inoremap <buffer> <C-v> <Left><C-O>"+p
 
+" cursorshape, turn color when entering INSERT-/ NORMALMODE
+"if &term =~ "xterm"
+if &term =~ "screen-256color"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+
 """""""""""""""""""""""
 " File: mediawiki.vim "
 """""""""""""""""""""""
@@ -129,11 +136,17 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
+" already set with autoread?
 " problem with Neomake
 "augroup myvimrc
 "    au!
 "    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 "augroup END
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 if !exists("*ReloadVimrc")
   function! ReloadVimrc()
@@ -165,11 +178,6 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -205,7 +213,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=5
 
 " A buffer becomes hidden when it is abandoned
 set hid
