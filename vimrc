@@ -30,6 +30,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'neomake/neomake'
   augroup_neomake_config
     au!
+    " funktioniert nicht
+    " runtime! plugged/neomake/autoload/neomake.vim
     autocmd! BufWritePost * Neomake
   augroup END
   let g:neomake_open_list=2
