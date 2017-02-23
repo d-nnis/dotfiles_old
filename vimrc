@@ -66,6 +66,12 @@ if &term =~ "screen-256color"
   let &t_SI = "\<Esc>]12;red\x7"
   let &t_EI = "\<Esc>]12;white\x7"
 endif
+if &term =~ "builtin_gui"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+
+
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -81,21 +87,23 @@ if v:version >= 602 | setlocal formatoptions-=a | endif
 
 " Make navigation more amenable to the long wrapping lines.
 "noremap <buffer> k gk
-"noremap <buffer> j gj
-noremap <buffer> <Up> gk
-noremap <buffer> <Down> gj
-noremap <buffer> 0 g0
-noremap <buffer> ^ g^
-noremap <buffer> $ g$
-" ist das eine gute Idee? is not identical with End in NORMALMODE
-"inoremap <buffer> <End> <C-o>g$
-"inoremap <buffer> <Home> <C-o>g0
-noremap <buffer> D dg$
-noremap <buffer> C cg$
-noremap <buffer> A g$a
+noremap k gk
+noremap j gj
+noremap <Up> gk
+noremap <Down> gj
+noremap <End> <C-o>g$
+noremap <Home> <C-o>g0
+noremap 0 g0
+noremap ^ g^
+noremap $ g$
+noremap D dg$
+noremap C cg$
+noremap A g$a
 
-inoremap <buffer> <Up> <C-O>gk
-inoremap <buffer> <Down> <C-O>gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+inoremap <End> <C-o>g$
+inoremap <Home> <C-o>g0
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
