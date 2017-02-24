@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -o xtrace
 
 files="vimrc vimperatorrc vim vimperator zprezto"
-files+=" gitconfig fzf fzf.bash fzf.zsh"
+files+=" gitconfig fzf fzf.bash fzf.zsh tmux.conf tmux"
 
 mkdir -p $HOME/dotfiles_backup
 
@@ -16,8 +16,6 @@ for file in $files; do
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
 
-
-echo fzf
 ~/.fzf/install
 
 

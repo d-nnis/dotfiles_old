@@ -56,6 +56,10 @@ if has("gui_running")
   set lines=60 columns=100
 endif
 
+set modeline
+set modelines=5
+"set modeline modelines=5
+
 " C-s, what function else?
 "inoremap <buffer> <C-s> <C-O>"+p
 inoremap <buffer> <C-v> <Left><C-O>"+p
@@ -80,9 +84,9 @@ noremap <buffer> <Down> gj
 noremap <buffer> 0 g0
 noremap <buffer> ^ g^
 noremap <buffer> $ g$
-" ist das eine gute Idee?
-inoremap <buffer> <End> <C-o>g$
-inoremap <buffer> <Home> <C-o>g0
+" ist das eine gute Idee? is not identical with End in NORMALMODE
+"inoremap <buffer> <End> <C-o>g$
+"inoremap <buffer> <Home> <C-o>g0
 noremap <buffer> D dg$
 noremap <buffer> C cg$
 noremap <buffer> A g$a
@@ -129,11 +133,22 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+" problem with Neomake
+"augroup myvimrc
+"    au!
+"    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
+if !exists("*ReloadVimrc")
+  function! ReloadVimrc()
+    source ~/.vimrc
+    echo "vimrc reloaded!"
+  endfunction
+endif
+
+"nnoremap <leader><F5> :call ReloadVimrc()<CR>
+nnoremap <leader>R :call ReloadVimrc()<CR>
+"nnoremap <leader><F5> :so ~/.vimrc | echo "vimrc reloaded!"
 
 """""""""""""""""
 " amix settings "
@@ -233,7 +248,7 @@ set mat=2
 
 " No annoying sound on errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set tm=500
 
