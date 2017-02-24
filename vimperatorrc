@@ -46,7 +46,7 @@ set verbose=1
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
 " Vimperator's Ctrl-i functionality).
 inoremap <C-e> <Insert><C-e><Insert><Esc>
-inoremap <C-i> <C-i><Esc>
+"inoremap <C-i> <C-i><Esc>
 
 " Leader key to be used.
 let mapleader=','
