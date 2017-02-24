@@ -42,6 +42,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'asciidoc/vim-asciidoc'
 call plug#end()
 
+
+syntax enable
+" dark or light
+set background=dark
 colorscheme solarized
 
 set shiftwidth=2
@@ -248,7 +252,7 @@ try
 catch
 endtry
 
-set background=dark
+"set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
