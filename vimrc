@@ -66,16 +66,17 @@ set modelines=5
 "inoremap <buffer> <C-s> <C-O>"+p
 inoremap <buffer> <C-v> <Left><C-O>"+p
 
-" cursorshape, turn color when entering INSERT-/ NORMALMODE
-"if &term =~ "xterm"
-if &term =~ "screen-256color"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
-endif
-if &term =~ "builtin_gui"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
-endif
+"" cursorshape, turn color when entering INSERT-/ NORMALMODE
+"" throws funny signs in vim and afterwards in terminal
+""if &term =~ "xterm"
+"if &term =~ "screen-256color"
+"  let &t_SI = "\<Esc>]12;red\x7"
+"  let &t_EI = "\<Esc>]12;white\x7"
+"endif
+"if &term =~ "builtin_gui"
+"  let &t_SI = "\<Esc>]12;red\x7"
+"  let &t_EI = "\<Esc>]12;white\x7"
+"endif
 
 
 
