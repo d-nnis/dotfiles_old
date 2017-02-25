@@ -39,6 +39,7 @@ alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprof
 if [ -f /usr/bin/pacpl ]; then
   alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 fi
+alias tmux="tmux -2"
 
 cmkdir() {
     if [[ $1 == -* ]]; then
