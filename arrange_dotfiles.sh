@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 set -o xtrace
 
 files="vimrc vimperatorrc vim vimperator zprezto"

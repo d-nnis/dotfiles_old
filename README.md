@@ -37,10 +37,9 @@ start shell anew
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
-  * few key bindings to not work in new window
 * To consider
-  * Updating of submodules of vim rather via vim-plug (commadn line)
-* frozen
+  * Updating of submodules of vim rather via vim-plug (command line).
+* freeze-in
   * ini in config/mc
   * in vimperatir/info/default
   * check in config/mc/
@@ -64,6 +63,7 @@ start shell anew
   * autostart session if none exists
   * ... attach if no other client is attached
   * ... do not attach else and give feedback
+  * break pane: even if it is a vim window-split
 * vimperator
   * if \<wiki-url-pattern\>, focus on wiki-text-edit-frame textarea#wpTextbox1, send-keys \<C-i\>
     *  \<Esc\> - leave insert mode of ff-tab
@@ -73,9 +73,8 @@ start shell anew
   *  search in website-source w/o viewsource (e.g. link contents)
   *  TEXTAREA?
   *  when mouse-click retreat from INSERT mode
-  * 
-*  vimperator plugins - colors
 * dependencies:
   * zsh
   * git-flow
-  * vim-gnome (vim with system clipboard)
+  * vim-gnome
+  * sar/atsar and/or iostat for tmux-cpu

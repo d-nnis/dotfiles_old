@@ -70,6 +70,6 @@ set visualbell
 nnoremap <Leader>t :tabopen! <End>
 nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!<End>
 
-source /home/dennis/.vimperatorrc.local
+source! /home/dennis/.vimperatorrc.local
 
 " vim: ft=vim

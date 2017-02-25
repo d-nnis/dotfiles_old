@@ -24,7 +24,7 @@ alias gital='alias | grep git | less && git al'
 alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
 
-alias ssh='ssh -Y'
+#alias ssh='ssh -Y'
 
 ## hash'd dirs
 hash -d mybin=/home/dennis/bin
@@ -39,5 +39,15 @@ alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprof
 if [ -f /usr/bin/pacpl ]; then
   alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 fi
+
+cmkdir() {
+    if [[ $1 == -* ]]; then
+        mkdir $1 $2
+        cd $2
+    else
+        mkdir $1
+        cd $1
+    fi
+}
 
 # vim: syntax=sh
