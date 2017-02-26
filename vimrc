@@ -97,7 +97,7 @@ if !has('nvim') && exists('&t_SI')
     " P s = 6 → steady bar (xterm, urxvt).
     " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
     " }}}
-    let &t_SI = "\<Esc>[5 q"
+    let &t_SI = "\<Esc>[3 q"
     let &t_EI = "\<Esc>[1 q"
 
     " let &t_SI = "\<Esc>]12;purple\x7"
@@ -113,16 +113,25 @@ if !has('nvim') && exists('&t_SI')
     " Fallback: change only the color of the cursor.
     let &t_SI = "\<Esc>]12;#0087ff\x7"
     let &t_EI = "\<Esc>]12;#5f8700\x7"
+    " red and white
+    "let &t_SI = "\<Esc>]12;#FF0000\x7"
+    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
+    " this throws funny signs in xfce4 and tmux
+    "let &t_SI = "\<Esc>]12;red\x7"
+    "let &t_EI = "\<Esc>]12;white\x7"
   endif
 endif
 
 " Wrap escape codes for tmux.
 " NOTE: wrapping it acts on the term, not just on the pane!
-if len($TMUX)
-  let &t_SI = "\<Esc>Ptmux;\<Esc>".&t_SI."\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>".&t_EI."\<Esc>\\"
-endif
+"if len($TMUX)
+"  let &t_SI = "\<Esc>Ptmux;\<Esc>".&t_SI."\<Esc>\\"
+"  let &t_EI = "\<Esc>Ptmux;\<Esc>".&t_EI."\<Esc>\\"
+"endif
 " }}}
+" MiscCursorShape
+"    Specifies the shape of the cursor in the terminal. This can be either TERMINAL_CURSOR_SHAPE_BLOCK (the default), TERMINAL_CURSOR_SHAPE_IBEAM or TERMINAL_CURSOR_SHAPE_UNDERLINE. This option is only available when you compile against VTE 0.19.1 or newer.
+
 
 if has("autocmd")
   au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
@@ -130,6 +139,20 @@ if has("autocmd")
   au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
 endif
 
+" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+if &term == 'xterm-256color' || &term == 'screen-256color'
+  let &t_SI = "\<Esc>[3 q"
+  let &t_EI = "\<Esc>[1 q"
+endif
+"
+if exists('$TMUX')
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+endif
+"let &t_SI = "\<Esc>[3 q"
+"let &t_EI = "\<Esc>[1 q"
+
+"ColorPalette=#073642;#dc322f;#859900;#b58900;#205b92;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#004fae;#fdf6e3
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
