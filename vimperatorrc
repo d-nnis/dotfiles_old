@@ -94,8 +94,10 @@ nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!
 "command! -nargs=+ follow ;F<args> tabopen! yank<CR> ;y
 "nnoremap <Leader>f ;b
 
-command! -nargs=+ ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-map e :ewiki<Space>
+nnoremap <Leader>p :hardcopy!<CR>
+
+"command! -nargs=+ ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+"map e :ewiki<Space>
 " ;o same as f
 " ;b same as F (some difference...)
 " ;f focus frame(?)
