@@ -47,8 +47,8 @@ call plug#end()
 
 syntax enable
 " dark or light
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 colorscheme solarized
 
 set shiftwidth=2
@@ -69,7 +69,7 @@ inoremap <buffer> <C-v> <Left><C-O>"+p
 
 "" cursorshape, turn color when entering INSERT-/ NORMALMODE
 "" throws funny signs in vim and afterwards in terminal
-""if &term =~ "xterm"
+"if &term =~ "xterm"
 "if &term =~ "screen-256color"
 "  let &t_SI = "\<Esc>]12;red\x7"
 "  let &t_EI = "\<Esc>]12;white\x7"
@@ -79,6 +79,54 @@ inoremap <buffer> <C-v> <Left><C-O>"+p
 "  let &t_EI = "\<Esc>]12;white\x7"
 "endif
 
+" Change cursor shape for terminal mode. {{{1
+" See also ~/.dotfiles/oh-my-zsh/themes/blueyed.zsh-theme.
+" Note: with neovim, this gets controlled via $NVIM_TUI_ENABLE_CURSOR_SHAPE.
+if !has('nvim') && exists('&t_SI')
+  " 'start insert' and 'exit insert'.
+  if $_USE_XTERM_CURSOR_CODES == 1
+    " Reference: {{{
+    " P s = 0 → blinking block.
+    " P s = 1 → blinking block (default).
+    " P s = 2 → steady block.
+    " P s = 3 → blinking underline.
+    " P s = 4 → steady underline.
+    " P s = 5 → blinking bar (xterm, urxvt).
+    " P s = 6 → steady bar (xterm, urxvt).
+    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
+    " }}}
+    let &t_SI = "\<Esc>[5 q"
+    let &t_EI = "\<Esc>[1 q"
+
+    " let &t_SI = "\<Esc>]12;purple\x7"
+    " let &t_EI = "\<Esc>]12;blue\x7"
+
+    " mac / iTerm?!
+    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
+    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
+    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
+  elseif &t_Co > 1 && $TERM != "linux"
+    " Fallback: change only the color of the cursor.
+    let &t_SI = "\<Esc>]12;#0087ff\x7"
+    let &t_EI = "\<Esc>]12;#5f8700\x7"
+  endif
+endif
+
+" Wrap escape codes for tmux.
+" NOTE: wrapping it acts on the term, not just on the pane!
+if len($TMUX)
+  let &t_SI = "\<Esc>Ptmux;\<Esc>".&t_SI."\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>".&t_EI."\<Esc>\\"
+endif
+" }}}
+
+if has("autocmd")
+  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
+  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+endif
 
 
 """""""""""""""""""""""
