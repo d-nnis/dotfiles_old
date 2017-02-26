@@ -72,7 +72,7 @@ set clockhide
 " use with ]]
 
 " linksearch (?)
-set linksearch
+set nolinksearch
 " statusline/bar also visible when fullscreen
 set statuslinevisibility=visible
 set status=input,location,bookmark,history,ssl,tabcount,position,zoomlevel
