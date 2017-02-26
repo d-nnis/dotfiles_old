@@ -1,6 +1,6 @@
 "3.15.0 (created: 2016/10/05 01:11:26)
 
-" Clear all key mappings to avoid troubles when loading .vimperatorrc
+" Clear all key mappings to avoid troubles when reloading .vimperatorrc
 " repeatedly.
 mapclear
 cmapclear
@@ -21,7 +21,10 @@ map E :Ewiki<Space>
 " :mapi-silent?
 "nnoremap <silent> <C-i> :echo 'etwas'<CR>
 " its just to fast...
-noremap! <C-y> fgi:wait<CR><C-i>
+"noremap! <C-y> fgi:wait<CR><C-i>
+" gi: go to first input field
+map <C-y> gi<C-i><Esc>
+nmap <Leader>f fl<C-y>
 
 highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 map l gt
@@ -50,25 +53,58 @@ nnoremap <Leader>9 9gt
 nnoremap <Leader>0 10gt
 
 " Reload this configuration file.
-noremap <Leader><S-r> :source ~/.vimperatorrc<CR>:echo "Configuration reloaded."<CR>
+noremap <Leader><S-r> :source ~/.vimperatorrc<CR>:echomsg "Configuration reloaded."<CR>
 
 set hintchars=asdfghklqwertyuiop
 set verbose=1
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
-" Vimperator's Ctrl-i functionality). REALLY?
+" Vimperator's Ctrl-i functionality). Really? does not grey out the text box.
 inoremap <C-e> <Insert><C-e><Insert><Esc>
 "inoremap <C-i> <C-i><Esc>
 
-let clock_format='(%t %d)'
+"" plugins {{{
+""let clock_format='(%t %d)'
+set clockhide
 
-set showstatuslinks=2
+"" }}}
+
+" nextpattern, Hinttags(?)
+" use with ]]
+
+" linksearch (?)
+set linksearch
+" statusline/bar also visible when fullscreen
+set statuslinevisibility=visible
+set status=input,location,bookmark,history,ssl,tabcount,position,zoomlevel
+set showstatuslinks=1
 set tabnumbers
+set focuscontent
 set titlestring=Firefox
 set noerrorbells
 set visualbell
 
+" open new link in background tab
 nnoremap <Leader>t :tabopen! <End>
+" based on current URL
 nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!<End>
+" open new tab right next to current tab
+" follow a <CR>-separated sequence of links
+" nnoremap <Leader>f ;F
+" [module tabs]::count
+"command! -nargs=+ follow ;F<args> tabopen! yank<CR> ;y
+"nnoremap <Leader>f ;b
+
+command! -nargs=+ ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map e :ewiki<Space>
+" ;o same as f
+" ;b same as F (some difference...)
+" ;f focus frame(?)
+" ;c (c)ontext menu
+" ;w follow hint in a new window
+"" echo <Tab> ...!
+"" echo buffer
+" (a)ttach tab to other window
+map <Leader>a :tabattach<Space><Tab>
 
 source! /home/dennis/.vimperatorrc.local
 
