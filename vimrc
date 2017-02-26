@@ -79,6 +79,8 @@ inoremap <buffer> <C-v> <Left><C-O>"+p
 "  let &t_EI = "\<Esc>]12;white\x7"
 "endif
 
+" Thanks to blueyed it works in Tmux and XFCE4
+" https://github.com/blueyed/dotfiles/issues/4
 " Change cursor shape for terminal mode. {{{1
 " See also ~/.dotfiles/oh-my-zsh/themes/blueyed.zsh-theme.
 " Note: with neovim, this gets controlled via $NVIM_TUI_ENABLE_CURSOR_SHAPE.
