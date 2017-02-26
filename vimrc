@@ -47,7 +47,8 @@ call plug#end()
 
 syntax enable
 " dark or light
-set background=dark
+"set background=dark
+set background=light
 colorscheme solarized
 
 set shiftwidth=2
