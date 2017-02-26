@@ -1,7 +1,15 @@
 
 ## tmux
 tmux/resurrect/*
-
+tmux/plugins/tmux-colors-solarized/
+tmux/plugins/tmux-continuum/
+tmux/plugins/tmux-copycat/
+tmux/plugins/tmux-cpu/
+tmux/plugins/tmux-fingers/
+tmux/plugins/tmux-resurrect/
+tmux/plugins/tmux-sensible/
+tmux/plugins/tmux-yank/
+tmux/plugins/vim-tmux/
 ## config
 ### mc
 config/mc/*
