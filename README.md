@@ -30,9 +30,15 @@ start shell anew
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
 ### Vimperator
-* <leader> is ,
-* <leader> t ~~ open URL in background
-* <leader> T ~~ open URL in background based on current URL
+* <leader> ... # is ,
+** t ~~ open URL in background
+** T ~~ open URL in background based on current URL
+** R ~~ reload ~/.vimperatorrc
+** p ~~ print w/o confirmation (to default printer)
+** a ~~ attach tab to another window
+* ; ...
+** c ~~ context menu
+** w ~~ follow hint in a new window
 
 ## todo
 * BROKEN
