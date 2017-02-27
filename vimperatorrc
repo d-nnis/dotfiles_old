@@ -64,7 +64,7 @@ inoremap <C-e> <Insert><C-e><Insert><Esc>
 
 "" plugins {{{
 ""let clock_format='(%t %d)'
-set clockhide
+"set clockhide
 
 "" }}}
 
