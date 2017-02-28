@@ -11,17 +11,36 @@ run arrange_dotfiles.zsh
 
 start shell anew
 
-## The KEY NAVIGATION!
+## The key navigation
+* An overview of regular and customized functions and key bindings which will grow and change from time to time.
+
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information
 * l ~~ log --graph
 * st ~~ status + ignored files
+
+### Shell
+* fzf (FuzzyFind)
+  * `<dir>/file**<tab>`
+  * `pdf$**<tab>`
+  * `kill -9 <digit><tab>`
+  * `ssh **<tab>` # complete with hostnames from /etc/hosts and ~/.ssh/config
+
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
+* <leader> ... ~~ is ,
+** M-j ,k  : move a line down, upwards
+** m  ~~ clean file from ^M from Windows encoding _\r\n_
+* fzf
+  * :FZF ~~ look for and open files from CWD
+  * --inline-info ~~ ?
+    * <C-t> ~~ open in new *t*ab
+    * <C-x> ~~ hori*x*ontal split
+    * <C-v> ~~ *v*ertical split
 
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
@@ -39,6 +58,8 @@ start shell anew
 * ; ...
 ** c ~~ context menu
 ** w ~~ follow hint in a new window
+* gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
+* gU ~~ open URL *U*p to stem: http://domain.de
 
 ## todo
 * BROKEN

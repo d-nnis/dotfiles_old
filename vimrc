@@ -22,6 +22,10 @@ cmapclear
 imapclear
 comclear
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 """""""""""""""""""
 " dennis settings "
 """""""""""""""""""
@@ -63,65 +67,64 @@ set modeline
 set modelines=5
 "set modeline modelines=5
 
-" C-s, what function else?
-"inoremap <buffer> <C-s> <C-O>"+p
 inoremap <buffer> <C-v> <Left><C-O>"+p
 
 "" cursorshape, turn color when entering INSERT-/ NORMALMODE
-"" throws funny signs in vim and afterwards in terminal
+"" throws funny signs with XFCE4-terminal
+"" works vim gnome-terminal
 "if &term =~ "xterm"
-"if &term =~ "screen-256color"
-"  let &t_SI = "\<Esc>]12;red\x7"
-"  let &t_EI = "\<Esc>]12;white\x7"
-"endif
-"if &term =~ "builtin_gui"
-"  let &t_SI = "\<Esc>]12;red\x7"
-"  let &t_EI = "\<Esc>]12;white\x7"
-"endif
+if &term =~ "screen-256color"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+if &term =~ "builtin_gui"
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
 
 " Thanks to blueyed it works in Tmux and XFCE4
 " https://github.com/blueyed/dotfiles/issues/4
 " Change cursor shape for terminal mode. {{{1
 " See also ~/.dotfiles/oh-my-zsh/themes/blueyed.zsh-theme.
 " Note: with neovim, this gets controlled via $NVIM_TUI_ENABLE_CURSOR_SHAPE.
-if !has('nvim') && exists('&t_SI')
-  " 'start insert' and 'exit insert'.
-  if $_USE_XTERM_CURSOR_CODES == 1
-    " Reference: {{{
-    " P s = 0 → blinking block.
-    " P s = 1 → blinking block (default).
-    " P s = 2 → steady block.
-    " P s = 3 → blinking underline.
-    " P s = 4 → steady underline.
-    " P s = 5 → blinking bar (xterm, urxvt).
-    " P s = 6 → steady bar (xterm, urxvt).
-    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
-    " }}}
-    let &t_SI = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[1 q"
-
-    " let &t_SI = "\<Esc>]12;purple\x7"
-    " let &t_EI = "\<Esc>]12;blue\x7"
-
-    " mac / iTerm?!
-    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
-    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
-    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
-  elseif &t_Co > 1 && $TERM != "linux"
-    " Fallback: change only the color of the cursor.
-    let &t_SI = "\<Esc>]12;#0087ff\x7"
-    let &t_EI = "\<Esc>]12;#5f8700\x7"
-    " red and white
-    "let &t_SI = "\<Esc>]12;#FF0000\x7"
-    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
-    " this throws funny signs in xfce4 and tmux
-    "let &t_SI = "\<Esc>]12;red\x7"
-    "let &t_EI = "\<Esc>]12;white\x7"
-  endif
-endif
-
+"if !has('nvim') && exists('&t_SI')
+"  " 'start insert' and 'exit insert'.
+"  if $_USE_XTERM_CURSOR_CODES == 1
+"    " Reference: {{{
+"    " P s = 0 → blinking block.
+"    " P s = 1 → blinking block (default).
+"    " P s = 2 → steady block.
+"    " P s = 3 → blinking underline.
+"    " P s = 4 → steady underline.
+"    " P s = 5 → blinking bar (xterm, urxvt).
+"    " P s = 6 → steady bar (xterm, urxvt).
+"    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
+"    " }}}
+"    let &t_SI = "\<Esc>[3 q"
+"    let &t_EI = "\<Esc>[1 q"
+"
+"    " let &t_SI = "\<Esc>]12;purple\x7"
+"    " let &t_EI = "\<Esc>]12;blue\x7"
+"
+"    " mac / iTerm?!
+"    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+"    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
+"    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
+"    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
+"  elseif &t_Co > 1 && $TERM != "linux"
+"    " Fallback: change only the color of the cursor.
+"    let &t_SI = "\<Esc>]12;#0087ff\x7"
+"    let &t_EI = "\<Esc>]12;#5f8700\x7"
+"    " red and white
+"    "let &t_SI = "\<Esc>]12;#FF0000\x7"
+"    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
+"    " this throws funny signs in xfce4 and tmux
+"    "let &t_SI = "\<Esc>]12;red\x7"
+"    "let &t_EI = "\<Esc>]12;white\x7"
+"  endif
+"endif
+"
 " Wrap escape codes for tmux.
 " NOTE: wrapping it acts on the term, not just on the pane!
 "if len($TMUX)
@@ -132,27 +135,61 @@ endif
 " MiscCursorShape
 "    Specifies the shape of the cursor in the terminal. This can be either TERMINAL_CURSOR_SHAPE_BLOCK (the default), TERMINAL_CURSOR_SHAPE_IBEAM or TERMINAL_CURSOR_SHAPE_UNDERLINE. This option is only available when you compile against VTE 0.19.1 or newer.
 
-
-if has("autocmd")
-  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
-  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+"isdirectory("/home/$USER")
+if isdirectory("/home/dennis/.config/xfce4/terminal")
+  if has("autocmd")
+    au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
+    au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+    au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+  endif
 endif
 
-" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
-if &term == 'xterm-256color' || &term == 'screen-256color'
-  let &t_SI = "\<Esc>[3 q"
-  let &t_EI = "\<Esc>[1 q"
-endif
-"
-if exists('$TMUX')
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-endif
+"" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+"if &term == 'xterm-256color' || &term == 'screen-256color'
+"  let &t_SI = "\<Esc>[3 q"
+"  let &t_EI = "\<Esc>[1 q"
+"endif
+""
+"if exists('$TMo X')
+"  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+"endif
 "let &t_SI = "\<Esc>[3 q"
 "let &t_EI = "\<Esc>[1 q"
 
 "ColorPalette=#073642;#dc322f;#859900;#b58900;#205b92;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#004fae;#fdf6e3
+
+
+"""""""""""""""""""""""""""""""""""""
+" very specific to user and time :-)
+" {{{
+if filereadable("/home/dennis/.vim/mag.vim")
+  source ~/.vim/mag.vim
+else
+  echo "mag.vim not present"
+endif
+
+" }}}
+
+""""""""""""
+" asciidoc "
+""""""""""""
+
+if filereadable("/home/dennis/.vimrc/adoc_specials.vim")
+  so ~/.vim/adoc_specials.vim
+else
+  echo "adoc_specials is missing"
+endif
+
+" if filereadable("/usr/local/bin/asciidoctor")
+"   function! AdocConvert()
+"     :!asciidoctor %
+"     echo "asciidoc converted"
+"   endfunction
+"   nnoremap <leader><F7> :call AdocConvert()<CR>
+" endif
+
+
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -189,6 +226,10 @@ inoremap <Home> <C-o>g0
 
 " utf-8 should be set if not already done globally
 setlocal fileencoding=utf-8
+" explicit setting of fileencoding globally
+setglobal fileencoding=utf-8
+" is unix fileformat obvious?
+setglobal fileformat=unix
 setlocal matchpairs+=<:>
 
 " Treat lists, indented text and tables as comment lines and continue with the
@@ -207,12 +248,19 @@ if exists("loaded_matchit")
     \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 endif
 
-" Other useful mappings
-" Insert a matching = automatically while starting a new header.
-inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
 
-" Enable folding based on ==sections==
-setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
+" Other useful mappings
+"" mediawiki {{{
+"" Insert a matching = automatically while starting a new header.
+if &filetype =~ 'mediawiki' " works?
+  inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
+
+  " Enable folding based on ==sections==
+  setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
+endif
+
+" }}}
+
 setlocal fdm=expr
 
 map <F8> :setfiletype mediawiki<CR>
@@ -233,21 +281,17 @@ endif
 "    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 "augroup END
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 if !exists("*ReloadVimrc")
   function! ReloadVimrc()
     source ~/.vimrc
-    echo "vimrc reloaded!"
+"   echo "vimrc reloaded!"
   endfunction
 endif
 
-"nnoremap <leader><F5> :call ReloadVimrc()<CR>
+nnoremap <leader><F5> :call ReloadVimrc()<CR>
+" why does ,R keep failing for Vim? (not GVim)
 nnoremap <leader>R :call ReloadVimrc()<CR>
-"nnoremap <leader><F5> :so ~/.vimrc | echo "vimrc reloaded!"
 
 """""""""""""""""
 " amix settings "
@@ -535,7 +579,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
-" When you search with Ag, display your results in cope by doing:
+" When you snarch with Ag, display your results in cope by doing:
 "   <leader>cc
 "
 " To go to the next search result do:

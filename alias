@@ -26,6 +26,7 @@ alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
 #alias ssh='ssh -Y'
 alias rm='rm -I'
+alias watch='watch -d'
 ## hash'd dirs
 hash -d mybin=/home/dennis/bin
 hash -d ocm=/home/dennis/owncloud_maw
