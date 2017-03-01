@@ -1,5 +1,5 @@
 
-echo "sourcing adoc_specials"
+" echo "sourcing adoc_specials"
 
 
 if filereadable("/usr/local/bin/asciidoctor")
@@ -7,5 +7,13 @@ if filereadable("/usr/local/bin/asciidoctor")
     :!asciidoctor %
     echo "asciidoc converted"
   endfunction
-  nnoremap <leader><F7> :call AdocConvert()<CR>
 endif
+
+function! AnextChapter()
+  /==\s*\w
+endfunction
+
+function! AprevChapter()
+  ?==\s*\w
+endfunction
+

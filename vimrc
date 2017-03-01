@@ -165,8 +165,6 @@ endif
 " {{{
 if filereadable("/home/dennis/.vim/mag.vim")
   source ~/.vim/mag.vim
-else
-  echo "mag.vim not present"
 endif
 
 " }}}
@@ -175,21 +173,12 @@ endif
 " asciidoc "
 """"""""""""
 
-if filereadable("/home/dennis/.vimrc/adoc_specials.vim")
+if filereadable("/home/dennis/.vim/adoc_specials.vim")
   so ~/.vim/adoc_specials.vim
-else
-  echo "adoc_specials is missing"
 endif
 
-" if filereadable("/usr/local/bin/asciidoctor")
-"   function! AdocConvert()
-"     :!asciidoctor %
-"     echo "asciidoc converted"
-"   endfunction
-"   nnoremap <leader><F7> :call AdocConvert()<CR>
-" endif
-
-
+nnoremap <F7> :call AnextChapter()<CR>
+nnoremap <F8> :call AprevChapter()<CR>
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -263,7 +252,7 @@ endif
 
 setlocal fdm=expr
 
-map <F8> :setfiletype mediawiki<CR>
+" map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
   " native vimperator-Plugin <C-i>
   au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
