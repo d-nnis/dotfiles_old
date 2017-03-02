@@ -13,7 +13,9 @@ start shell anew
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
-* caps lock is Escape
+* caps lock is mapped to escape via Xmodmap
+* configedit        # load all relevant config files into Vim
+* configreload (-a) # reload
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information

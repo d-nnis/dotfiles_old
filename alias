@@ -33,8 +33,22 @@ hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
 
-alias zshreload=". ~/.zshrc ~/.zpreztorc"
-alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc"
+configreload() {
+  echo "Reloading..."
+  echo "ZSH & Prezto"
+  . ~/.zshrc
+  . ~/.zpreztorc
+  echo "Xresources"
+  xrdb ~/.Xresources
+  if [ "$1" = "-a" ];then
+    echo "Xmodmap"
+    xmodmap ~/.Xmodmap
+    echo "fonts"
+    fc-cache -v ~/.fonts
+  fi
+  echo "Done."
+}
+alias configedit="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
 
 # programs
 ## pacpl
