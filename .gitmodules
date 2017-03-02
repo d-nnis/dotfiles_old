@@ -55,3 +55,6 @@
 [submodule "tmux/plugins/tmux-colors-solarized"]
 	path = tmux/plugins/tmux-colors-solarized
 	url = https://git::@github.com/seebi/tmux-colors-solarized
+[submodule "urxvt/ext/urxvt-perls"]
+	path = urxvt/ext/urxvt-perls
+	url = https://github.com/muennich/urxvt-perls

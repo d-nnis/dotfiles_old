@@ -41,6 +41,9 @@ alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprof
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
 
+alias xreload="xrdb ~/.Xresources"
+alias getclip='echo "$(xsel)"'
+
 cmkdir() {
     if [[ $1 == -* ]]; then
         mkdir $1 $2
