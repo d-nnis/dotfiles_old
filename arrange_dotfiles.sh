@@ -2,7 +2,7 @@
 set -o xtrace
 
 files="vimrc vimperatorrc vim vimperator zprezto"
-files+=" gitconfig fzf fzf.bash fzf.zsh tmux.conf tmux Xmodmap Xresources urxvt"
+files+=" gitconfig fzf fzf.bash fzf.zsh tmux.conf tmux Xmodmap Xresources urxvt fonts"
 
 mkdir -p $HOME/dotfiles_backup
 
