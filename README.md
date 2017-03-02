@@ -32,7 +32,7 @@ start shell anew
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
-* <leader> ... ~~ is ,
+* <leader> ... is `,'
 * asciidoc
 ** <F7>,<F8> ~~ jump to next, previous chapter
 ** M-j ,k  : move a line down, upwards
