@@ -104,9 +104,6 @@ if [ -d $HOME/bin ]; then
 fi
 
 
-
-
-echo '.bashrc executed'
-
+export TERM="rxvt-unicode-256color"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
