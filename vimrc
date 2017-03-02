@@ -72,16 +72,17 @@ inoremap <buffer> <C-v> <Left><C-O>"+p
 "" cursorshape, turn color when entering INSERT-/ NORMALMODE
 "" throws funny signs with XFCE4-terminal
 "" works vim gnome-terminal
-"if &term =~ "xterm"
-if &term =~ "screen-256color"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
+if $XDG_CURRENT_DESKTOP != "XFCE"
+  if &term =~ "screen-256color"
+    let &t_SI = "\<Esc>]12;red\x7"
+    let &t_EI = "\<Esc>]12;white\x7"
+  endif
+  if &term =~ "builtin_gui"
+    let &t_SI = "\<Esc>]12;red\x7"
+    let &t_EI = "\<Esc>]12;white\x7"
+  endif
 endif
-if &term =~ "builtin_gui"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
-endif
-
+" 
 " Thanks to blueyed it works in Tmux and XFCE4
 " https://github.com/blueyed/dotfiles/issues/4
 " Change cursor shape for terminal mode. {{{1
