@@ -13,7 +13,7 @@ start shell anew
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
-
+* caps lock is Escape
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information
