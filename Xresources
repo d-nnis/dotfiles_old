@@ -14,21 +14,29 @@ URxvt*geometry:        80x50
 !URxvt*boldItalicFont:  xft:Inconsolata for Powerline:bold:italic:autohint=true:size=12
 
 URxvt.letterSpace: -2
-
+URxvt.terminalName:rxvt-unicode-256color
 ! https://github.com/muennich/urxvt-perls
 ! URxvt.perl-lib: 
 
-URxvt.perl-ext-common: ...,keyboard-select
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+
+
+URxvt.perl-ext-common: keyboard-select,fullscreen
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
+
+URxvt.keysym.F11:       perl:fullscreen:switch
 
 ! https://github.com/jrcharney/rigel/wiki/URXVT
 ! For these plugins use https://github.com/muennich/urxvt-perls for guidance, not the Arch Wiki page.
 ! For all three urxvt-perls plugins, let us set the perl extention directory.
-URxvt.perl-lib: ~/.urxvt/ext/urxvt-perls
+URxvt.perl-lib: ~/.urxvt/ext
 ! set which plugins to use.
 ! URxvt.perl-ext: clipboard,keyboard-select,url-select
 URxvt.perl-ext: keyboard-select
+
+! URxvt*cursorUnderline: true
 
 ! keyboard-select
 ! Use keyboard shortcuts to select and copy text.
@@ -67,9 +75,6 @@ URxvt*underlineColor: #ffff00
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-! The default copy and paste clipboard commands URXVT usrs 
-! URxvt.clipboard.copycmd:  xsel -ib
-! URxvt.clipboard.pastecmd: xsel -ob
 
 ! https://github.com/solarized/xresources
 #define S_base03        #002b36
