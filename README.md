@@ -28,7 +28,11 @@ start shell anew
   * `pdf$**<tab>`
   * `kill -9 <digit><tab>`
   * `ssh **<tab>` # complete with hostnames from /etc/hosts and ~/.ssh/config
-
+* Urxvt
+  * M-Esc ~~ Vim-like navigation, pasting and searching [https://github.com/muennich/urxvt-perls/]
+  * M-s ~~ search backwards from prompt
+  * C-M-c ~~ copy selection to system clipboard
+  * S-Insert ~~ paste from system clipboard
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
@@ -109,3 +113,5 @@ start shell anew
   * git-flow
   * vim-gnome
   * sar/atsar and/or iostat for tmux-cpu
+  * wmctrl
+  * xsel (xclip too?)
