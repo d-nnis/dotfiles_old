@@ -6,21 +6,21 @@
 
 ## Installation
 start zsh-shell
-run arrange_pkg.zsh
-run arrange_dotfiles.zsh
+run arrange
 
-start shell anew
+start shell anew || $SHELL
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
 * caps lock is mapped to escape via Xmodmap
-* configedit        # load all relevant config files into Vim
-* configreload (-a) # reload
+* coned        # load all relevant config files into Vim
+* conrel (-a)  # reload
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information
 * l ~~ log --graph
 * st ~~ status + ignored files
+* subst ~~ status of all submodules
 
 ### Shell
 * fzf (FuzzyFind)
@@ -29,10 +29,17 @@ start shell anew
   * `kill -9 <digit><tab>`
   * `ssh **<tab>` # complete with hostnames from /etc/hosts and ~/.ssh/config
 * Urxvt
-  * M-Esc ~~ Vim-like navigation, pasting and searching [https://github.com/muennich/urxvt-perls/]
-  * M-s ~~ search backwards from prompt
-  * C-M-c ~~ copy selection to system clipboard
-  * S-Insert ~~ paste from system clipboard
+  * Keyboard shortcuts
+    * M-Esc ~~ Vim-like navigation, pasting and searching [https://github.com/muennich/urxvt-perls/]
+    * M-s ~~ search backwards in terminal from prompt
+    * C-M-c ~~ copy selection to system clipboard
+    * C-M-v ~~ paste sys clipboard (also S-Insert)
+    * C-(S-)Up ~~ increase (globally) size of font
+    * C-(S-)Down ~~ decrease (globally) size of font
+    * C-= ~~ reset size
+    * C-/ ~~ show font attributes
+* commands
+    * getclip ~~ paste clipboard content
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
@@ -43,6 +50,7 @@ start shell anew
 ** <F7>,<F8> ~~ jump to next, previous chapter
 ** M-j ,k  : move a line down, upwards
 ** m  ~~ clean file from ^M from Windows encoding _\r\n_
+* \<C-r\> * ~~ insert while in INSERTMODE
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
@@ -69,19 +77,19 @@ start shell anew
 * gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
 * gU ~~ open URL *U*p to stem: http://domain.de
 
+## Updating
+* git pull && git submodule update --remote --merge
+** gca for updated submodules necessary?
+* vim-submodules via vim-plug
+* tmux-submodules via tpm (<prefix> U)
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
-* To consider
-  * Updating of submodules of vim rather via vim-plug (command line).
-* freeze-in
-  * ini in config/mc
-  * in vimperatir/info/default
-  * check in config/mc/
-  * checkout ini (although is ignored - frozen state)
+* freeze-in -> .gitignore
+* color of cursor in terminal (smw between Xresources and ...x?)
 * bright and dark settings
   * depending on sys-time?
-  * like red-light
+  * red-light
 * git
   * config rather than alias?
 * Link-safer for terminal (bookmark) (s.a. [[ Tools#Collaboration ]]
@@ -90,7 +98,6 @@ start shell anew
 * prezto
   * in what why does the order matter?
 * vim
-  * \<C-M-s\> ~~ Ctrl+Alt+S ?
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
   * i\_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
@@ -108,7 +115,7 @@ start shell anew
   *  search in website-source w/o viewsource (e.g. link contents)
   *  TEXTAREA?
   *  when mouse-click retreat from INSERT mode
-* dependencies:
+* dependencies: (s.a. arrange.sh)
   * zsh
   * git-flow
   * vim-gnome

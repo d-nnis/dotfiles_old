@@ -48,6 +48,8 @@ configreload() {
     xmodmap ~/.Xmodmap
     echo "fonts"
     fc-cache -v ~/.fonts
+  else
+    echo "Not reloaded: Xmodmap, fonts (do so with '-a')"
   fi
   echo "Done."
 }
@@ -57,7 +59,6 @@ configreload() {
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
 
-alias xreload="xrdb ~/.Xresources"
 alias getclip='echo "$(xsel)"'
 
 cmkdir() {
