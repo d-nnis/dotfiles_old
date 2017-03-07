@@ -97,6 +97,7 @@ start shell anew || $SHELL
 * git abbreviation - package (prezto?)
 * prezto
   * in what why does the order matter?
+    * history-substring-search: "If this module is used in conjuncture with the *syntax-highlighting* module, it must be loaded **after** it."
 * vim
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
