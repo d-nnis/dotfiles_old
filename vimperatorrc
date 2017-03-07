@@ -11,10 +11,13 @@ comclear
 " Leader key to be used.
 let mapleader=','
 
-command! -nargs=* ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-command! -nargs=* Ewiki tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-map e :ewiki<Space>
-map E :Ewiki<Space>
+" mw = mediawiki
+command! -nargs=* mwopen open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -nargs=* mwtabopen tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -nargs=* mwwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map e :mwopen<Space>
+map E :mwtabopen<Space>
+map <Leader>e :mwwindowopen<Space>
 
 "get url. if wiki: do it!
 " :map-urls
