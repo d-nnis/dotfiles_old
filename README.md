@@ -2,7 +2,7 @@
 *Home Sweet Home?*
 *Home Dot Home!*
 
-*From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* [https://en.wiktionary.org/wiki/house]
+*From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* https://en.wiktionary.org/wiki/house
 
 ## Installation
 start zsh-shell
@@ -13,8 +13,9 @@ start shell anew || $SHELL
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
 * caps lock is mapped to escape via Xmodmap
-* coned        # load all relevant config files into Vim
-* conrel (-a)  # reload
+* confed        # load all relevant config files into Vim
+* confrel (-a)  # reload
+
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information
@@ -30,7 +31,7 @@ start shell anew || $SHELL
   * `ssh **<tab>` # complete with hostnames from /etc/hosts and ~/.ssh/config
 * Urxvt
   * Keyboard shortcuts
-    * M-Esc ~~ Vim-like navigation, pasting and searching [https://github.com/muennich/urxvt-perls/]
+    * M-Esc ~~ Vim-like navigation, pasting and searching https://github.com/muennich/urxvt-perls/
     * M-s ~~ search backwards in terminal from prompt
     * C-M-c ~~ copy selection to system clipboard
     * C-M-v ~~ paste sys clipboard (also S-Insert)
@@ -45,9 +46,9 @@ start shell anew || $SHELL
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
-* <leader> ... is `,'
+* \<leader\> ... is ',' (comma)
 * asciidoc
-** <F7>,<F8> ~~ jump to next, previous chapter
+** \<F7\>,\<F8\> ~~ jump to next, previous chapter
 ** M-j ,k  : move a line down, upwards
 ** m  ~~ clean file from ^M from Windows encoding _\r\n_
 * \<C-r\> * ~~ insert while in INSERTMODE
