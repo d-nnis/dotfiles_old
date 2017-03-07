@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 set -o xtrace
 
-files="vimrc vimperatorrc vim vimperator zprezto gitconfig tmux.conf"
-files+=" fzf fzf.bash fzf.zsh tmux.conf tmux Xmodmap Xresources urxvt fonts"
+files="vimperatorrc vimperatorrc.local vimperator"
+files+=" vimrc vim"
+files+=" zprezto gitconfig"
+files+=" tmux.conf tmux"
+files+=" fzf fzf.bash fzf.zsh"
+files+=" Xmodmap Xresources urxvt fonts"
 
 deskenv=1
 install=0
@@ -22,7 +26,7 @@ done
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 
-packages {
+packages() {
   # packages only for terminal environment
   list="tmux zsh xsel xclip atsar iostat zsh git-flow git"
   # programs for desktop environment
@@ -30,11 +34,12 @@ packages {
     list+=" wmctrl rxvt-unicode-256color firefox vimperator"
   fi
   
-  for each el in $list; do
+  for el in $list; do
     dpkg -l $el
     if [ $? -eq 1 ]; then
       install=1
     fi
+  done
 }
 
 if [ $install -eq 1 ]; then

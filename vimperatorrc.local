@@ -1,0 +1,11 @@
+
+" mw = mediawiki on codeprobe
+command! -nargs=* mwopen open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -nargs=* mwtabopen tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -nargs=* mwwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map e :mwopen<Space>
+map E :mwtabopen<Space>
+map <Leader>e :mwwindowopen<Space>
+
+
+" vim: ft=vim

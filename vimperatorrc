@@ -11,13 +11,6 @@ comclear
 " Leader key to be used.
 let mapleader=','
 
-" mw = mediawiki
-command! -nargs=* mwopen open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-command! -nargs=* mwtabopen tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-command! -nargs=* mwwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
-map e :mwopen<Space>
-map E :mwtabopen<Space>
-map <Leader>e :mwwindowopen<Space>
 
 "get url. if wiki: do it!
 " :map-urls
@@ -27,7 +20,6 @@ map <Leader>e :mwwindowopen<Space>
 "noremap! <C-y> fgi:wait<CR><C-i>
 " gi: go to first input field
 map <C-y> gi<C-i><Esc>
-nmap <Leader>f fl<C-y>
 
 highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 map l gt
