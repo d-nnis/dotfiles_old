@@ -35,8 +35,10 @@ start shell anew || $SHELL
     * M-s ~~ search backwards in terminal from prompt
     * C-M-c ~~ copy selection to system clipboard
     * C-M-v ~~ paste sys clipboard (also S-Insert)
-    * C-(S-)Up ~~ increase (globally) size of font
-    * C-(S-)Down ~~ decrease (globally) size of font
+    * C-M-plus ~~ increase size of font
+    * C-M-minus ~~ decrease size of font
+    * C-S-plus ~~ increase (globally) size of font
+    * C-S-minus ~~ decrease (globally) size of font
     * C-= ~~ reset size
     * C-/ ~~ show font attributes
 * commands
@@ -83,14 +85,18 @@ start shell anew || $SHELL
   * gca for updated submodules necessary?
 * vim-submodules via vim-plug
 * tmux-submodules via tpm (<prefix> U)
+
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
 * freeze-in -> .gitignore
-* color of cursor in terminal (smw between Xresources and ...x?)
-* bright and dark settings
-  * depending on sys-time?
-  * red-light
+* color
+  * of cursor in terminal: zpreztorc, highlight cursor
+  * tmux - Xresources - zpreztorc
+  * bright and dark settings
+    * depending on sys-time?
+    * red-light
+* vi-keybindings for prompt in zpreztorc
 * git
   * config rather than alias?
 * Link-safer for terminal (bookmark) (s.a. [[ Tools#Collaboration ]]
