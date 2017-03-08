@@ -48,16 +48,16 @@ start shell anew || $SHELL
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
 * \<leader\> ... is ',' (comma)
 * asciidoc
-** \<F7\>,\<F8\> ~~ jump to next, previous chapter
-** M-j ,k  : move a line down, upwards
-** m  ~~ clean file from ^M from Windows encoding _\r\n_
+  * \<F7\>,\<F8\> ~~ jump to next, previous chapter
+  * M-j ,k  : move a line down, upwards
+  * m  ~~ clean file from ^M from Windows encoding _\r\n_
 * \<C-r\> * ~~ insert while in INSERTMODE
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
-    * <C-t> ~~ open in new *t*ab
-    * <C-x> ~~ hori*x*ontal split
-    * <C-v> ~~ *v*ertical split
+    * \<C-t\> ~~ open in new *t*ab
+    * \<C-x\> ~~ hori*x*ontal split
+    * \<C-v\> ~~ *v*ertical split
 
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
@@ -66,21 +66,21 @@ start shell anew || $SHELL
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
 ### Vimperator
-* <leader> ... # is ,
-** t ~~ open URL in background
-** T ~~ open URL in background based on current URL
-** R ~~ reload ~/.vimperatorrc
-** p ~~ print w/o confirmation (to default printer)
-** a ~~ attach tab to another window
+* \<leader\> ... # is ,
+  * t ~~ open URL in background
+  * T ~~ open URL in background based on current URL
+  * R ~~ reload ~/.vimperatorrc
+  * p ~~ print w/o confirmation (to default printer)
+  * a ~~ attach tab to another window
 * ; ...
-** c ~~ context menu
-** w ~~ follow hint in a new window
+  * c ~~ context menu
+  * w ~~ follow hint in a new window
 * gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
 * gU ~~ open URL *U*p to stem: http://domain.de
 
 ## Updating
 * git pull && git submodule update --remote --merge
-** gca for updated submodules necessary?
+  * gca for updated submodules necessary?
 * vim-submodules via vim-plug
 * tmux-submodules via tpm (<prefix> U)
 ## todo
@@ -102,7 +102,7 @@ start shell anew || $SHELL
 * vim
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
-  * i\_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
+  * i\_\<End\> ~~ end of *screen*-line \<-\> <End> ~~ end of *real* line.
 * tmux
   * autostart session if none exists
   * ... attach if no other client is attached
