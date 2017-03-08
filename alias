@@ -33,14 +33,34 @@ hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
 
-alias zshreload=". ~/.zshrc ~/.zpreztorc"
-alias zshconfig="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc"
+alias confed=configedit
+alias configedit="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
+alias confrel=configreload
+configreload() {
+  echo "Reloading..."
+  echo "ZSH & Prezto"
+  . ~/.zshrc
+  . ~/.zpreztorc
+  echo "Xresources"
+  xrdb ~/.Xresources
+  if [ "$1" = "-a" ];then
+    echo "Xmodmap"
+    xmodmap ~/.Xmodmap
+    echo "fonts"
+    fc-cache -v ~/.fonts
+  else
+    echo "Not reloaded: Xmodmap, fonts (do so with '-a')"
+  fi
+  echo "Done."
+}
 
 # programs
 ## pacpl
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
 alias lpstat='lpstat -p -d'
+
+alias getclip='echo "$(xsel)"'
 
 cmkdir() {
     if [[ $1 == -* ]]; then

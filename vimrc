@@ -67,63 +67,66 @@ set modeline
 set modelines=5
 "set modeline modelines=5
 
-inoremap <buffer> <C-v> <Left><C-O>"+p
+"inoremap <buffer> <C-v> <Left><C-O>"+p
+
 
 "" cursorshape, turn color when entering INSERT-/ NORMALMODE
 "" throws funny signs with XFCE4-terminal
 "" works vim gnome-terminal
-"if &term =~ "xterm"
-if &term =~ "screen-256color"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
+if $XDG_CURRENT_DESKTOP != "XFCE"
+  if &term =~ "screen-256color"
+    let &t_SI = "\<Esc>]12;red\x7"
+    let &t_EI = "\<Esc>]12;white\x7"
+  endif
+  if &term =~ "builtin_gui"
+    let &t_SI = "\<Esc>]12;red\x7"
+    let &t_EI = "\<Esc>]12;white\x7"
+  endif
 endif
-if &term =~ "builtin_gui"
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
-endif
-
+" 
 " Thanks to blueyed it works in Tmux and XFCE4
 " https://github.com/blueyed/dotfiles/issues/4
 " Change cursor shape for terminal mode. {{{1
 " See also ~/.dotfiles/oh-my-zsh/themes/blueyed.zsh-theme.
 " Note: with neovim, this gets controlled via $NVIM_TUI_ENABLE_CURSOR_SHAPE.
-"if !has('nvim') && exists('&t_SI')
-"  " 'start insert' and 'exit insert'.
-"  if $_USE_XTERM_CURSOR_CODES == 1
-"    " Reference: {{{
-"    " P s = 0 → blinking block.
-"    " P s = 1 → blinking block (default).
-"    " P s = 2 → steady block.
-"    " P s = 3 → blinking underline.
-"    " P s = 4 → steady underline.
-"    " P s = 5 → blinking bar (xterm, urxvt).
-"    " P s = 6 → steady bar (xterm, urxvt).
-"    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
-"    " }}}
-"    let &t_SI = "\<Esc>[3 q"
-"    let &t_EI = "\<Esc>[1 q"
-"
-"    " let &t_SI = "\<Esc>]12;purple\x7"
-"    " let &t_EI = "\<Esc>]12;blue\x7"
-"
-"    " mac / iTerm?!
-"    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
-"    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
-"    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
-"  elseif &t_Co > 1 && $TERM != "linux"
-"    " Fallback: change only the color of the cursor.
-"    let &t_SI = "\<Esc>]12;#0087ff\x7"
-"    let &t_EI = "\<Esc>]12;#5f8700\x7"
-"    " red and white
-"    "let &t_SI = "\<Esc>]12;#FF0000\x7"
-"    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
-"    " this throws funny signs in xfce4 and tmux
-"    "let &t_SI = "\<Esc>]12;red\x7"
-"    "let &t_EI = "\<Esc>]12;white\x7"
-"  endif
-"endif
+if !has('nvim') && exists('&t_SI')
+  " 'start insert' and 'exit insert'.
+  if $_USE_XTERM_CURSOR_CODES == 1
+    " Reference: {{{
+    " P s = 0 → blinking block.
+    " P s = 1 → blinking block (default).
+    " P s = 2 → steady block.
+    " P s = 3 → blinking underline.
+    " P s = 4 → steady underline.
+    " P s = 5 → blinking bar (xterm, urxvt).
+    " P s = 6 → steady bar (xterm, urxvt).
+    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
+    " }}}
+    let &t_SI = "\<Esc>[5 q"
+    let &t_EI = "\<Esc>[1 q"
+
+    " let &t_SI = "\<Esc>]12;purple\x7"
+    " let &t_EI = "\<Esc>]12;blue\x7"
+
+    " mac / iTerm?!
+    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
+    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
+    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
+  elseif &t_Co > 1 && $TERM != "linux"
+    " Fallback: change only the color of the cursor.
+    "let &t_SI = "\<Esc>]12;#0087ff\x7"
+    let &t_SI = "\<Esc>]12;red\x7"
+    let &t_EI = "\<Esc>]12;white\x7"
+    " red and white
+    "let &t_SI = "\<Esc>]12;#FF0000\x7"
+    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
+    " this throws funny signs in xfce4 and tmux
+    "let &t_SI = "\<Esc>]12;red\x7"
+    "let &t_EI = "\<Esc>]12;white\x7"
+  endif
+endif
 "
 " Wrap escape codes for tmux.
 " NOTE: wrapping it acts on the term, not just on the pane!
@@ -135,30 +138,45 @@ endif
 " MiscCursorShape
 "    Specifies the shape of the cursor in the terminal. This can be either TERMINAL_CURSOR_SHAPE_BLOCK (the default), TERMINAL_CURSOR_SHAPE_IBEAM or TERMINAL_CURSOR_SHAPE_UNDERLINE. This option is only available when you compile against VTE 0.19.1 or newer.
 
-"isdirectory("/home/$USER")
 if isdirectory("/home/dennis/.config/xfce4/terminal")
-  if has("autocmd")
-    au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
-    au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-    au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+  if $COLORTERM == 'xfce4-terminal'
+    if has("autocmd")
+      au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
+      au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+      au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+    endif
   endif
 endif
 
-"" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
-"if &term == 'xterm-256color' || &term == 'screen-256color'
-"  let &t_SI = "\<Esc>[3 q"
-"  let &t_EI = "\<Esc>[1 q"
-"endif
-""
-"if exists('$TMo X')
-"  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-"  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-"endif
-"let &t_SI = "\<Esc>[3 q"
-"let &t_EI = "\<Esc>[1 q"
+" Mode Indication -Prominent!
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guifg=red ctermfg=red
+    set cursorcolumn
+  elseif a:mode == 'r'
+    hi statusline guifg=blue ctermfg=lightblue
+    "hi statusline ctermfg=green
+    set cursorcolumn
+  else
+    hi statusline guifg=magenta ctermfg=magenta
+  endif
+  set cursorline
+endfunction
 
-"ColorPalette=#073642;#dc322f;#859900;#b58900;#205b92;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#004fae;#fdf6e3
+function! InsertLeaveActions()
+  hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
+  set nocursorcolumn
+  set nocursorline
+endfunction
 
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * call InsertLeaveActions()
+
+" to handle exiting insert mode via a control-C
+inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
+
+" default the statusline
+hi statusline guibg=grey ctermfg=black ctermbg=white
 
 """""""""""""""""""""""""""""""""""""
 " very specific to user and time :-)
@@ -177,8 +195,8 @@ if filereadable("/home/dennis/.vim/adoc_specials.vim")
   so ~/.vim/adoc_specials.vim
 endif
 
-nnoremap <F7> :call AnextChapter()<CR>
-nnoremap <F8> :call AprevChapter()<CR>
+nnoremap <F8> :call AnextChapter()<CR>
+nnoremap <F7> :call AprevChapter()<CR>
 
 """""""""""""""""""""""
 " File: mediawiki.vim "

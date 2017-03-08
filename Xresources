@@ -1,0 +1,115 @@
+
+URxvt*font:            xft:Anonymous Pro:style=Regular:size=11
+URxvt*boldFont:        xft:Anonymous Pro:style=Bold:size=11
+URxvt*italicFont:      xft:Anonymous Pro:style=Italic:autohint=true:size=11
+URxvt*boldItalicFont:  xft:Anonymous Pro:style=Bold Italic:autohint=true:size=11
+URxvt*geometry:        80x50
+!URxvt*font:            xft:Inconsolata for Powerline:size=12
+!URxvt*boldFont:        xft:Inconsolata for Powerline:bold:size=12
+!URxvt*italicFont:      xft:Inconsolata for Powerline:italic:autohint=true:size=12
+!URxvt*boldItalicFont:  xft:Inconsolata for Powerline:bold:italic:autohint=true:size=12
+
+URxvt.letterSpace: -1
+URxvt.terminalName:rxvt-unicode-256color
+! https://github.com/muennich/urxvt-perls
+! URxvt.perl-lib: 
+
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+
+URxvt.perl-lib: ~/.urxvt/ext
+!clipboard
+!URxvt.perl-ext-common: keyboard-select,fullscreen
+URxvt.perl-ext-common: fullscreen,font-size
+URxvt.perl-ext: keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+
+URxvt.keysym.F11:       perl:fullscreen:switch
+URxvt.buffered:                true
+URxvt.saveLines:               2000
+
+URxvt.url-select.button:2
+! under line any urls.
+! TODO: Is there an option to do this on hover?
+URxvt.url-select.underline: true
+! Set the color for underline text.
+! Most people just set this to yellow if on a black background.
+! Blue on a white background.
+URxvt.colorUL: #ffff00
+! Set the color for the underline itself.  If not set, it will use the foreground color.
+URxvt*underlineColor: #ffff00
+
+! font-size
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-equal:  perl:font-size:reset
+URxvt.keysym.C-slash:  perl:font-size:show
+
+! clipboard
+! Use keyboard shortcuts to copy the selection to the clipboard 
+! and to paste the clipboard contents (optionally escaping all special characters).
+! Me gusta.
+!URxvt.keysym.M-y:   perl:clipboard:copy
+!URxvt.keysym.M-v:   perl:clipboard:paste
+!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! https://github.com/solarized/xresources
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3

@@ -2,23 +2,26 @@
 *Home Sweet Home?*
 *Home Dot Home!*
 
-*From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* [https://en.wiktionary.org/wiki/house]
+*From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* https://en.wiktionary.org/wiki/house
 
 ## Installation
 start zsh-shell
-run arrange_pkg.zsh
-run arrange_dotfiles.zsh
+run arrange
 
-start shell anew
+start shell anew || $SHELL
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
+* caps lock is mapped to escape via Xmodmap
+* confed        # load all relevant config files into Vim
+* confrel (-a)  # reload
 
 ### git ...
 * al ~~ list git aliases available in current dir
 * r ~~ list remotes with all information
 * l ~~ log --graph
 * st ~~ status + ignored files
+* subst ~~ status of all submodules
 
 ### Shell
 * fzf (FuzzyFind)
@@ -26,23 +29,37 @@ start shell anew
   * `pdf$**<tab>`
   * `kill -9 <digit><tab>`
   * `ssh **<tab>` # complete with hostnames from /etc/hosts and ~/.ssh/config
-
+* Urxvt
+  * Keyboard shortcuts
+    * M-Esc ~~ Vim-like navigation, pasting and searching https://github.com/muennich/urxvt-perls/
+    * M-s ~~ search backwards in terminal from prompt
+    * C-M-c ~~ copy selection to system clipboard
+    * C-M-v ~~ paste sys clipboard (also S-Insert)
+    * C-M-plus ~~ increase size of font
+    * C-M-minus ~~ decrease size of font
+    * C-S-plus ~~ increase (globally) size of font
+    * C-S-minus ~~ decrease (globally) size of font
+    * C-= ~~ reset size
+    * C-/ ~~ show font attributes
+* commands
+    * getclip ~~ paste clipboard content
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
-* <leader> ... ~~ is ,
+* \<leader\> ... is ',' (comma)
 * asciidoc
-** <F7>,<F8> ~~ jump to next, previous chapter
-** M-j ,k  : move a line down, upwards
-** m  ~~ clean file from ^M from Windows encoding _\r\n_
+  * \<F7\>,\<F8\> ~~ jump to next, previous chapter
+  * M-j ,k  : move a line down, upwards
+  * m  ~~ clean file from ^M from Windows encoding _\r\n_
+* \<C-r\> * ~~ insert while in INSERTMODE
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
-    * <C-t> ~~ open in new *t*ab
-    * <C-x> ~~ hori*x*ontal split
-    * <C-v> ~~ *v*ertical split
+    * \<C-t\> ~~ open in new *t*ab
+    * \<C-x\> ~~ hori*x*ontal split
+    * \<C-v\> ~~ *v*ertical split
 
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
@@ -51,31 +68,35 @@ start shell anew
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
 ### Vimperator
-* <leader> ... # is ,
-** t ~~ open URL in background
-** T ~~ open URL in background based on current URL
-** R ~~ reload ~/.vimperatorrc
-** p ~~ print w/o confirmation (to default printer)
-** a ~~ attach tab to another window
+* \<leader\> ... # is ,
+  * t ~~ open URL in background
+  * T ~~ open URL in background based on current URL
+  * R ~~ reload ~/.vimperatorrc
+  * p ~~ print w/o confirmation (to default printer)
+  * a ~~ attach tab to another window
 * ; ...
-** c ~~ context menu
-** w ~~ follow hint in a new window
+  * c ~~ context menu
+  * w ~~ follow hint in a new window
 * gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
 * gU ~~ open URL *U*p to stem: http://domain.de
+
+## Updating
+* git pull && git submodule update --remote --merge
+  * gca for updated submodules necessary?
+* vim-submodules via vim-plug
+* tmux-submodules via tpm (<prefix> U)
 
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
-* To consider
-  * Updating of submodules of vim rather via vim-plug (command line).
-* freeze-in
-  * ini in config/mc
-  * in vimperatir/info/default
-  * check in config/mc/
-  * checkout ini (although is ignored - frozen state)
-* bright and dark settings
-  * depending on sys-time?
-  * like red-light
+* freeze-in -> .gitignore
+* color
+  * of cursor in terminal: zpreztorc, highlight cursor
+  * tmux - Xresources - zpreztorc
+  * bright and dark settings
+    * depending on sys-time?
+    * red-light
+* vi-keybindings for prompt in zpreztorc
 * git
   * config rather than alias?
 * Link-safer for terminal (bookmark) (s.a. [[ Tools#Collaboration ]]
@@ -83,11 +104,11 @@ start shell anew
 * git abbreviation - package (prezto?)
 * prezto
   * in what why does the order matter?
+    * history-substring-search: "If this module is used in conjuncture with the *syntax-highlighting* module, it must be loaded **after** it."
 * vim
-  * \<C-M-s\> ~~ Ctrl+Alt+S ?
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
-  * i\_\<End\> ~~ end of *screen*-line <> <End> ~~ end of *real* line.
+  * i\_\<End\> ~~ end of *screen*-line \<-\> <End> ~~ end of *real* line.
 * tmux
   * autostart session if none exists
   * ... attach if no other client is attached
@@ -102,8 +123,10 @@ start shell anew
   *  search in website-source w/o viewsource (e.g. link contents)
   *  TEXTAREA?
   *  when mouse-click retreat from INSERT mode
-* dependencies:
+* dependencies: (s.a. arrange.sh)
   * zsh
   * git-flow
   * vim-gnome
   * sar/atsar and/or iostat for tmux-cpu
+  * wmctrl
+  * xsel (xclip too?)

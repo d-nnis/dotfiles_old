@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -o xtrace
 
-files="vimrc vimperatorrc vim vimperator zprezto"
-files+=" gitconfig fzf fzf.bash fzf.zsh tmux.conf tmux"
+files="vimrc vimperatorrc vim vimperator zprezto gitconfig tmux.conf"
+files+=" fzf fzf.bash fzf.zsh tmux.conf tmux Xmodmap Xresources urxvt fonts"
 
 mkdir -p $HOME/dotfiles_backup
 
@@ -17,7 +17,8 @@ for file in $files; do
 done
 
 ~/.fzf/install
-
+fc-cache ~/.fonts
+xrdb ~/.Xresources
 
 ##setup dotfiles_backup
 #if [ -f $HOME/.vimrc ]; then
