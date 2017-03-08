@@ -35,7 +35,7 @@ packages() {
   fi
   
   for el in $list; do
-    dpkg -l $el
+    dpkg -l $el > /dev/null
     if [ $? -eq 1 ]; then
       install=1
     fi
