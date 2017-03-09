@@ -9,6 +9,7 @@
   subst = submodule status --recursive
   st = status --ignored
   al = config --get-regexp alias*
+  intsub = commit -a -v -m 'integrate latest submodule commit(s)'
 [color]
   ui = auto
 [color "branch"]
