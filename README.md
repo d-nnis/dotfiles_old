@@ -72,7 +72,9 @@ start shell anew || $SHELL
   * t ~~ open URL in background
   * T ~~ open URL in background based on current URL
   * R ~~ reload ~/.vimperatorrc
-  * p ~~ print w/o confirmation (to default printer)
+  * h ~~ make (h)ardcopy w/o confirmation (print wiht default printer)
+  * p ~~ (p)aste clipboard enclosed in quote signs in current tab (i.e. search with default engine and ignore comma)
+  * P ~~ (P)aste clipboard enclosed in quote signs in new tab
   * a ~~ attach tab to another window
 * ; ...
   * c ~~ context menu

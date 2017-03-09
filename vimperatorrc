@@ -31,6 +31,10 @@ map <C-a> i<C-a>
 noremap <C-c> i<C-c>
 noremap <C-c> <Insert><C-c><Insert>
 
+" Paste clipboard content enclosed in quote signs
+noremap <leader>p o"<C-v>"<CR>
+noremap <leader>P t"<C-v>"<CR>
+
 " Movement of tabs.
 noremap < :tabmove! -1<CR>
 noremap > :tabmove! +1<CR>
@@ -90,7 +94,7 @@ nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!
 "command! -nargs=+ follow ;F<args> tabopen! yank<CR> ;y
 "nnoremap <Leader>f ;b
 
-nnoremap <Leader>p :hardcopy!<CR>
+nnoremap <Leader>h :hardcopy!<CR>
 
 "command! -nargs=+ ewiki open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 "map e :ewiki<Space>
