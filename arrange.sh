@@ -22,7 +22,7 @@ for file in $files; do
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
 
-~/.fzf/install
+# ~/.fzf/install # do not run since path will be hardcoded
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 
