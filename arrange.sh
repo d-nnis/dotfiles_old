@@ -10,25 +10,30 @@ files+=" Xmodmap Xresources urxvt fonts"
 
 deskenv=1
 install=0
-mkdir -p $HOME/dotfiles_backup
+mkdir -p /home/$USER/dotfiles_backup
 
 for file in $files; do
   echo $file
   if [ -f $HOME/.$file ]; then
     mv -fv $HOME/.$file $HOME/dotfiles_backup
   elif [ -L $HOME/.$file ]; then
-    rm $HOME/.$file
+    rm -rf $HOME/.$file
   fi
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
 
 # ~/.fzf/install # do not run since path will be hardcoded
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 
 packages() {
   # packages only for terminal environment
-  list="tmux zsh xsel xclip atsar iostat zsh git-flow git"
+  list="tmux zsh xsel xclip atsar iostat zsh git-flow git silversearcher-ag curl"
   # programs for desktop environment
   if [ $deskenv -eq 1 ]; then
     list+=" wmctrl rxvt-unicode-256color firefox vimperator"
