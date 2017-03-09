@@ -5,10 +5,11 @@
 *From Middle English hous, hus, from Old English hūs (“dwelling, shelter, house”)* https://en.wiktionary.org/wiki/house
 
 ## Installation
-start zsh-shell
-run arrange
+. start zsh-shell
+. run arrange.sh # WIP
+. start shell anew || $SHELL
 
-start shell anew || $SHELL
+* tmux-plugins are installed once tmux gets started the first time
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
@@ -42,7 +43,7 @@ start shell anew || $SHELL
     * C-= ~~ reset size
     * C-/ ~~ show font attributes
 * commands
-    * getclip ~~ paste clipboard content
+  * getclip ~~ paste clipboard content
 ### Tmux
 * \<prefix\> R ~~ source ~/.tmux.conf
 
@@ -83,8 +84,7 @@ start shell anew || $SHELL
 * gU ~~ open URL *U*p to stem: http://domain.de
 
 ## Updating
-* git pull && git submodule update --remote --merge
-  * gca for updated submodules necessary?
+* git pull && git submodule update --init --recursive
 * vim-submodules via vim-plug
 * tmux-submodules via tpm (<prefix> U)
 
@@ -107,7 +107,14 @@ start shell anew || $SHELL
 * prezto
   * in what why does the order matter?
     * history-substring-search: "If this module is used in conjuncture with the *syntax-highlighting* module, it must be loaded **after** it."
+* arrange
+  * default only terminal packages
+  * start tpm and vim-plug fetch
+  * "pmodload: no such module: rumpel" ?
 * vim
+  * PlugInstall! if not exist
+  * collision with fzf
+  * if INSERTMODE cursor w/ underline
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
   * i\_\<End\> ~~ end of *screen*-line \<-\> <End> ~~ end of *real* line.
