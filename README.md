@@ -17,12 +17,16 @@
 * confed        # load all relevant config files into Vim
 * confrel (-a)  # reload
 
-### git ...
-* al ~~ list git aliases available in current dir
-* r ~~ list remotes with all information
-* l ~~ log --graph
-* st ~~ status + ignored files
-* subst ~~ status of all submodules
+### git
+* git ...
+  * al ~~ list git aliases available in current dir
+  * r ~~ list remotes with all information
+  * l ~~ log --graph
+  * st ~~ status + ignored files
+  * subst ~~ status of all submodules
+  * intsub ~~ gca 'integrate latest submodule commit(s)'
+* glols ~~ git log (pretty stuff) -n (s)top at terminal-height - 10
+* glogs ~~ git log (some other pretty stuff) -n (s)top at terminal-height - 10
 
 ### Shell
 * fzf (FuzzyFind)
