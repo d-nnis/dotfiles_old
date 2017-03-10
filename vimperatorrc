@@ -39,6 +39,9 @@ map <C-a> i<C-a>
 noremap <leader>p o"<C-v>"<CR>
 noremap <leader>P t"<C-v>"<CR>
 
+" search/(f)ind clipboard content in tab/ website
+noremap <leader>f /<C-v><CR>
+
 " Movement of tabs.
 noremap < :tabmove! -1<CR>
 noremap > :tabmove! +1<CR>
