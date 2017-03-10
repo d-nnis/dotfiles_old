@@ -7,6 +7,7 @@ files+=" zprezto gitconfig"
 files+=" tmux.conf tmux"
 files+=" fzf fzf.bash fzf.zsh"
 files+=" Xmodmap Xresources urxvt fonts"
+files+=" multitailrc"
 
 deskenv=1
 install=0
@@ -35,7 +36,7 @@ xrdb ~/.Xresources
 
 packages() {
   # packages only for terminal environment
-  list="tmux zsh xsel xclip atsar iostat zsh git-flow git silversearcher-ag curl"
+  list="tmux zsh xsel xclip atsar iostat zsh git-flow git silversearcher-ag curl multitail"
   # programs for desktop environment
   if [ $deskenv -eq 1 ]; then
     list+=" wmctrl rxvt-unicode-256color firefox vimperator"
