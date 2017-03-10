@@ -55,23 +55,12 @@ configreload() {
 }
 
 # programs
-## pacpl
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
 alias lpstat='lpstat -p -d'
 alias aptup='sudo apt update && sudo apt upgrade'
-
-
 alias getclip='echo "$(xsel)"'
+#alias hardcopy='man -t multitail | lpr -m'
 
-cmkdir() {
-    if [[ $1 == -* ]]; then
-        mkdir $1 $2
-        cd $2
-    else
-        mkdir $1
-        cd $1
-    fi
-}
 
 # vim: syntax=sh
