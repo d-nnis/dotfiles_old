@@ -13,9 +13,6 @@
 
 ## The key navigation
 * An overview of regular and customized functions and key bindings which will grow and change from time to time.
-* caps lock is mapped to escape via Xmodmap
-* confed        # load all relevant config files into Vim
-* confrel (-a)  # reload
 
 ### git
 * git ...
@@ -29,6 +26,10 @@
 * glogs ~~ git log (some other pretty stuff) -n (s)top at terminal-height - 10
 
 ### Shell
+* caps lock is mapped to escape via Xmodmap
+* confed        # load relevant config files into Vim
+* confrel (-a)  # reload (all) config
+* mkcd          # mkdir and cd into dir, with indefinite depth (-p)
 * fzf (FuzzyFind)
   * `<dir>/file**<tab>`
   * `pdf$**<tab>`
@@ -49,16 +50,19 @@
 * commands
   * getclip ~~ paste clipboard content
 ### Tmux
-* \<prefix\> R ~~ source ~/.tmux.conf
+* \<prefix\>... # is \<C-a\>
+  * R ~~ source ~/.tmux.conf
+  * S ~~ display and choose session
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
 * \<leader\> ... is ',' (comma)
-* asciidoc
-  * \<F7\>,\<F8\> ~~ jump to next, previous chapter
-  * M-j ,k  : move a line down, upwards
+  * w ~~ quick write
+  * x ~~ open scribble page (adoc)
   * m  ~~ clean file from ^M from Windows encoding _\r\n_
-* \<C-r\> * ~~ insert while in INSERTMODE
+* \<F7\>,\<F8\> ~~ jump to next, previous chapter
+* M-j ,k  : move a line down, upwards # not working anymore?
+* \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
@@ -98,7 +102,7 @@
   * start first tmux session: sourcing tmux.reset.conf
 * setup
   * confed with switch to differentiate btw terminal-only and including DE-packages
-* freeze-in -> .gitignore
+* ~/.multitailrc not being read?
 * color
   * of cursor in terminal: zpreztorc, highlight cursor
   * tmux - Xresources - zpreztorc

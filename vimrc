@@ -322,6 +322,8 @@ set autoread
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>W :wq  " write and quit
+nmap <leader>Q :qa  " quit all
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -548,7 +550,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -624,7 +626,9 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>q :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+"map <leader>x :e ~/buffer.md<cr>
+" rather asciidoc
+map <leader>x :e ~/buffer.adoc<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
