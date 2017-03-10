@@ -28,8 +28,12 @@ map j <Down><Down><Down>
 map k <Up><Up><Up>
 map <C-p> i<C-p>
 map <C-a> i<C-a>
-noremap <C-c> i<C-c>
-noremap <C-c> <Insert><C-c><Insert>
+
+" disable <C-c>
+" no effective (enough), cause firefox has it implemented as well?
+" map <C-c> <Nop>
+"noremap <C-c> i<C-c>
+"noremap <C-c> <Insert><C-c><Insert>
 
 " Paste clipboard content enclosed in quote signs
 noremap <leader>p o"<C-v>"<CR>
@@ -76,14 +80,11 @@ inoremap <C-e> <Insert><C-e><Insert><Esc>
 
 " nextpattern, Hinttags(?)
 " use with ]]
-" disable <C-c>
-" no effective (enough), cause firefox has it implemented as well?
-map <C-c> <Nop>
 
 " linksearch (?)
 set nolinksearch
 set hlsearch
-set noscrollbars
+set scrollbars
 " statusline/bar also visible when fullscreen
 set statuslinevisibility=visible
 set status=input,location,bookmark,history,ssl,tabcount,position,zoomlevel
