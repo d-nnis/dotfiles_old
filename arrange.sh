@@ -65,7 +65,7 @@ setopt EXTENDED_GLOB
 for rcfile in $rcfiles; do
   if [ -f "$HOME/.$rcfile" ]; then  # file exists
     mkdir -p $HOME/dotfiles_backup
-    cp "$HOME/.$rcfile" dotfiles_backup
+    cp "$HOME/.$rcfile" $HOME/dotfiles_backup
     rm "$HOME/.$rcfile"
   elif [ -L "$HOME/.$rcfile" ]; then  # file only exists as dangling symlink
     rm "$HOME/.$rcfile"
