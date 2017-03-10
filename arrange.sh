@@ -12,6 +12,8 @@ deskenv=1
 install=0
 mkdir -p /home/$USER/dotfiles_backup
 
+# local .vim still present ...?!
+
 for file in $files; do
   echo $file
   if [ -f $HOME/.$file ]; then
