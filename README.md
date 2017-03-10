@@ -80,6 +80,7 @@
   * h ~~ make (h)ardcopy w/o confirmation (print wiht default printer)
   * p ~~ (p)aste clipboard enclosed in quote signs in current tab (i.e. search with default engine and ignore comma)
   * P ~~ (P)aste clipboard enclosed in quote signs in new tab
+  * f ~~ (f)ind clipboard content in website/ tab
   * a ~~ attach tab to another window
 * ; ...
   * c ~~ context menu
@@ -95,6 +96,8 @@
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
+* setup
+  * confed with switch to differentiate btw terminal-only and including DE-packages
 * freeze-in -> .gitignore
 * color
   * of cursor in terminal: zpreztorc, highlight cursor
