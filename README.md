@@ -24,12 +24,14 @@
   * intsub ~~ gca 'integrate latest submodule commit(s)'
 * glols ~~ git log (pretty stuff) -n (s)top at terminal-height - 10
 * glogs ~~ git log (some other pretty stuff) -n (s)top at terminal-height - 10
+* gpOG  ~~ git push master to origin (github) and gitspace (local hosting)
 
 ### Shell
 * caps lock is mapped to escape via Xmodmap
 * confed        # load relevant config files into Vim
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
+* lla           # show the 20 **la**test (mtime) files
 * fzf (FuzzyFind)
   * `<dir>/file**<tab>`
   * `pdf$**<tab>`
@@ -56,10 +58,21 @@
 
 ### VIM
 * i_CTRL+v ~~ insert sytem clipboard (in insert mode)
-* \<leader\> ... is ',' (comma)
-  * w ~~ quick write
-  * x ~~ open scribble page (adoc)
-  * m  ~~ clean file from ^M from Windows encoding _\r\n_
+* \<leader\> ... ~~ is ',' (comma). Usage: type ,w (_comma w_) to save file
+  * w ~~ quick (w)rite
+  * x ~~ open scribble page (in asciidoc)
+  * bd ~~ (d)elete current (b)uffer
+  * ba ~~ (d)elete (a)ll buffers
+  * tn ~~ (t)ab (n)ew
+  * to ~~ (t)ab, (o)nly this one keep open
+  * tc ~~ (t)ab (c)lose (better delete for consistency?)
+  * tm ~~ (t)ab, (m)ove!
+  * t, ~~ next (t), optionally give number (,t,)
+  * tl ~~ switch to (t)ab I used (l)ast
+  * te ~~ (e)dit new (t)ab in the path of the current buffer
+  * cd ~~ switch (c)urrent (w)orking directory of the current buffer
+  * m  ~~ clean file from _^M_ from Windows encoding (_\r\n_)
+  * gf ~~ open current file in (f)irefox - useful for getting[](certainly not forgetting as in _disremembering_) a [rendered](dependent on Firefox plugins, such as [asciidoctorjslivepreview](https://github.com/asciidoctor/asciidoctor-firefox-addon) for AsciiDoc and [Markdown Viewer](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/)) version of markup file. (TODO: amend in arrange)
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
 * \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
@@ -85,12 +98,15 @@
   * p ~~ (p)aste clipboard enclosed in quote signs in current tab (i.e. search with default engine and ignore comma)
   * P ~~ (P)aste clipboard enclosed in quote signs in new tab
   * f ~~ (f)ind clipboard content in website/ tab
-  * a ~~ attach tab to another window
+  * a ~~ (a)ttach tab to another window
+  * s ~~ (s)ave current page in default download directory
 * ; ...
   * c ~~ context menu
   * w ~~ follow hint in a new window
 * gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
 * gU ~~ open URL *U*p to stem: http://domain.de
+* gf ~~ view source of website in current tab
+* gF ~~ view source of website in GVim
 
 ## Updating
 * git pull && git submodule update --init --recursive
@@ -100,6 +116,7 @@
 ## todo
 * BROKEN
   * start first tmux session: sourcing tmux.reset.conf
+  * VIM: after reloading vimrc a few functions are broken
 * setup
   * confed with switch to differentiate btw terminal-only and including DE-packages
 * ~/.multitailrc not being read?
