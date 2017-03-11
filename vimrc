@@ -191,12 +191,19 @@ endif
 " asciidoc "
 """"""""""""
 
-if filereadable("/home/dennis/.vim/adoc_specials.vim")
-  so ~/.vim/adoc_specials.vim
+" helper-functions
+if filereadable("/home/dennis/.vim/helper.vim")
+  so ~/.vim/helper.vim
 endif
 
-nnoremap <F8> :call AnextChapter()<CR>
-nnoremap <F7> :call AprevChapter()<CR>
+if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
+  nnoremap <F7> :call AprevChapter()<CR>
+  nnoremap <F8> :call AnextChapter()<CR>
+elseif &ft =~ 'markdown'
+  nnoremap <F7> :call MDprevChapter()<CR>
+  nnoremap <F8> :call MDnextChapter()<CR>
+endif
+
 
 """""""""""""""""""""""
 " File: mediawiki.vim "

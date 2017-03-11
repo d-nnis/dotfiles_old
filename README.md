@@ -60,7 +60,7 @@
   * w ~~ quick write
   * x ~~ open scribble page (adoc)
   * m  ~~ clean file from ^M from Windows encoding _\r\n_
-* \<F7\>,\<F8\> ~~ jump to next, previous chapter
+* \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
 * \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
 * fzf

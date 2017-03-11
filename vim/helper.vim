@@ -17,3 +17,10 @@ function! AprevChapter()
   ?==\s*\w
 endfunction
 
+function! MDnextChapter()
+  /##\s*\w
+endfunction
+
+function! MDprevChapter()
+  ?##\s*\w
+endfunction
