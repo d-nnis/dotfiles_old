@@ -10,7 +10,8 @@ URxvt*geometry:        80x50
 !URxvt*boldItalicFont:  xft:Inconsolata for Powerline:bold:italic:autohint=true:size=12
 
 URxvt.letterSpace: -1
-URxvt.terminalName:rxvt-unicode-256color
+!URxvt.terminalName:rxvt-unicode-256color
+URxvt.terminalName:screen-256color
 ! https://github.com/muennich/urxvt-perls
 ! URxvt.perl-lib: 
 
