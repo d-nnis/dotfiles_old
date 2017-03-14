@@ -17,6 +17,7 @@ fi
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -lAh'
+alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
 alias l='ls -CF'
 # activated git aliases
 alias gital='alias | grep git | less && git al'

@@ -30,12 +30,11 @@ let g:mapleader = ","
 " dennis settings "
 """""""""""""""""""
 
+" throws error after reloading vimrc: _neomake is not a command_
 call plug#begin('~/.vim/plugged')
   Plug 'neomake/neomake'
   augroup_neomake_config
     au!
-    " funktioniert nicht
-    " runtime! plugged/neomake/autoload/neomake.vim
     autocmd! BufWritePost * Neomake
   augroup END
   let g:neomake_open_list=2
@@ -187,11 +186,10 @@ endif
 
 " }}}
 
-""""""""""""
-" asciidoc "
-""""""""""""
+""""""""""""""""""""
+" helper functions "
+""""""""""""""""""""
 
-" helper-functions
 if filereadable("/home/dennis/.vim/helper.vim")
   so ~/.vim/helper.vim
 endif
@@ -204,6 +202,19 @@ elseif &ft =~ 'markdown'
   nnoremap <F8> :call MDnextChapter()<CR>
 endif
 
+
+function! MakeFileExecutable()
+    !chmod u+x %
+    ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
+    "    :r this
+endfunction
+
+function! OpenFileInFirefox()
+  " TODO: use same tab every time (possible?)
+  :!firefox % > /dev/null 2>&1 &
+endfunction
+
+nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -303,8 +314,6 @@ if !exists("*ReloadVimrc")
   endfunction
 endif
 
-nnoremap <leader><F5> :call ReloadVimrc()<CR>
-" why does ,R keep failing for Vim? (not GVim)
 nnoremap <leader>R :call ReloadVimrc()<CR>
 
 """""""""""""""""
@@ -492,7 +501,9 @@ map k gk
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+
 " Smart way to move between windows
+" TODO: Always stuck when reloading vimrc
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h

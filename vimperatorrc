@@ -41,6 +41,7 @@ noremap <leader>P t"<C-v>"<CR>
 
 " search/(f)ind clipboard content in tab/ website
 noremap <leader>f /<C-v><CR>
+noremap <leader>s :saveas<CR>
 
 " Movement of tabs.
 noremap < :tabmove! -1<CR>
