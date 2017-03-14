@@ -57,7 +57,7 @@ configreload() {
 # programs
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
-alias lpstat='lpstat -p -d'
+alias lpstat='lpstat -t'
 alias aptup='sudo apt update && sudo apt upgrade'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
