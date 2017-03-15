@@ -47,6 +47,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'asciidoc/vim-asciidoc'
 call plug#end()
 
+" wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
+" https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
+au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
+au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
+au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
+au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
 syntax enable
 " dark or light
