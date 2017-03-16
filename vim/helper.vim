@@ -24,3 +24,13 @@ endfunction
 function! MDprevChapter()
   ?##\s*\w
 endfunction
+
+function! VIprevChapter()
+  ?\"""
+endfunction
+
+function! VInextChapter()
+  /"""
+endfunction
+
+
