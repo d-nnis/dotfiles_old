@@ -104,7 +104,8 @@ if [ -d $HOME/bin ]; then
 fi
 
 stty -ixon
-
+GPG_TTY=$(tty)
+export GPG_TTY
 
 #export TERM="rxvt-unicode-256color"
 #export TERM="screen-256color"
