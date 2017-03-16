@@ -57,7 +57,9 @@
   * S ~~ display and choose session
 
 ### VIM
-* i_CTRL+v ~~ insert sytem clipboard (in insert mode)
+* i_CTRL-v ~~ insert sytem clipboard (in insert mode) (de-activated)
+* CTRL-s ~~ quick save, also in INSERTMODE
+* :W  ~~ save file in sudo mode
 * \<leader\> ... ~~ is ',' (comma). Usage: type ,w (_comma w_) to save file
   * w ~~ quick (w)rite
   * x ~~ open scribble page (in asciidoc)
@@ -76,11 +78,13 @@
   * ss ~~ toggle local (s)pellcheck
   * sn ~~ (s)pell error, (n)ext # :]s
   * sp ~~ (s)pell error, (p)revious # :[s
-  * sa ~~ ? zg map
-  * s? ~~ ? z=
+  * sa ~~ (s)pell, (a)dd to collection # :zg - :zug undo adding word
+  * s? ~~ show (s)pelling suggestion # : z=
+  * W  ~~ toggle wrapping lines
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
 * \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
+* >,< ~~ indent line, re-indent(?) line
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
@@ -127,12 +131,14 @@
 * ~/.multitailrc not being read?
 * color
   * of cursor in terminal: zpreztorc, highlight cursor
-  * tmux - Xresources - zpreztorc
+  * tmux - Xresources - zpreztorc - vim
+  * toggle color in vim
   * bright and dark settings
     * depending on sys-time?
     * red-light
 * vi-keybindings for prompt in zpreztorc
 * git
+  * collection command to see unstaged or uncommited content in all (sub)modules
   * commit_msg: remove remote address
   * config rather than alias?
 * Link-safer for terminal (bookmark) (s.a. [[ Tools#Collaboration ]]
