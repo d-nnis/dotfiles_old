@@ -103,6 +103,8 @@ if [ -d $HOME/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+stty -ixon
+
 
 #export TERM="rxvt-unicode-256color"
 #export TERM="screen-256color"
