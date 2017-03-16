@@ -49,10 +49,11 @@ call plug#end()
 
 " wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
 " https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
-au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
-au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
-au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
-au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
+" save power, check spell not in real-time!
+"au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
 syntax enable
 " dark or light
@@ -200,12 +201,22 @@ if filereadable("/home/dennis/.vim/helper.vim")
   so ~/.vim/helper.vim
 endif
 
+
 if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
+  inoremap <F7> <Esc>:call AprevChapter()<CR>
+  inoremap <F8> <Esc>:call AnextChapter()<CR>
   nnoremap <F7> :call AprevChapter()<CR>
   nnoremap <F8> :call AnextChapter()<CR>
 elseif &ft =~ 'markdown'
+  inoremap <F7> <Esc>:call MDprevChapter()<CR>
+  inoremap <F8> <Esc>:call MDnextChapter()<CR>
   nnoremap <F7> :call MDprevChapter()<CR>
   nnoremap <F8> :call MDnextChapter()<CR>
+elseif &ft =~ 'vim'
+  inoremap <F7> <Esc>:call VIprevChapter()<CR>
+  inoremap <F8> <Esc>:call VInextChapter()<CR>
+  nnoremap <F7> :call VIprevChapter()<CR>
+  nnoremap <F8> :call VInextChapter()<CR>
 endif
 
 
@@ -233,6 +244,26 @@ map <leader>F i<right>footnote:[]<left>
 " same as above ?
 ":command InsFootnote :normal <right>ifootnote:[]
 "nnoremap <leader>F :InsFootnote<CR>
+
+""""""""""""""""""
+" autocorrection "
+""""""""""""""""""
+
+iabbrev teh the
+iab INnovation Innovation
+" WIP [http://vim.wikia.com/wiki/Changing_case_with_regular_expressions]
+" %s/\<\(\u\)\(\u\)\(\l\+\)/\1\L\2\L\3/cg transalte to iabbrev:
+iab \<\(\u\)\(\u\)\(\l\+\) \1\L\2\L\3
+
+" or better yet: do it in a final phase after writing
+" results in resource-saving
+
+"""""""""""""""""""""
+" saved corrections "
+"""""""""""""""""""""
+" turn WOrd into Word
+nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
+
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -286,9 +317,9 @@ if exists("loaded_matchit")
     let b:match_ignorecase=0
     let b:match_skip = 's:Comment'
     let b:match_words = '<:>,' .
-    \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-    \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-    \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+  \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+  \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+  \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 endif
 
 
@@ -296,10 +327,10 @@ endif
 "" mediawiki {{{
 "" Insert a matching = automatically while starting a new header.
 if &filetype =~ 'mediawiki' " works?
-  inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
+inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
 
-  " Enable folding based on ==sections==
-  setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
+" Enable folding based on ==sections==
+setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
 endif
 
 " }}}
@@ -308,12 +339,12 @@ setlocal fdm=expr
 
 " map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
-  " native vimperator-Plugin <C-i>
-  au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
-  au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
-  " FF-Plugin-It's all text <C-e>
-  au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
-  au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
+" native vimperator-Plugin <C-i>
+au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
+au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
+" FF-Plugin-It's all text <C-e>
+au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
+au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
@@ -326,10 +357,10 @@ endif
 
 
 if !exists("*ReloadVimrc")
-  function! ReloadVimrc()
-    source ~/.vimrc
+function! ReloadVimrc()
+  source ~/.vimrc
 "   echo "vimrc reloaded!"
-  endfunction
+endfunction
 endif
 
 nnoremap <leader>R :call ReloadVimrc()<CR>
@@ -358,6 +389,8 @@ set autoread
 nmap <leader>w :w!<cr>
 nmap <leader>W :wq  " write and quit
 nmap <leader>Q :qa  " quit all
+nmap <C-s>  :w!<cr>
+imap <C-s>  <Esc>:w!<cr>i " TODO: does not return to INSERTMODE
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -381,9 +414,9 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+  set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 "Always show current position
@@ -401,7 +434,7 @@ set whichwrap+=<,>,h,l
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+set mouse=a
 endif
 
 " Ignore case when searching
@@ -494,6 +527,7 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+map <leader>W :set wrap!<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -642,6 +676,8 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+setlocal nospell
+setglobal nospell
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
