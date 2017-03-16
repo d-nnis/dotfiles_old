@@ -195,8 +195,8 @@ if filereadable("/home/dennis/.vim/adoc_specials.vim")
   so ~/.vim/adoc_specials.vim
 endif
 
-nnoremap <F7> :call AnextChapter()<CR>
-nnoremap <F8> :call AprevChapter()<CR>
+nnoremap <F8> :call AnextChapter()<CR>
+nnoremap <F7> :call AprevChapter()<CR>
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
