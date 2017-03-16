@@ -133,12 +133,13 @@
     * red-light
 * vi-keybindings for prompt in zpreztorc
 * git
+  * commit_msg: remove remote address
   * config rather than alias?
 * Link-safer for terminal (bookmark) (s.a. [[ Tools#Collaboration ]]
 * vimperator plugins - colors
 * git abbreviation - package (prezto?)
 * prezto
-  * in what why does the order matter?
+  * in what way does the order matter?
     * history-substring-search: "If this module is used in conjuncture with the *syntax-highlighting* module, it must be loaded **after** it."
 * arrange
   * default only terminal packages
