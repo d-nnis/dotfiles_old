@@ -216,6 +216,18 @@ endfunction
 
 nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
+function! InsertFootnote()
+  " TODO: only when ft = asciidoc
+  ifootnote:[]<left>
+endfunction
+
+" insert foonote
+" TODO: only if ft=asciidoc
+map <leader>F i<right>footnote:[]<left>
+" same as above ?
+":command InsFootnote :normal <right>ifootnote:[]
+"nnoremap <leader>F :InsFootnote<CR>
+
 """""""""""""""""""""""
 " File: mediawiki.vim "
 """""""""""""""""""""""
