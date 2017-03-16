@@ -105,6 +105,6 @@ fi
 
 
 #export TERM="rxvt-unicode-256color"
-export TERM="screen-256color"
+#export TERM="screen-256color"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
