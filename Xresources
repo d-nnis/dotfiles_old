@@ -64,6 +64,7 @@ rxvt*modifier: alt
 !URxvt.keysym.M-y:   perl:clipboard:copy
 !URxvt.keysym.M-v:   perl:clipboard:paste
 !URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!! color definition
 
 ! https://github.com/solarized/xresources
 #define S_base03        #002b36
@@ -122,3 +123,13 @@ rxvt*modifier: alt
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
+
+
+! Switch backgroound w/ C-7, 8, 9
+! change to default background
+!URxvt.keysym.C-7: command:\033]11;#002b36\007
+URxvt.keysym.C-7: command:\033]11;S_base03\007
+! change to light background
+URxvt.keysym.C-8: command:\033]11;#ffffff\007
+! change to dark gray background
+URxvt.keysym.C-9: command:\033]11;#777777\007
