@@ -35,7 +35,7 @@ hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
 
 alias confed=configedit
-alias configedit="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
+alias configedit="vi ~/.vimrc ~/.bashrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
 alias confrel=configreload
 configreload() {
   echo "Reloading..."
@@ -59,7 +59,7 @@ configreload() {
 [ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias tmux="tmux -2"
 alias lpstat='lpstat -t'
-alias aptup='sudo apt update && sudo apt upgrade'
+alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
