@@ -6,7 +6,7 @@ files+=" vimrc vim"
 files+=" zprezto gitconfig"
 files+=" tmux.conf tmux"
 files+=" fzf fzf.bash fzf.zsh"
-files+=" Xmodmap Xresources urxvt fonts"
+files+=" Xmodmap Xresources Xresources.d urxvt fonts"
 files+=" multitailrc"
 
 deskenv=1
