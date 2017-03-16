@@ -73,6 +73,11 @@
   * cd ~~ switch (c)urrent (w)orking directory of the current buffer
   * m  ~~ clean file from _^M_ from Windows encoding (_\r\n_)
   * gf ~~ open current file in (f)irefox - useful for getting[](certainly not forgetting as in _disremembering_) a [rendered](dependent on Firefox plugins, such as [asciidoctorjslivepreview](https://github.com/asciidoctor/asciidoctor-firefox-addon) for AsciiDoc and [Markdown Viewer](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/)) version of markup file. (TODO: amend in arrange)
+  * ss ~~ toggle local (s)pellcheck
+  * sn ~~ (s)pell error, (n)ext # :]s
+  * sp ~~ (s)pell error, (p)revious # :[s
+  * sa ~~ ? zg map
+  * s? ~~ ? z=
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
 * \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
