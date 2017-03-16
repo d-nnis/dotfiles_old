@@ -33,6 +33,9 @@ hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
 
+alias confed=configedit
+alias configedit="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
+alias confrel=configreload
 configreload() {
   echo "Reloading..."
   echo "ZSH & Prezto"
@@ -48,7 +51,6 @@ configreload() {
   fi
   echo "Done."
 }
-alias configedit="vi ~/.vimrc ~/.tmux.conf ~/.zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/.vimperatorrc ~/.Xmodmap ~/.Xresources"
 
 # programs
 ## pacpl
