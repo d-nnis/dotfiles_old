@@ -91,7 +91,9 @@
     * \<C-t\> ~~ open in new *t*ab
     * \<C-x\> ~~ hori*x*ontal split
     * \<C-v\> ~~ *v*ertical split
-
+* [vim-surround](https://github.com/tpope/vim-surround)
+  * cs"'  ~~ in "Hello" -> 'Hello'
+* [goyo](https://github.com/junegunn/goyo.vim)
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
 * \<C-j\> ~~ switch to pane (tmux)/ window (vim) down
