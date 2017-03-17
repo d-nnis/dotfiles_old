@@ -57,9 +57,9 @@ call plug#end()
 
 syntax enable
 " dark or light
-set background=dark
-"set background=light
 colorscheme solarized
+"set background=dark
+set background=light
 
 set shiftwidth=2
 set tabstop=2
@@ -219,7 +219,6 @@ elseif &ft =~ 'vim'
   nnoremap <F8> :call VInextChapter()<CR>
 endif
 
-
 function! MakeFileExecutable()
     !chmod u+x %
     ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
@@ -249,11 +248,11 @@ map <leader>F i<right>footnote:[]<left>
 " autocorrection "
 """"""""""""""""""
 
-iabbrev teh the
-iab INnovation Innovation
+"iabbrev teh the
+"iab INnovation Innovation
 " WIP [http://vim.wikia.com/wiki/Changing_case_with_regular_expressions]
 " %s/\<\(\u\)\(\u\)\(\l\+\)/\1\L\2\L\3/cg transalte to iabbrev:
-iab \<\(\u\)\(\u\)\(\l\+\) \1\L\2\L\3
+"iab \<\(\u\)\(\u\)\(\l\+\) \1\L\2\L\3
 
 " or better yet: do it in a final phase after writing
 " results in resource-saving
@@ -339,12 +338,12 @@ setlocal fdm=expr
 
 " map <F8> :setfiletype mediawiki<CR>
 if has("autocmd")
-" native vimperator-Plugin <C-i>
-au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
-au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
-" FF-Plugin-It's all text <C-e>
-au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
-au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
+  " native vimperator-Plugin <C-i>
+  au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
+  au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
+  " FF-Plugin-It's all text <C-e>
+  au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
+  au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
@@ -387,10 +386,14 @@ set autoread
 
 " Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>W :wq  " write and quit
-nmap <leader>Q :qa  " quit all
+" write and quit
+nmap <leader>W :wq
+" quit all
+nmap <leader>Q :qa
+" quick save
 nmap <C-s>  :w!<cr>
-imap <C-s>  <Esc>:w!<cr>i " TODO: does not return to INSERTMODE
+" TODO: does not return to INSERTMODE after reload
+imap <C-s>  <Esc>:w<cr>a
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
