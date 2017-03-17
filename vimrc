@@ -354,15 +354,21 @@ endif
 "    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 "augroup END
 
+"function! ReloadVimrc()
+"  command! -bar ReloadVimrc source $MYVIMRC | doautocmd <nomodeline> FileType | normal zv
+"endfunction
 
-if !exists("*ReloadVimrc")
-function! ReloadVimrc()
-  source ~/.vimrc
-"   echo "vimrc reloaded!"
-endfunction
-endif
+"if !exists("*ReloadVimrc")
+"function! ReloadVimrc()
+"  source ~/.vimrc
+""   echo "vimrc reloaded!"
+"endfunction
+"endif
 
-nnoremap <leader>R :call ReloadVimrc()<CR>
+command! -bar ReloadVimrc source $MYVIMRC | doautocmd <nomodeline> FileType | normal zv
+nnoremap <leader>R :ReloadVimrc<CR>
+
+"nnoremap <leader><F5> ReloadVimrc<CR>
 
 """""""""""""""""
 " amix settings "
