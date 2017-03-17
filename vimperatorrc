@@ -27,10 +27,10 @@ map h gT
 map j <Down><Down><Down>
 map k <Up><Up><Up>
 map <C-p> i<C-p>
-map <C-a> i<C-a>
+inoremap <C-a> <Ins><C-a><Ins>
 
 " disable <C-c>
-" no effective (enough), cause firefox has it implemented as well?
+" not effective (enough), cause firefox has it implemented as well?
 " map <C-c> <Nop>
 "noremap <C-c> i<C-c>
 "noremap <C-c> <Insert><C-c><Insert>
