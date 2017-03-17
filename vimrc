@@ -45,6 +45,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'asciidoc/vim-asciidoc'
+  Plug 'junegunn/goyo.vim'
+  "Plug 'junegunn/limelight.vim'
+  "Plug 'junegunn/vim-peekaboo'
+  "Plug 'junegunn/vim-slash'
+  "Plug 'junegunn/vim-easy-align'
+  "Plug 'junegunn/rainbow_parentheses.vim'
+  "Plug 'https://github.com/tpope/vim-surround'
+  "Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
@@ -202,22 +210,22 @@ if filereadable("/home/dennis/.vim/helper.vim")
 endif
 
 
-if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
-  inoremap <F7> <Esc>:call AprevChapter()<CR>
-  inoremap <F8> <Esc>:call AnextChapter()<CR>
-  nnoremap <F7> :call AprevChapter()<CR>
-  nnoremap <F8> :call AnextChapter()<CR>
-elseif &ft =~ 'markdown'
-  inoremap <F7> <Esc>:call MDprevChapter()<CR>
-  inoremap <F8> <Esc>:call MDnextChapter()<CR>
-  nnoremap <F7> :call MDprevChapter()<CR>
-  nnoremap <F8> :call MDnextChapter()<CR>
-elseif &ft =~ 'vim'
-  inoremap <F7> <Esc>:call VIprevChapter()<CR>
-  inoremap <F8> <Esc>:call VInextChapter()<CR>
-  nnoremap <F7> :call VIprevChapter()<CR>
-  nnoremap <F8> :call VInextChapter()<CR>
-endif
+"if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
+"  inoremap <F7> <Esc>:call AprevChapter()<CR>
+"  inoremap <F8> <Esc>:call AnextChapter()<CR>
+"  nnoremap <F7> :call AprevChapter()<CR>
+"  nnoremap <F8> :call AnextChapter()<CR>
+"elseif &ft =~ 'markdown'
+"  inoremap <F7> <Esc>:call MDprevChapter()<CR>
+"  inoremap <F8> <Esc>:call MDnextChapter()<CR>
+"  nnoremap <F7> :call MDprevChapter()<CR>
+"  nnoremap <F8> :call MDnextChapter()<CR>
+"elseif &ft =~ 'vim'
+"  inoremap <F7> <Esc>:call VIprevChapter()<CR>
+"  inoremap <F8> <Esc>:call VInextChapter()<CR>
+"  nnoremap <F7> :call VIprevChapter()<CR>
+"  nnoremap <F8> :call VInextChapter()<CR>
+"endif
 
 function! MakeFileExecutable()
     !chmod u+x %
