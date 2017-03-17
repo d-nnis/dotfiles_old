@@ -9,28 +9,28 @@ if filereadable("/usr/local/bin/asciidoctor")
   endfunction
 endif
 
-function! AnextChapter()
-  /==\s*\w
-endfunction
-
-function! AprevChapter()
-  ?==\s*\w
-endfunction
-
-function! MDnextChapter()
-  /##\s*\w
-endfunction
-
-function! MDprevChapter()
-  ?##\s*\w
-endfunction
-
-function! VIprevChapter()
-  ?\"""
-endfunction
-
-function! VInextChapter()
-  /"""
-endfunction
+"function! AnextChapter()
+"  /==\s*\w
+"endfunction
+"
+"function! AprevChapter()
+"  ?==\s*\w
+"endfunction
+"
+"function! MDnextChapter()
+"  /##\s*\w
+"endfunction
+"
+"function! MDprevChapter()
+"  ?##\s*\w
+"endfunction
+"
+"function! VIprevChapter()
+"  ?\"""
+"endfunction
+"
+"function! VInextChapter()
+"  /"""
+"endfunction
 
 
