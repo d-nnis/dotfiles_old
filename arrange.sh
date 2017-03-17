@@ -8,10 +8,11 @@ files+=" tmux.conf tmux"
 files+=" fzf fzf.bash fzf.zsh"
 files+=" Xmodmap Xresources Xresources.d urxvt fonts"
 files+=" multitailrc"
+files+=" lesskey"
 
 deskenv=1
 install=0
-mkdir -p /home/$USER/dotfiles_backup
+mkdir -p $HOME/dotfiles_backup
 
 # local .vim still present ...?!
 
@@ -30,6 +31,9 @@ if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+# for less and lesskey keybindings
+touch $HOME/.less
 
 fc-cache ~/.fonts
 xrdb ~/.Xresources
