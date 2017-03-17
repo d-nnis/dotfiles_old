@@ -12,11 +12,8 @@ tmux/plugins/tmux-yank/
 tmux/plugins/vim-tmux/
 
 ## vim
-vim/plugged/mediawiki.vim
-vim/plugged/neomake
-vim/plugged/vim-asciidoc
-vim/plugged/vim-surround
-vim/plugged/vim-tmux-navigator
+## managed via VimPlug
+vim/plugged/*
 
 ## config
 ### mc
