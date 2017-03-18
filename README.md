@@ -129,6 +129,7 @@
   * start first tmux session: sourcing tmux.reset.conf
   * VIM: after reloading vimrc a few functions are broken
   * cannot use .less
+  * vim-plug autoinstall: certificates not valid!?
 * setup
   * confed with switch to differentiate btw terminal-only and including DE-packages
 * ~/.multitailrc not being read?
