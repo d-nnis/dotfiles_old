@@ -2,10 +2,10 @@
 set -o xtrace
 
 files="vimperatorrc vimperatorrc.local vimperator"
-files+=" vimrc vim"
+files+=" vimrc vim bashrc"
 files+=" zprezto gitconfig"
 files+=" tmux.conf tmux"
-files+=" fzf fzf.bash fzf.zsh"
+#files+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
 files+=" Xmodmap Xresources Xresources.d urxvt fonts"
 files+=" multitailrc"
 files+=" lesskey"
@@ -26,8 +26,6 @@ for file in $files; do
   ln -sv $HOME/dotfiles/$file $HOME/.$file
 done
 
-# ~/.fzf/install # do not run since path will be hardcoded
-
 # for less and lesskey keybindings
 #touch $HOME/.lesskey
 lesskey &
@@ -40,7 +38,6 @@ if [ $deskenv -eq 1 ]; then
 fi
 
 packages() {
-
   for el in $list; do
     dpkg -l $el > /dev/null
     if [ $? -eq 1 ]; then
