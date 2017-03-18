@@ -29,7 +29,8 @@ done
 # ~/.fzf/install # do not run since path will be hardcoded
 
 # for less and lesskey keybindings
-touch $HOME/.less
+#touch $HOME/.lesskey
+lesskey &
 
 # packages only for terminal environment
 list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome"
