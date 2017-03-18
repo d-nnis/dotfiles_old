@@ -99,6 +99,25 @@ colo seoul256
 "set background=dark
 "set background=light
 
+"""""""""""""""""""
+" help me, Ronda! "
+"""""""""""""""""""
+
+if exists("ChapterPrev")
+else
+  function! ChapterPrev()
+    ?##s*\w
+  endfunction
+  " assuming this func does not exist as well
+  function! ChapterNext()
+    /##\s*\w
+  endfunction
+  inoremap <F7> <Esc>:call ChapterPrev()<CR>
+  inoremap <F8> <Esc>:call ChapterNext()<CR>
+  nnoremap <F7> :call ChapterPrev()<CR>
+  nnoremap <F8> :call ChapterNext()<CR>
+endif
+
 
 if has("gui_running")
   " GUI is running or is about to start.
