@@ -30,7 +30,7 @@ alias rm='rm -I'
 alias watch='watch -d'
 ## hash'd dirs
 hash -d doc=/usr/share/doc
-[ -d "/home/$USER/bin" ] && hash -d mybin=/home/$USER/bin
+[ -d "$HOME/bin" ] && hash -d mybin=$HOME/bin
 hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
@@ -45,6 +45,7 @@ configreload() {
   . ~/.zpreztorc
   echo "Xresources"
   xrdb ~/.Xresources
+  [ -f $HOME/.Xresources.local ] && xrdb -override ~/.Xresources.local
   if [ "$1" = "-a" ];then
     echo "Xmodmap"
     xmodmap ~/.Xmodmap
