@@ -81,10 +81,13 @@
   * sa ~~ (s)pell, (a)dd to collection # :zg - :zug undo adding word
   * s? ~~ show (s)pelling suggestion # : z=
   * W  ~~ toggle wrapping lines
+  * qb  ~~ (q)uote(b)lock
+  * F ~~ (F)ootnote
+* \<F4\>  ~~ correction: WOrd -> Word
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
 * \<C-r\> * ~~ insert while in INSERTMODE (or + (_Plus_))
-* >,< ~~ indent line, re-indent(?) line
+* \>,< ~~ indent line, re-indent(?) line
 * fzf
   * :FZF ~~ look for and open files from CWD
   * --inline-info ~~ ?
