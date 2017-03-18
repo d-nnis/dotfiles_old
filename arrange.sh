@@ -27,25 +27,19 @@ for file in $files; do
 done
 
 # ~/.fzf/install # do not run since path will be hardcoded
-if [ ! -f ~/.vim/autoload/plug.vim ]; then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
 
 # for less and lesskey keybindings
 touch $HOME/.less
 
-fc-cache ~/.fonts
-xrdb ~/.Xresources
+# packages only for terminal environment
+list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome"
+# programs for desktop environment
+if [ $deskenv -eq 1 ]; then
+  list+=" wmctrl rxvt-unicode-256color firefox-esr "
+fi
 
 packages() {
-  # packages only for terminal environment
-  list="tmux zsh xsel xclip atsar iostat zsh git-flow git silversearcher-ag curl multitail"
-  # programs for desktop environment
-  if [ $deskenv -eq 1 ]; then
-    list+=" wmctrl rxvt-unicode-256color firefox vimperator"
-  fi
-  
+
   for el in $list; do
     dpkg -l $el > /dev/null
     if [ $? -eq 1 ]; then
@@ -59,6 +53,11 @@ if [ $install -eq 1 ]; then
   sudo apt-get install $list
 fi
 
+## TODO: install vim- and tmux-plugins from shell
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # prerequisites
 ## git clone --recursive https://github.com/d-nnis/dotfiles.git
@@ -79,6 +78,10 @@ for rcfile in $rcfiles; do
   fi
   ln -sv "dotfiles/zprezto/runcoms/$rcfile" "$HOME/.$rcfile"
 done
+
+fc-cache ~/.fonts
+xrdb ~/.Xresources
+xrdb -merge ~/.Xmodmap
 
 exit 0
 
