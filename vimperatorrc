@@ -124,6 +124,6 @@ nnoremap <Leader>h :hardcopy!<CR>
 " (a)ttach tab to other window
 map <Leader>a :tabattach<Space><Tab>
 
-source! /home/dennis/.vimperatorrc.local
+source! $HOME/.vimperatorrc.local
 
 " vim: ft=vim
