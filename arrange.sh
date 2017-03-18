@@ -14,7 +14,7 @@ deskenv=1
 install=0
 mkdir -p $HOME/dotfiles_backup
 
-# local .vim still present ...?!
+# TODO: local .vim still present ...?!
 
 for file in $files; do
   echo $file
@@ -60,6 +60,8 @@ if [ ! -f ~/.vim/autoload/plug.vim ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+$HOME/.tmux/plugins/tpm/bin/install_plugins
+
 # prerequisites
 ## git clone --recursive https://github.com/d-nnis/dotfiles.git
 git submodule update --init --recursive
@@ -82,7 +84,7 @@ done
 
 fc-cache ~/.fonts
 xrdb ~/.Xresources
-xrdb -merge ~/.Xmodmap
+xmodmap ~/.Xmodmap
 
 exit 0
 
