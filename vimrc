@@ -38,11 +38,6 @@ endif
 " throws error after reloading vimrc: _neomake is not a command_
 call plug#begin('~/.vim/plugged')
   Plug 'neomake/neomake'
-  augroup_neomake_config
-    au!
-    autocmd! BufWritePost * Neomake
-  augroup END
-  let g:neomake_open_list=2
 
   " hier die github URL
   Plug 'tpope/vim-surround'
@@ -51,6 +46,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'asciidoc/vim-asciidoc'
   Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/seoul256.vim'
+call plug#end()
+
   "Plug 'junegunn/limelight.vim'
   "Plug 'junegunn/vim-peekaboo'
   "Plug 'junegunn/vim-slash'
@@ -58,7 +56,6 @@ call plug#begin('~/.vim/plugged')
   "Plug 'junegunn/rainbow_parentheses.vim'
   "Plug 'https://github.com/tpope/vim-surround'
   "Plug 'tpope/vim-fugitive'
-call plug#end()
 
 " wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
 " https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
@@ -68,14 +65,40 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
-syntax enable
-" dark or light
-colorscheme solarized
-"set background=dark
-set background=light
+""""""""
+augroup_neomake_config
+  au!
+  autocmd! BufWritePost * Neomake
+augroup END
+let g:neomake_open_list=2
 
+syntax enable
 set shiftwidth=2
 set tabstop=2
+
+"""""""""
+" color "
+"""""""""
+"colorscheme solarized
+" https://github.com/junegunn/seoul256.vim
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+let g:seoul256_background = 233
+
+" seoul256 (light):
+"   Range:   252 (darkest) ~ 256 (lightest)
+"   Default: 253
+"let g:seoul256_background = 256
+
+colo seoul256
+" Light color scheme
+"colo seoul256-light
+
+" Switch
+"set background=dark
+"set background=light
+
 
 if has("gui_running")
   " GUI is running or is about to start.
