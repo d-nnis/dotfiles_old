@@ -106,7 +106,7 @@ colo seoul256
 if exists("ChapterPrev")
 else
   function! ChapterPrev()
-    ?##s*\w
+    ?##\s*\w
   endfunction
   " assuming this func does not exist as well
   function! ChapterNext()
@@ -239,23 +239,9 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 " default the statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
 
-"""""""""""""""""""""""""""""""""""""
-" very specific to user and time :-)
-" {{{
-if filereadable("/home/dennis/.vim/mag.vim")
-  source ~/.vim/mag.vim
-endif
-
-" }}}
-
 """"""""""""""""""""
 " helper functions "
 """"""""""""""""""""
-
-if filereadable("/home/dennis/.vim/helper.vim")
-  so ~/.vim/helper.vim
-endif
-
 
 "if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
 "  inoremap <F7> <Esc>:call AprevChapter()<CR>
