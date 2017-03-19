@@ -65,4 +65,6 @@ alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
 
+[ -f ~/.alias.local ] && source ~/.alias.local
+
 # vim: syntax=sh
