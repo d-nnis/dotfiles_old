@@ -134,6 +134,8 @@
   * cannot use .less
   * vim-plug autoinstall: certificates not valid!?
 * setup
+  * *one* update function
+  * gfmS, vi and tpm
   * confed with switch to differentiate btw terminal-only and including DE-packages
 * ~/.multitailrc not being read?
 * color
