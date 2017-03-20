@@ -97,6 +97,8 @@
 * [vim-surround](https://github.com/tpope/vim-surround)
   * cs"'  ~~ in "Hello" -> 'Hello'
 * [goyo](https://github.com/junegunn/goyo.vim)
+  * :Goyo [dimension] ~~ absolute measure or percentage (80x50%)q
+  * \<C-w\> +,-,<,>  ~~ Resize window (regular) in-, decrease height/ width
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
 * \<C-j\> ~~ switch to pane (tmux)/ window (vim) down
