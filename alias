@@ -1,5 +1,5 @@
 
-alias mc='/usr/share/mc/bin/mc-wrapper.sh'
+[ -f /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='/usr/share/mc/bin/mc-wrapper.sh'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -18,22 +18,26 @@ fi
 alias ll='ls -l'
 alias la='ls -lAh'
 alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
-alias l='ls -CF'
-# activated git aliases
-alias gital='alias | grep git | less && git al'
-# git aliases of prezto (not active)
-alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
+alias l='ls -CF' # show in columns with classifiers
+## activated git aliases
+alias gital='alias | grep git | less && git al'
+alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
 #alias ssh='ssh -Y'
 alias rm='rm -I'
 alias watch='watch -d'
+
 ## hash'd dirs
 hash -d doc=/usr/share/doc
-[ -d "$HOME/bin" ] && hash -d mybin=$HOME/bin
 hash -d dot=~/dotfiles
+[ -d "$HOME/bin" ] && hash -d mybin=$HOME/bin
+
+## specifica {{{
+[ -d ~/PDF ]  && hash -d pdf=~/PDF
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
+## }}}
 
 alias confed=configedit
 alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
