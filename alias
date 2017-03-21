@@ -28,6 +28,16 @@ alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 alias rm='rm -I'
 alias watch='watch -d'
 
+## suffix aliases
+alias -s pdf=xdg-open
+#alias -s html=firefox
+alias -s html=xdg-open
+#http://vimhelp.appspot.com/help.txt.html
+
+## global aliases
+alias -g G='|grep ' # cat file.txt G error
+alias -g L='|less ' # <massive file at stdout> L
+
 ## hash'd dirs
 hash -d doc=/usr/share/doc
 hash -d dot=~/dotfiles
