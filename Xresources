@@ -63,6 +63,8 @@ URxvt.keysym.C-M-plus:     perl:font-size:increase
 URxvt.keysym.C-M-minus:   perl:font-size:decrease
 ! URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 ! URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.font-size.step: 4
+URxvt.keysym.C-6: perl:font-size:abs:15
 URxvt.keysym.C-equal:  perl:font-size:reset
 URxvt.keysym.C-slash:  perl:font-size:show
 
