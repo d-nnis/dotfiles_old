@@ -32,6 +32,12 @@
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
 * lla           # show the 20 **la**test (mtime) files
+* zsh
+  * Alt-
+    * . # last argument in history
+    * / # "?
+    * , # "?
+    * ((x = 33.3 /9.1)) # echo $x
 * fzf (FuzzyFind)
   * `<dir>/file**<tab>`
   * `pdf$**<tab>`
@@ -106,7 +112,7 @@
 * [docopen](https://github.com/nelstrom/vim-docopen)
   * gd  ~~ or :DocOpen Open Vimhelp in Browser, regardings help tag under cursor
   * ygd ~~ yank :DocOpen URL
-  * _Could not find file desriptor_
+  * _Couldn't get a file descriptor referring to the console_ - even is suffix alias is configured in zsh.
 * [cutlass](https://github.com/nelstrom/vim-cutlass)
   * 
 ### TMUX-VIM integration
