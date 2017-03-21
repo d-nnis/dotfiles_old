@@ -48,6 +48,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'asciidoc/vim-asciidoc'
   Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/limelight.vim'
   Plug 'junegunn/seoul256.vim'
 call plug#end()
 
@@ -100,13 +101,21 @@ colo seoul256
 "set background=dark
 "set background=light
 
-""""""""
-" Goyo "
-""""""""
+"""""""""""""""""""
+" Goyo & Limelight"
+"""""""""""""""""""
 " distraction-free writing
-" turn on! :Goyo
+
+"let g:limelight_conceal_ctermfg = '#00000'
+"let g:limelight_conceal_ctermfg = '#ffff00'
+let g:limelight_paragraph_span = 1
+let g:limelight_default_coefficient = 0.7
+" turn on :Goyo
 function! s:goyo_enter()
   silent !tmux set status off
+  Goyo 65%x80%
+  Limelight 0.9 " the higher the darker
+  "TODO: change font-size to 15 (perl:font-size (URxvt))
   "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   "set noshowmode
   "set noshowcmd
@@ -115,19 +124,33 @@ function! s:goyo_enter()
   " ...
 endfunction
 
-" turn off! :Goyo!
+" turn off :Goyo!
 function! s:goyo_leave()
   silent !tmux set status on
 "  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
 "  set showmode
 "  set showcmd
 "  set scrolloff=5
-"  Limelight!
+  Limelight!
   " ...
 endfunction
 
+nnoremap <F9> :Goyo<CR>
+"nnoremap <F10> :Goyo!<CR>
+
+
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"function! FocusOn()
+"  call Goyo 75%x75%
+"  call Limelight 0.8
+"endfunction
+"
+"function! FocusOff()
+"  call Goyo!
+"  call Limelight!
+"endfunction
 
 """""""""""""""""""
 " help me, Ronda! "
@@ -289,6 +312,9 @@ hi statusline guibg=grey ctermfg=black ctermbg=white
 "  nnoremap <F7> :call VIprevChapter()<CR>
 "  nnoremap <F8> :call VInextChapter()<CR>
 "endif
+
+
+
 
 function! MakeFileExecutable()
     !chmod u+x %
