@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Sections:
 "    -> my settings
 "    -> General
@@ -41,6 +41,8 @@ call plug#begin('~/.vim/plugged')
 
   " hier die github URL
   Plug 'tpope/vim-surround'
+  " Invalid URI?
+  Plug 'https://github.com/tpope/vim-repeat'
   Plug 'chikamichi/mediawiki.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
@@ -59,8 +61,7 @@ call plug#end()
 
 " wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
 " https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
-" save power, check spell not in real-time!
-"au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
+" save power, check spell not in real-time!2017-03-20"au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
@@ -767,12 +768,43 @@ map <leader>q :e ~/buffer<cr>
 " Quickly open a markdown buffer for scribble
 "map <leader>x :e ~/buffer.md<cr>
 " rather asciidoc
-map <leader>x :e ~/buffer.adoc<cr>
+
+function! ScribbleIntro()
+    " line results in the line number of expression, here: "$": last line of buffer
+    " min returns the minimum value. Here: 20 (if there are less lines than that number accordingly)
+    " calculate range: within first 20 existing lines
+    let ll = min([20, line("$")])
+    " position cursor at start of file
+    call cursor(1,1)
+    " search for pattern == Day: 2017-03-20 with date of today
+    let today = strftime('%F')
+    let headtoday = "\=\= Day: ".today
+    let match = search(headtoday,'', ll)
+    if (match)
+      "echo "found: ".headtoday
+      let cursor_pos = getpos(".")
+      let cursor_line = cursor_pos[1]
+      echo "cursor: ".cursor_line
+      call append(cursor_line+1, '')
+      call cursor(cursor_line+1,1)
+"      exe cursor_line."put =\n"
+    else
+      echo "not found: ".headtoday
+      let headtoday = headtoday . "\n"
+      " put after line 1
+      1put =headtoday
+      " set cursor one line below
+      call cursor(2, 1)
+      normal! o
+    endif
+endfun
+
+      "normal! /headtoday
+      "normal! o
+map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
