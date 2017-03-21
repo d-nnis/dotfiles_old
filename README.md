@@ -99,9 +99,16 @@
   * cst"  ~~ surround with \" - does not work? Instead...
   * yss"  ~~ wrap entire line
   * ysiw<sth> ~~ surround with HTML tags
+  * s.a. doc/vim-surround.txt
 * [goyo](https://github.com/junegunn/goyo.vim)
   * :Goyo [dimension] ~~ absolute measure or percentage (80x50%)q
   * \<C-w\> +,-,<,>  ~~ Resize window (regular) in-, decrease height/ width
+* [docopen](https://github.com/nelstrom/vim-docopen)
+  * gd  ~~ or :DocOpen Open Vimhelp in Browser, regardings help tag under cursor
+  * ygd ~~ yank :DocOpen URL
+  * _Could not find file desriptor_
+* [cutlass](https://github.com/nelstrom/vim-cutlass)
+  * 
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
 * \<C-j\> ~~ switch to pane (tmux)/ window (vim) down
@@ -113,7 +120,10 @@
   * t ~~ open URL in background
   * T ~~ open URL in background based on current URL
   * R ~~ reload ~/.vimperatorrc
-  * h ~~ make (h)ardcopy w/o confirmation (print wiht default printer)
+  * h ~~ make (h)ardcopy w/o confirmation (print with default printer)
+    * _WIP_:
+    * h1 ~~ make (h)ardcopy - one-on-one page
+    * h2 ~~ two-on-one page
   * p ~~ (p)aste clipboard enclosed in quote signs in current tab (i.e. search with default engine and ignore comma)
   * P ~~ (P)aste clipboard enclosed in quote signs in new tab
   * f ~~ (f)ind clipboard content in website/ tab
@@ -122,10 +132,13 @@
 * ; ...
   * c ~~ context menu
   * w ~~ follow hint in a new window
-* gu ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
-* gU ~~ open URL *U*p to stem: http://domain.de
-* gf ~~ view source of website in current tab
-* gF ~~ view source of website in GVim
+* g ... # <g>o!
+  * u ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
+  * U ~~ open URL *U*p to stem: http://domain.de
+  * f ~~ view source of website in current tab
+  * F ~~ view source of website in GVim
+  * s ~~ (s)earch in current tab (`-windows`)
+  * S ~~ (S)earch in new tab (`-windows`)
 
 ## Updating
 * git pull && git submodule update --init --recursive
