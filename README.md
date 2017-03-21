@@ -62,7 +62,7 @@
 * :W  ~~ save file in sudo mode
 * \<leader\> ... ~~ is ',' (comma). Usage: type ,w (_comma w_) to save file
   * w ~~ quick (w)rite
-  * x ~~ open scribble page (in asciidoc)
+  * x ~~ open scribble page (in asciidoc), add date
   * bd ~~ (d)elete current (b)uffer
   * ba ~~ (d)elete (a)ll buffers
   * tn ~~ (t)ab (n)ew
@@ -96,6 +96,9 @@
     * \<C-v\> ~~ *v*ertical split
 * [vim-surround](https://github.com/tpope/vim-surround)
   * cs"'  ~~ in "Hello" -> 'Hello'
+  * cst"  ~~ surround with \" - does not work? Instead...
+  * yss"  ~~ wrap entire line
+  * ysiw<sth> ~~ surround with HTML tags
 * [goyo](https://github.com/junegunn/goyo.vim)
   * :Goyo [dimension] ~~ absolute measure or percentage (80x50%)q
   * \<C-w\> +,-,<,>  ~~ Resize window (regular) in-, decrease height/ width
