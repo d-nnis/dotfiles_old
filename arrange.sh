@@ -9,6 +9,7 @@ files+=" tmux.conf tmux"
 files+=" Xmodmap Xresources Xresources.d urxvt fonts"
 files+=" multitailrc"
 files+=" lesskey"
+#files+=" mc"
 
 deskenv=1
 install=0
@@ -30,9 +31,10 @@ done
 #touch $HOME/.lesskey
 lesskey &
 
-# packages only for terminal environment
-list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome"
-# programs for desktop environment
+## packages only for terminal environment
+list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome mc mc-data"
+#list+=" moc moc-ffmpeg-plugin  # ncurses audio-player
+## programs for desktop environment
 if [ $deskenv -eq 1 ]; then
   list+=" wmctrl rxvt-unicode-256color firefox-esr "
 fi
