@@ -26,10 +26,10 @@ comclear
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
-"""""""""""""""""""
-" dennis settings "
-"""""""""""""""""""
-""" vim-plug [https://github.com/junegunn/vim-plug]
+""""""""""""""""""""
+" plugins settings "
+""""""""""""""""""""
+" automatic vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -39,10 +39,10 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'neomake/neomake'
 
-  " hier die github URL
   Plug 'tpope/vim-surround'
   " Invalid URI?
   Plug 'https://github.com/tpope/vim-repeat'
+  Plug 'tpope/vim-unimpaired'
   Plug 'chikamichi/mediawiki.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
@@ -50,6 +50,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
   Plug 'junegunn/seoul256.vim'
+  Plug 'https://github.com/nelstrom/vim-docopen'
+  Plug 'https://github.com/nelstrom/vim-cutlass'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
