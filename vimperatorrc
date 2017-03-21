@@ -38,6 +38,8 @@ inoremap <C-a> <Ins><C-a><Ins>
 " Paste clipboard content enclosed in quote signs
 noremap <leader>p o"<C-v>"<CR>
 noremap <leader>P t"<C-v>"<CR>
+noremap gs  o-windows 
+noremap gS  t-windows 
 
 " search/(f)ind clipboard content in tab/ website
 noremap <leader>f /<C-v><CR>
