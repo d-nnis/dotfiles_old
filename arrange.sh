@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -o xtrace
 
+## install switches
+deskenv=1
+entertainment=1
+install_pkg=0
+
 ## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
 link_home="vimperatorrc vimperatorrc.local vimperator"
 link_home+=" vimrc vim bashrc"
@@ -9,11 +14,8 @@ link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
 link_home+=" multitailrc"
-link_home+=" lesskey"
-#link_home+=" mc"
+link_home+=" lesskey moc"
 
-deskenv=1
-install=0
 
 # remove existing backup
 if [ -d $HOME/dotfiles_backup ]; then
@@ -58,8 +60,12 @@ done
 lesskey &
 
 ## programs only for terminal environment
-list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome mc mc-data"
-#list+=" moc moc-ffmpeg-plugin  # ncurses audio-player
+list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
+list+=" curl multitail vim-gnome mc mc-data"
+
+if [ $entertainment -eq 1 ]; then
+  list+=" moc moc-ffmpeg-plugin"  # ncurses audio-player
+fi
 ## programs for desktop environment
 if [ $deskenv -eq 1 ]; then
   list+=" wmctrl rxvt-unicode-256color firefox-esr "
@@ -69,12 +75,12 @@ packages() {
   for el in $list; do
     dpkg -l $el > /dev/null
     if [ $? -eq 1 ]; then
-      install=1
+      install_pkg=1
     fi
   done
 }
 
-if [ $install -eq 1 ]; then
+if [ $install_pkg -eq 1 ]; then
   sudo apt-get update
   sudo apt-get install $list
 fi
