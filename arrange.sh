@@ -1,37 +1,63 @@
 #!/usr/bin/env bash
 set -o xtrace
 
-files="vimperatorrc vimperatorrc.local vimperator"
-files+=" vimrc vim bashrc"
-files+=" zprezto gitconfig"
-files+=" tmux.conf tmux"
-#files+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
-files+=" Xmodmap Xresources Xresources.d urxvt fonts"
-files+=" multitailrc"
-files+=" lesskey"
-#files+=" mc"
+## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
+link_home="vimperatorrc vimperatorrc.local vimperator"
+link_home+=" vimrc vim bashrc"
+link_home+=" zprezto gitconfig"
+link_home+=" tmux.conf tmux"
+#link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
+link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
+link_home+=" multitailrc"
+link_home+=" lesskey"
+#link_home+=" mc"
 
 deskenv=1
 install=0
-mkdir -p $HOME/dotfiles_backup
+
+# remove existing backup
+if [ -d $HOME/dotfiles_backup ]; then
+  rm -rfv $HOME/dotfiles_backup
+else
+  mkdir -p $HOME/dotfiles_backup
+fi
 
 # TODO: local .vim still present ...?!
 
-for file in $files; do
-  echo $file
-  if [ -f $HOME/.$file ]; then
-    mv -fv $HOME/.$file $HOME/dotfiles_backup
-  elif [ -L $HOME/.$file ]; then
-    rm -rf $HOME/.$file
+for link in $link_home; do
+  echo $link
+  if [ -f $HOME/.$link ]; then
+    mv -fv $HOME/.$link $HOME/dotfiles_backup
+  elif [ -L $HOME/.$link ]; then
+    rm -rfv $HOME/.$link
   fi
-  ln -sv $HOME/dotfiles/$file $HOME/.$file
+  ln -sv $HOME/dotfiles/$link $HOME/.$link
+done
+
+
+## symlinks XDG_CONFIG_DIR -- ~/.config/<program-dir> -> ~/dotfiles/config/<program-dir>
+##                            ^^^^^ `pwd -L` ^^^^^^^  -> ^^^^^^^^ `pwd -P` ^^^^^^^^^^^^^
+## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
+link_config="mc htop"
+#link_config+=" "
+
+mkdir -p $HOME/dotfiles_backup/config
+
+for link in $link_config; do
+  echo $link
+  if [ -d $HOME/.config/$link ]; then
+    mv -fv $HOME/.config/$link $HOME/dotfiles_backup/config
+  elif [ -L $HOME/.config/$link ]; then
+    rm -rfv $HOME/.config/$link
+  fi
+  ln -sv $HOME/dotfiles/config/$link $HOME/.config/$link
 done
 
 # for less and lesskey keybindings
 #touch $HOME/.lesskey
 lesskey &
 
-## packages only for terminal environment
+## programs only for terminal environment
 list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag curl multitail vim-gnome mc mc-data"
 #list+=" moc moc-ffmpeg-plugin  # ncurses audio-player
 ## programs for desktop environment
