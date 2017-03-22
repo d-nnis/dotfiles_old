@@ -20,6 +20,11 @@ vim/plugged/*
 config/mc/*
 !config/mc/solarized.ini
 
+## moc
+moc/cache/*
+moc/last_directory
+moc/pid
+
 ## vimperator
 vimperator/info/*
 !vimperator/info/default
@@ -30,3 +35,6 @@ vimperator/info/ffRoteDomain/*
 ## misc
 .netrwhist
 
+## sockets
+socket*
+urxvt/urxvtd-*
