@@ -1,0 +1,19 @@
+Config { font = "xft:HandelGotDLig:size=12"
+, bgColor = "#000000"
+, fgColor = "#FFFFFF"
+, border = NoBorder
+, borderColor = "#000000"
+, position = TopW L 100
+, lowerOnStart = True	-- send to bottom of window stack on start
+, hideOnStart = False		-- start with window unmapped (hidden)
+, persistent = False		-- enable/disable hiding (True = disabled)
+, commands = [ Run Weather "KDTO" ["-t", "<tempF>F","-L","50","-H","85","--normal","green","--high","red","--low","lightblue"] 36000
+, Run DiskU [("/", "/ <usedp>% used")] []  60
+, Run Network "eth0" ["-L", "64", "-H", "1024", "-l", "#C1C1C1", "-n", "#FFCF00" ,"-h", "#00F2FF", "-t", "<dev>: <rx> : <tx>"] 10
+, Run Cpu ["-L","3","-H","50", "--low", "#C1C1C1", "--normal","#FFCF00","--high","#00F2FF"] 10
+, Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %KDTO% <fc=#96EFFF>|</fc> %cpu% <fc=#96EFFF>|</fc> %disku% <fc=#96EFFF>|</fc> %eth0% <fc=#96EFFF>|</fc> %date%"
+       }

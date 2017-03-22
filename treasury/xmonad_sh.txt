@@ -1,0 +1,238 @@
+-- slackmagic | xmonad
+-- IRC.freenode ##slackware
+
+import XMonad
+import qualified XMonad.StackSet as W
+import qualified Data.Map as M
+import System.Exit
+import XMonad.Util.Run (safeSpawn)
+import Graphics.X11.ExtraTypes.XF86
+
+import XMonad.Actions.GridSelect
+import XMonad.Actions.SpawnOn
+
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicHooks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
+-- import XMonad.Hooks.FadeInactive
+
+import XMonad.Layout.NoBorders
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.Renamed
+import XMonad.Layout.Tabbed
+import XMonad.Layout.Spacing
+import XMonad.Layout.Grid
+
+-- // startup //
+myStartupHook :: X ()
+myStartupHook = do
+	spawnOn "web" "xsetroot -cursor_name left_ptr"
+	spawnOn "web" "numlockx on"
+	spawnOn "web" "xrdb -load /home/magician/.Xresources"
+	spawnOn "web" "~/scripts/randomwall.sh"
+
+-- // main //
+main :: IO ()
+main = xmonad =<< statusBar cmd pp kb conf
+  where 
+    uhook = withUrgencyHookC NoUrgencyHook urgentConfig
+    cmd = "bash -c \"tee >(xmobar -x0) | xmobar -x1\""
+    pp = customPP
+    kb = toggleStrutsKey
+    conf = uhook myConfig
+
+-- // configs //
+myConfig = defaultConfig { workspaces = workspaces'
+								, modMask = modMask'
+								, borderWidth = borderWidth'
+								, normalBorderColor = normalBorderColor'
+								, focusedBorderColor = focusedBorderColor'
+								, terminal = terminal'
+								, keys = keys'
+								, layoutHook = layoutHook'
+								, manageHook = manageSpawn <+> manageHook'
+								, XMonad.startupHook = myStartupHook
+								, focusFollowsMouse = False
+-- 								, logHook = myLogHook 
+						, handleEventHook = fullscreenEventHook
+									}
+
+-- logHook if with FadeInactive
+-- myLogHook = fadeInactiveLogHook 0x90000000
+
+-- // floats //
+manageHook' = composeAll [ isFullscreen	--> doFullFloat
+								, className =? "MPlayer"	--> doFloat
+								, className =? "mpv"			--> doFloat
+								, className =? "Gimp"		--> doFloat
+								, className =? "Vlc"			--> doFloat
+								, className =? "XVroot"		--> doFloat
+								, className =? "Display"	--> doFloat
+								, className =? "Java"		--> doFloat
+								, className =? "XCalc"		--> doFloat
+								, className =? "VirtualBox"	--> doFloat
+								, className =? "XClock"		--> doFloat
+								, className =? "Xdialog"	--> doFloat
+								, className =? "Xmessage"	--> doFloat
+								, className =? "XFontSel"	--> doFloat
+								, className =? "NVidia-settings"	--> doFloat
+								, className =? "Wine"		--> doFloat
+								, className =? "Xdialog"		--> doFloat
+								, className =? "Gtkdialog"		--> doFloat
+								, className =? "Mumble"			--> doFloat
+								, className =? "Audacity"		--> doFloat
+								, className =? "Thunar"			--> doFloat
+			, insertPosition Below Newer
+			, transience'
+                         ]
+-- // xmobar //
+customPP = defaultPP { ppCurrent = xmobarColor "#47E0FF" "" . wrap "[" "]"
+                     , ppHidden = xmobarColor "#82D20D" ""
+                     , ppHiddenNoWindows = xmobarColor "#FFFFFF" ""
+                     , ppUrgent = xmobarColor "#FFFFFF" "" . wrap "[" "]" 
+                     , ppLayout = xmobarColor "#FFFFFF" ""
+                     , ppTitle =  xmobarColor "#47E0FF" "" . shorten 80
+                     , ppSep = xmobarColor "#666666" "" " | "
+                     }
+-- // grid //
+myGSConfig = defaultGSConfig { gs_cellwidth = 320 
+										, gs_cellheight = 50
+										, gs_cellpadding = 10
+										, gs_font = xftFont'
+									}
+
+-- // notifications //
+urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
+
+-- // any borders? //
+borderWidth' = 1
+normalBorderColor'  = "#555555"
+focusedBorderColor' = "#cd8b00"
+barFont = "Inconsolata:size=14"
+xftFont' = "xft: HandelGotDBol-14"
+
+-- // what about them tabs? //
+tabTheme1 = defaultTheme { fontName = xftFont'
+								, decoHeight = 16
+								, activeColor = "#5DDDFF"
+								, activeBorderColor = "#5DDDFF"
+								, activeTextColor = "#000000"
+								, inactiveBorderColor = "#000000"
+								}
+
+-- // mah workspaces //
+workspaces' = ["web", "code", "irc", "music", "mail", "tos", "vbox", "misc", "tmp"]
+
+-- // layouts //
+layoutHook' = tile ||| mtile ||| space10_NB ||| space10 ||| space20_NB ||| space20 ||| space40_NB ||| space40 ||| full ||| grids ||| tab
+  where
+    rt = ResizableTall 1 (2/100) (1/2) []
+    tile = renamed [Replace "[]="] $ smartBorders rt
+    mtile = renamed [Replace "M[]="] $ smartBorders $ Mirror rt
+    tab = renamed [Replace "T[]="] $ noBorders $ tabbed shrinkText tabTheme1
+    space10_NB = renamed [Replace "S[10]"] $ spacing 10 $ noBorders $ Tall 1 (3/100) (1/2)
+    space10 = renamed [Replace "S[10]="] $ spacing 10 $ Tall 1 (3/100) (1/2)
+    space20_NB = renamed [Replace "S[20]"] $ spacing 20 $ noBorders $ Tall 1 (3/100) (1/2)
+    space20 = renamed [Replace "S[20]="] $ spacing 20 $ Tall 1 (3/100) (1/2)
+    space40_NB = renamed [Replace "S[40]"] $ spacing 40 $ noBorders $ Tall 1 (3/100) (1/2)
+    space40 = renamed [Replace "S[40]="] $ spacing 40 $ Tall 1 (3/100) (1/2)
+    full = renamed [Replace "[]"] $ noBorders Full
+    grids = renamed [Replace "G[]"] $ spacing 4 $ Grid
+
+-- // i like urxvt //
+terminal' = "urxvt"
+
+-- // set your modmask //
+modMask' = mod4Mask
+
+-- // keys //
+toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
+toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
+keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+
+    -- launching and killing programs
+	[ ((modMask, xK_Return), safeSpawn (XMonad.terminal conf) [])
+	, ((modMask, xK_p), safeSpawn "/home/magician/scripts/dmenu_works.sh" [])
+	, ((modMask .|. shiftMask, xK_p), spawn "urxvt -sh 20 -e vim /home/magician/.xmonad/xmonad.hs")
+	, ((modMask .|. shiftMask, xK_m), spawn "urxvt -sh 50 -e mutt")
+	, ((modMask .|. shiftMask, xK_x), kill)
+	, ((modMask, xK_Print), spawn "scrot -e 'mv $f ~/screenshots/'")
+	, ((modMask .|. shiftMask, xK_n), spawn "nitrogen --sort=rtime")
+	, ((modMask .|. shiftMask, xK_o), spawn "libreoffice4.4")
+	, ((modMask, xK_F1), oneShotHook (className =? "XCalc") doCenterFloat >> spawn "xcalc -geometry 120x340+300+200")
+
+{-- // mixer //
+    , ((0, xF86XK_AudioRaiseVolume      ), safeSpawn "amixer" ["-q", "set", "Master", "1+"])
+    , ((0, xF86XK_AudioLowerVolume      ), safeSpawn "amixer" ["-q", "set", "Master", "1-"])
+    , ((0, xF86XK_AudioMute             ), safeSpawn "amixer" ["-q", "set", "Master", "toggle"])
+--}
+    , ((0, xF86XK_AudioRaiseVolume      ), safeSpawn "ponymix" ["increase", "5"])
+    , ((0, xF86XK_AudioLowerVolume      ), safeSpawn "ponymix" ["decrease", "5"])
+    , ((0, xF86XK_AudioMute             ), safeSpawn "ponymix" ["toggle"])
+    , ((0, xF86XK_AudioPlay             ), safeSpawn "mocp" ["-G"])
+    , ((0, xF86XK_AudioNext             ), safeSpawn "mocp" ["-f"])
+    , ((0, xF86XK_AudioPrev             ), safeSpawn "mocp" ["-r"])
+	, ((modMask, xK_F6), spawn "amixer sset Master 5-")
+	, ((modMask, xK_F7), spawn "amixer sset Master 5+")
+	, ((modMask, xK_F5), spawn "amixer sset 'Master' toggle")
+
+    -- // grid bindings //
+    , ((modMask,               xK_g     ), goToSelected myGSConfig)
+
+    -- // layout bindings //
+    , ((modMask,               xK_space ), sendMessage NextLayout)
+    , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+
+    -- // to float //
+    , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
+
+    -- // no need for stinkin' refresh //
+--    , ((modMask,               xK_n     ), refresh)
+
+    -- // focus //
+    , ((modMask,               xK_Tab   ), windows W.focusDown)
+    , ((modMask,               xK_j     ), windows W.focusDown)
+    , ((modMask,               xK_k     ), windows W.focusUp)
+    , ((modMask,               xK_m     ), windows W.focusMaster)
+
+    -- // swaps //
+    , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
+    , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
+    , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
+
+    -- // master area //
+    , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
+    , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
+
+    -- // shrink + expands //
+    , ((modMask,               xK_h     ), sendMessage Shrink)
+    , ((modMask,               xK_l     ), sendMessage Expand)
+    , ((modMask .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
+    , ((modMask .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
+
+    -- // xmonad restart + quit //
+    , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modMask              , xK_KP_Delete     ), spawn "xmonad --recompile; xmonad --restart")
+    ]
+    ++
+    -- mod-[1..9] %! Switch to workspace N
+    -- mod-shift-[1..9] %! Move client to workspace N
+    [((m .|. modMask, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    ++
+    -- mod-[w,e] %! switch to twinview screen 1/2
+    -- mod-shift-[w,e] %! move window to screen 1/2
+    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1,2]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+--    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+--        | (key, sc) <- zip [xK_w, xK_e] [0..]
+--        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
