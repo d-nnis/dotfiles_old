@@ -32,6 +32,8 @@
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
 * lla           # show the 20 **la**test (mtime) files
+* diffdir       # compare to dirs recursively (diff -rq)
+* a2pdf_latex   # adoc to pdf-toolchain
 * zsh
   * Alt-
     * . # last argument in history
@@ -60,7 +62,9 @@
 ### Tmux
 * \<prefix\>... # is \<C-a\>
   * R ~~ source ~/.tmux.conf
-  * S ~~ display and choose session
+  * s ~~ display and choose session
+  * S ~~ send pane to other window
+  * ? ~~ list defined hotkeys
 
 ### VIM
 * i_CTRL-v ~~ insert sytem clipboard (in insert mode) (de-activated)
@@ -156,14 +160,16 @@
   * start first tmux session: sourcing tmux.reset.conf
   * VIM: after reloading vimrc a few functions are broken
   * cannot use .less
-  * vim-plug autoinstall: certificates not valid!?
+  * todo parser
+  * copyfast
 * setup
   * *one* update function
   * gfmS, vi and tpm
   * confed with switch to differentiate btw terminal-only and including DE-packages
-* ~/.multitailrc not being read?
+* ~/.multitailrc not being read
 * color
   * of cursor in terminal: zpreztorc, highlight cursor
+  * color spectrum is shitty, some colors do not differ from bg
   * tmux - Xresources - zpreztorc - vim
   * toggle color in vim
   * bright and dark settings
