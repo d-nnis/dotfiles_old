@@ -1,5 +1,5 @@
 
-[ -f /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='/usr/share/mc/bin/mc-wrapper.sh'
+[ -x /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='/usr/share/mc/bin/mc-wrapper.sh'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -27,16 +27,23 @@ alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 #alias ssh='ssh -Y'
 alias rm='rm -I'
 alias watch='watch -d'
+alias diffdir='/usr/bin/diff -rq'
 
-## suffix aliases
-alias -s pdf=xdg-open
-#alias -s html=firefox
-alias -s html=xdg-open
-#http://vimhelp.appspot.com/help.txt.html
 
-## global aliases
-alias -g G='|grep ' # cat file.txt G error
-alias -g L='|less ' # <massive file at stdout> L
+## zsh specifica
+# $SHELL is not reliable?
+if [[ $BASH != *bash ]]; then
+
+  ## suffix aliases
+  alias -s pdf=xdg-open
+  #alias -s html=firefox
+  alias -s html=xdg-open
+  #http://vimhelp.appspot.com/help.txt.html
+
+  ## global aliases
+  alias -g G='|grep ' # cat file.txt G error
+  alias -g L='|less ' # <massive file at stdout> L
+fi
 
 ## hash'd dirs
 hash -d doc=/usr/share/doc
@@ -48,6 +55,15 @@ hash -d dot=~/dotfiles
 [ -d "/home/dennis/owncloud_maw" ] && hash -d ocm=/home/dennis/owncloud_maw
 [ -d "/home/dennis/owncloud_maw/Mag/kollektivistisch" ] && hash -d koll=/home/dennis/owncloud_maw/Mag/kollektivistisch
 ## }}}
+
+## asciidoc toolchain
+if [ -x $(which a2x) ]; then
+    alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-a lang=de -v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
+  else
+    echo alias: a2x not found
+fi
+
+
 
 alias confed=configedit
 alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
@@ -72,7 +88,7 @@ configreload() {
 }
 
 # programs
-[ -f /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
+[ -x /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias lpstat='lpstat -t'
 alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
