@@ -110,13 +110,13 @@ colo seoul256
 
 "let g:limelight_conceal_ctermfg = '#00000'
 "let g:limelight_conceal_ctermfg = '#ffff00'
-let g:limelight_paragraph_span = 1
+let g:limelight_paragraph_span = 2
 let g:limelight_default_coefficient = 0.7
 " turn on :Goyo
 function! s:goyo_enter()
   silent !tmux set status off
   Goyo 65%x80%
-  Limelight 0.9 " the higher the darker
+  Limelight 0.7777777 " the higher the darker
   "TODO: change font-size to 15 (perl:font-size (URxvt))
   "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   "set noshowmode
