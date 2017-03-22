@@ -60,4 +60,4 @@
 	url = https://github.com/muennich/urxvt-perls
 [submodule "urxvt/ext/urxvt-font-size"]
 	path = urxvt/ext/urxvt-font-size
-	url = https://github.com/majutsushi/urxvt-font-size
+	url = git://github.com/d-nnis/urxvt-font-size
