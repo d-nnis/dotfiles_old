@@ -25,6 +25,9 @@
 * glols ~~ git log (pretty stuff) -n (s)top at terminal-height - 10
 * glogs ~~ git log (some other pretty stuff) -n (s)top at terminal-height - 10
 * gpOG  ~~ git push master to origin (github) and gitspace (local hosting)
+* gcn!  ~~ amend! that file, (n)o edit of commit msg
+* gcan! ~~ amend! (a)ll files, (n)o edit of commit msg
+* gSurl ~~ show urls of (S)ubmodules
 
 ### Shell
 * caps lock is mapped to escape via Xmodmap
@@ -151,9 +154,13 @@
   * S ~~ (S)earch in new tab (`-windows`)
 
 ## Updating
-* git pull && git submodule update --init --recursive
-* vim-submodules via vim-plug
-* tmux-submodules via tpm (<prefix> U)
+* one script: ''
+  * git pull && git submodule update --init --recursive --merge (_gfmS_)
+  * vim-submodules via vim-plug
+  * tmux-submodules via tpm (<prefix> U)
+
+## misc
+* dotfiles/treasury ~~ some perls yet to be included
 
 ## todo
 * BROKEN
