@@ -116,6 +116,9 @@
 * [goyo](https://github.com/junegunn/goyo.vim)
   * :Goyo [dimension] ~~ absolute measure or percentage (80x50%)q
   * \<C-w\> +,-,<,>  ~~ Resize window (regular) in-, decrease height/ width
+  * \<F9\>  ~~ set to comfortable dimensions (65%x80%)
+    * does not work inside tmux
+  * \<C-F9\> ~~ _dirty little hack_: change font size to 15 (via urxvt-font-size)
 * [docopen](https://github.com/nelstrom/vim-docopen)
   * gd  ~~ or :DocOpen Open Vimhelp in Browser, regardings help tag under cursor
   * ygd ~~ yank :DocOpen URL
