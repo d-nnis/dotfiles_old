@@ -13,7 +13,7 @@ link_home+=" zprezto gitconfig"
 link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
-link_home+=" multitailrc"
+link_home+=" multitailrc w3m"
 link_home+=" lesskey moc"
 
 # TODO: doesbackup work properly?
@@ -61,7 +61,7 @@ lesskey &
 
 ## programs only for terminal environment
 list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
-list+=" curl multitail vim-gnome mc mc-data"
+list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
 
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin"  # ncurses audio-player
