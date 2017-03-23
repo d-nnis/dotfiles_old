@@ -24,6 +24,11 @@ config/mc/*
 moc/cache/*
 moc/last_directory
 moc/pid
+moc/playlist*
+
+## w3m
+w3m/*
+!w3m/config
 
 ## vimperator
 vimperator/info/*
