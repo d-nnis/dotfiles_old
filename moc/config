@@ -206,7 +206,7 @@ XTerms += rxvt-unicode-256colour:rxvt-unicode-256color
 #
 # Example:    Theme = laras_theme
 #
-#Theme =
+Theme = yellow_red_theme
 
 # The theme used when running on an xterm.
 #

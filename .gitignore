@@ -21,9 +21,12 @@ config/mc/*
 !config/mc/solarized.ini
 
 ## moc
-moc/cache/*
-moc/last_directory
-moc/pid
+moc/*
+!moc/config
+
+## w3m
+w3m/*
+!w3m/config
 
 ## vimperator
 vimperator/info/*

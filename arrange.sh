@@ -13,10 +13,10 @@ link_home+=" zprezto gitconfig"
 link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
-link_home+=" multitailrc"
+link_home+=" multitailrc w3m"
 link_home+=" lesskey moc"
 
-
+# TODO: doesbackup work properly?
 # remove existing backup
 if [ -d $HOME/dotfiles_backup ]; then
   rm -rfv $HOME/dotfiles_backup
@@ -25,7 +25,7 @@ else
 fi
 
 # TODO: local .vim still present ...?!
-
+# sometimes link to itself. How come?
 for link in $link_home; do
   echo $link
   if [ -f $HOME/.$link ]; then
@@ -61,7 +61,7 @@ lesskey &
 
 ## programs only for terminal environment
 list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
-list+=" curl multitail vim-gnome mc mc-data"
+list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
 
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin"  # ncurses audio-player
@@ -71,7 +71,7 @@ if [ $deskenv -eq 1 ]; then
   list+=" wmctrl rxvt-unicode-256color firefox-esr "
 fi
 
-packages() {
+check_packages() {
   for el in $list; do
     dpkg -l $el > /dev/null
     if [ $? -eq 1 ]; then
@@ -80,22 +80,24 @@ packages() {
   done
 }
 
-if [ $install_pkg -eq 1 ]; then
+check_packages
+
+if [ "$install_pkg" -eq "1" ]; then
+  install packages
   sudo apt-get update
   sudo apt-get install $list
 fi
 
-## TODO: install vim- and tmux-plugins from shell
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-
+# TODO: errors?
 $HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # prerequisites
 ## git clone --recursive https://github.com/d-nnis/dotfiles.git
-git submodule update --init --recursive
+git submodule update --init --recursive --merge
 
 sudo chsh -s /usr/bin/zsh
 
@@ -104,7 +106,6 @@ rcfiles="zlogin zlogout zpreztorc zprofile zshenv zshrc"
 setopt EXTENDED_GLOB
 for rcfile in $rcfiles; do
   if [ -f "$HOME/.$rcfile" ]; then  # file exists
-    mkdir -p $HOME/dotfiles_backup
     cp "$HOME/.$rcfile" $HOME/dotfiles_backup
     rm "$HOME/.$rcfile"
   elif [ -L "$HOME/.$rcfile" ]; then  # file only exists as dangling symlink
