@@ -116,9 +116,13 @@ let g:limelight_paragraph_span = 2
 let g:limelight_default_coefficient = 0.7
 " turn on :Goyo
 function! s:goyo_enter()
+  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
+  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
+  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
+  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
   silent !tmux set status off
   Goyo 65%x80%
-  Limelight 0.7777777 " the higher the darker
+  Limelight 0.7 " the higher the darker
   "TODO: change font-size to 15 (perl:font-size (URxvt))
   "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   "set noshowmode
@@ -135,14 +139,27 @@ function! s:goyo_leave()
 "  set showmode
 "  set showcmd
 "  set scrolloff=5
+  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
+  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
+  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
+  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
   Limelight!
   " ...
 endfunction
 
 nnoremap <F9> :Goyo<CR>
-"nnoremap <F10> :Goyo!<CR>
 
+"$term->cmd_parse("\033]" . $escapecodes{$type} . ";" . $newfont . "\033\\");
+"xft:DejaVu Sans Mono:style=Bold Oblique:size=11
+"echo -e "\033]710;xft:DejaVu Sans Mono:style=Bold Oblique:size=17\033\\"
 
+"xft:Inconsolata for Powerline:size=12
+
+"$ echo -e "\033]710;DejaVu Sans Mono:style=Book:size=10\033\\"
+"DejaVu Sans Mono:style=Book:size=10
+
+"$ echo -e "\033]710;-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1\033\\"
+"-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
@@ -174,7 +191,6 @@ else
   nnoremap <F7> :call ChapterPrev()<CR>
   nnoremap <F8> :call ChapterNext()<CR>
 endif
-
 
 if has("gui_running")
   " GUI is running or is about to start.
