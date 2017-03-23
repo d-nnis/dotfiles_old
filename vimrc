@@ -80,6 +80,8 @@ syntax enable
 set shiftwidth=2
 set tabstop=2
 
+"set guifont=Menlo\ 12
+
 """""""""
 " color "
 """""""""
