@@ -9,15 +9,15 @@
 !URxvt*italicFont:      xft:Anonymous Pro:style=Italic:autohint=true:size=11
 !URxvt*boldItalicFont:  xft:Anonymous Pro:style=Bold Italic:autohint=true:size=11
 URxvt*geometry:        80x50
-URxvt*font:            xft:Inconsolata for Powerline:size=12
-URxvt*boldFont:        xft:Inconsolata for Powerline:bold:size=12
-URxvt*italicFont:      xft:Inconsolata for Powerline:italic:autohint=true:size=12
-URxvt*boldItalicFont:  xft:Inconsolata for Powerline:bold:italic:autohint=true:size=12
+URxvt*font:            xft:Inconsolata for Powerline:size=13
+URxvt*boldFont:        xft:Inconsolata for Powerline:bold:size=13
+URxvt*italicFont:      xft:Inconsolata for Powerline:italic:autohint=true:size=13
+URxvt*boldItalicFont:  xft:Inconsolata for Powerline:bold:italic:autohint=true:size=13
 
 
 !URxvt.font:  9x15
 
-!URxvt.letterSpace: -2
+URxvt.letterSpace: -2
 !URxvt.terminalName:rxvt-unicode-256color
 !URxvt.terminalName:screen-256color
 XTerm*termName: xterm-256color
