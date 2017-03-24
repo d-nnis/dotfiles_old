@@ -28,6 +28,8 @@
 * gcn!  ~~ amend! that file, (n)o edit of commit msg
 * gcan! ~~ amend! (a)ll files, (n)o edit of commit msg
 * gSurl ~~ show urls of (S)ubmodules
+* gpSOG ~~ chaining perl-scripts to (p)ush (S)ubmodules to (O)rigin and (G)itspace
+
 
 ### Shell
 * caps lock is mapped to escape via Xmodmap
@@ -70,8 +72,8 @@
   * ? ~~ list defined hotkeys
 
 ### VIM
-* i_CTRL-v ~~ insert sytem clipboard (in insert mode) (de-activated)
 * CTRL-s ~~ quick save, also in INSERTMODE
+* CTRL-p/ -n ~~ in perl: search @INC for defined words, (p)revious/ (n)ext
 * :W  ~~ save file in sudo mode
 * \<leader\> ... ~~ is ',' (comma). Usage: type ,w (_comma w_) to save file
   * w ~~ quick (w)rite
@@ -201,8 +203,8 @@
   * start tpm and vim-plug fetch
   * "pmodload: no such module: rumpel" ?
 * vim
+  * \<\> ~~ move tab one down/up...?
   * PlugInstall! if not exist
-  * collision with fzf
   * if INSERTMODE cursor w/ underline
   * gvim ~~ set C-M-v to insert...
   * y$ ~~ copy till real end of line
