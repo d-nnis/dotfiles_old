@@ -481,6 +481,8 @@ nnoremap <leader>R :ReloadVimrc<CR>
 set list
 set number
 set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/)
+nnoremap <leader>u :set relativenumber!<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
