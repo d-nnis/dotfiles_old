@@ -85,7 +85,7 @@ check_packages
 if [ "$install_pkg" -eq "1" ]; then
   install packages
   sudo apt-get update
-  sudo apt-get install $list
+  sudo apt-get -y install $list
 fi
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
