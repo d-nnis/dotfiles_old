@@ -40,6 +40,9 @@ noremap <leader>p o"<C-v>"<CR>
 noremap <leader>P t"<C-v>"<CR>
 noremap gs  o-windows 
 noremap gS  t-windows 
+" TODO: open tab with one step back in history - does not seem to work
+noremap z :his<CR>;b1<CR>
+
 
 " search/(f)ind clipboard content in tab/ website
 noremap <leader>f /<C-v><CR>
