@@ -57,11 +57,9 @@ hash -d dot=~/dotfiles
 ## }}}
 
 ## asciidoc toolchain
-if [ -x $(which a2x) ]; then
+if [ -x $((which a2x) > /dev/null) ]; then
     alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
    #alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-a lang=de -v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
-  else
-    echo alias: a2x not found
 fi
 
 
