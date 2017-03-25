@@ -18,6 +18,9 @@ vim/plugged/*
 ## config
 ### mc
 config/mc/*
+!config/mc/ini
+!config/mc/panels.ini
+!config/mc/mc.ext
 !config/mc/solarized.ini
 
 ## moc
