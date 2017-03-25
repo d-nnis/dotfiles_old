@@ -63,8 +63,9 @@ URxvt.cursorBlink: true
 
 URxvt.transparent: true
 URxvt.tintColor:#494949
-! ?
-!URxvt.shading: 9.5
+
+! the smaller the number the darker
+URxvt.shading: 20
 ! ?
 !URxvt.borderLess: false
 

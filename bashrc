@@ -85,8 +85,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f $HOME/$DOTFILES/alias ]; then
-  . $HOME/$DOTFILES/alias
+if [ -f $HOME/dotfiles/alias ]; then
+  . $HOME/dotfiles/alias
 fi
 
 if [ -d $HOME/.pyenv/bin ]; then
@@ -99,6 +99,9 @@ if [ -d $HOME/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
+if [ -d $HOME/dotfiles/bin ]; then
+  export PATH="$HOME/dotfiles/bin:$PATH"
+fi
 if [ -d $HOME/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi

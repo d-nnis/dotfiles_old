@@ -43,6 +43,8 @@ if [[ $BASH != *bash ]]; then
   ## global aliases
   alias -g G='|grep ' # cat file.txt G error
   alias -g L='|less ' # <massive file at stdout> L
+  alias -g X='|xclip' # copy stdout to clipboard
+
 fi
 
 ## hash'd dirs
@@ -57,17 +59,28 @@ hash -d dot=~/dotfiles
 ## }}}
 
 ## asciidoc toolchain
-if [ -x $(which a2x) ]; then
+if [ -x $((which a2x) > /dev/null) ]; then
     alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
    #alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-a lang=de -v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
-  else
-    echo alias: a2x not found
 fi
 
 
 
 alias confed=configedit
-alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zpreztorc ~/dotfiles/alias ~/.zprofile ~/.zshenv ~/.zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
+#alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zprezto/runcoms/zpreztorc ~/dotfiles/alias ~/dotfiles/zprezto/runcoms/zprofile ~/dotfiles/zprezto/runcoms/zshenv ~/dotfiles/zprezto/runcoms/zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
+alias configedit="cd ~/dotfiles && \
+  vi ~/dotfiles/vimrc \
+  ~/dotfiles/bashrc \
+  ~/dotfiles/tmux.conf \
+  ~/dotfiles/alias \
+  ~/dotfiles/Xmodmap \
+  ~/dotfiles/Xresources \
+  ~/dotfiles/zprezto/runcoms/zpreztorc \
+  ~/dotfiles/zprezto/runcoms/zprofile \
+  ~/dotfiles/zprezto/runcoms/zshenv \
+  ~/dotfiles/zprezto/runcoms/zshrc \
+  ~/dotfiles/vimperatorrc "
+
 alias confrel=configreload
 configreload() {
   echo "Reloading..."

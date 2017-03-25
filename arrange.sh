@@ -2,9 +2,21 @@
 set -o xtrace
 
 ## install switches
-deskenv=1
-entertainment=1
+deskenv=0
+entertainment=0
 install_pkg=0
+
+if [ "$1" == "-a" ]; then
+  deskenv=1
+  entertainment=1
+elif [ "$1" == "-h" ]; then
+  echo usage  $0 -a  -- installation for desktop-environment
+  echo   and entertainment as well
+  echo default: only necessary deb-packages and
+  echo   terminal setup
+fi
+
+exit 1
 
 ## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
 link_home="vimperatorrc vimperatorrc.local vimperator"
@@ -62,6 +74,7 @@ lesskey &
 ## programs only for terminal environment
 list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
 list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
+list+=" cups-pdf"
 
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin"  # ncurses audio-player

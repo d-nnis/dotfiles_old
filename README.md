@@ -39,6 +39,10 @@
 * lla           # show the 20 **la**test (mtime) files
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
+* global aliases
+  * <cmd> G xz  # <command> grep xy
+  * L           # less
+  * X           # xclip - copy to system clipoard
 * zsh
   * Alt-
     * . # last argument in history

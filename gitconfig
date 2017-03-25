@@ -3,6 +3,7 @@
 [user]
   name = Dennis
   email = martymcfly@posteo.de
+	signingkey = 7E0F4EC8
 [alias]
   r = remote -v
   l = log --graph
