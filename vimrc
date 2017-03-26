@@ -818,8 +818,8 @@ map <leader>q :e ~/buffer<cr>
 " rather asciidoc
 
 function! ScribbleIntro()
-    " line results in the line number of expression, here: "$": last line of buffer
-    " min returns the minimum value. Here: 20 (if there are less lines than that number accordingly)
+    " _line_ results in the line number of expression, here: "$": last line of buffer
+    " _min_ returns the minimum value. Here: 20 (if there are less lines than that number accordingly)
     " calculate range: within first 20 existing lines
     let ll = min([20, line("$")])
     " position cursor at start of file
@@ -833,8 +833,9 @@ function! ScribbleIntro()
       let cursor_pos = getpos(".")
       let cursor_line = cursor_pos[1]
       echo "cursor: ".cursor_line
-      call append(cursor_line+1, '')
+      call append(cursor_line, '')
       call cursor(cursor_line+1,1)
+      startinsert
 "      exe cursor_line."put =\n"
     else
       echo "not found: ".headtoday
@@ -843,13 +844,31 @@ function! ScribbleIntro()
       1put =headtoday
       " set cursor one line below
       call cursor(2, 1)
+      startinsert
       normal! o
     endif
-endfun
+endfunction
+
+function! OpenNotesOfTheDay()
+  "let file = call system('find_notesoftheday.sh')
+  "read! find_notesoftheday.sh  "works
+  "execute '!find_notesoftheday.sh'
+  " does not work yet
+  let file = execute read! "/home/dennis/dotfiles/bin/find_notesoftheday.sh"
+  let file = "asd"
+  " workaround does not work yet
+  "let file = $foundnotes
+"  let file = read find_notesoftheday.sh
+  echo "found:" .file
+
+endfunction
 
       "normal! /headtoday
       "normal! o
+"map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
+
+
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
