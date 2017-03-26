@@ -69,7 +69,6 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
-""""""""
 augroup_neomake_config
   au!
   autocmd! BufWritePost * Neomake
@@ -97,7 +96,9 @@ let g:seoul256_background = 233
 "   Default: 253
 "let g:seoul256_background = 256
 
-colo seoul256
+color seoul256
+" this one only vor gvim?
+colorscheme seoul256
 " Light color scheme
 "colo seoul256-light
 
@@ -116,10 +117,16 @@ let g:limelight_paragraph_span = 2
 let g:limelight_default_coefficient = 0.7
 " turn on :Goyo
 function! s:goyo_enter()
-  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
-  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
-  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
-  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+
+  if ! has("gui_running")
+    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
+    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
+    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
+    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+  else
+    set guifont=Monaco\ 15
+    colorscheme darkblue
+  endif
   silent !tmux set status off
   Goyo 65%x80%
   Limelight 0.7 " the higher the darker
@@ -139,10 +146,15 @@ function! s:goyo_leave()
 "  set showmode
 "  set showcmd
 "  set scrolloff=5
-  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
-  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
-  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
-  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+  if ! has("gui_running")
+    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
+    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
+    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
+    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+    colorscheme seoul256
+  endif
   Limelight!
   " ...
 endfunction
@@ -173,9 +185,42 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "  call Limelight!
 "endfunction
 
-"""""""""""""""""""
-" help me, Ronda! "
-"""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
+" help me, Ronda! - helper functions "
+""""""""""""""""""""""""""""""""""""""
+
+"if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
+"  inoremap <F7> <Esc>:call AprevChapter()<CR>
+"  inoremap <F8> <Esc>:call AnextChapter()<CR>
+"  nnoremap <F7> :call AprevChapter()<CR>
+"  nnoremap <F8> :call AnextChapter()<CR>
+"elseif &ft =~ 'markdown'
+"  inoremap <F7> <Esc>:call MDprevChapter()<CR>
+"  inoremap <F8> <Esc>:call MDnextChapter()<CR>
+"  nnoremap <F7> :call MDprevChapter()<CR>
+"  nnoremap <F8> :call MDnextChapter()<CR>
+"elseif &ft =~ 'vim'
+"  inoremap <F7> <Esc>:call VIprevChapter()<CR>
+"  inoremap <F8> <Esc>:call VInextChapter()<CR>
+"  nnoremap <F7> :call VIprevChapter()<CR>
+"  nnoremap <F8> :call VInextChapter()<CR>
+"endif
+
+
+
+
+function! MakeFileExecutable()
+    !chmod u+x %
+    ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
+    "    :r this
+endfunction
+
+function! OpenFileInFirefox()
+  " TODO: use same tab every time (possible?)
+  :!firefox % > /dev/null 2>&1 &
+endfunction
+
+nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
 if exists("ChapterPrev")
 else
@@ -204,9 +249,12 @@ set modelines=5
 "inoremap <buffer> <C-v> <Left><C-O>"+p
 
 
-"" cursorshape, turn color when entering INSERT-/ NORMALMODE
-"" throws funny signs with XFCE4-terminal
-"" works vim gnome-terminal
+""""""""""""""""""""""""""""""""
+" appearance depending on MODE "
+""""""""""""""""""""""""""""""""
+" cursorshape, turn color when entering INSERT-/ NORMALMODE
+" throws funny signs with XFCE4-terminal
+" works vim gnome-terminal
 if $XDG_CURRENT_DESKTOP != "XFCE"
   if &term =~ "screen-256color"
     let &t_SI = "\<Esc>]12;red\x7"
@@ -286,11 +334,11 @@ endif
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi statusline guifg=red ctermfg=red
-    set cursorcolumn
+    "set cursorcolumn
   elseif a:mode == 'r'
     hi statusline guifg=blue ctermfg=lightblue
     "hi statusline ctermfg=green
-    set cursorcolumn
+    "set cursorcolumn
   else
     hi statusline guifg=magenta ctermfg=magenta
   endif
@@ -299,7 +347,7 @@ endfunction
 
 function! InsertLeaveActions()
   hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
-  set nocursorcolumn
+  "set nocursorcolumn
   set nocursorline
 endfunction
 
@@ -309,45 +357,8 @@ au InsertLeave * call InsertLeaveActions()
 " to handle exiting insert mode via a control-C
 inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 
-" default the statusline
+" default of statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
-
-""""""""""""""""""""
-" helper functions "
-""""""""""""""""""""
-
-"if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
-"  inoremap <F7> <Esc>:call AprevChapter()<CR>
-"  inoremap <F8> <Esc>:call AnextChapter()<CR>
-"  nnoremap <F7> :call AprevChapter()<CR>
-"  nnoremap <F8> :call AnextChapter()<CR>
-"elseif &ft =~ 'markdown'
-"  inoremap <F7> <Esc>:call MDprevChapter()<CR>
-"  inoremap <F8> <Esc>:call MDnextChapter()<CR>
-"  nnoremap <F7> :call MDprevChapter()<CR>
-"  nnoremap <F8> :call MDnextChapter()<CR>
-"elseif &ft =~ 'vim'
-"  inoremap <F7> <Esc>:call VIprevChapter()<CR>
-"  inoremap <F8> <Esc>:call VInextChapter()<CR>
-"  nnoremap <F7> :call VIprevChapter()<CR>
-"  nnoremap <F8> :call VInextChapter()<CR>
-"endif
-
-
-
-
-function! MakeFileExecutable()
-    !chmod u+x %
-    ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
-    "    :r this
-endfunction
-
-function! OpenFileInFirefox()
-  " TODO: use same tab every time (possible?)
-  :!firefox % > /dev/null 2>&1 &
-endfunction
-
-nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
 """"""""""""""""""
 " autocorrection "
@@ -362,9 +373,6 @@ nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 " or better yet: do it in a final phase after writing
 " results in resource-saving
 
-"""""""""""""""""""""
-" saved corrections "
-"""""""""""""""""""""
 " turn WOrd into Word
 nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
 
@@ -452,6 +460,8 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
+"""""""""""""""""""""""""""""""""""
+
 " already set with autoread?
 " problem with Neomake
 "augroup myvimrc
@@ -478,11 +488,18 @@ nnoremap <leader>R :ReloadVimrc<CR>
 """""""""""""""""
 " amix settings "
 """""""""""""""""
+
+
+"set listchars=eol:$
+" in newer version space too:
+"set listchars=eol:$,tab:>-,extends:>,precedes:<,space:␣
+set listchars=eol:$,tab:>-,extends:>,precedes:<
+"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+" end of line characters
 set list
 set number
 set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/)
 nnoremap <leader>u :set relativenumber!<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -590,7 +607,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 try
     " colorscheme desert
