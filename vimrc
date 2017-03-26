@@ -342,13 +342,14 @@ function! InsertStatuslineColor(mode)
   else
     hi statusline guifg=magenta ctermfg=magenta
   endif
-  set cursorline
+  " TODO: no cursorline if in Focus/Goyo-mode
+  "set cursorline
 endfunction
 
 function! InsertLeaveActions()
   hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
   "set nocursorcolumn
-  set nocursorline
+  "set nocursorline
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
