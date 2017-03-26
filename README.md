@@ -102,6 +102,7 @@
   * W  ~~ toggle wrapping lines
   * qb  ~~ (q)uote(b)lock
   * F ~~ (F)ootnote
+  * co ~~ (co)py file into a new tab
 * \<F4\>  ~~ correction: WOrd -> Word
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
