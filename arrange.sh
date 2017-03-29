@@ -27,6 +27,7 @@ link_home+=" tmux.conf tmux"
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
 link_home+=" multitailrc w3m"
 link_home+=" lesskey moc"
+link_home+=" asciidoc"
 
 # TODO: doesbackup work properly?
 # remove existing backup
