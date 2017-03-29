@@ -69,7 +69,6 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
-""""""""
 augroup_neomake_config
   au!
   autocmd! BufWritePost * Neomake
@@ -97,7 +96,9 @@ let g:seoul256_background = 233
 "   Default: 253
 "let g:seoul256_background = 256
 
-colo seoul256
+color seoul256
+" this one only vor gvim?
+colorscheme seoul256
 " Light color scheme
 "colo seoul256-light
 
@@ -116,13 +117,22 @@ let g:limelight_paragraph_span = 2
 let g:limelight_default_coefficient = 0.7
 " turn on :Goyo
 function! s:goyo_enter()
-  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
-  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
-  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
-  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+
+  if ! has("gui_running")
+"    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
+"    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
+"    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
+"    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+   ! focus.sh -on
+  else
+    set guifont=Monaco\ 15
+    colorscheme seoul256
+  endif
   silent !tmux set status off
   Goyo 65%x80%
   Limelight 0.7 " the higher the darker
+  set nolist
+  set so=3
   "TODO: change font-size to 15 (perl:font-size (URxvt))
   "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   "set noshowmode
@@ -139,11 +149,20 @@ function! s:goyo_leave()
 "  set showmode
 "  set showcmd
 "  set scrolloff=5
-  ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
-  ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
-  ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
-  ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+  if ! has("gui_running")
+"    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
+"    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
+"    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
+"    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+    ! focus.sh -off
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+    colorscheme seoul256
+  endif
   Limelight!
+  set list
+  
+  set so=7
   " ...
 endfunction
 
@@ -173,9 +192,42 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "  call Limelight!
 "endfunction
 
-"""""""""""""""""""
-" help me, Ronda! "
-"""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
+" help me, Ronda! - helper functions "
+""""""""""""""""""""""""""""""""""""""
+
+"if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
+"  inoremap <F7> <Esc>:call AprevChapter()<CR>
+"  inoremap <F8> <Esc>:call AnextChapter()<CR>
+"  nnoremap <F7> :call AprevChapter()<CR>
+"  nnoremap <F8> :call AnextChapter()<CR>
+"elseif &ft =~ 'markdown'
+"  inoremap <F7> <Esc>:call MDprevChapter()<CR>
+"  inoremap <F8> <Esc>:call MDnextChapter()<CR>
+"  nnoremap <F7> :call MDprevChapter()<CR>
+"  nnoremap <F8> :call MDnextChapter()<CR>
+"elseif &ft =~ 'vim'
+"  inoremap <F7> <Esc>:call VIprevChapter()<CR>
+"  inoremap <F8> <Esc>:call VInextChapter()<CR>
+"  nnoremap <F7> :call VIprevChapter()<CR>
+"  nnoremap <F8> :call VInextChapter()<CR>
+"endif
+
+
+
+
+function! MakeFileExecutable()
+    !chmod u+x %
+    ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
+    "    :r this
+endfunction
+
+function! OpenFileInFirefox()
+  " TODO: use same tab every time (possible?)
+  :!firefox % > /dev/null 2>&1 &
+endfunction
+
+nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
 if exists("ChapterPrev")
 else
@@ -204,9 +256,12 @@ set modelines=5
 "inoremap <buffer> <C-v> <Left><C-O>"+p
 
 
-"" cursorshape, turn color when entering INSERT-/ NORMALMODE
-"" throws funny signs with XFCE4-terminal
-"" works vim gnome-terminal
+""""""""""""""""""""""""""""""""
+" appearance depending on MODE "
+""""""""""""""""""""""""""""""""
+" cursorshape, turn color when entering INSERT-/ NORMALMODE
+" throws funny signs with XFCE4-terminal
+" works vim gnome-terminal
 if $XDG_CURRENT_DESKTOP != "XFCE"
   if &term =~ "screen-256color"
     let &t_SI = "\<Esc>]12;red\x7"
@@ -286,21 +341,22 @@ endif
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi statusline guifg=red ctermfg=red
-    set cursorcolumn
+    "set cursorcolumn
   elseif a:mode == 'r'
     hi statusline guifg=blue ctermfg=lightblue
     "hi statusline ctermfg=green
-    set cursorcolumn
+    "set cursorcolumn
   else
     hi statusline guifg=magenta ctermfg=magenta
   endif
-  set cursorline
+  " TODO: no cursorline if in Focus/Goyo-mode
+  "set cursorline
 endfunction
 
 function! InsertLeaveActions()
   hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
-  set nocursorcolumn
-  set nocursorline
+  "set nocursorcolumn
+  "set nocursorline
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
@@ -309,45 +365,8 @@ au InsertLeave * call InsertLeaveActions()
 " to handle exiting insert mode via a control-C
 inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 
-" default the statusline
+" default of statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
-
-""""""""""""""""""""
-" helper functions "
-""""""""""""""""""""
-
-"if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
-"  inoremap <F7> <Esc>:call AprevChapter()<CR>
-"  inoremap <F8> <Esc>:call AnextChapter()<CR>
-"  nnoremap <F7> :call AprevChapter()<CR>
-"  nnoremap <F8> :call AnextChapter()<CR>
-"elseif &ft =~ 'markdown'
-"  inoremap <F7> <Esc>:call MDprevChapter()<CR>
-"  inoremap <F8> <Esc>:call MDnextChapter()<CR>
-"  nnoremap <F7> :call MDprevChapter()<CR>
-"  nnoremap <F8> :call MDnextChapter()<CR>
-"elseif &ft =~ 'vim'
-"  inoremap <F7> <Esc>:call VIprevChapter()<CR>
-"  inoremap <F8> <Esc>:call VInextChapter()<CR>
-"  nnoremap <F7> :call VIprevChapter()<CR>
-"  nnoremap <F8> :call VInextChapter()<CR>
-"endif
-
-
-
-
-function! MakeFileExecutable()
-    !chmod u+x %
-    ":call system('chmod u+x ' . shellescape(fname)) [https://stackoverflow.com/questions/17459104/how-to-execute-an-external-command-in-vim-script#17459161]
-    "    :r this
-endfunction
-
-function! OpenFileInFirefox()
-  " TODO: use same tab every time (possible?)
-  :!firefox % > /dev/null 2>&1 &
-endfunction
-
-nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 
 """"""""""""""""""
 " autocorrection "
@@ -362,9 +381,6 @@ nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
 " or better yet: do it in a final phase after writing
 " results in resource-saving
 
-"""""""""""""""""""""
-" saved corrections "
-"""""""""""""""""""""
 " turn WOrd into Word
 nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
 
@@ -452,6 +468,8 @@ if has("autocmd")
 endif
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
+"""""""""""""""""""""""""""""""""""
+
 " already set with autoread?
 " problem with Neomake
 "augroup myvimrc
@@ -478,11 +496,18 @@ nnoremap <leader>R :ReloadVimrc<CR>
 """""""""""""""""
 " amix settings "
 """""""""""""""""
+
+
+"set listchars=eol:$
+" in newer version space too:
+"set listchars=eol:$,tab:>-,extends:>,precedes:<,space:␣
+set listchars=eol:$,tab:>-,extends:>,precedes:<
+"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+" end of line characters
 set list
 set number
-set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/)
+set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earliernnoremap <leader>u :set relativenumber!<CR>
 nnoremap <leader>u :set relativenumber!<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -516,7 +541,7 @@ command W w !sudo tee % > /dev/null
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+"set so=7
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -590,7 +615,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 try
     " colorscheme desert
@@ -818,8 +843,8 @@ map <leader>q :e ~/buffer<cr>
 " rather asciidoc
 
 function! ScribbleIntro()
-    " line results in the line number of expression, here: "$": last line of buffer
-    " min returns the minimum value. Here: 20 (if there are less lines than that number accordingly)
+    " _line_ results in the line number of expression, here: "$": last line of buffer
+    " _min_ returns the minimum value. Here: 20 (if there are less lines than that number accordingly)
     " calculate range: within first 20 existing lines
     let ll = min([20, line("$")])
     " position cursor at start of file
@@ -833,8 +858,9 @@ function! ScribbleIntro()
       let cursor_pos = getpos(".")
       let cursor_line = cursor_pos[1]
       echo "cursor: ".cursor_line
-      call append(cursor_line+1, '')
+      call append(cursor_line, '')
       call cursor(cursor_line+1,1)
+      startinsert
 "      exe cursor_line."put =\n"
     else
       echo "not found: ".headtoday
@@ -843,13 +869,31 @@ function! ScribbleIntro()
       1put =headtoday
       " set cursor one line below
       call cursor(2, 1)
+      startinsert
       normal! o
     endif
-endfun
+endfunction
+
+function! OpenNotesOfTheDay()
+  "let file = call system('find_notesoftheday.sh')
+  "read! find_notesoftheday.sh  "works
+  "execute '!find_notesoftheday.sh'
+  " does not work yet
+  let file = execute read! "/home/dennis/dotfiles/bin/find_notesoftheday.sh"
+  let file = "asd"
+  " workaround does not work yet
+  "let file = $foundnotes
+"  let file = read find_notesoftheday.sh
+  echo "found:" .file
+
+endfunction
 
       "normal! /headtoday
       "normal! o
+"map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
+
+
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>

@@ -26,7 +26,8 @@ link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
 link_home+=" multitailrc w3m"
-link_home+=" lesskey moc"
+link_home+=" lesskey moc htoprc"
+link_home+=" asciidoc"
 
 # TODO: doesbackup work properly?
 # remove existing backup

@@ -43,6 +43,8 @@
   * <cmd> G xz  # <command> grep xy
   * L           # less
   * X           # xclip - copy to system clipoard
+  * A           # search with ag in a list of files, e.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
+  * V           # edit piped result (files) in vim
 * zsh
   * Alt-
     * . # last argument in history
@@ -102,6 +104,7 @@
   * W  ~~ toggle wrapping lines
   * qb  ~~ (q)uote(b)lock
   * F ~~ (F)ootnote
+  * co ~~ (co)py file into a new tab
 * \<F4\>  ~~ correction: WOrd -> Word
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
