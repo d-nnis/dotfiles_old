@@ -43,6 +43,8 @@
   * <cmd> G xz  # <command> grep xy
   * L           # less
   * X           # xclip - copy to system clipoard
+  * A           # search with ag in a list of files, e.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
+  * V           # edit piped result (files) in vim
 * zsh
   * Alt-
     * . # last argument in history
