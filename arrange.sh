@@ -34,22 +34,21 @@ link_home+=" multitailrc w3m"
 link_home+=" lesskey moc htoprc"
 link_home+=" asciidoc"
 
-# TODO: doesbackup work properly?
 # remove existing backup
 if [ -d $HOME/dotfiles_backup ]; then
   rm -rfv $HOME/dotfiles_backup
-else
-  mkdir -p $HOME/dotfiles_backup
 fi
+# make dir in any case
+mkdir -p $HOME/dotfiles_backup
 
 # TODO: local .vim still present ...?!
 # sometimes link to itself. How come?
 for link in $link_home; do
   echo $link
-  if [ -f $HOME/.$link ]; then
-    mv -fv $HOME/.$link $HOME/dotfiles_backup
-  elif [ -L $HOME/.$link ]; then
+  if [ -L $HOME/.$link ]; then
     rm -rfv $HOME/.$link
+  elif [ -f $HOME/.$link ]; then
+    mv -fv $HOME/.$link $HOME/dotfiles_backup
   fi
   ln -sv $HOME/dotfiles/$link $HOME/.$link
 done
@@ -58,7 +57,7 @@ done
 ## symlinks XDG_CONFIG_DIR -- ~/.config/<program-dir> -> ~/dotfiles/config/<program-dir>
 ##                            ^^^^^ `pwd -L` ^^^^^^^  -> ^^^^^^^^ `pwd -P` ^^^^^^^^^^^^^
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
-link_config="mc htop"
+link_config="mc"
 #link_config+=" "
 
 mkdir -p $HOME/dotfiles_backup/config
@@ -128,7 +127,7 @@ fi
 
 rcfiles="zlogin zlogout zpreztorc zprofile zshenv zshrc"
 
-setopt EXTENDED_GLOB
+#setopt EXTENDED_GLOB
 for rcfile in $rcfiles; do
   if [ -f "$HOME/.$rcfile" ]; then  # file exists
     cp "$HOME/.$rcfile" $HOME/dotfiles_backup
