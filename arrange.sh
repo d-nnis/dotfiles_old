@@ -5,18 +5,23 @@ set -o xtrace
 deskenv=0
 entertainment=0
 install_pkg=0
+terminal=1
 
 if [ "$1" == "-a" ]; then
   deskenv=1
   entertainment=1
+  echo install of deskenv, terminal and entertainment packages
+elif [ "$1" == "-T" ]; then
+  terminal=0
+  echo no install, just arrange
 elif [ "$1" == "-h" ]; then
-  echo usage  $0 -a  -- installation for desktop-environment
-  echo   and entertainment as well
+  echo usage  $0 -a  -- installation for deskenv, terminal
+  echo   and entertainment packages
   echo default: only necessary deb-packages and
   echo   terminal setup
+else
+  echo install only terminal packages
 fi
-
-exit 1
 
 ## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
 link_home="vimperatorrc vimperatorrc.local vimperator"
@@ -73,10 +78,11 @@ done
 lesskey &
 
 ## programs only for terminal environment
-list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
-list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
-list+=" cups-pdf"
-
+if [ $terminal -eq 1 ]; then
+  list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
+  list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
+  list+=" cups-pdf"
+fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin"  # ncurses audio-player
 fi
@@ -113,7 +119,12 @@ $HOME/.tmux/plugins/tpm/bin/install_plugins
 ## git clone --recursive https://github.com/d-nnis/dotfiles.git
 git submodule update --init --recursive --merge
 
-sudo chsh -s /usr/bin/zsh
+if [[ "$(which $SHELL)" != *zsh ]]; then
+  sudo chsh -s /usr/bin/zsh
+  echo zsh is default shell
+else
+  echo zsh is already default shell
+fi
 
 rcfiles="zlogin zlogout zpreztorc zprofile zshenv zshrc"
 
