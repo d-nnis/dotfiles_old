@@ -119,17 +119,20 @@ let g:limelight_default_coefficient = 0.7
 function! s:goyo_enter()
 
   if ! has("gui_running")
-    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
-    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
-    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
-    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+"    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=15\033\\"
+"    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=15\033\\"
+"    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=15\033\\"
+"    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=15\033\\"
+   ! focus.sh -on
   else
     set guifont=Monaco\ 15
-    colorscheme darkblue
+    colorscheme seoul256
   endif
   silent !tmux set status off
   Goyo 65%x80%
   Limelight 0.7 " the higher the darker
+  set nolist
+  set so=3
   "TODO: change font-size to 15 (perl:font-size (URxvt))
   "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   "set noshowmode
@@ -147,15 +150,19 @@ function! s:goyo_leave()
 "  set showcmd
 "  set scrolloff=5
   if ! has("gui_running")
-    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
-    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
-    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
-    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+"    ! echo -e "\033]710;xft:DejaVu Sans Mono:style=Regular:size=10\033\\"
+"    ! echo -e "\033]711;xft:DejaVu Sans Mono:style=Bold:size=10\033\\"
+"    ! echo -e "\033]712;xft:DejaVu Sans Mono:style=Oblique:size=10\033\\"
+"    ! echo -e "\033]713;xft:DejaVu Sans Mono:style=Bold Oblique:size=10\033\\"
+    ! focus.sh -off
   else
     set guifont=DejaVu\ Sans\ Mono\ 10
     colorscheme seoul256
   endif
   Limelight!
+  set list
+  
+  set so=7
   " ...
 endfunction
 
@@ -499,7 +506,7 @@ set listchars=eol:$,tab:>-,extends:>,precedes:<
 " end of line characters
 set list
 set number
-set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/)
+set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earliernnoremap <leader>u :set relativenumber!<CR>
 nnoremap <leader>u :set relativenumber!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -534,7 +541,7 @@ command W w !sudo tee % > /dev/null
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+"set so=7
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
