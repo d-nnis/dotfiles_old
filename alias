@@ -43,7 +43,10 @@ if [[ $BASH != *bash ]]; then
   ## global aliases
   alias -g G='|grep ' # cat file.txt G error
   alias -g L='|less ' # <massive file at stdout> L
+  alias -g V='|xargs vi ' # edit files
   alias -g X='|xclip' # copy stdout to clipboard
+  alias -g A='|xargs -0 aginfiles '  # find in a list with ag.
+                                     # E.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
 
 fi
 
@@ -60,7 +63,9 @@ hash -d dot=~/dotfiles
 
 ## asciidoc toolchain
 if [ -x $((which a2x) > /dev/null) ]; then
-    alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
+  :
+  # replaced by a2pdf.sh
+   #alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
    #alias a2pdf_latex='a2x -v -f pdf -L --asciidoc-opts="-a lang=de -v -b docbook -d book -f /etc/asciidoc/lang-de.conf" --dblatex-opts="-V -T db2latex"'
 fi
 
