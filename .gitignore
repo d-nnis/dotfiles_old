@@ -25,7 +25,6 @@ config/mc/*
 
 ## moc
 moc/*
-!moc/config
 
 ## w3m
 w3m/*
