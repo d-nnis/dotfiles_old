@@ -12,26 +12,25 @@ inoremap <F8> <Esc>:call ChapterNext()<CR>
 nnoremap <F7> :call ChapterPrev()<CR>
 nnoremap <F8> :call ChapterNext()<CR>
 
-if filereadable("/usr/local/bin/asciidoctor")
+if filereadable('/usr/bin/a2x')
   function! AdocConvert()
-    :!asciidoctor %
-    echo "asciidoc converted"
+    :! "a2pdf.sh" %
   endfunction
 endif
-
-" same as above ?
-":command InsFootnote :normal <right>ifootnote:[]
-"nnoremap <leader>F :InsFootnote<CR>
+map <F3> :call AdocConvert()<CR>
 
 """"""""""""
 " Snippets "
 """"""""""""
 " Quoteblock
-map <leader>qb i====<CR>====<Home><CR><up>
+map <leader>qb i****<CR>****<Home><CR><up>
 
 " Footnote
 function! InsertFootnote()
   ifootnote:[]<left>
 endfunction
+" same as above ?
+":command InsFootnote :normal <right>ifootnote:[]
+"nnoremap <leader>F :InsFootnote<CR>
 
 map <leader>F i<right>footnote:[]<left>
