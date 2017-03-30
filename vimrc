@@ -394,6 +394,7 @@ setlocal wrap linebreak
 setlocal textwidth=0
 
 " No auto-wrap at all.
+" s.a. PASTEMODE (set paste)
 setlocal formatoptions-=tc formatoptions+=l
 if v:version >= 602 | setlocal formatoptions-=a | endif
 
@@ -669,6 +670,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 map <leader>W :set wrap!<CR>
+set nowrapscan
 
 
 """"""""""""""""""""""""""""""
