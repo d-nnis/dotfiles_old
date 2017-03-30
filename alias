@@ -16,7 +16,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -lAh'
+alias la='ls -lah'
 alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
 
 alias l='ls -CF' # show in columns with classifiers
@@ -44,6 +44,7 @@ if [[ $BASH != *bash ]]; then
   alias -g G='|grep ' # cat file.txt G error
   alias -g L='|less ' # <massive file at stdout> L
   alias -g V='|xargs vi ' # edit files
+  alias -g W='|xargs which ' # resolve stream if filenames into full paths
   alias -g X='|xclip' # copy stdout to clipboard
   alias -g A='|xargs -0 aginfiles '  # find in a list with ag.
                                      # E.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
