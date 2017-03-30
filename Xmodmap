@@ -7,3 +7,4 @@ add Lock = Caps_Lock
 ! keysym Alt_L = Meta_L Alt_L
 keysym Alt_L = Alt_L
 
+! TODO: 2 errors encountered...

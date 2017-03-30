@@ -99,6 +99,10 @@ configreload() {
   if [ "$1" = "-a" ];then
     echo "Xmodmap"
     xmodmap ~/.Xmodmap
+    if [ -f ~/.Xmodmap.local ]; then
+      echo .Xmodmap.local
+      xmodmap ~/.Xmodmap.local
+    fi
     echo "fonts"
     fc-cache -v ~/.fonts
   else
