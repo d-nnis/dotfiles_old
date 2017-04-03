@@ -24,7 +24,9 @@ config/mc/*
 !config/mc/solarized.ini
 
 ## moc
-moc/*
+moc/cache/*
+moc/last_directory
+moc/pid
 
 ## w3m
 w3m/*
