@@ -61,3 +61,6 @@
 [submodule "urxvt/ext/urxvt-font-size"]
 	path = urxvt/ext/urxvt-font-size
 	url = ssh://git@github.com/d-nnis/urxvt-font-size
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen
