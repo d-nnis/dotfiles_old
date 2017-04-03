@@ -51,6 +51,13 @@
     * / # "?
     * , # "?
     * ((x = 33.3 /9.1)) # echo $x
+  * [z plugin](https://github.com/rupa/z/)
+    * -c     restrict matches to subdirectories of the current directory
+    * -e     echo the best match, don't cd
+    * -l     list only (default)
+    * -r     match by rank only
+    * -t     match by recent access only
+    * -x     remove the current directory from the datafile
 * fzf (FuzzyFind)
   * `<dir>/file**<tab>`
   * `pdf$**<tab>`
@@ -81,6 +88,8 @@
 * CTRL-s ~~ quick save, also in INSERTMODE
 * CTRL-p/ -n ~~ in perl: search @INC for defined words, (p)revious/ (n)ext
 * :W  ~~ save file in sudo mode
+* gt  ~~ (g)o to next (t)ab
+* gT  ~~ (g)o to (T)ab before
 * \<leader\> ... ~~ is ',' (comma). Usage: type ,w (_comma w_) to save file
   * w ~~ quick (w)rite
   * x ~~ open scribble page (in asciidoc), add date
@@ -105,6 +114,10 @@
   * qb  ~~ (q)uote(b)lock
   * F ~~ (F)ootnote
   * co ~~ (co)py file into a new tab
+* AsciiDoc: <leader>...
+  * bq  ~~  (b)lock (q)uote
+  * bn  ~~  (b)lock (n)ote
+  * nf  ~~  (n)ote (f)oot (footnote)
 * \<F4\>  ~~ correction: WOrd -> Word
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
