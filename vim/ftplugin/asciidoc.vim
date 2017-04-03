@@ -23,7 +23,9 @@ map <F3> :call AdocConvert()<CR>
 " Snippets "
 """"""""""""
 " Quoteblock
-map <leader>qb i****<CR>****<Home><CR><up>
+"map <leader>bq i****<CR><Home><CR><up>
+map <leader>bq ,ppi****<CR>****<Home><CR><up><Esc>,ppi
+map <leader>bn ,ppi.Notiz<CR>[NOTE]<CR>====<CR>====<Home><CR><up><Esc>,ppi
 
 " Footnote
 function! InsertFootnote()
@@ -33,4 +35,4 @@ endfunction
 ":command InsFootnote :normal <right>ifootnote:[]
 "nnoremap <leader>F :InsFootnote<CR>
 
-map <leader>F i<right>footnote:[]<left>
+map <leader>nf i<right>footnote:[]<left>
