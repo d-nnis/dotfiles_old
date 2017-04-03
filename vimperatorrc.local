@@ -1,11 +1,23 @@
 
-" mw = mediawiki on codeprobe
+" (m)edia(w)iki on codeprobe
 command! -nargs=* mwopen open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 command! -nargs=* mwtabopen tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 command! -nargs=* mwwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
 map e :mwopen<Space>
 map E :mwtabopen<Space>
 map <Leader>e :mwwindowopen<Space>
+
+" (g)o, (e)dit wiki, straight!
+" https://web6.codeprobe.de/wiki/index.php?title=Learning
+" https://web6.codeprobe.de/wiki/index.php?title=Learning&action=edit
+" (https://web6.codeprobe.de/wiki/index.php?title=Learning&action=edit&section=1)
+command! -nargs=* ewopen open https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit
+command! -nargs=* ewtabopen tabopen https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit
+"command! -nargs=* ewwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map ge :ewopen<Space>
+map gE :ewtabopen<Space>
+"map <Leader>e :mwwindowopen<Space>
+
 
 
 " vim: ft=vim

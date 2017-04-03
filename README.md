@@ -171,12 +171,14 @@
   * c ~~ context menu
   * w ~~ follow hint in a new window
 * g ... # <g>o!
-  * u ~~ open URL one dir/slash *u*p: http://domain.de/here/i/am -> http://domain.de/here/i/
-  * U ~~ open URL *U*p to stem: http://domain.de
+  * u ~~ open URL one dir/slash (u)p: http://domain.de/here/i/am -> http://domain.de/here/i/
+  * U ~~ open URL (U)p to stem: http://domain.de
   * f ~~ view source of website in current tab
   * F ~~ view source of website in GVim
   * s ~~ (s)earch in current tab (`-windows`)
   * S ~~ (S)earch in new tab (`-windows`)
+  * ge ~~ (g)o! (e)dit wiki page!
+  * gE ~~ (g)o! (E)dit page in a new tab
 
 ## Updating
 * one script: ''
