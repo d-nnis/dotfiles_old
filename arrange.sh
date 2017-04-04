@@ -32,7 +32,7 @@ link_home+=" tmux.conf tmux"
 link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
 link_home+=" multitailrc w3m"
 link_home+=" lesskey moc htoprc"
-link_home+=" asciidoc"
+link_home+=" asciidoc antigen"
 
 # remove existing backup
 if [ -d $HOME/dotfiles_backup ]; then
@@ -141,6 +141,7 @@ done
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 xmodmap ~/.Xmodmap
+#TODO: antigen load stuff
 
 exit 0
 
