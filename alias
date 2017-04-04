@@ -17,6 +17,7 @@ fi
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -lah'
+alias lad='la -d'
 alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
 
 alias l='ls -CF' # show in columns with classifiers
