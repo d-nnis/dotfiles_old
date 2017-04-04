@@ -568,7 +568,7 @@ ErrorMessagesQueued = "!"
 #ModPlug_Oversampling = yes
 ModPlug_NoiseReduction = yes
 ModPlug_Reverb = no
-ModPlug_MegaBass = yes
+ModPlug_MegaBass = no
 ModPlug_Surround = no
 
 # ModPlug resampling mode.
@@ -588,7 +588,7 @@ ModPlug_Bits = 16                  # 8, 16 or 32 bits
 ModPlug_Frequency = 44100          # 11025, 22050, 44100 or 48000 Hz
 #ModPlug_ReverbDepth = 0            # 0 (quiet) to 100 (loud)
 #ModPlug_ReverbDelay = 0            # Delay in ms (usually 40-200ms)
-ModPlug_BassAmount = 25             # 0 (quiet) to 100 (loud).
+ModPlug_BassAmount = 10             # 0 (quiet) to 100 (loud).
 ModPlug_BassRange = 10             # Cutoff in Hz (10-100).
 #ModPlug_SurroundDepth = 0          # Surround level 0(quiet)-100(heavy).
 #ModPlug_SurroundDelay = 0          # Surround delay in ms, usually 5-40ms.
