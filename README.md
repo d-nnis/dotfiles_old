@@ -29,14 +29,18 @@
 * gcan! ~~ amend! (a)ll files, (n)o edit of commit msg
 * gSurl ~~ show urls of (S)ubmodules
 * gpSOG ~~ chaining perl-scripts to (p)ush (S)ubmodules to (O)rigin and (G)itspace
-
+* ghide ~~ hide (changes of) file from index (''assume-unchanged'')
+* gunhide ~~ unhide/ re-register file to index (''no-assume-unchanged'')
+* gunhide-all ~~ unhide all files
+* ghidden ~~ show hidden files
 
 ### Shell
 * caps lock is mapped to escape via Xmodmap
 * confed        # load relevant config files into Vim
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
-* lla           # show the 20 **la**test (mtime) files
+* lla           # ls the 20 **la**test (mtime) files
+* lad           # ls dirs only (&& do not enter(
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
 * global aliases
