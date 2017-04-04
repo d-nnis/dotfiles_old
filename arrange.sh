@@ -83,7 +83,7 @@ if [ $terminal -eq 1 ]; then
   list+=" cups-pdf"
 fi
 if [ $entertainment -eq 1 ]; then
-  list+=" moc moc-ffmpeg-plugini librcc-dev"  # ncurses audio-player
+  list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
 fi
 ## programs for desktop environment
 if [ $deskenv -eq 1 ]; then
