@@ -29,7 +29,7 @@ link_home+=" vimrc vim bashrc"
 link_home+=" zprezto gitconfig"
 link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug
-link_home+=" Xmodmap Xresources Xresources.d urxvt fonts"
+link_home+=" Xmodmap Xresources Xresources.d xbindkeysrc urxvt fonts"
 link_home+=" multitailrc w3m"
 link_home+=" lesskey moc htoprc"
 link_home+=" asciidoc antigen"
@@ -81,9 +81,14 @@ if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
   list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
   list+=" cups-pdf"
+  list+=" xbindkeys"
 fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
+  list+=" xmms2"
+  if [ $terminal -eq 1 ]; then
+    list+=" esperanza"
+  fi
 fi
 ## programs for desktop environment
 if [ $deskenv -eq 1 ]; then
@@ -141,7 +146,7 @@ done
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 xmodmap ~/.Xmodmap
-#TODO: antigen load stuff
+antigen apply
 
 exit 0
 
