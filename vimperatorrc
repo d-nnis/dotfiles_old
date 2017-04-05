@@ -129,7 +129,8 @@ nnoremap <Leader>h :hardcopy!<CR>
 "" echo <Tab> ...!
 "" echo buffer
 " (a)ttach tab to other window
-map <Leader>a :tabattach<Space><Tab>
+map <Leader>gta :tabattach<Space><Tab>
+map <Leader>gtd :tabdetach<CR>
 
 source! $HOME/.vimperatorrc.local
 
