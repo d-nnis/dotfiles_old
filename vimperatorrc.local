@@ -18,6 +18,6 @@ map ge :ewopen<Space>
 map gE :ewtabopen<Space>
 "map <Leader>e :mwwindowopen<Space>
 
-
+"TODO: autocompletion for usercommand [liberator://help/map#:command-completion-custom]
 
 " vim: ft=vim
