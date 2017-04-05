@@ -169,8 +169,9 @@
   * p ~~ (p)aste clipboard enclosed in quote signs in current tab (i.e. search with default engine and ignore comma)
   * P ~~ (P)aste clipboard enclosed in quote signs in new tab
   * f ~~ (f)ind clipboard content in website/ tab
-  * a ~~ (a)ttach tab to another window
   * s ~~ (s)ave current page in default download directory
+  * gta ~~ (g)o! (t)ab (a)ttach tab to another window
+  * gtd ~~ (t)ab (d)etach to its own window
 * ; ...
   * c ~~ context menu
   * w ~~ follow hint in a new window
