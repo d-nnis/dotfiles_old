@@ -50,7 +50,11 @@ for link in $link_home; do
   elif [ -f $HOME/.$link ]; then
     mv -fv $HOME/.$link $HOME/dotfiles_backup
   fi
-  ln -sv $HOME/dotfiles/$link $HOME/.$link
+  if [ ! -e $HOME/.$link ]; then
+    ln -sv $HOME/dotfiles/$link $HOME/.$link
+  else
+    echo !! .$link still present?
+  fi
 done
 
 
