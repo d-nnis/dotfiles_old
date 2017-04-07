@@ -43,6 +43,7 @@
 * lad           # ls dirs only (&& do not enter(
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
+* lpqueue       # watch-like monitoring of printing queue
 * global aliases
   * <cmd> G xz  # <command> grep xy
   * L           # less
