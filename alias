@@ -115,6 +115,8 @@ configreload() {
 # programs
 [ -x /usr/bin/pacpl ] &&  alias pacpl_std="pacpl --to mp3 -v --bitrate 190 --delete"
 alias lpstat='lpstat -t'
+#TODO: with xargs {}
+alias lpqueue='multitail -R 2 -l lpq'
 alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
