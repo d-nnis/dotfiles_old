@@ -75,7 +75,8 @@ set hintchars&
 "set hintchars=1234567890
 
 " open: complete also local (f)iles
-set complete=slf
+set complete=ltf
+"s Search engines and keyword URLs f Local files l Firefox location bar entries (bookmarks and history sorted in an intelligent way) b Bookmarks h History S Search engine suggestions t Open tabs
 
 set verbose=15
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
