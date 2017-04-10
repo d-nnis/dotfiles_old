@@ -507,7 +507,7 @@ set listchars=eol:$,tab:>-,extends:>,precedes:<
 " end of line characters
 set list
 set number
-set relativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earliernnoremap <leader>u :set relativenumber!<CR>
+set norelativenumber " (https://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earliernnoremap <leader>u :set relativenumber!<CR>
 nnoremap <leader>u :set relativenumber!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
