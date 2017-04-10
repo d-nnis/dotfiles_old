@@ -18,6 +18,10 @@ map ge :ewopen<Space>
 map gE :ewtabopen<Space>
 "map <Leader>e :mwwindowopen<Space>
 
+" create new wiki page with integrateion of Template
+command! -nargs=1 enwopen open https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit&redlink=1&section=new&preload=Template:preload_gen
+map gne :enwopen<Space>
+
 "TODO: autocompletion for usercommand [liberator://help/map#:command-completion-custom]
 
 " vim: ft=vim
