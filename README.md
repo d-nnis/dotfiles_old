@@ -82,12 +82,15 @@
     * C-/ ~~ show font attributes
 * commands
   * getclip ~~ paste clipboard content
+
 ### Tmux
 * \<prefix\>... # is \<C-a\>
   * R ~~ source ~/.tmux.conf
   * s ~~ display and choose session
   * S ~~ send pane to other window
   * ? ~~ list defined hotkeys
+  * C-s ~~ (s)ave tmux session ([tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect))
+  * C-r ~~ (r)estore tmux session
 
 ### VIM
 * CTRL-s ~~ quick save, also in INSERTMODE
@@ -151,7 +154,7 @@
   * ygd ~~ yank :DocOpen URL
   * _Couldn't get a file descriptor referring to the console_ - even is suffix alias is configured in zsh.
 * [cutlass](https://github.com/nelstrom/vim-cutlass)
-  * 
+
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
 * \<C-j\> ~~ switch to pane (tmux)/ window (vim) down
@@ -185,6 +188,8 @@
   * S ~~ (S)earch in new tab (`-windows`)
   * ge ~~ (g)o! (e)dit wiki page!
   * gE ~~ (g)o! (E)dit page in a new tab
+  * gne ~~ (g)o! (n)ew wiki page, (e)dit! (with _Template:Preload\_gen_)
+
 
 ## Updating
 * one script: ''
