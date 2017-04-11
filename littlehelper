@@ -1,0 +1,69 @@
+
+#clock - A bash clock that can run in your terminal window.
+function clock ()
+{
+	while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
+} 
+
+# A much better calendar
+function today()
+{
+    local TMPDATE PARAM DASFILE
+    TMPDATE=$(date '+%m %Y')
+    PARAM=$(date '+%e ')
+    DASFILE="$HOME/.idag_tmp.$$"
+
+    cal -m $TMPDATE > $DASFILE
+
+    cat $DASFILE | \
+        sed -e "s/$PARAM/`tput smso`&`tput rmso`/"  
+    
+    echo -e "      \c"
+    date '+%T'
+    date '+%a %d/%m/%y Week %V'
+
+    /bin/rm -f $DASFILE  # /bin/rm so that my rm alias wont get it...
+}
+
+# CALCULATOR
+function calc {
+  echo "${1}"|bc -l;
+}
+
+# Fetch my IP address
+function myip() {
+  lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | awk '{ print $4 }' | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g'
+}
+
+function my_ps() {
+  ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; 
+}
+
+
+function pp() {
+  my_ps f | awk '!/awk/ && $0~var' var=${1:-".*"} ;
+}
+
+function ii() {   # get current host related info
+  echo -e "\nYou are logged on ${RED}$HOST"
+  echo -e "\nAdditionnal information:$NC " ; uname -a
+  echo -e "\n${RED}Users logged on:$NC " ; w -h
+  echo -e "\n${RED}Current date :$NC " ; date
+  echo -e "\n${RED}Machine stats :$NC " ; uptime
+  echo -e "\n${RED}Memory stats :$NC " ; free
+  my_ip 2>&- ;
+  echo -e "\n${RED}Local IP Address :$NC" ; /sbin/ifconfig | awk /'inet addr/ {print $2}'
+  echo -e "\n${RED}ISP Address :$NC" ; myip
+  echo
+}
+
+function treegraph() { # Graphical tree of sub-directories
+  ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
+}
+
+function cmdoften() { # List of commands you use most often
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+# vim: ft=sh
+

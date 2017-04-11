@@ -5,8 +5,6 @@
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
@@ -19,13 +17,12 @@ alias ll='ls -l'
 alias la='ls -lah'
 alias lad='la -d'
 alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
-
 alias l='ls -CF' # show in columns with classifiers
+
 ## activated git aliases
 alias gital='alias | grep git | less && git al'
 alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 
-#alias ssh='ssh -Y'
 alias rm='rm -I'
 alias watch='watch -d'
 alias diffdir='/usr/bin/diff -rq'
@@ -34,7 +31,6 @@ alias diffdir='/usr/bin/diff -rq'
 ## zsh specifica
 # $SHELL is not reliable?
 if [[ $BASH != *bash ]]; then
-
   ## suffix aliases
   alias -s pdf=xdg-open
   #alias -s html=firefox
@@ -49,7 +45,9 @@ if [[ $BASH != *bash ]]; then
   alias -g X='|xclip' # copy stdout to clipboard
   alias -g A='|xargs -0 aginfiles '  # find in a list with ag.
                                      # E.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
-
+else  # is bash
+  alias ..='cd ..'
+  alias ...='cd ../..'
 fi
 
 ## hash'd dirs
@@ -121,6 +119,41 @@ alias lpqueue='multitail -R 2 -l lpq'
 alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
+
+## unix porn {{{
+alias lx='ls -lXB --color=auto'		# sort by extension
+alias lk='ls -lSr --color=auto'              # sort by size
+alias lc='ls -lcr --color=auto'		# sort by change time  
+alias lu='ls -lur --color=auto'		# sort by access time   
+alias lr='ls -lR --color=auto'               # recursive ls
+alias lt='ls -lStr --color=auto'              # sort by date
+alias lm='ls -al  --color=auto |more'         # pipe through 'more'
+alias tree='tree -Csu'		# nice alternative to 'ls'
+alias lsdir='ls -d */'		# list only directories
+alias lisa='ls -lisa --color=auto'
+alias lsperm='ls -l | sed -e 's/rwx/7/g' | sed -e 's/r--/4/g' | sed -e 's/r-x/5/g' | sed -e 's/rw-/6/g' | sed -e 's/---/0/g''
+alias lssize='du -sh * | sort -n | more'
+alias rm='rm -v'
+alias mv='mv -v'
+alias cp='cp -v'
+alias grep='grep --color=auto'
+alias mount='mount | column -t'
+
+alias psaux='ps ax -eo user,pid,priority,args'
+alias ping='ping -c 10'
+alias openports='netstat -nape --inet'
+
+alias nosound='for i in *; do mplayer "$i" -nosound; done'
+alias fullscreen='for i in *; do mplayer "$i" -fs; done'
+alias fullscreennosound='for i in *; do mplayer "$i" -fs -nosound; done'
+
+alias 256colors='for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done'
+alias spacewaste="du -s * | sort -n | tail"
+alias connectednow="lsof -P -i -n"
+alias RTFM="echo -e '\033[1;33m'' http://xkcd.com/293/'"
+
+## / unix porn }}}
+
 
 
 [ -f ~/.alias.local ] && source ~/.alias.local

@@ -59,16 +59,18 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    :
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    :
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -108,11 +110,68 @@ fi
 
 export BINLOG="$HOME/bin/bin.log"
 
+# disable xon/xoff
 stty -ixon
 GPG_TTY=$(tty)
 export GPG_TTY
 
-#export TERM="rxvt-unicode-256color"
-#export TERM="screen-256color"
+## unix-porn {{{
+
+#######################################################
+# slackmaGic's .bashrc file
+# IRC ##slackware @ freenode
+# www.slackmagic.com
+#
+# Last Modified 07-14-2013
+#######################################################
+
+# Define a few COLORS
+liBlack="\[\033[0;30m\]"
+boBlack="\[\033[1;30m\]"
+liRed="\[\033[0;31m\]"
+boRed="\[\033[1;31m\]"
+liGreen="\[\033[0;32m\]"
+boGreen="\[\033[1;32m\]"
+liYellow="\[\033[0;33m\]"
+boYellow="\[\033[1;33m\]"
+liBlue="\[\033[0;34m\]"
+boBlue="\[\033[1;34m\]"
+liMagenta="\[\033[0;35m\]"
+boMagenta="\[\033[1;35m\]"
+liCyan="\[\033[0;36m\]"
+boCyan="\[\033[1;36m\]"
+liWhite="\[\033[0;37m\]"
+boWhite="\[\033[1;37m\]"
+
+
+# Enable 256 Colors for bash prompt
+function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
+
+PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+
+PS2="> "
+PS3="> "
+PS4="+ "
+
+# EXPORTS
+#######################################################
+shopt -s histappend	 		#append new history to existing file rather than rewriting - saves everything now!
+shopt -s cdspell 			#ignore simple mistakes such as otp instead of opt or ect instead of etc
+shopt -s cmdhist			#multiple line commands stay together in history
+shopt -s extglob			#needed for working with files EXCEPT specific ones
+PROMPT_COMMAND='history -a'
+export HISTFILESIZE="12000" 		#the bash history should save 3000 commands
+export HISTSIZE="12000"
+export HISTCONTROL="ignoredups" 	#don't put duplicate lines in the history
+export HISTIGNORE="&:ls:ll:la:lt:clear:q:[bf]g:exit"	#will ignore a few common commands
+export GREP_COLOR="1;32"
+
+export EDITOR="vim"
+export VISUAL="vim"
+
+## /unix-porn }}}
+
+source ~/dotfiles/littlehelper
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
