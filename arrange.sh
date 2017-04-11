@@ -25,7 +25,8 @@ fi
 
 ## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
 link_home="vimperatorrc vimperatorrc.local vimperator"
-link_home+=" vimrc vim bashrc"
+link_home+=" vimrc vim"
+link_home+=" bashrc bash_logout bash_profile"
 link_home+=" zprezto gitconfig"
 link_home+=" tmux.conf tmux"
 #link_home+=" fzf fzf.bash fzf.zsh" # managed via vim-plug

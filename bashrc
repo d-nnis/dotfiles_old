@@ -106,6 +106,8 @@ if [ -d $HOME/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+export BINLOG="$HOME/bin/bin.log"
+
 stty -ixon
 GPG_TTY=$(tty)
 export GPG_TTY
