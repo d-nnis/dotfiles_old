@@ -152,5 +152,8 @@ xrdb ~/.Xresources
 xmodmap ~/.Xmodmap
 antigen apply
 
+## TODO: ghide-file sync
+# source/ read githidden, combin with gfmS
+
 exit 0
 
