@@ -14,10 +14,9 @@ fi
 
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -lah'
+alias la='ls -lah --time-style=iso'
 alias lad='la -d'
-alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
-alias l='ls -CF' # show in columns with classifiers
+alias l='ls -aCF' # show in columns with classifiers
 
 ## activated git aliases
 alias gital='alias | grep git | less && git al'
@@ -121,22 +120,27 @@ alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
 ## unix porn {{{
-alias lx='ls -lXB --color=auto'		# sort by extension
-alias lk='ls -lSr --color=auto'              # sort by size
-alias lc='ls -lcr --color=auto'		# sort by change time  
-alias lu='ls -lur --color=auto'		# sort by access time   
+alias lx='la -XB --color=auto'		# sort by extension
+alias lk='la -Sr --color=auto'              # sort by size, reverse: biggest last
+#alias lc='ls -lcr --color=auto'		# sort by change time, long format
+#alias lu='ls -lur --color=auto'		# sort by access time (also use)
+#alias lt='ls -lStr --color=auto'              # sort by date
+#alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
+alias lmt='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
+alias lct='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
+alias lat='la -ur --sort=time'		# sort by (u)se/ access time (atime)
+alias lla='la -tr | tail -n20' # show 20 of (la)test files
+
 alias lr='ls -lR --color=auto'               # recursive ls
-alias lt='ls -lStr --color=auto'              # sort by date
-alias lm='ls -al  --color=auto |more'         # pipe through 'more'
+alias lm='ls -al  --color=auto |less'         # pipe through 'more'
 alias tree='tree -Csu'		# nice alternative to 'ls'
-alias lsdir='ls -d */'		# list only directories
 alias lisa='ls -lisa --color=auto'
 alias lsperm='ls -l | sed -e 's/rwx/7/g' | sed -e 's/r--/4/g' | sed -e 's/r-x/5/g' | sed -e 's/rw-/6/g' | sed -e 's/---/0/g''
-alias lssize='du -sh * | sort -n | more'
+alias spacewaste="du -s * | sort -n | tail" # show size of subdirs
+alias lssize='du -sh * | sort -n | more'  # show files too
 alias rm='rm -v'
 alias mv='mv -v'
 alias cp='cp -v'
-alias grep='grep --color=auto'
 alias mount='mount | column -t'
 
 alias psaux='ps ax -eo user,pid,priority,args'
@@ -148,9 +152,7 @@ alias fullscreen='for i in *; do mplayer "$i" -fs; done'
 alias fullscreennosound='for i in *; do mplayer "$i" -fs -nosound; done'
 
 alias 256colors='for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done'
-alias spacewaste="du -s * | sort -n | tail"
 alias connectednow="lsof -P -i -n"
-alias RTFM="echo -e '\033[1;33m'' http://xkcd.com/293/'"
 
 ## / unix porn }}}
 
