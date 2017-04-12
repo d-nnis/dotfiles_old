@@ -96,7 +96,9 @@ let g:seoul256_background = 233
 "   Default: 253
 "let g:seoul256_background = 256
 
-color seoul256
+if $USER != "root"
+  color seoul256
+endif
 " this one only vor gvim?
 colorscheme seoul256
 " Light color scheme
