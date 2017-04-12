@@ -39,11 +39,23 @@
 * confed        # load relevant config files into Vim
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
-* lla           # ls the 20 **la**test (mtime) files
-* lad           # ls dirs only (&& do not enter(
+* lla           # ls the 20 **la**test (mtime) files, latest file is last entry
+* lmt           # mtime, i.e. time of data in file [Thanks to]()
+* lct           # ctime, inode change of file
+* lat           # atime, last access time or use
+* lx            # sort by extension
+* lad           # ls dirs only (&& do not enter)
+* get_crtime    # get _creation_ time of file
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
 * lpqueue       # watch-like monitoring of printing queue
+* get_crtime    # show creation time of file
+* cmdoften      # show ten most used commands
+* treegraph     # show subdirs in tree-format
+* tree          # -- " --, plus files and info
+* spacewaste    # show file/dir size of 10 biggest entries
+* lssize        # size of all entries of file
+* ii            # show host related infos
 * global aliases
   * <cmd> G xz  # <command> grep xy
   * L           # less
