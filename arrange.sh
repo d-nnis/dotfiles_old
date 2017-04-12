@@ -84,8 +84,8 @@ lesskey &
 ## programs only for terminal environment
 if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
-  list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
-  list+=" cups-pdf"
+  list+=" curl w3m w3m-img lynx"
+  list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
   list+=" xbindkeys"
   list+=" tree"
 fi
