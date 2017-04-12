@@ -87,6 +87,7 @@ if [ $terminal -eq 1 ]; then
   list+=" curl multitail vim-gnome mc mc-data odt2txt w3m w3m-img"
   list+=" cups-pdf"
   list+=" xbindkeys"
+  list+=" tree"
 fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
