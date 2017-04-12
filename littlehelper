@@ -1,13 +1,11 @@
 
 #clock - A bash clock that can run in your terminal window.
-function clock ()
-{
-	while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
+function clock () {
+  while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
 } 
 
 # A much better calendar
-function today()
-{
+function today() {
     local TMPDATE PARAM DASFILE
     TMPDATE=$(date '+%m %Y')
     PARAM=$(date '+%e ')
@@ -65,5 +63,17 @@ function cmdoften() { # List of commands you use most often
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
 
+# creation time of file 
+# s.a. http://askubuntu.com/questions/470134/how-to-find-the-creation-time-of-a-file
+get_crtime () {
+  for target in "${@}"; do
+    inode=$(sudo stat -c '%i' "${target}")
+    fs=$(df  --output=source "${target}"  | tail -1)
+    crtime=$(sudo debugfs -R 'stat <'"${inode}"'>' "${fs}" 2>/dev/null | grep -oP 'crtime.*--\s*\K.*')
+    printf "%s\t%s\n" "${target}" "${crtime}"
+  done
+}
+
+#TODO: neovim shows: unexpected "("
 # vim: ft=sh
 
