@@ -1,0 +1,7 @@
+## list of hidden files
+# git update-index --assume-unchanged <file>
+config/mc/ini
+moc/config
+moc/equalizer
+
+# vim: ft=conf
