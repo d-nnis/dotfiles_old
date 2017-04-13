@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/seoul256.vim'
   Plug 'https://github.com/nelstrom/vim-docopen'
   Plug 'https://github.com/nelstrom/vim-cutlass'
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
@@ -68,6 +69,9 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
+
+"" NERDTree
+autocmd vimenter * NERDTree
 
 augroup_neomake_config
   au!
