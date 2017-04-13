@@ -166,6 +166,10 @@
   * ygd ~~ yank :DocOpen URL
   * _Couldn't get a file descriptor referring to the console_ - even is suffix alias is configured in zsh.
 * [cutlass](https://github.com/nelstrom/vim-cutlass)
+* [NERDTree](https://github.com/scrooloose/nerdtree)
+  * <leader>
+    * t ## toggle Nerdtree
+    * f ## find file in Nerdtree
 
 ### TMUX-VIM integration
 * \<C-h\> ~~ switch to pane (tmux)/ window (vim) to the left
