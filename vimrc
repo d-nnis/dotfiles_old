@@ -53,6 +53,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/nelstrom/vim-docopen'
   Plug 'https://github.com/nelstrom/vim-cutlass'
   Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
@@ -71,8 +72,22 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
 "" NERDTree
-autocmd vimenter * NERDTree
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+" always open NERDTree on opening
+"autocmd vimenter * NERDTree
 
+" close NERDTree when opening a file
+let NERDTreeQuitOnOpen=1
+
+" NERDTree opening when starting with no file(s) specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" close vim if NERDTree is the only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"" Neomake
 augroup_neomake_config
   au!
   autocmd! BufWritePost * Neomake
