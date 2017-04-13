@@ -20,7 +20,7 @@ let mapleader=','
 "noremap! <C-y> fgi:wait<CR><C-i>
 "noremap! <C-y> fgi:wait<CR><C-i>
 " gi: go to first input field
-map <C-y> gi<C-i><Esc>
+"map <C-y> gi<C-i><Esc>
 " TODO: use `:js liberator.sleep(300)` [https://stackoverflow.com/questions/41758862/how-to-take-screenshot-of-website-with-vimperator]
 
 highlight Hint font-family: monospace; font-size: 14px; font-weight: bold; text-transform: lowercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
