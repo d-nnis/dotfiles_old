@@ -40,15 +40,16 @@ if [ -d $HOME/dotfiles_backup ]; then
   rm -rfv $HOME/dotfiles_backup
 fi
 # make dir in any case
-mkdir -p $HOME/dotfiles_backup
+mkdir -pv $HOME/dotfiles_backup
 
 # TODO: local .vim still present ...?!
 # sometimes link to itself. How come?
 for link in $link_home; do
   echo $link
   if [ -L $HOME/.$link ]; then
+    echo -n "link "
     rm -rfv $HOME/.$link
-  elif [ -f $HOME/.$link ]; then
+  elif [ -e $HOME/.$link ]; then
     mv -fv $HOME/.$link $HOME/dotfiles_backup
   fi
   if [ ! -e $HOME/.$link ]; then
@@ -63,16 +64,17 @@ done
 ##                            ^^^^^ `pwd -L` ^^^^^^^  -> ^^^^^^^^ `pwd -P` ^^^^^^^^^^^^^
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
 link_config="mc"
-#link_config+=" "
+link_config+=" redshift.conf"
 
-mkdir -p $HOME/dotfiles_backup/config
+mkdir -pv $HOME/dotfiles_backup/config
 
 for link in $link_config; do
   echo $link
-  if [ -d $HOME/.config/$link ]; then
-    mv -fv $HOME/.config/$link $HOME/dotfiles_backup/config
-  elif [ -L $HOME/.config/$link ]; then
+  if [ -L $HOME/.config/$link ]; then
+    echo -n "link "
     rm -rfv $HOME/.config/$link
+  elif [ -e $HOME/.config/$link ]; then
+    mv -fv $HOME/.config/$link $HOME/dotfiles_backup/config
   fi
   ln -sv $HOME/dotfiles/config/$link $HOME/.config/$link
 done
@@ -114,7 +116,7 @@ check_packages() {
 check_packages
 
 if [ "$install_pkg" -eq "1" ]; then
-  install packages
+  echo install packages
   sudo apt-get update
   sudo apt-get -y install $list
 fi
@@ -141,11 +143,12 @@ rcfiles="zlogin zlogout zpreztorc zprofile zshenv zshrc"
 
 #setopt EXTENDED_GLOB
 for rcfile in $rcfiles; do
-  if [ -f "$HOME/.$rcfile" ]; then  # file exists
-    cp "$HOME/.$rcfile" $HOME/dotfiles_backup
-    rm "$HOME/.$rcfile"
-  elif [ -L "$HOME/.$rcfile" ]; then  # file only exists as dangling symlink
-    rm "$HOME/.$rcfile"
+  if [ -L "$HOME/.$rcfile" ]; then  # file only exists as dangling symlink
+    echo -n "link "
+    rm -fv "$HOME/.$rcfile"
+  elif [ -f "$HOME/.$rcfile" ]; then  # file exists
+    cp -v "$HOME/.$rcfile" $HOME/dotfiles_backup
+    rm -v "$HOME/.$rcfile"
   fi
   ln -sv "dotfiles/zprezto/runcoms/$rcfile" "$HOME/.$rcfile"
 done
@@ -153,10 +156,10 @@ done
 fc-cache ~/.fonts
 xrdb ~/.Xresources
 xmodmap ~/.Xmodmap
-antigen apply
+antigen-apply
 
 ## TODO: ghide-file sync
-# source/ read githidden, combin with gfmS
+# source/ read githidden, combine with gfmS
 
 exit 0
 
