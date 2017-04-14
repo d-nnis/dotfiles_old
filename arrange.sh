@@ -88,6 +88,7 @@ if [ $terminal -eq 1 ]; then
   list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
   list+=" xbindkeys"
   list+=" tree"
+  list+=" x11vnc x11vnc-data ssvnc" # remote stuff
 fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
