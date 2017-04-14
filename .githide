@@ -1,4 +1,4 @@
-## list of hidden files
+# list of hidden files
 # git update-index --assume-unchanged <file>
 config/mc/ini
 moc/config
