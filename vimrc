@@ -691,7 +691,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 map <leader>W :set wrap!<CR>
-set nowrapscan
+set wrapscan
 
 
 """"""""""""""""""""""""""""""
