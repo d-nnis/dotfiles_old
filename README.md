@@ -32,7 +32,8 @@
 * ghide ~~ hide (changes of) file from index (''assume-unchanged'')
 * gunhide ~~ unhide/ re-register file to index (''no-assume-unchanged'')
 * gunhide-all ~~ unhide all files
-* ghidden ~~ show hidden files
+* ghide-all ## read .githide in root of git dir to _assume-unchanged_
+* gshidden ~~ show hidden files
 
 ### Shell
 * caps lock is mapped to escape via Xmodmap
