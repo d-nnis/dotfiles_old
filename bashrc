@@ -116,7 +116,7 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 ## unix-porn {{{
-
+# borrowed from http://slackmagic.com/filedump/bashrc
 #######################################################
 # slackmaGic's .bashrc file
 # IRC ##slackware @ freenode
