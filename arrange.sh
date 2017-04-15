@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
+
 set -o xtrace
 
 ## install switches
 deskenv=0
 entertainment=0
-install_pkg=0
+check_pkg=0
 terminal=1
 
 if [ "$1" == "-a" ]; then
@@ -36,11 +37,11 @@ link_home+=" lesskey moc htoprc"
 link_home+=" asciidoc antigen"
 
 # remove existing backup
-if [ -d $HOME/dotfiles_backup ]; then
-  rm -rfv $HOME/dotfiles_backup
+if [ -d $HOME/backup_dotfiles ]; then
+  rm -rfv $HOME/backup_dotfiles
 fi
 # make dir in any case
-mkdir -pv $HOME/dotfiles_backup
+mkdir -pv $HOME/backup_dotfiles
 
 # TODO: local .vim still present ...?!
 # sometimes link to itself. How come?
@@ -50,7 +51,7 @@ for link in $link_home; do
     echo -n "link "
     rm -rfv $HOME/.$link
   elif [ -e $HOME/.$link ]; then
-    mv -fv $HOME/.$link $HOME/dotfiles_backup
+    mv -fv $HOME/.$link $HOME/backup_dotfiles
   fi
   if [ ! -e $HOME/.$link ]; then
     ln -sv $HOME/dotfiles/$link $HOME/.$link
@@ -63,10 +64,10 @@ done
 ## symlinks XDG_CONFIG_DIR -- ~/.config/<program-dir> -> ~/dotfiles/config/<program-dir>
 ##                            ^^^^^ `pwd -L` ^^^^^^^  -> ^^^^^^^^ `pwd -P` ^^^^^^^^^^^^^
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
-link_config="mc"
+link_config="mc htop"
 link_config+=" redshift.conf"
 
-mkdir -pv $HOME/dotfiles_backup/config
+mkdir -pv $HOME/backup_dotfiles/config
 
 for link in $link_config; do
   echo $link
@@ -74,7 +75,7 @@ for link in $link_config; do
     echo -n "link "
     rm -rfv $HOME/.config/$link
   elif [ -e $HOME/.config/$link ]; then
-    mv -fv $HOME/.config/$link $HOME/dotfiles_backup/config
+    mv -fv $HOME/.config/$link $HOME/backup_dotfiles/config
   fi
   ln -sv $HOME/dotfiles/config/$link $HOME/.config/$link
 done
@@ -104,16 +105,17 @@ if [ $deskenv -eq 1 ]; then
   list+=" wmctrl rxvt-unicode-256color firefox-esr "
 fi
 
-check_packages() {
-  for el in $list; do
-    dpkg -l $el > /dev/null
-    if [ $? -eq 1 ]; then
-      install_pkg=1
-    fi
-  done
-}
-
-check_packages
+install_pkg=0
+if [ "$check_pkg" -gt "0" ]; then
+  check_packages() {
+    for el in $list; do
+      dpkg -l $el > /dev/null
+      if [ $? -eq 1 ]; then
+        install_pkg=1
+      fi
+    done
+  }
+fi
 
 if [ "$install_pkg" -eq "1" ]; then
   echo install packages
@@ -147,7 +149,7 @@ for rcfile in $rcfiles; do
     echo -n "link "
     rm -fv "$HOME/.$rcfile"
   elif [ -f "$HOME/.$rcfile" ]; then  # file exists
-    cp -v "$HOME/.$rcfile" $HOME/dotfiles_backup
+    cp -v "$HOME/.$rcfile" $HOME/backup_dotfiles
     rm -v "$HOME/.$rcfile"
   fi
   ln -sv "dotfiles/zprezto/runcoms/$rcfile" "$HOME/.$rcfile"
@@ -155,8 +157,9 @@ done
 
 fc-cache ~/.fonts
 xrdb ~/.Xresources
+# TODO: still 2 errors
 xmodmap ~/.Xmodmap
-antigen-apply
+#antigen-apply
 
 ## TODO: ghide-file sync
 # source/ read githidden, combine with gfmS
