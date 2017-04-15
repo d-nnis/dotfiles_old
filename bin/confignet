@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+sudo ifconfig | grep wlan0
+ret=$?
+
+if [ "$ret" = "0" ]; then
+  dev=wlan0
+else
+  dev=eth0
+fi
+
+sudo route add -net 0.0.0.0 gw 192.168.0.1 $dev
+ret=$?
+
+echo "returncode: $ret"
+
