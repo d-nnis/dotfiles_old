@@ -132,13 +132,14 @@
   * sa ~~ (s)pell, (a)dd to collection # :zg - :zug undo adding word
   * s? ~~ show (s)pelling suggestion # : z=
   * W  ~~ toggle wrapping lines
-  * qb  ~~ (q)uote(b)lock
-  * F ~~ (F)ootnote
+  * of ~~ (o)ne(f)low: replace many whitespaces to one
   * co ~~ (co)py file into a new tab
 * AsciiDoc: <leader>...
   * bq  ~~  (b)lock (q)uote
   * bn  ~~  (b)lock (n)ote
   * nf  ~~  (n)ote (f)oot (footnote)
+  * qb  ~~ (q)uote(b)lock
+  * F ~~ (F)ootnote
 * \<F4\>  ~~ correction: WOrd -> Word
 * \<F7\>,\<F8\> ~~ jump to next, previous chapter (mediawiki, adoc, markdown)
 * M-j ,k  : move a line down, upwards # not working anymore?
