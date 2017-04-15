@@ -4,10 +4,10 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  alias ls='ls --color=always'
+  alias grep='grep --color=always'
+  alias fgrep='fgrep --color=always'
+  alias egrep='egrep --color=always'
   alias less='less -R'
   alias xclip='xclip -selection clip'
 fi
@@ -122,21 +122,21 @@ alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
 ## unix porn {{{
-alias lx='la -XB --color=auto'		# sort by extension
-alias lk='la -Sr --color=auto'              # sort by size, reverse: biggest last
-#alias lc='ls -lcr --color=auto'		# sort by change time, long format
-#alias lu='ls -lur --color=auto'		# sort by access time (also use)
-#alias lt='ls -lStr --color=auto'              # sort by date
+alias lx='la -XB --color=always'		# sort by extension
+alias lk='la -Sr --color=always'              # sort by size, reverse: biggest last
+#alias lc='ls -lcr --color=always'		# sort by change time, long format
+#alias lu='ls -lur --color=always'		# sort by access time (also use)
+#alias lt='ls -lStr --color=always'              # sort by date
 #alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
 alias lmt='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
 alias lct='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
 alias lat='la -ur --sort=time'		# sort by (u)se/ access time (atime)
 alias lla='la -tr | tail -n20' # show 20 of (la)test files
 
-alias lr='ls -lR --color=auto'               # recursive ls
-alias lm='ls -al  --color=auto |less'         # pipe through 'more'
+alias lr='ls -lR --color=always'               # recursive ls
+alias lm='ls -al  --color=always |less'         # pipe through 'more'
 alias tree='tree -Csu'		# nice alternative to 'ls'
-alias lisa='ls -lisa --color=auto'
+alias lisa='ls -lisa --color=always'
 alias lsperm='ls -l | sed -e 's/rwx/7/g' | sed -e 's/r--/4/g' | sed -e 's/r-x/5/g' | sed -e 's/rw-/6/g' | sed -e 's/---/0/g''
 alias spacewaste="du -s * | sort -n | tail" # show size of subdirs
 alias lssize='du -sh * | sort -n | more'  # show files too
