@@ -102,10 +102,12 @@ configreload() {
       echo .Xmodmap.local
       xmodmap ~/.Xmodmap.local
     fi
-    echo "fonts"
+    echo xbindkeys
+    xbindkeys -v
+    echo "fc-cache fonts"
     fc-cache -v ~/.fonts
   else
-    echo "Not reloaded: Xmodmap, fonts (do so with '-a')"
+    echo "Not reloaded: Xmodmap, xbindkeys, fonts (do so with '-a')"
   fi
   echo "Done."
 }
