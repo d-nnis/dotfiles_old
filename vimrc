@@ -235,7 +235,20 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "endif
 
 
+function! WSKill()
+  :'<,'>s/\s\{2,\}/ /g
+endfun
 
+fun! NewlKill()
+  :'<,'>s/\n/ /g
+endfun
+
+fun! OneFlow()
+  :'<,'>s/\(\s\|\n\)\?\s\{2,\}/ /g
+endfun
+
+" quite ugly, but works: delete auto-completion anchors ('<,'>)
+vmap <leader>of :<del><del><del><del><del>call OneFlow()<CR>
 
 function! MakeFileExecutable()
     !chmod u+x %
