@@ -19,7 +19,7 @@
   Control+Shift + Down
 "esperanza"
   Control+Shift + l
-"gxmms2"
+"/usr/bin/gvim"
   Control+Shift + g
 "redshift -O 3500K"
   Control+Alt + 1
