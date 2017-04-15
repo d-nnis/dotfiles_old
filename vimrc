@@ -213,9 +213,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "  call Limelight!
 "endfunction
 
-""""""""""""""""""""""""""""""""""""""
-" help me, Ronda! - helper functions "
-""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
+" help help me, Ronda! - helper functions "
+"""""""""""""""""""""""""""""""""""""""""""
 
 "if &ft =~ 'asciidoc' || &ft =~ 'mediawiki'
 "  inoremap <F7> <Esc>:call AprevChapter()<CR>
@@ -243,8 +243,9 @@ fun! NewlKill()
   :'<,'>s/\n/ /g
 endfun
 
+" s.a. :h regex, magix, multi
 fun! OneFlow()
-  :'<,'>s/\(\s\|\n\)\?\s\{2,\}/ /g
+  :'<,'>s/\(\s\|\n\)\{1}\s\{1,\}/ /g
 endfun
 
 " quite ugly, but works: delete auto-completion anchors ('<,'>)
