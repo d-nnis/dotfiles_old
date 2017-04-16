@@ -40,10 +40,10 @@
 * confed        # load relevant config files into Vim
 * confrel (-a)  # reload (all) config
 * mkcd          # mkdir and cd into dir, with indefinite depth (-p)
-* lla           # ls the 20 **la**test (mtime) files, latest file is last entry
-* lmt           # mtime, i.e. time of data in file [Thanks to]()
-* lct           # ctime, inode change of file
-* lat           # atime, last access time or use
+* lam           # show 20 of (la)test files, which where (m)odified
+* ltm           # mtime, i.e. time of data in file [Thanks to]()
+* ltc           # ctime, inode change of file
+* lta           # atime, last access time or use
 * lx            # sort by extension
 * lad           # ls dirs only (&& do not enter)
 * get_crtime    # get _creation_ time of file
