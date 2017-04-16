@@ -12,9 +12,13 @@ if [ -x /usr/bin/dircolors ]; then
   alias xclip='xclip -selection clip'
 fi
 
+TS1="+%y-%m-%d %H-%M"
+TS2="+%y-%m-%d %H-%M-%S"
+
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -lah --time-style=iso'
+#alias la='ls -lah --time-style=iso'
+alias la='ls -lah --time-style="$TS1"'
 alias lad='la -d'
 alias l='ls -aCF' # show in columns with classifiers
 
@@ -128,10 +132,10 @@ alias lk='la -Sr --color=always'              # sort by size, reverse: biggest l
 #alias lu='ls -lur --color=always'		# sort by access time (also use)
 #alias lt='ls -lStr --color=always'              # sort by date
 #alias lla='la -t | head -n21' # show 20 of (la)test files (mtime), descending order
-alias lmt='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
-alias lct='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
-alias lat='la -ur --sort=time'		# sort by (u)se/ access time (atime)
-alias lla='la -tr | tail -n20' # show 20 of (la)test files
+alias ltm='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
+alias ltc='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
+alias lta='la -ur --sort=time'		# sort by (u)se/ access time (atime)
+alias lam='ltm | tail -n20' # show 20 of (la)test files, which where (m)odified
 
 alias lr='ls -lR --color=always'               # recursive ls
 alias lm='ls -al  --color=always |less'         # pipe through 'more'
