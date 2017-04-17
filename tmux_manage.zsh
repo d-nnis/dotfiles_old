@@ -17,8 +17,6 @@ tmux_aware() {
       echo "tmux sessions:"
       tmux ls
       echo "tmux at [-t#] to attach to last [/#] session"
-    else
-      echo "no tmux sessions"
     fi
 fi
 #      mux new-session -d -s "$tmux_session" \; \
