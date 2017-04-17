@@ -173,7 +173,7 @@ export VISUAL="vim"
 
 source ~/dotfiles/littlehelper
 
-
+eval $(dircolors -b $HOME/.dircolors)
 
 ## perl local bin
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;

@@ -34,7 +34,7 @@ link_home+=" tmux.conf tmux"
 link_home+=" Xmodmap Xresources Xresources.d xbindkeysrc urxvt fonts"
 link_home+=" multitailrc w3m"
 link_home+=" lesskey moc htoprc"
-link_home+=" asciidoc antigen ls++.conf"
+link_home+=" asciidoc antigen ls++.conf dircolors"
 
 # remove existing backup
 if [ -d $HOME/backup_dotfiles ]; then
