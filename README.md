@@ -102,6 +102,8 @@
   * s ~~ display and choose session
   * S ~~ send pane to other window
   * ? ~~ list defined hotkeys
+  * # ~~ list buffers
+  * = ~~ choose which buffer to paste from
   * C-s ~~ (s)ave tmux session ([tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect))
   * C-r ~~ (r)estore tmux session
 
