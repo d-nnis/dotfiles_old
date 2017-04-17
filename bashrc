@@ -184,8 +184,8 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 ## extended path to dotfiles
 # already in path PATH="$HOME/perl5/dotfiles/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/perl5/dotfiles/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL5LIB="$HOME/dotfiles/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
