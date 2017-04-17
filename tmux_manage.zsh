@@ -8,7 +8,7 @@
 # destroy left session
 tmux_aware() {
   if [[ -z $TMUX ]]; then
-    tmux
+    tmux -2
   else  
     sessions=$(tmux ls | awk '{print $1}' | sed 's/://')
     num_sessions=$(echo $sessions | wc -l)
@@ -17,7 +17,9 @@ tmux_aware() {
       echo "tmux sessions:"
       tmux ls
       echo "tmux at [-t#] to attach to last [/#] session"
-  fi
+    else
+      echo "no tmux sessions"
+    fi
 fi
 #      mux new-session -d -s "$tmux_session" \; \
 #           set-option -t "$tmux_session" destroy-unattached off &> /dev/null
