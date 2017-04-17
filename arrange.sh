@@ -34,7 +34,7 @@ link_home+=" tmux.conf tmux"
 link_home+=" Xmodmap Xresources Xresources.d xbindkeysrc urxvt fonts"
 link_home+=" multitailrc w3m"
 link_home+=" lesskey moc htoprc"
-link_home+=" asciidoc antigen"
+link_home+=" asciidoc antigen ls++.conf"
 
 # remove existing backup
 if [ -d $HOME/backup_dotfiles ]; then
@@ -89,7 +89,7 @@ if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
   list+=" curl w3m w3m-img lynx"
   list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
-  list+=" xbindkeys"
+  list+=" xbindkeys xbidnkeys-config"
   list+=" tree"
   list+=" x11vnc x11vnc-data ssvnc" # remote stuff
 fi
@@ -122,6 +122,16 @@ if [ "$install_pkg" -eq "1" ]; then
   sudo apt-get update
   sudo apt-get -y install $list
 fi
+
+## perl5 local lib
+mkdir -vp $HOME/perl5
+ln -s $HOME/perl5/dotfiles $HOME/dotfiles
+
+# TODO: automate local lib installation
+# do not append local lib paths, s.a. zshrc and bashrc
+CPANS="Term::ExtendedColor"
+cpan $CPANS
+
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
