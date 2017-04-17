@@ -8,7 +8,7 @@
 !URxvt*boldFont:        xft:Anonymous Pro:style=Bold:size=11
 !URxvt*italicFont:      xft:Anonymous Pro:style=Italic:autohint=true:size=11
 !URxvt*boldItalicFont:  xft:Anonymous Pro:style=Bold Italic:autohint=true:size=11
-URxvt*geometry:        80x50
+*geometry:        80x50
 !URxvt*font:            xft:Inconsolata for Powerline:size=12
 !URxvt*font:            xft:Droid Sans Mono Dotted:style=Regular:size=12
 !URxvt*boldFont:        xft:Inconsolata for Powerline:bold:size=12
@@ -19,6 +19,9 @@ URxvt*boldFont:        xft:DejaVu Sans Mono:style=Bold:size=10
 URxvt*italicFont:      xft:DejaVu Sans Mono:style=Oblique:size=10
 URxvt*boldItalicFont:  xft:DejaVu Sans Mono:style=Bold Oblique:size=10
 
+XTerm*faceName: DejaVu Sans Mono
+XTerm*faceSize: 10
+XTerm*scaleHeight: 0.99
 
 !URxvt.font:  9x15
 
@@ -27,16 +30,17 @@ URxvt*boldItalicFont:  xft:DejaVu Sans Mono:style=Bold Oblique:size=10
 !URxvt.terminalName:screen-256color
 XTerm*termName: xterm-256color
 URxvt*termName: rxvt-unicode
+!URxvt*termName: xterm-256color
 !URxvt*termName:screen-256color
 ! https://github.com/muennich/urxvt-perls
 ! URxvt.perl-lib: 
 
-URxvt.clipboard.copycmd:  xsel -ib
-URxvt.clipboard.pastecmd: xsel -ob
+*clipboard.copycmd:  xsel -ib
+*clipboard.pastecmd: xsel -ob
 
 URxvt.perl-lib: ~/.urxvt/ext
 !clipboard
-!URxvt.perl-ext-common: keyboard-select,fullscreen
+!URxvt.perl-ext-common: keyboard-select,fullscreen,tabbed
 URxvt.perl-ext-common: fullscreen,font-size
 URxvt.perl-ext: keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
@@ -59,13 +63,14 @@ URxvt*underlineColor: #ffff00
 
 ! http://pastebin.com/7KZt0fYW
 URxvt.scrollBar: off
-URxvt.cursorBlink: true
+*cursorBlink: true
 
-URxvt.transparent: true
-URxvt.tintColor:#494949
+!URxvt.transparent: true
+*transparent: true
+*tintColor:#494949
 
 ! the smaller the number the darker
-URxvt.shading: 20
+*shading: 20
 ! ?
 !URxvt.borderLess: false
 
@@ -94,8 +99,9 @@ rxvt*modifier: alt
 !URxvt.keysym.M-v:   perl:clipboard:paste
 !URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 !! color definition
+URxvt.color12: rgb:5c/5c/ff
 
-! https://github.com/solarized/xresources
+!! https://github.com/solarized/xresources
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -105,14 +111,14 @@ rxvt*modifier: alt
 #define S_base1         #fa8072
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
-
+!
 *background:            S_base03
 *foreground:            S_base0
 *fadeColor:             S_base03
 ! *cursorColor:           S_base1
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
-
+!
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
 #define S_red           #dc322f
@@ -121,39 +127,39 @@ rxvt*modifier: alt
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
-
-! black dark/light
+!
+!! black dark/light
 *color0:                S_base02
 *color8:                S_base03
-
-!! red dark/light
+!
+!!! red dark/light
 *color1:                S_red
 *color9:                S_orange
-
-!! green dark/light
+!
+!!! green dark/light
 *color2:                S_green
 *color10:               S_base01
-
-!! yellow dark/light
+!
+!!! yellow dark/light
 *color3:                S_yellow
 *color11:               S_base00
-
-!! blue dark/light
+!
+!!! blue dark/light
 *color4:                S_blue
 *color12:               S_base0
-
-!! magenta dark/light
+!
+!!! magenta dark/light
 *color5:                S_magenta
 *color13:               S_violet
-
-!! cyan dark/light
+!
+!!! cyan dark/light
 *color6:                S_cyan
 *color14:               S_base1
-
-!! white dark/light
+!
+!!! white dark/light
 *color7:                S_base2
 *color15:               S_base3
-
+!
 
 ! Switch backgroound w/ C-7, 8, 9
 ! change to default background
@@ -166,3 +172,46 @@ URxvt.keysym.C-9: command:\033]11;#777777\007
 
 
 *cursorColor:           #fa8072
+
+
+
+!*foreground: #f2f2f2
+!*background: #101010
+! 
+!  Normal
+!  color0    black
+!  color1    red
+!  color2    green
+!  color3    yellow
+!  color4    blue
+!  color5    purple
+!  color6    cyan
+!  color7    white
+! 
+! *color0:    #6c6c6c
+! *color1:    #e9897c
+! *color2:    #b6e77d
+! *color3:    #ecebbe
+! *color4:    #a9cdeb
+! *color5:    #ea96eb
+! *color6:    #c9caec
+! *color7:    #f2f2f2
+! 
+! ! ! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
+! ! 
+! urxvt*color8:    #747474
+! urxvt*color9:    #f99286
+! urxvt*color10:    #c3f786
+! urxvt*color11:    #fcfbcc
+! urxvt*color12:    #b6defb
+! urxvt*color13:    #fba1fb
+! urxvt*color14:    #d7d9fc
+! urxvt*color15:    #e2e2e2
