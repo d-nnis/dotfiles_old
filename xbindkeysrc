@@ -1,30 +1,30 @@
 # xmms 2 keybindings
-"xmms2 prev"
-  Control+Shift + z
-"xmms2 play"
-  Control+Shift + x
-"xmms2 pause"
-  Control+Shift + c
-"xmms2 stop"
-  Control+Shift + v
-"xmms2 next"
-  Control+Shift + b
-"xmms2 seek +5"
-  Control+Shift + Right
-"xmms2 seek -5"
-  Control+Shift + Left
-"amixer sset Master 1+"
-  Control+Shift + Up
-"amixer sset Master 1-"
-  Control+Shift + Down
-"esperanza"
-  Control+Shift + l
-"/usr/bin/gvim"
-  Control+Shift + g
-"redshift -O 3500K"
-  Control+Alt + 1
-"redshift -O 6500K"
-  Control+Alt + 3
+#"xmms2 prev"
+#  Control+Shift + z
+#"xmms2 play"
+#  Control+Shift + x
+#"xmms2 pause"
+#  Control+Shift + c
+#"xmms2 stop"
+#  Control+Shift + v
+#"xmms2 next"
+#  Control+Shift + b
+#"xmms2 seek +5"
+#  Control+Shift + Right
+#"xmms2 seek -5"
+#  Control+Shift + Left
+#"amixer sset Master 1+"
+#  Control+Shift + Up
+#"amixer sset Master 1-"
+#  Control+Shift + Down
+#"esperanza"
+#  Control+Shift + l
+#"/usr/bin/gvim"
+#  Control+Shift + g
+#"redshift -O 3500K"
+#  Control+Alt + 1
+#"redshift -O 6500K"
+#  Control+Alt + 3
 
 #"redshift -O 5500K"
 #  Control+Alt + 5
