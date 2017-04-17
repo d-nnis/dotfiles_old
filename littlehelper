@@ -77,21 +77,28 @@ get_crtime () {
 ## tmux automatic switching
 # WIP: errorcode does not reach...
 tmux_aware() {
-  tmux ls >/dev/null
-  if [ "$?" -gt "1" ]; then
-    echo "no tmux session"
-    echo "*start one"
-    exit 0
+  if [ -z "$TMUX" ]; then
+    tmux # start-server
   fi
-  sessions=$(tmux ls | awk '{print $1}' | sed 's/://')
-  num_sessions=$(echo $sessions | wc -l)
-  
-  if [ "$num_sessions" -gt "1" ]; then
-    echo "there are $num_sessions" tmux sessions
-  else
-    echo "attaching to tmux session"
-    $(tmux at)
-  fi
+#      tmux new-session -d -s "$tmux_session" \; \
+#           set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+#      # Attach to the 'prezto' session or to the last session used.
+#            exec tmux $_tmux_iterm_integration attach-session
+#
+  #if [ "$?" -gt "1" ]; then
+  #  echo "no tmux session"
+  #  echo "*start one"
+  #  exit 0
+  #fi
+  #sessions=$(tmux ls | awk '{print $1}' | sed 's/://')
+  #num_sessions=$(echo $sessions | wc -l)
+  #
+  #if [ "$num_sessions" -gt "1" ]; then
+  #  echo "there are $num_sessions" tmux sessions
+  #else
+  #  echo "attaching to tmux session"
+  #  $(tmux at)
+  #fi
 
 }
 
