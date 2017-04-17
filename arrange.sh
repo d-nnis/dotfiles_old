@@ -124,13 +124,14 @@ if [ "$install_pkg" -eq "1" ]; then
 fi
 
 ## perl5 local lib
-mkdir -vp $HOME/perl5
-ln -s $HOME/perl5/dotfiles $HOME/dotfiles
-
 # TODO: automate local lib installation
-# do not append local lib paths, s.a. zshrc and bashrc
-CPANS="Term::ExtendedColor"
-cpan $CPANS
+# do not append local lib paths, as they are
+# already provided in zshrc and bashrc
+if [ "$terminal" -gt 0 ]; then
+  cpan CPAN
+  CPANS="Term::ExtendedColor"
+  cpan $CPANS
+fi
 
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
