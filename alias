@@ -29,7 +29,7 @@ alias gitalp='cat ~/dotfiles/zprezto/modules/git/alias.md | less'
 alias rm='rm -I'
 alias watch='watch -d'
 alias diffdir='/usr/bin/diff -rq'
-
+alias tmux='tmux -2'
 
 ## zsh specifica
 # $SHELL is not reliable?
