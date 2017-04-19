@@ -36,6 +36,7 @@ alias tmux='tmux -2'
 # $SHELL is not reliable?
 if [[ $BASH != *bash ]]; then
   ## suffix aliases
+  alias -s deb='dpkg -I '
   alias -s pdf=xdg-open
   #alias -s html=firefox
   alias -s html=xdg-open
