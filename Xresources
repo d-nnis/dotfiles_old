@@ -8,7 +8,9 @@
 !URxvt*boldFont:        xft:Anonymous Pro:style=Bold:size=11
 !URxvt*italicFont:      xft:Anonymous Pro:style=Italic:autohint=true:size=11
 !URxvt*boldItalicFont:  xft:Anonymous Pro:style=Bold Italic:autohint=true:size=11
-*geometry:        80x50
+!TODO: change geometry with keyboard-shortcuts
+!*geometry:        80x50
+*geometry:        150x30
 !URxvt*font:            xft:Inconsolata for Powerline:size=12
 !URxvt*font:            xft:Droid Sans Mono Dotted:style=Regular:size=12
 !URxvt*boldFont:        xft:Inconsolata for Powerline:bold:size=12
@@ -19,9 +21,12 @@ URxvt*boldFont:        xft:DejaVu Sans Mono:style=Bold:size=10
 URxvt*italicFont:      xft:DejaVu Sans Mono:style=Oblique:size=10
 URxvt*boldItalicFont:  xft:DejaVu Sans Mono:style=Bold Oblique:size=10
 
+UXTerm*faceName: DejaVu Sans Mono
+UXTerm*faceSize: 10
+UXTerm*scaleHeight: 0.95
 XTerm*faceName: DejaVu Sans Mono
 XTerm*faceSize: 10
-XTerm*scaleHeight: 0.99
+XTerm*scaleHeight: 0.95
 
 !URxvt.font:  9x15
 
@@ -37,6 +42,13 @@ URxvt*termName: rxvt-unicode
 
 *clipboard.copycmd:  xsel -ib
 *clipboard.pastecmd: xsel -ob
+!*title: XTerm
+!A wildcard between  the
+!       top-level  “XTerm” and the “vt100” widget makes the resource
+!              settings work for either, e.g., “XTerm*vt100.NAME”.
+!XTerm*vt100.electToClipboard: true
+*selectToClipboard: true
+
 
 URxvt.perl-lib: ~/.urxvt/ext
 !clipboard
@@ -65,9 +77,10 @@ URxvt*underlineColor: #ffff00
 URxvt.scrollBar: off
 *cursorBlink: true
 
-!URxvt.transparent: true
-*transparent: true
-*tintColor:#494949
+URxvt.transparent: true
+! doesnt work for xterm
+!*transparent: true
+*tintColor:#ffb08d
 
 ! the smaller the number the darker
 *shading: 20
@@ -103,6 +116,8 @@ URxvt.color12: rgb:5c/5c/ff
 
 !! https://github.com/solarized/xresources
 #define S_base03        #002b36
+#define reddish         #8d0000
+#define greyish         #c3c4c0
 #define S_base02        #073642
 #define S_base01        #586e75
 #define S_base00        #657b83
@@ -113,8 +128,11 @@ URxvt.color12: rgb:5c/5c/ff
 #define S_base3         #fdf6e3
 !
 *background:            S_base03
+!*background:            reddish
+!*background:            greyish
 *foreground:            S_base0
-*fadeColor:             S_base03
+!*fadeColor:             S_base03
+*fadeColor:             greyish
 ! *cursorColor:           S_base1
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
