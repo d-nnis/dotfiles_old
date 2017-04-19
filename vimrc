@@ -22,7 +22,7 @@ cmapclear
 imapclear
 comclear
 
-" With a map leader it's possible to do extra key combinations
+
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
@@ -81,7 +81,8 @@ nmap <leader>f :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
 " NERDTree opening when starting with no file(s) specified
-autocmd StdinReadPre * let s:std_in=1
+"autocmd StdinReadPre * let s:std_in=1
+autocmd StdinReadPre * let s:std_in=2
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if NERDTree is the only window left
@@ -502,6 +503,11 @@ if has("autocmd")
   au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
   au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
 endif
+
+fun! DemoteWikiTitels()
+  :%s/===\s/== /cg
+  :%s/\s===/ ==/cg
+endfun
 """""""""""""""""""""""""""""""""""
 " watch changes in vimrc and load "
 """""""""""""""""""""""""""""""""""
@@ -567,7 +573,7 @@ nmap <leader>Q :qa
 " quick save
 nmap <C-s>  :w!<cr>
 " TODO: does not return to INSERTMODE after reload
-imap <C-s>  <Esc>:w<cr>a
+imap <C-s>  <Esc>:w<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
