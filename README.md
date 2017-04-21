@@ -28,6 +28,7 @@
 * gcn!  ~~ amend! that file, (n)o edit of commit msg
 * gcan! ~~ amend! (a)ll files, (n)o edit of commit msg
 * gSurl ~~ show urls of (S)ubmodules
+* gSsync ~~ sync url of submodules as registered in supermodule
 * gpSOG ~~ chaining perl-scripts to (p)ush (S)ubmodules to (O)rigin and (G)itspace
 * ghide ~~ hide (changes of) file from index (''assume-unchanged'')
 * gunhide ~~ unhide/ re-register file to index (''no-assume-unchanged'')
