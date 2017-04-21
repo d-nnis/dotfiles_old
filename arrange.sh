@@ -133,6 +133,13 @@ if [ "$terminal" -gt 0 ]; then
   cpan $CPANS
 fi
 
+## textaid (vimium) server: start once at startup
+# TODO: 
+if [ -e /etc/cron.d/textaid-server ]; then
+  rm -vf /etc/cron.d/textaid-server
+fi
+echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
+
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
