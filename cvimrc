@@ -1,0 +1,67 @@
+
+map e :open https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+map E :tabnew https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+" same as above
+"map E :open! https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+" open in a new window
+map <Leader>e :open$ https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+
+set smoothscroll
+let scrollstep = 100
+let scrollduration = 40
+let barposition = "bottom"
+let scalehints = "true"
+let hintcharacters = "1234567890"
+"numerichints
+let mapleader = ","
+let completionengines = ["duckduckgo", "wikipedia"]
+let defaultengine = "duckduckgo"
+let homedirectory = "/home/dennis"
+"editWithVim
+
+set linkanimations
+
+map gb :buffer<Space>
+" Code blocks (see below for more info)
+getIP() -> {{
+httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
+            function(res) { Status.setMessage('IPAA: ' + res.ip); });
+}}
+" Displays your public IP address in the status bar
+map ci :call getIP<CR>
+unmap d
+map d closeTab
+unmap X
+map u lastClosedTab
+" close and step left
+map D d
+unmap J K
+"map J 
+"map K
+unmap h l
+map h previousTab
+map l nextTab
+unmap H L
+map H scrollLeft
+map L scrollRight
+map <C-o> goBack
+map <C-i> goForward
+map <C-u> scrollFullPageUp
+map <C-d> scrollFullPageDown
+
+
+"map Y
+unmap y
+map y Y
+"let vimcommand = "xterm -e vim "
+"iunmap <C-#>
+imap <C-#> editWithVim
+"default port for cvimrc-server
+"set vimport = 8001
+let configpath = '/home/dennis/.cvimrc'
+set localconfig " Update settings via a local file (and the `:source` command) rather
+                " than the default options page in chrome
+" As long as localconfig is set in the .cvimrc file. cVim will continue to read
+" settings from there
+
+" vim: ft=vim
