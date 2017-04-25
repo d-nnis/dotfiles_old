@@ -211,6 +211,14 @@
   * gE ~~ (g)o! (E)dit page in a new tab
   * gne ~~ (g)o! (n)ew wiki page, (e)dit! (with _Template:Preload\_gen_)
 
+### cVim for Chromium
+* \<leader\> ... # is ,
+  * E ~~ edit wiki-page
+  * yy ~~ yank current URL
+* \<C-o\> ~~ go back in history
+* \<C-i\> ~~ go forward in history
+* gb<num> ~~ (go) to (b)uffer/ tab
+* \<C-#\> ~~ edit text box with gvim (lib/cvim-server requires to be run)
 
 ## Updating
 * one script: ''
