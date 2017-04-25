@@ -66,6 +66,7 @@ done
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
 link_config="mc htop"
 link_config+=" redshift.conf"
+#link_config+" xnviewmp"  # only default.bar default.keys and xnview.ini
 
 mkdir -pv $HOME/backup_dotfiles/config
 
