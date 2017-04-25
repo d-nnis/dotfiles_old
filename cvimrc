@@ -1,40 +1,65 @@
+let configpath = '/home/dennis/.cvimrc'
+let homedirectory = '/home/dennis'
+set localconfig " Update settings via a local file (and the `:source` command) rather
+                " than the default options page in chrome
+                " " As long as localconfig is set in the .cvimrc file. cVim will continue to read
+                " " settings from there
+" put only localconfig in settings page
+" allow access to file in chrome://extensions
 
-map e :open https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
-map E :tabnew https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
-" same as above
-"map E :open! https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
-" open in a new window
-map <Leader>e :open$ https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
 
+"let qmark a = ["http://google.com", "http://reddit.com"]
+"editWithVim
+set sortlinkhints
+set completeonopen
+"set showtabindices
+set autohidecursor
+set numerichints
+set typelinkhints
+set linkanimations
+set noautofocus
+let scrollstep = 140
 set smoothscroll
-let scrollstep = 100
-let scrollduration = 40
+let scrollduration = 350
 let barposition = "bottom"
 let scalehints = "true"
-let hintcharacters = "1234567890"
-"numerichints
-let mapleader = ","
+"let hintcharacters = "1234567890"
 let completionengines = ["duckduckgo", "wikipedia"]
 let defaultengine = "duckduckgo"
 let homedirectory = "/home/dennis"
-"editWithVim
-
-set linkanimations
-
+let mapleader = ","
+map e :open https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+map E :tabnew https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+" same as above
+map E :open! https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+" open in a new window
+map <Leader>e :open$ https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+map <Leader>E :open @%&action=edit<CR>
 map gb :buffer<Space>
 " Code blocks (see below for more info)
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
-            function(res) { Status.setMessage('IPAA: ' + res.ip); });
+            function(res) { Status.setMessage('IP: ' + res.ip); });
 }}
+map <Leader>R :source<CR>
+
 " Displays your public IP address in the status bar
 map ci :call getIP<CR>
+map w :open$<space>
+map W :open$ @%
+map <Leader>w :open!$<Space>
+map <Leader>W :open!$ @%
+map <Leader>gtd :tabdetach<CR>
+map <Leader>gta :tabattach<Space>	
+map <Leader>t :open!&<Space>
+"map m ;
 unmap d
 map d closeTab
 unmap X
 map u lastClosedTab
 " close and step left
-map D d
+map D :execute dh<CR>
+map ca :call reloadAllTabs<CR>
 unmap J K
 "map J 
 "map K
@@ -46,22 +71,17 @@ map H scrollLeft
 map L scrollRight
 map <C-o> goBack
 map <C-i> goForward
-map <C-u> scrollFullPageUp
-map <C-d> scrollFullPageDown
-
-
-"map Y
-unmap y
-map y Y
+map <C-u> scrollPageUp
+map <C-d> scrollPageDown
+unmap R
+map R gR
+map <Leader>r :set regexp!<CR>
+map Y :execute vy<CR>
+"unmap y
+"map y Y
 "let vimcommand = "xterm -e vim "
 "iunmap <C-#>
 imap <C-#> editWithVim
 "default port for cvimrc-server
 "set vimport = 8001
-let configpath = '/home/dennis/.cvimrc'
-set localconfig " Update settings via a local file (and the `:source` command) rather
-                " than the default options page in chrome
-" As long as localconfig is set in the .cvimrc file. cVim will continue to read
-" settings from there
-
-" vim: ft=vim
+"let configpath = '/home/dennis'
