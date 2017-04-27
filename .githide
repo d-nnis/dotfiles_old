@@ -3,5 +3,6 @@
 config/mc/ini
 moc/config
 moc/equalizer
+config/xnviewmp/xnview.ini
 
 # vim: ft=conf
