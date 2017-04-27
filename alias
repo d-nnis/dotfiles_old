@@ -30,6 +30,7 @@ alias gitsubmodurl='perl -pi -e "s#ssh\:\/\/git\@github.com\/d\-nnis#git\@freddy
 
 alias rm='rm -I'
 alias watch='watch -d'
+alias mulch='multitail -R 2 -l '
 alias diffdir='/usr/bin/diff -rq'
 alias tmux='tmux -2'
 
