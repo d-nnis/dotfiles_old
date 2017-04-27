@@ -51,6 +51,7 @@
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
 * lpqueue       # watch-like monitoring of printing queue
+* mulch 'cmd'   # (mul)titail wat(ch): watch-like monitoring: print changes extra
 * get_crtime    # show creation time of file
 * cmdoften      # show ten most used commands
 * treegraph     # show subdirs in tree-format
