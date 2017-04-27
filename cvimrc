@@ -21,7 +21,7 @@ set noautofocus
 let scrollstep = 140
 set smoothscroll
 let scrollduration = 350
-let barposition = "bottom"
+let barposition = "top"
 let scalehints = "true"
 "let hintcharacters = "1234567890"
 let completionengines = ["duckduckgo", "wikipedia"]
