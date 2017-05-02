@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 #clock - A bash clock that can run in your terminal window.
 function clock () {
