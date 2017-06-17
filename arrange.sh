@@ -11,6 +11,7 @@ terminal=1
 if [ "$1" == "-a" ]; then
   deskenv=1
   entertainment=1
+  check_pkg=1
   echo install of deskenv, terminal and entertainment packages
 elif [ "$1" == "-T" ]; then
   terminal=0
@@ -90,7 +91,7 @@ if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
   list+=" curl w3m w3m-img lynx"
   list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
-  list+=" xbindkeys xbidnkeys-config"
+  list+=" xbindkeys xbindkeys-config"
   list+=" tree"
   list+=" x11vnc x11vnc-data ssvnc" # remote stuff
 fi
@@ -108,14 +109,12 @@ fi
 
 install_pkg=0
 if [ "$check_pkg" -gt "0" ]; then
-  check_packages() {
     for el in $list; do
       dpkg -l $el > /dev/null
       if [ $? -eq 1 ]; then
         install_pkg=1
       fi
     done
-  }
 fi
 
 if [ "$install_pkg" -eq "1" ]; then
@@ -138,9 +137,10 @@ fi
 # TODO: 
 if [ -e /etc/cron.d/textaid-server ]; then
   rm -vf /etc/cron.d/textaid-server
+  rm -vf /etc/cron.d/cvim-server
 fi
-echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
-echo "@reboot * * * * $USER $HOME/dotfiles/lib/cvim-server.py" | sudo tee /etc/cron.d/cvim-server
+echo "@reboot root $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
+echo "@reboot root $USER $HOME/dotfiles/lib/cvim-server.py" | sudo tee /etc/cron.d/cvim-server
 
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
