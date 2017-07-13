@@ -47,6 +47,7 @@
 * lta           # atime, last access time or use
 * lx            # sort by extension
 * lad           # ls dirs only (&& do not enter)
+* lal           # la | less
 * get_crtime    # get _creation_ time of file
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
