@@ -1,3 +1,4 @@
+#!/usb/bin/env bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -115,6 +116,9 @@ stty -ixon
 GPG_TTY=$(tty)
 export GPG_TTY
 
+LC_ALL=en_US.utf8
+export LC_ALL
+
 ## unix-porn {{{
 # borrowed from http://slackmagic.com/filedump/bashrc
 #######################################################
@@ -186,6 +190,9 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 # already in path PATH="$HOME/perl5/dotfiles/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/dotfiles/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+
+# perlbrew
+source $HOME/perl5/perlbrew/etc/bashrc
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
