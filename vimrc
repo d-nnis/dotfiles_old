@@ -404,6 +404,8 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 " default of statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
 
+map <F5> <Esc><C-s>:!%<cr>
+
 """"""""""""""""""
 " autocorrection "
 """"""""""""""""""
@@ -419,7 +421,7 @@ hi statusline guibg=grey ctermfg=black ctermbg=white
 
 " turn WOrd into Word
 nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
-
+" turn into function: if not found, echo "finished" or sth the like.
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -564,7 +566,10 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Fast saving
+map <F5> <Esc><C-s>:!%<cr>
+
+"""""""""""""""
+" Fast saving "
 nmap <leader>w :w!<cr>
 " write and quit
 nmap <leader>W :wq
