@@ -293,3 +293,7 @@
   * sar/atsar and/or iostat for tmux-cpu
   * wmctrl
   * xsel (xclip too?)
+* bin
+** killhim: kill all found processes (not just one)
+* README/ doc
+** generate hotkey-centric view and function-centric view (e.g. "search") from program-centric view (this)
