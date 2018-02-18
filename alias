@@ -22,6 +22,7 @@ alias ll='ls -l'
 alias la='ls -lah --time-style="$TS1"'
 alias lad='la -d'
 alias l='ls -aCF' # show in columns with classifiers
+alias lal='la L'
 
 ## activated git aliases
 alias gital='alias | grep git | less && git al'
@@ -33,12 +34,14 @@ alias watch='watch -d'
 alias mulch='multitail -R 2 -l '
 alias diffdir='/usr/bin/diff -rq'
 alias tmux='tmux -2'
+alias info='info --vi-keys'
 
 ## zsh specifica
 # $SHELL is not reliable?
 if [[ $BASH != *bash ]]; then
   ## suffix aliases
   alias -s deb='dpkg -I '
+  alias -s pl=perl
   alias -s pdf=xdg-open
   #alias -s html=firefox
   alias -s html=xdg-open
@@ -128,6 +131,9 @@ alias lpqueue='multitail -R 2 -l lpq'
 alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
+
+alias jobs='jobs -l'
+alias j='jobs'
 
 ## unix porn {{{
 alias lx='la -XB --color=always'		# sort by extension
