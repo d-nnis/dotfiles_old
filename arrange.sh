@@ -93,6 +93,7 @@ if [ $terminal -eq 1 ]; then
   list+=" xbindkeys xbidnkeys-config"
   list+=" tree"
   list+=" x11vnc x11vnc-data ssvnc" # remote stuff
+  list+=" caca-utils" # useful?
 fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
