@@ -183,6 +183,12 @@
 * \<C-k\> ~~ switch to pane (tmux)/ window (vim) up
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
+### Midnight Commander
+* Sort order ... # Alt-
+  * # ~~ by name
+  * $ ~~ by extention
+  * z ~~ by time, (Z)eit
+  * ! ~~ show sort order menu
 ### Vimperator
 * \<leader\> ... # is ,
   * t ~~ open URL in background
