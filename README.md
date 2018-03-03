@@ -283,6 +283,8 @@
   * ... attach if no other client is attached
   * ... do not attach else and give feedback
   * break pane: even if it is a vim window-split
+  * *destroy-unattached on*: exit/ kill session if no other attached?
+  * kill sessions that are lonely
 * vimperator
   * if \<wiki-url-pattern\>, focus on wiki-text-edit-frame textarea#wpTextbox1, send-keys \<C-i\>
     *  \<Esc\> - leave insert mode of ff-tab
