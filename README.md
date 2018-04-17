@@ -139,6 +139,7 @@
   * W  ~~ toggle wrapping lines
   * of ~~ (o)ne(f)low: replace many whitespaces to one
   * co ~~ (co)py file into a new tab
+  * # ~~ switch to last tab
 * AsciiDoc: <leader>...
   * bq  ~~  (b)lock (q)uote
   * bn  ~~  (b)lock (n)ote
