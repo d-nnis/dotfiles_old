@@ -83,7 +83,7 @@ let NERDTreeQuitOnOpen=1
 " NERDTree opening when starting with no file(s) specified
 "autocmd StdinReadPre * let s:std_in=1
 autocmd StdinReadPre * let s:std_in=2
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -109,7 +109,7 @@ set tabstop=2
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
-let g:seoul256_background = 233
+let g:seoul256_background = 236
 
 " seoul256 (light):
 "   Range:   252 (darkest) ~ 256 (lightest)
@@ -404,7 +404,8 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 " default of statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
 
-map <F5> <Esc><C-s>:!%<cr>
+"map <F5> <Esc><C-s>:! ./%<cr>
+map <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
 
 """"""""""""""""""
 " autocorrection "
@@ -566,7 +567,7 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-map <F5> <Esc><C-s>:!%<cr>
+map <F5> <Esc><C-s>:! ./%<cr>
 
 """""""""""""""
 " Fast saving "
@@ -576,9 +577,9 @@ nmap <leader>W :wq
 " quit all
 nmap <leader>Q :qa
 " quick save
-nmap <C-s>  :w!<cr>
+nmap <C-s> :w!<cr>
 " TODO: does not return to INSERTMODE after reload
-imap <C-s>  <Esc>:w<cr>
+imap <C-s> <Esc>:w<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -751,7 +752,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bc :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
