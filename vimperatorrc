@@ -133,6 +133,34 @@ nnoremap <Leader>h :hardcopy!<CR>
 map <Leader>gta :tabattach<Space><Tab>
 map <Leader>gtd :tabdetach<CR>
 
-source! $HOME/.vimperatorrc.local
+" source! $HOME/.vimperatorrc.local
+" source! %USERPROFILE%/_vimperatorrc.local
+
+
+" (m)edia(w)iki on codeprobe
+command! -description="open wiki page in this tab" -nargs=* mwopen open https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -description="open wiki page in new tab" -nargs=* mwtabopen tabopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+command! -description="open wiki page in new window" -nargs=* mwwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map e :mwopen<Space>
+map E :mwtabopen<Space>
+map <Leader>e :mwwindowopen<Space>
+
+" (g)o, (e)dit wiki, straight!
+" https://web6.codeprobe.de/wiki/index.php?title=Learning
+" https://web6.codeprobe.de/wiki/index.php?title=Learning&action=edit
+" (https://web6.codeprobe.de/wiki/index.php?title=Learning&action=edit&section=1)
+command! -description="edit wiki page in this tab" -nargs=* ewopen open https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit
+command! -description="edit wiki page in new tab" -nargs=* ewtabopen tabopen https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit
+"command! -nargs=* ewwindowopen winopen https://web6.codeprobe.de/wiki/index.php?search=<args>&title=Spezial%3ASuche&go=Seite
+map ge :ewopen<Space>
+map gE :ewtabopen<Space>
+"map <Leader>e :mwwindowopen<Space>
+
+" create new wiki page with integrateion of Template
+command! -description="start new wiki page (in this tab)" -nargs=1 enwopen open https://web6.codeprobe.de/wiki/index.php?title=<args>&action=edit&redlink=1&section=new&preload=Template:preload_gen
+map gne :enwopen<Space>
+
+"TODO: autocompletion for usercommand [liberator://help/map#:command-completion-custom]
 
 " vim: ft=vim
+
