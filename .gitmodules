@@ -1,6 +1,3 @@
-[submodule "zprezto"]
-  path = zprezto
-  url = ssh://git@github.com/d-nnis/prezto
 [submodule "vim/bundle/vim-less"]
   path = vim/bundle/vim-less
   url = https://github.com/genoma/vim-less.git
@@ -60,7 +57,10 @@
 	url = https://github.com/muennich/urxvt-perls
 [submodule "urxvt/ext/urxvt-font-size"]
 	path = urxvt/ext/urxvt-font-size
-	url = ssh://git@github.com/d-nnis/urxvt-font-size
+	url = https://github.com/d-nnis/urxvt-font-size
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen
+[submodule "zprezto"]
+	path = zprezto
+	url = ssh://git@freddy/home/git/gitspace/zprezto.git
