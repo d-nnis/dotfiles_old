@@ -1,46 +1,5 @@
-# xmms 2 keybindings
-#"xmms2 prev"
-#  Control+Shift + z
-#"xmms2 play"
-#  Control+Shift + x
-#"xmms2 pause"
-#  Control+Shift + c
-#"xmms2 stop"
-#  Control+Shift + v
-#"xmms2 next"
-#  Control+Shift + b
-#"xmms2 seek +5"
-#  Control+Shift + Right
-#"xmms2 seek -5"
-#  Control+Shift + Left
-#"amixer sset Master 1+"
-#  Control+Shift + Up
-#"amixer sset Master 1-"
-#  Control+Shift + Down
-#"esperanza"
-#  Control+Shift + l
-#"/usr/bin/gvim"
-#  Control+Shift + g
-#"redshift -O 3500K"
-#  Control+Alt + 1
-#"redshift -O 6500K"
-#  Control+Alt + 3
-
-#"redshift -O 5500K"
-#  Control+Alt + 5
-#"redshift -O 6500K"
-#  Control+Alt + 9
-
-#"redshift -O 3500K"
-#  Alt + c:10
-#
-#"redshift -O 6500K"
-#  Alt + c:11
-
-# s.a. /usr/include/X11/keysym*
-
 ###########################
-# xbindkeys configuration #  SAMPLE
+# xbindkeys configuration #
 ###########################
 #
 # Version: 0.1.3
@@ -74,40 +33,12 @@
 #keystate_scrolllock = enable
 #keystate_capslock = enable
 
+
+    #m:0x0 + c:211
+
+#Suspend
+"systemctl suspend"
+    XF86Launch4 
+
 #
-#
-#"xbindkeys_show"
-#   control+shift + q
-#
-##suspend
-#"sudo /usr/sbin/pm-suspend"
-#    m:0x0 + c:150
-#    XF86Sleep 
-#
-##hibernate
-#"sudo /usr/sbin/pm-hibernate"
-#    m:0x0 + c:213
-#    XF86Suspend 
-#
-##lock screen
-#"slock"
-#    m:0x0 + c:160
-#    XF86ScreenSaver 
-#
-##turn off screen
-#"xset dpms force off"
-#    m:0x0 + c:202
-#    NoSymbol 
-#
-##battery
-#"showbatt"
-#    m:0x0 + c:244
-#    XF86Battery 
-#
-##mute
-#"amixer sset Master toggle"
-#    m:0x0 + c:121
-#    XF86AudioMute 
-#
-##
-## End of xbindkeys configuration
+# End of xbindkeys configuration
