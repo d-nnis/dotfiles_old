@@ -31,7 +31,7 @@ let mapleader = ","
 map e :open https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
 map E :tabnew https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
 " same as above
-map E :open! https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+"map E :open! https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
 " open in a new window
 map <Leader>e :open$ https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
 map <Leader>E :open @%&action=edit<CR>
@@ -45,9 +45,10 @@ map <Leader>R :source<CR>
 
 " Displays your public IP address in the status bar
 map ci :call getIP<CR>
-map w :open$<space>
 map W :open$ @%
-map <Leader>w :open!$<Space>
+map w :open$<Space>
+" open window in background
+map <Leader>w :open!$<space>
 map <Leader>W :open!$ @%
 map <Leader>gtd :tabdetach<CR>
 map <Leader>gta :tabattach<Space>	

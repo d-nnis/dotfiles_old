@@ -20,6 +20,7 @@ TS2="+%y-%m-%d %H-%M-%S"
 alias ll='ls -l'
 #alias la='ls -lah --time-style=iso'
 alias la='ls -lah --time-style="$TS1"'
+alias lal='la L'
 alias lad='la -d'
 alias l='ls -aCF' # show in columns with classifiers
 alias lal='la L'
