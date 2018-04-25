@@ -88,6 +88,9 @@ autocmd StdinReadPre * let s:std_in=2
 " close vim if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" navigate to last pane
+nmap <leader># :b#<cr>
+
 "" Neomake
 augroup_neomake_config
   au!
@@ -109,7 +112,7 @@ set tabstop=2
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
-let g:seoul256_background = 236
+let g:seoul256_background = 233
 
 " seoul256 (light):
 "   Range:   252 (darkest) ~ 256 (lightest)
@@ -751,8 +754,14 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" how to split
+set splitbelow
+set splitright
+
 " Close the current buffer
-map <leader>bc :Bclose<cr>:tabclose<cr>gT
+"map <leader>bd :Bclose<cr>:tabclose<cr>gT
+"map <leader>bd :Bclose<cr><leader>tc
+map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>

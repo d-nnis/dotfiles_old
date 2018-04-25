@@ -95,6 +95,7 @@ if [ $terminal -eq 1 ]; then
   list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
   list+=" xbindkeys xbindkeys-config"
   list+=" tree htop"
+  list+=" tree"
   list+=" x11vnc x11vnc-data ssvnc" # remote stuff
   list+=" caca-utils" # useful?
 fi
@@ -114,15 +115,15 @@ install_pkg=0
 echo check packages? ########
 echo $check_pkg
 if [ "$check_pkg" -gt "0" ]; then
-  #check_packages() {
+  check_packages() {
     for el in $list; do
       dpkg -l $el > /dev/null
       if [ $? -eq 1 ]; then
         install_pkg=1
       fi
     done
-  #}
-  #check_packages()
+  }
+check_packages()
 fi
 
 if [ "$install_pkg" -eq "1" ]; then
@@ -145,12 +146,15 @@ fi
 # TODO: 
 if [ -e /etc/cron.d/textaid-server ]; then
   sudo rm -vf /etc/cron.d/textaid-server
+  rm -vf /etc/cron.d/textaid-server
+  rm -vf /etc/cron.d/cvim-server
 fi
 echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
 if [ -e /etc/cron.d/cvim-server ]; then
   sudo rm -vf /etc/cron.d/cvim-server
 fi
 echo "@reboot * * * * $USER $HOME/dotfiles/lib/cvim-server.py" | sudo tee /etc/cron.d/cvim-server
+echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
 
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then

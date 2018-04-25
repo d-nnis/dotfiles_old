@@ -47,6 +47,7 @@
 * lta           # atime, last access time or use
 * lx            # sort by extension
 * lad           # ls dirs only (&& do not enter)
+* lal           # la | less
 * get_crtime    # get _creation_ time of file
 * diffdir       # compare to dirs recursively (diff -rq)
 * a2pdf_latex   # adoc to pdf-toolchain
@@ -138,6 +139,7 @@
   * W  ~~ toggle wrapping lines
   * of ~~ (o)ne(f)low: replace many whitespaces to one
   * co ~~ (co)py file into a new tab
+  * # ~~ switch to last tab
 * AsciiDoc: <leader>...
   * bq  ~~  (b)lock (q)uote
   * bn  ~~  (b)lock (n)ote
