@@ -140,7 +140,11 @@ alias lk='la -Sr --color=always'              # sort by size, reverse: biggest l
 alias ltm='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
 alias ltc='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
 alias lta='la -ur --sort=time'		# sort by (u)se/ access time (atime)
-alias lam='ltm | tail -n20' # show 20 of (la)test files, which where (m)odified
+#alias lam='ltm | tail -n20' # show 20 of (la)test files, which where (m)odified # does not work if given an argument
+function lam () {
+  ltm $@ | tail -n20
+}
+
 
 alias lr='ls -lR --color=always'               # recursive ls
 alias lm='ls -al  --color=always |less'         # pipe through 'more'
