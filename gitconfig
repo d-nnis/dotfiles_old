@@ -33,4 +33,4 @@
 [mergetool]
 	prompt = false
 [core]
-	autocrlf = true
+	autocrlf = input
