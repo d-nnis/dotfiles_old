@@ -584,6 +584,10 @@ nmap <C-s> :w!<cr>
 " TODO: does not return to INSERTMODE after reload
 imap <C-s> <Esc>:w<cr>
 
+if has('gui_running')
+  command! Sav browse confirm saveas
+endif
+
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
