@@ -143,13 +143,13 @@ alias getclip='echo "$(xsel)"'
 alias jobs='jobs -l'
 alias j='jobs'
 
-if [ -f $(which display) ]; then
+if [ -x /usr/bin/display ]; then
   alias display='display -geometry 600x800'
   alias d=display
   alias orient='identify -format "orientation: %[orientation]\ngeometry: %g"'
 fi
 
-[ -f $(which feh) ] && alias feh='feh -g 600x800'
+[ -x /usr/bin/feh ] && alias feh='feh -g 600x800'
 
 ## unix porn {{{
 alias lx='la -XB'		# sort by extension
