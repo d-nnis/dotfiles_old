@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/nelstrom/vim-cutlass'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'https://github.com/vifm/vifm.vim'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
