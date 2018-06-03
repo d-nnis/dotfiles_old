@@ -89,16 +89,17 @@ alias confed=configedit
 #alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zprezto/runcoms/zpreztorc ~/dotfiles/alias ~/dotfiles/zprezto/runcoms/zprofile ~/dotfiles/zprezto/runcoms/zshenv ~/dotfiles/zprezto/runcoms/zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
 alias configedit="cd ~/dotfiles && \
   vi ~/dotfiles/vimrc \
-  ~/dotfiles/bashrc \
-  ~/dotfiles/tmux.conf \
+  ~/.config/vifm/vifmrc \
+  ~/.bashrc \
+  ~/.tmux.conf \
   ~/dotfiles/alias \
-  ~/dotfiles/Xmodmap \
-  ~/dotfiles/Xresources \
-  ~/dotfiles/zprezto/runcoms/zpreztorc \
-  ~/dotfiles/zprezto/runcoms/zprofile \
-  ~/dotfiles/zprezto/runcoms/zshenv \
-  ~/dotfiles/zprezto/runcoms/zshrc \
-  ~/dotfiles/vimperatorrc "
+  ~/.Xmodmap \
+  ~/.Xresources \
+  ~/.zpreztorc \
+  ~/.zprofile \
+  ~/.zshenv \
+  ~/.zshrc \
+  ~/.vimperatorrc "
 
 alias confrel=configreload
 configreload() {
