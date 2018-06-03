@@ -959,7 +959,7 @@ map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
