@@ -109,6 +109,10 @@ if [ -d $HOME/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+if [ -f $HOME/.bashrc.local ]; then
+  source "$HOME/.bashrc.local"
+fi
+
 export BINLOG="$HOME/bin/bin.log"
 
 # disable xon/xoff
