@@ -69,6 +69,7 @@ done
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
 link_config="mc htop"
 link_config+=" redshift.conf"
+link_config+=" vifm"
 #link_config+" xnviewmp"  # only default.bar default.keys and xnview.ini
 
 mkdir -pv $HOME/backup_dotfiles/config
@@ -92,7 +93,7 @@ lesskey &
 if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
   list+=" curl w3m w3m-img lynx"
-  list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
+  list+=" cups-pdf multitail vim-gnome vifm zathura mc mc-data odt2txt"
   list+=" xbindkeys xbindkeys-config"
   list+=" tree htop"
   list+=" tree"
