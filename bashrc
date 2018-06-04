@@ -1,3 +1,4 @@
+#!/usb/bin/env bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -108,12 +109,19 @@ if [ -d $HOME/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+if [ -f $HOME/.bashrc.local ]; then
+  source "$HOME/.bashrc.local"
+fi
+
 export BINLOG="$HOME/bin/bin.log"
 
 # disable xon/xoff
 stty -ixon
 GPG_TTY=$(tty)
 export GPG_TTY
+
+LC_ALL=en_US.utf8
+export LC_ALL
 
 ## unix-porn {{{
 # borrowed from http://slackmagic.com/filedump/bashrc
@@ -177,15 +185,22 @@ eval $(dircolors -b $HOME/.dircolors)
 
 ## perl local bin
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL5LIB="$HOME/perl5/lib/perl5:${PERL5LIB}"; export PERL5LIB;
+#PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT; 
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 ## extended path to dotfiles
 # already in path PATH="$HOME/perl5/dotfiles/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/dotfiles/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL5LIB="$HOME/dotfiles/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL5LIB="$HOME/dotfiles/lib/perl5:${PERL5LIB}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+
+PERL5LIB=".:${PERL5LIB}"; export PERL5LIB
+
+# perlbrew
+[ -f $HOME/perl5/perlbrew/etc/bashrc ] && source $HOME/perl5/perlbrew/etc/bashrc
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

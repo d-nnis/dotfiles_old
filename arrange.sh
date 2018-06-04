@@ -25,6 +25,8 @@ else
   echo install only terminal packages
 fi
 
+echo ############CHECK IT???##############
+
 ## symlinks HOME -- ~/.<file> -> ~/dotfiles/<file>
 link_home="vimperatorrc vimperatorrc.local vimperator"
 link_home+=" vimrc vim"
@@ -67,6 +69,7 @@ done
 ## respecting XDG_CONFIG_DIR default, only symlinking specific dirs
 link_config="mc htop"
 link_config+=" redshift.conf"
+link_config+=" vifm"
 #link_config+" xnviewmp"  # only default.bar default.keys and xnview.ini
 
 mkdir -pv $HOME/backup_dotfiles/config
@@ -90,10 +93,12 @@ lesskey &
 if [ $terminal -eq 1 ]; then
   list="tmux zsh xsel xclip sysstat zsh git-flow git silversearcher-ag"
   list+=" curl w3m w3m-img lynx"
-  list+=" cups-pdf multitail vim-gnome mc mc-data odt2txt"
+  list+=" cups-pdf multitail vim-gnome vifm zathura mc mc-data odt2txt"
   list+=" xbindkeys xbindkeys-config"
+  list+=" tree htop"
   list+=" tree"
   list+=" x11vnc x11vnc-data ssvnc" # remote stuff
+  list+=" caca-utils" # useful?
 fi
 if [ $entertainment -eq 1 ]; then
   list+=" moc moc-ffmpeg-plugin librcc-dev"  # ncurses audio-player
@@ -108,13 +113,18 @@ if [ $deskenv -eq 1 ]; then
 fi
 
 install_pkg=0
+echo check packages? ########
+echo $check_pkg
 if [ "$check_pkg" -gt "0" ]; then
+  check_packages() {
     for el in $list; do
       dpkg -l $el > /dev/null
       if [ $? -eq 1 ]; then
         install_pkg=1
       fi
     done
+  }
+check_packages()
 fi
 
 if [ "$install_pkg" -eq "1" ]; then
@@ -136,23 +146,29 @@ fi
 ## textaid (vimium) server: start once at startup
 # TODO: 
 if [ -e /etc/cron.d/textaid-server ]; then
+  sudo rm -vf /etc/cron.d/textaid-server
   rm -vf /etc/cron.d/textaid-server
   rm -vf /etc/cron.d/cvim-server
 fi
-echo "@reboot root $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
-echo "@reboot root $USER $HOME/dotfiles/lib/cvim-server.py" | sudo tee /etc/cron.d/cvim-server
+echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
+if [ -e /etc/cron.d/cvim-server ]; then
+  sudo rm -vf /etc/cron.d/cvim-server
+fi
+echo "@reboot * * * * $USER $HOME/dotfiles/lib/cvim-server.py" | sudo tee /etc/cron.d/cvim-server
+echo "@reboot * * * * $USER $HOME/dotfiles/lib/textaid-server.pl" | sudo tee /etc/cron.d/textaid-server
 
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-# TODO: errors?
-$HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # prerequisites
 ## git clone --recursive https://github.com/d-nnis/dotfiles.git
 git submodule update --init --recursive --merge
+
+# TODO: errors?
+$HOME/.tmux/plugins/tpm/bin/install_plugins
 
 if [[ "$(which $SHELL)" != *zsh ]]; then
   sudo chsh -s /usr/bin/zsh

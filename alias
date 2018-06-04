@@ -5,10 +5,10 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=always'
-  alias grep='grep --color=always'
-  alias fgrep='fgrep --color=always'
-  alias egrep='egrep --color=always'
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
   alias less='less -R'
   alias xclip='xclip -selection clip'
 fi
@@ -34,12 +34,16 @@ alias watch='watch -d'
 alias mulch='multitail -R 2 -l '
 alias diffdir='/usr/bin/diff -rq'
 alias tmux='tmux -2'
+alias info='info --vi-keys'
+
+alias r='fc -s'
 
 ## zsh specifica
 # $SHELL is not reliable?
 if [[ $BASH != *bash ]]; then
   ## suffix aliases
   alias -s deb='dpkg -I '
+  alias -s pl=perl
   alias -s pdf=xdg-open
   #alias -s html=firefox
   alias -s html=xdg-open
@@ -82,36 +86,44 @@ fi
 
 alias confed=configedit
 #alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zprezto/runcoms/zpreztorc ~/dotfiles/alias ~/dotfiles/zprezto/runcoms/zprofile ~/dotfiles/zprezto/runcoms/zshenv ~/dotfiles/zprezto/runcoms/zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
-#alias configedit="cd ~/dotfiles && \
-#  vi ~/dotfiles/vimrc \
-#  ~/dotfiles/bashrc \
-#  ~/dotfiles/tmux.conf \
-#  ~/dotfiles/alias \
-#  ~/dotfiles/Xmodmap \
-#  ~/dotfiles/Xresources \
-#  ~/dotfiles/zprezto/runcoms/zpreztorc \
-#  ~/dotfiles/zprezto/runcoms/zprofile \
-#  ~/dotfiles/zprezto/runcoms/zshenv \
-#  ~/dotfiles/zprezto/runcoms/zshrc \
-#  ~/dotfiles/vimperatorrc "
-
-alias configedit="vi ~/.vimrc \
+alias configedit="cd ~/dotfiles && \
+  vi ~/dotfiles/vimrc \
+  ~/.config/vifm/vifmrc \
   ~/.bashrc \
-  ~/.tmux.conf  \
-  ~/dotfiles/alias  \
-  ~/.Xmodmap  \
+  ~/.tmux.conf \
+  ~/dotfiles/alias \
+  ~/.Xmodmap \
   ~/.Xresources \
-  ~/.zshrc  \
-  ~/.zpreztorc  \
+  ~/.zpreztorc \
   ~/.zprofile \
-  ~/.zshenv "
+  ~/.zshenv \
+  ~/.zshrc \
+  ~/.vimperatorrc "
 
 alias confrel=configreload
 configreload() {
   echo "Reloading..."
-  echo "ZSH & Prezto"
-  . ~/.zshrc
-  #. ~/.zpreztorc
+  if [[ $BASH != *bash ]]; then
+    echo "ZSH & Prezto"
+    . ~/.zshrc
+    . ~/.zpreztorc
+  else
+    echo "BASH"
+    . ~/.bashrc
+  fi
+  echo "Xresources"
+
+alias confrel=configreload
+configreload() {
+  echo "Reloading..."
+  if [[ $BASH != *bash ]]; then
+    echo "ZSH & Prezto"
+    . ~/.zshrc
+    . ~/.zpreztorc
+  else
+    echo "BASH"
+    . ~/.bashrc
+  fi
   echo "Xresources"
   xrdb ~/.Xresources
   [ -f $HOME/.Xresources.local ] && xrdb -override ~/.Xresources.local
@@ -142,7 +154,7 @@ alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
 alias jobs='jobs -l'
-alias j=jobs
+alias j='jobs'
 
 if [ -x /usr/bin/display ]; then
   alias display='display -geometry 600x800'
@@ -150,9 +162,11 @@ if [ -x /usr/bin/display ]; then
   alias orient='identify -format "orientation: %[orientation]\ngeometry: %g"'
 fi
 
+[ -x /usr/bin/feh ] && alias feh='feh -g 600x800'
+
 ## unix porn {{{
-alias lx='la -XB --color=always'		# sort by extension
-alias lk='la -Sr --color=always'              # sort by size, reverse: biggest last
+alias lx='la -XB'		# sort by extension
+alias lk='la -Sr'              # sort by size, reverse: biggest last
 #alias lc='ls -lcr --color=always'		# sort by change time, long format
 #alias lu='ls -lur --color=always'		# sort by access time (also use)
 #alias lt='ls -lStr --color=always'              # sort by date
@@ -166,10 +180,10 @@ function lam () {
 }
 
 
-alias lr='ls -lR --color=always'               # recursive ls
-alias lm='ls -al  --color=always |less'         # pipe through 'more'
+alias lr='ls -lR'               # recursive ls
+alias lm='ls -al |less'         # pipe through 'more'
 alias tree='tree -Csu'		# nice alternative to 'ls'
-alias lisa='ls -lisa --color=always'
+alias lisa='ls -lisa'
 alias lsperm='ls -l | sed -e 's/rwx/7/g' | sed -e 's/r--/4/g' | sed -e 's/r-x/5/g' | sed -e 's/rw-/6/g' | sed -e 's/---/0/g''
 alias spacewaste="du -s * | sort -n | tail" # show size of subdirs
 alias lssize='du -sh * | sort -n | more'  # show files too
@@ -193,10 +207,6 @@ alias connectednow="lsof -P -i -n"
 
 ## / unix porn }}}
 
-
-## from rumpel
-alias gst='git status --ignored -s -b'
-## \
 
 
 [ -f ~/.alias.local ] && source ~/.alias.local

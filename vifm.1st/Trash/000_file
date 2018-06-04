@@ -1,0 +1,48 @@
+
+I came to appreciate Log4perl and I would like to make use of it across the main Perl-script and (several modules). How do I implement it, preferably in an oo-fashion?
+Is it possible to hook up the logger-object (of the main script) with the object of the module in order to fully log events that happen in the main script as well as events of the module('s object)?
+
+
+my $logger = get_logger();
+my $appender_log = Log::Log4perl::Appender->new(
+  "Log::Dispatch::File",
+  filename => "action.log",
+  mode     => "append"
+);
+$logger->add_appender($appender_log);
+$logger->info("Logger activated");
+
+my $ro = Rotation->new; # package in rotate_action.pm
+
+$ro->process_file("somefile");
+
+{
+  package Rotation;
+
+  sub new {
+    my $class = shift;
+    my $self = {};
+    bless $self, $class;
+    return $self;
+  }
+	
+  sub process_file {
+    my $self = shift;
+    my $file = shift;
+
+		#$ro->process_file("somefile");
+
+    my $exec_string = "magick_orient.sh";
+    $exec_string .= " $file";
+    #say "string $exec_string";
+    my $exec_result = `$exec_string 2>&1`;
+    #my $exec_result = `$exec_string`;
+    #say "res: $exec_result";
+    my $err_lvl = $?;
+    #say "result $exec_result";
+    
+    if ($err_lvl != 0) {
+
+	}
+
+}

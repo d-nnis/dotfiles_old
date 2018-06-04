@@ -22,6 +22,7 @@ config/mc/*
 !config/mc/panels.ini
 !config/mc/mc.ext
 !config/mc/solarized.ini
+!config/mc/mc.keymap
 
 ## moc
 moc/cache/*

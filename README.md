@@ -185,6 +185,12 @@
 * \<C-k\> ~~ switch to pane (tmux)/ window (vim) up
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
+### Midnight Commander
+* Sort order ... # Alt-
+  * # ~~ by name
+  * $ ~~ by extention
+  * z ~~ by time, (Z)eit
+  * ! ~~ show sort order menu
 ### Vimperator
 * \<leader\> ... # is ,
   * t ~~ open URL in background
@@ -279,6 +285,8 @@
   * ... attach if no other client is attached
   * ... do not attach else and give feedback
   * break pane: even if it is a vim window-split
+  * *destroy-unattached on*: exit/ kill session if no other attached?
+  * kill sessions that are lonely
 * vimperator
   * if \<wiki-url-pattern\>, focus on wiki-text-edit-frame textarea#wpTextbox1, send-keys \<C-i\>
     *  \<Esc\> - leave insert mode of ff-tab
@@ -295,3 +303,7 @@
   * sar/atsar and/or iostat for tmux-cpu
   * wmctrl
   * xsel (xclip too?)
+* bin
+** killhim: kill all found processes (not just one)
+* README/ doc
+** generate hotkey-centric view and function-centric view (e.g. "search") from program-centric view (this)
