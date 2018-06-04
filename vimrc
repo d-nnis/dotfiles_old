@@ -54,6 +54,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/nelstrom/vim-cutlass'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'https://github.com/SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
@@ -70,6 +72,13 @@ call plug#end()
 "au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
 "au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
+
+"" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UtliSnipsJumpForwardTrigger="<c-b>"
+let g:UtliSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
 
 "" NERDTree
 nmap <leader>t :NERDTreeToggle<CR>
