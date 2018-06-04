@@ -82,25 +82,36 @@ fi
 
 alias confed=configedit
 #alias configedit="cd ~/dotfiles && vi ~/dotfiles/vimrc ~/dotfiles/bashrc ~/dotfiles/tmux.conf ~/dotfiles/zprezto/runcoms/zpreztorc ~/dotfiles/alias ~/dotfiles/zprezto/runcoms/zprofile ~/dotfiles/zprezto/runcoms/zshenv ~/dotfiles/zprezto/runcoms/zshrc ~/dotfiles/vimperatorrc ~/dotfiles/Xmodmap ~/dotfiles/Xresources"
-alias configedit="cd ~/dotfiles && \
-  vi ~/dotfiles/vimrc \
-  ~/dotfiles/bashrc \
-  ~/dotfiles/tmux.conf \
-  ~/dotfiles/alias \
-  ~/dotfiles/Xmodmap \
-  ~/dotfiles/Xresources \
-  ~/dotfiles/zprezto/runcoms/zpreztorc \
-  ~/dotfiles/zprezto/runcoms/zprofile \
-  ~/dotfiles/zprezto/runcoms/zshenv \
-  ~/dotfiles/zprezto/runcoms/zshrc \
-  ~/dotfiles/vimperatorrc "
+#alias configedit="cd ~/dotfiles && \
+#  vi ~/dotfiles/vimrc \
+#  ~/dotfiles/bashrc \
+#  ~/dotfiles/tmux.conf \
+#  ~/dotfiles/alias \
+#  ~/dotfiles/Xmodmap \
+#  ~/dotfiles/Xresources \
+#  ~/dotfiles/zprezto/runcoms/zpreztorc \
+#  ~/dotfiles/zprezto/runcoms/zprofile \
+#  ~/dotfiles/zprezto/runcoms/zshenv \
+#  ~/dotfiles/zprezto/runcoms/zshrc \
+#  ~/dotfiles/vimperatorrc "
+
+alias configedit="vi ~/.vimrc \
+  ~/.bashrc \
+  ~/.tmux.conf  \
+  ~/dotfiles/alias  \
+  ~/.Xmodmap  \
+  ~/.Xresources \
+  ~/.zshrc  \
+  ~/.zpreztorc  \
+  ~/.zprofile \
+  ~/.zshenv "
 
 alias confrel=configreload
 configreload() {
   echo "Reloading..."
   echo "ZSH & Prezto"
   . ~/.zshrc
-  . ~/.zpreztorc
+  #. ~/.zpreztorc
   echo "Xresources"
   xrdb ~/.Xresources
   [ -f $HOME/.Xresources.local ] && xrdb -override ~/.Xresources.local
@@ -130,6 +141,15 @@ alias aptup='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias getclip='echo "$(xsel)"'
 #alias hardcopy='man -t multitail | lpr -m'
 
+alias jobs='jobs -l'
+alias j=jobs
+
+if [ -x /usr/bin/display ]; then
+  alias display='display -geometry 600x800'
+  alias d=display
+  alias orient='identify -format "orientation: %[orientation]\ngeometry: %g"'
+fi
+
 ## unix porn {{{
 alias lx='la -XB --color=always'		# sort by extension
 alias lk='la -Sr --color=always'              # sort by size, reverse: biggest last
@@ -140,7 +160,11 @@ alias lk='la -Sr --color=always'              # sort by size, reverse: biggest l
 alias ltm='la -tr --sort=time' # sort by modif. time, mtime, time of data in file
 alias ltc='la -cr --sort=time'		# sort by (c)hange time (last modification), reverse: latest is last entry 
 alias lta='la -ur --sort=time'		# sort by (u)se/ access time (atime)
-alias lam='ltm | tail -n20' # show 20 of (la)test files, which where (m)odified
+#alias lam='ltm | tail -n20' # show 20 of (la)test files, which where (m)odified # does not work if given an argument
+function lam () {
+  ltm $@ | tail -n20
+}
+
 
 alias lr='ls -lR --color=always'               # recursive ls
 alias lm='ls -al  --color=always |less'         # pipe through 'more'
@@ -152,7 +176,9 @@ alias lssize='du -sh * | sort -n | more'  # show files too
 alias rm='rm -v'
 alias mv='mv -v'
 alias cp='cp -v'
-alias mount='mount | column -t'
+alias mounttable='mount | column -t'
+alias mount='mount -v'
+alias umount='umount -v'
 
 alias psaux='ps ax -eo user,pid,priority,args'
 alias ping='ping -c 10'
@@ -167,6 +193,10 @@ alias connectednow="lsof -P -i -n"
 
 ## / unix porn }}}
 
+
+## from rumpel
+alias gst='git status --ignored -s -b'
+## \
 
 
 [ -f ~/.alias.local ] && source ~/.alias.local
