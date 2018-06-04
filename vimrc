@@ -56,6 +56,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'https://github.com/SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+  Plug 'https://github.com/vifm/vifm.vim'
 call plug#end()
 
   "Plug 'junegunn/limelight.vim'
@@ -92,7 +93,7 @@ let NERDTreeQuitOnOpen=1
 " NERDTree opening when starting with no file(s) specified
 "autocmd StdinReadPre * let s:std_in=1
 autocmd StdinReadPre * let s:std_in=2
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -416,6 +417,9 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 " default of statusline
 hi statusline guibg=grey ctermfg=black ctermbg=white
 
+"map <F5> <Esc><C-s>:! ./%<cr>
+map <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
+
 """"""""""""""""""
 " autocorrection "
 """"""""""""""""""
@@ -431,7 +435,7 @@ hi statusline guibg=grey ctermfg=black ctermbg=white
 
 " turn WOrd into Word
 nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
-
+" turn into function: if not found, echo "finished" or sth the like.
 
 """""""""""""""""""""""
 " File: mediawiki.vim "
@@ -576,16 +580,19 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Fast saving
+map <F5> <Esc><C-s>:! ./%<cr>
+
+"""""""""""""""
+" Fast saving "
 nmap <leader>w :w!<cr>
 " write and quit
 nmap <leader>W :wq
 " quit all
 nmap <leader>Q :qa
 " quick save
-nmap <C-s>  :w!<cr>
+nmap <C-s> :w!<cr>
 " TODO: does not return to INSERTMODE after reload
-imap <C-s>  <Esc>:w<cr>
+imap <C-s> <Esc>:w<cr>
 
 if has('gui_running')
   command! Sav browse confirm saveas
@@ -961,7 +968,7 @@ map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
