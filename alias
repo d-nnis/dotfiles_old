@@ -112,6 +112,7 @@ configreload() {
     . ~/.bashrc
   fi
   echo "Xresources"
+}
 
 alias confrel=configreload
 configreload() {
