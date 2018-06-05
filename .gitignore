@@ -14,6 +14,7 @@ tmux/plugins/vim-tmux/
 ## vim
 ## managed via VimPlug
 vim/plugged/*
+config/vifm/vifminfo
 
 ## config
 ### mc
