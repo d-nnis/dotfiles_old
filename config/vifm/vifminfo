@@ -17,7 +17,7 @@
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 oh
@@ -26,138 +26,171 @@ l11,2
 r2
 
 # Left window history (oldest to newest):
+d/home/dennis/Vera2018/scan/8M
+	00000031.TIF
+10
 d/home/dennis/Vera2018
 	config
-1
+-11
 d/home/dennis/Vera2018/config
 	..
-0
+-11
 d/home/dennis/Vera2018
 	..
-0
+-11
 d/home/dennis/workspace/lp_tools
 	Essent2.pm
-3
+-11
 d/home/dennis/Downloads
 	notes.txt
-15
+-11
 d/home/dennis/tmp
 	..
-0
+-11
 d/home/dennis/.vim/plugged/vifm.vim/doc/app
 	..
-0
+-11
 d/home/dennis/dotfiles
 	..
-0
+-11
 d/home/dennis
 	owncloud_web6
-15
+-11
 d/home/dennis/owncloud_web6
 	_toPrint
-2
+-11
 d/home/dennis/owncloud_web6/_toPrint
 	No Silver Bullet_Brooks.pdf
-5
+-11
 d/home/dennis/workspace/normalize_scan
 	smile.gif
-12
+-11
 d/home/dennis/workspace
 	normalize_scan
-4
+-11
 d/home/dennis/workspace/normalize_scan
 	speed
-4
+-11
 d/home/dennis/workspace/normalize_scan/speed
 	..
-0
+-11
 d/home/dennis/workspace/normalize_scan
 	..
-0
+-11
 d/home/dennis/workspace
 	..
-0
+-11
 d/home/dennis
 	Downloads
-3
+-11
 d/home/dennis/Downloads
 	Badeseen – MyMindTriple_files
-1
+-11
 d/home/dennis/Downloads/Badeseen – MyMindTriple_files
 	..
-0
+-11
 d/home/dennis/Downloads
 	Vim – MyMindTriple_files
-2
+-11
 d/home/dennis/Downloads/Vim – MyMindTriple_files
 	..
-0
+-11
 d/home/dennis/Downloads
 	misc
-4
+-11
 d/home/dennis/Downloads/misc
 	..
-0
+-11
 d/home/dennis/Downloads
 	misc
-4
+-11
 d/home/dennis/Downloads/misc
 	..
-0
+-11
 d/home/dennis/Downloads
 	VERA Englisch Pilotierung 2018 Bl�cke
-2
+-11
 d/home/dennis/Downloads/VERA Englisch Pilotierung 2018 Bl�cke
 	..
-0
+-11
 d/home/dennis/Downloads
 	notes.txt
-15
+-11
 d/home/dennis/bin
 	..
-0
+-11
 d/home/dennis/Downloads
 	XnViewMP-linux-x64.deb
-10
+-11
 d/home/dennis/dotfiles/config/vifm
 	..
-0
+-11
 d/home/dennis/dotfiles/config
 	vifm
-3
+-11
 d/home/dennis/dotfiles
 	config
-5
+-11
 d/home/dennis
 	dotfiles
-14
+-11
 d/home/dennis/dotfiles
 	config
-5
+-11
 d/home/dennis
 	owncloud_web6
-16
+-11
 d/home/dennis/owncloud_web6
 	_toPrint
-2
+-11
 d/home/dennis
 	.local
-14
+-11
 d/home/dennis/.local
 	share
-1
+-11
 d/home/dennis/.local/share
 	Trash
-1
+-11
 d/home/dennis/.local/share/Trash
 	files
-1
+-11
 d/home/dennis/.local/share/Trash/files
-	barcode_tilt.tif.new_180315-232755.tif
-7
+	Photos
+-11
+d/home/dennis/.local/share/Trash
+	files
+-11
+d/home/dennis/.local/share
+	Trash
+-11
+d/home/dennis/.local
+	share
+-11
+d/home/dennis
+	Vera2018
+-11
+d/home/dennis/Vera2018
+	scan_normalized
+-11
+d/home/dennis/Vera2018/scan_normalized
+	..
+-11
+d/home/dennis/Vera2018
+	scan
+-11
+d/home/dennis/Vera2018/scan
+	8M
+-11
+d/home/dennis/Vera2018/scan/8M
+	00000031.TIF
+10
 d
 
 # Right window history (oldest to newest):
+D/home/dennis/workspace/lp_tools/_off
+	intro1_sample.png
+11
 D/home/dennis/Vera2018
 	..
 0
@@ -231,8 +264,8 @@ D/home/dennis/workspace/lp_tools
 	_off
 1
 D/home/dennis/workspace/lp_tools/_off
-	..
-0
+	S10_stream_sample.tif
+6
 D
 
 # Command line history (oldest to newest):
@@ -278,6 +311,8 @@ D
 :! echo %c | xclip
 :! echo %i
 :reload
+:!display %f
+:!display -geometry 600x800 %f
 
 # Search history (oldest to newest):
 /Vera
@@ -361,7 +396,7 @@ t/home/dennis/.local/share/vifm/Trash/000_Essent2.pm
 # State:
 f
 i1
-[.0
+[.1
 [F
 F
 I1
