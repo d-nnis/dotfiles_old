@@ -22,6 +22,8 @@ nnoremap yf :!echo %c:p | xclip<cr>
 
 nnoremap <f2> cw
 
+nnoremap gD :cd %D<cr>
+
 ""
 
 " ------------------------------------------------------------------------------
@@ -255,6 +257,10 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ shotwell,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
          \ convert -identify %f -verbose /dev/null
+
+filextype *.tif,*.TIF
+        \ {View in sxiv}
+        \ display -geometry 600x800
 
 " OpenRaster
 filextype *.ora
