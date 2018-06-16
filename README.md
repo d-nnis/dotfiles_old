@@ -185,6 +185,10 @@
 * \<C-k\> ~~ switch to pane (tmux)/ window (vim) up
 * \<C-l\> ~~ switch to pane (tmux)/ window (vim) to the right
 
+### VIFM
+* \<C- --\>\> ~~ clone file
+* gD ~~ go to dir of other pane
+
 ### Midnight Commander
 * Sort order ... # Alt-
   * # ~~ by name
