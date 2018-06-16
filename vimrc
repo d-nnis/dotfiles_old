@@ -744,6 +744,8 @@ set wrapscan
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+vnoremap // y/<C-R>0<CR>
+vnoremap ?? y?<C-R>0<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
