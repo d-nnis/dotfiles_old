@@ -24,6 +24,8 @@ nnoremap <f2> cw
 
 nnoremap gD :cd %D<cr>
 
+" command to change directory by picking it via fzf
+command! fzfcd :execute 'cd' "'".term('find -type d | fzf 2> /dev/tty')."'"
 ""
 
 " ------------------------------------------------------------------------------
