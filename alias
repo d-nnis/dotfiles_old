@@ -35,6 +35,7 @@ alias mulch='multitail -R 2 -l '
 alias diffdir='/usr/bin/diff -rq'
 alias tmux='tmux -2'
 alias info='info --vi-keys'
+alias vifm='vifm .'
 
 alias r='fc -s'
 
@@ -43,7 +44,7 @@ alias r='fc -s'
 if [[ $BASH != *bash ]]; then
   ## suffix aliases
   alias -s deb='dpkg -I '
-  alias -s pl=perl
+  #alias -s pl=perl
   alias -s pdf=xdg-open
   #alias -s html=firefox
   alias -s html=xdg-open
