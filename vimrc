@@ -1003,6 +1003,17 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+" Clear all registers.
+function! ClearRegisters()
+    let regs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-="*+'
+    let i=0
+    while (i<strlen(regs))
+        exec 'let @'.regs[i].'=""'
+        let i=i+1
+    endwhile
+endfunction
+ 
+command! ClearRegisters call ClearRegisters()
 
 " Returns true if paste mode is enabled
 function! HasPaste()
