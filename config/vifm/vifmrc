@@ -14,6 +14,8 @@ mark d ~/dotfiles
 
 set viewcolumns=*{name}..,16{mtime},7{}.
 
+set sort=+iname
+
 " Yank current directory path into the clipboard
 nnoremap yd :!echo %d | xclip<cr>
 
