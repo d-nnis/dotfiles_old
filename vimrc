@@ -98,7 +98,18 @@ autocmd StdinReadPre * let s:std_in=2
 " close vim if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" navigate to last pane
+" find files and populate the quickfix list
+fun! FindFiles(filename)
+  let error_file = tempname()
+  silent exe '!find . -name "'.a:filename.'" | xargs file | sed "s/:/:1:/" > '.error_file
+  set errorformat=%f:%l:%m
+  exe "cfile ". error_file
+  copen
+  call delete(error_file)
+endfun
+command! -nargs=1 FindFile call FindFiles(<q-args>)
+
+" navigate to last buffer
 nmap <leader># :b#<cr>
 
 "" Neomake
@@ -459,12 +470,12 @@ noremap <Up> gk
 noremap <Down> gj
 noremap <End> g$
 noremap <Home> g0
-noremap 0 g0
-noremap ^ g^
-noremap $ g$
+nnoremap 0 g0
+nnoremap ^ g^
+nnoremap $ g$
 noremap D dg$
 noremap C cg$
-noremap A g$a
+nnoremap A g$a
 
 inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
@@ -518,6 +529,8 @@ if has("autocmd")
   " FF-Plugin-It's all text <C-e>
   au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
   au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
+  " Qutebrowser-External Editor <C-e>
+  au BufRead,BufNewFile *qutebrowser-editor* set filetype=mediawiki
 endif
 
 fun! DemoteWikiTitels()
@@ -833,13 +846,14 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
-map 0 ^
+"map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" does not work if bound with meta-key <M-j>
+nmap <A-j> mz:m+<cr>`z
+nmap <A-k> mz:m-2<cr>`z
+vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
@@ -965,12 +979,12 @@ endfunction
       "normal! /headtoday
       "normal! o
 "map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
-map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
+nmap <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 
 
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
+nmap <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
