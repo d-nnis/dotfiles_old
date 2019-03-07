@@ -99,21 +99,22 @@ alias configedit="cd ~/dotfiles && \
   ~/.zprofile \
   ~/.zshenv \
   ~/.zshrc \
-  ~/.vimperatorrc "
+  ~/.tridactylrc \
+  ~/.config/qutebrowser/autoconfig.yml "
 
-alias confrel=configreload
-configreload() {
-  echo "Reloading..."
-  if [[ $BASH != *bash ]]; then
-    echo "ZSH & Prezto"
-    . ~/.zshrc
-    . ~/.zpreztorc
-  else
-    echo "BASH"
-    . ~/.bashrc
-  fi
-  echo "Xresources"
-}
+#alias confrel=configreload
+#configreload() {
+#  echo "Reloading..."
+#  if [[ $BASH != *bash ]]; then
+#    echo "ZSH & Prezto"
+#    . ~/.zshrc
+#    . ~/.zpreztorc
+#  else
+#    echo "BASH"
+#    . ~/.bashrc
+#  fi
+#  echo "Xresources"
+#}
 
 alias confrel=configreload
 configreload() {
