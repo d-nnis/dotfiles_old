@@ -401,11 +401,11 @@ endif
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi statusline guifg=red ctermfg=red
-    "set cursorcolumn
+    set cursorcolumn
   elseif a:mode == 'r'
     hi statusline guifg=blue ctermfg=lightblue
     "hi statusline ctermfg=green
-    "set cursorcolumn
+    set cursorcolumn
   else
     hi statusline guifg=magenta ctermfg=magenta
   endif
@@ -414,8 +414,10 @@ function! InsertStatuslineColor(mode)
 endfunction
 
 function! InsertLeaveActions()
-  hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
-  "set nocursorcolumn
+  "org: hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
+  hi statusline guifg=darkgrey ctermfg=darkgrey guibg=white ctermfg=white
+  "hi statusline guifg=orange ctermfg=NONE guibg=white ctermbg=white
+  set nocursorcolumn
   "set nocursorline
 endfunction
 
@@ -426,7 +428,8 @@ au InsertLeave * call InsertLeaveActions()
 inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 
 " default of statusline
-hi statusline guibg=grey ctermfg=black ctermbg=white
+"hi statusline guibg=grey ctermfg=black ctermbg=white
+"hi statusline guibg=grey ctermfg=black ctermbg=white
 
 "map <F5> <Esc><C-s>:! ./%<cr>
 map <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
@@ -839,7 +842,9 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ CWD:%r%{getcwd()}%h\ \ Line:%l\\%L
+" or %{line('$')}?
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -920,6 +925,9 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" default printer paper
+set printoptions=paper:A4
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
