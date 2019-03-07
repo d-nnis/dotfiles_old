@@ -10,11 +10,34 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',r': config-source ;; message-info config-reloaded
+        ;f: hint all tab-bg
+        <: tab-move -
+        '>': tab-move +
         cc: spawn mpv {hint-url}
+        cm: clear-messages
+        h: run-with-count 3 scroll left
+        j: run-with-count 3 scroll down
+        k: run-with-count 3 scroll up
+        l: run-with-count 3 scroll right
+        tO: set-cmd-text -s :open -t {url}
+        tg: set-cmd-text -s :tab-give
         to: set-cmd-text -s :open -t
+        tt: tab-take
+        twi: set-cmd-text -s :open -t https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
+        wc: close
         yo: spawn mpv {url}
   content.default_encoding:
     global: utf-8
+  content.javascript.enabled:
+    '*://telefuturenow.bandcamp.com/*': true
+    '*://web6.codeprobe.de/*': false
+    '*://www.it-jobs.de/*': true
+    '*://www.kontinuum-berlin.de/*': true
+    '*://www.openstreetmap.org/*': true
+    '*://www.youtube.com/*': true
+    '*://ze.tt/*': true
+    global: false
   editor.command:
     global:
     - gvim
@@ -24,10 +47,20 @@ settings:
     - normal {line}G{column0}l
   fonts.tabs:
     global: 11pt monospace
+  input.partial_timeout:
+    global: 50000
   keyhint.blacklist:
     global: null
+  keyhint.delay:
+    global: 500
   messages.timeout:
-    global: 10000
+    global: 40000
+  new_instance_open_target:
+    global: tab
+  qt.force_software_rendering:
+    global: none
+  scrolling.bar:
+    global: always
   scrolling.smooth:
     global: true
   session.lazy_restore:
@@ -38,6 +71,8 @@ settings:
     global: -1
   tabs.position:
     global: left
+  tabs.select_on_remove:
+    global: next
   tabs.show:
     global: multiple
   tabs.show_switching_delay:
