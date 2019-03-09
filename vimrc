@@ -451,6 +451,14 @@ map <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
 nnoremap <F4> :%s:\<\(\u\)\(\u\)\(\l\+\):\1\L\2\L\3:cg<CR>
 " turn into function: if not found, echo "finished" or sth the like.
 
+" dictionaries
+" TODO: check if file exists
+set dictionary=/usr/share/dict/american-english
+set dict+=/usr/share/dict/ngerman
+
+set complete+=k
+
+
 """""""""""""""""""""""
 " File: mediawiki.vim "
 """""""""""""""""""""""
@@ -793,7 +801,7 @@ set splitright
 " Close the current buffer
 "map <leader>bd :Bclose<cr>:tabclose<cr>gT
 "map <leader>bd :Bclose<cr><leader>tc
-map <leader>bd :Bclose<cr>
+map <leader>bc :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
