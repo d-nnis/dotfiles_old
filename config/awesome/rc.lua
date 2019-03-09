@@ -1,6 +1,8 @@
 
 local cyclefocus = require('cyclefocus')
+local lain  = require("lain")
 
+-- to access the widget: cpu.widget
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -311,6 +313,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}
               ),
+    awful.key({ "Control", "Mod1"  }, "t", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}
+              ),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -494,6 +499,7 @@ awful.rules.rules = {
         instance = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
+          "xfce4-appfinder",
         },
         class = {
           "Arandr",
@@ -504,7 +510,8 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+          },
 
         name = {
           "Event Tester",  -- xev.
