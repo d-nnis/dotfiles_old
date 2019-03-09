@@ -34,10 +34,20 @@
 #keystate_capslock = enable
 
 
-    #m:0x0 + c:211
+
+#VolDown
+"amixer -c 0 sset Master 1dB-"
+    m:0x0 + c:122
+    XF86AudioLowerVolume 
+
+#VolUp
+"amixer -c 0 sset Master 1dB+"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume 
 
 #Suspend
 "systemctl suspend"
+    m:0x0 + c:211
     XF86Launch4 
 
 #
