@@ -1,4 +1,5 @@
 
+
 local cyclefocus = require('cyclefocus')
 local lain  = require("lain")
 
@@ -255,6 +256,14 @@ globalkeys = awful.util.table.join(
               ),
     -- /appfinder
 
+    -- Application switcher
+    awful.key({ "Mod1" }, "Escape", function ()
+        -- If you want to always position the menu on the same place set coordinates
+        awful.menu.menu_keys.down = { "Down", "Alt_L" }
+        awful.menu.clients({theme = { width = 250 }}, { keygrabber=true, coords={x=525, y=330} })
+    end),
+
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -396,6 +405,8 @@ clientkeys = awful.util.table.join(
               {description = "close", group = "client"}),
     
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+              {description = "toggle floating", group = "client"}),
+    awful.key({ modkey, "Control" }, "f",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
