@@ -542,6 +542,8 @@ if has("autocmd")
   au BufRead,BufNewFile *freddy_wiki* set filetype=mediawiki
   " Qutebrowser-External Editor <C-e>
   au BufRead,BufNewFile *qutebrowser-editor* set filetype=mediawiki
+  " awesome-autocheck
+  autocmd BufWritePost *awesome/rc.lua !awesome -k
 endif
 
 fun! DemoteWikiTitels()
