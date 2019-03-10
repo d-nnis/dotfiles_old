@@ -11,7 +11,7 @@ def bind_search(key, keyword, search_url):
 #bind_search('ccc', 'googleluckygithub', 'https://www.google.com/search?hl=en&q=github+{}&btnI=Im+Feeling+Lucky')
 
 
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'w': 'https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search={}&go=Seite'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'w': 'https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search={}&go=Seite', 'awe': 'https://duckduckgo.com/html?q=site%3Aawesomewm.org%20 {}'}
 
 c.tabs.select_on_remove = "prev"
 
@@ -21,12 +21,11 @@ c.tabs.select_on_remove = "prev"
 # https://raw.githubusercontent.com/collinbarrett/FilterLists/master/data/Lists.json
 # https://github.com/StevenBlack/hosts
 c.content.host_blocking.lists = [
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-social/hosts',
+    #'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-social/hosts',
     'https://www.malwaredomainlist.com/hostslist/hosts.txt',
-    'http://someonewhocares.org/hosts/hosts',
-    'http://winhelp2002.mvps.org/hosts.zip',
+    #'http://winhelp2002.mvps.org/hosts.zip',
     'http://malwaredomains.lehigh.edu/files/justdomains.zip',
-    'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext'
+    #'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext'
 ]
 
 
