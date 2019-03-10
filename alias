@@ -102,6 +102,8 @@ alias configedit="cd ~/dotfiles && \
   ~/.tridactylrc \
   ~/.config/qutebrowser/autoconfig.yml "
 
+alias awconf='vim ~/.config/awesome/rc.lua && awesome -k ~/.config/awesome/rc.lua'
+
 #alias confrel=configreload
 #configreload() {
 #  echo "Reloading..."
