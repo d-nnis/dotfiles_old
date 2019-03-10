@@ -13,13 +13,18 @@ settings:
         ',r': config-source ;; message-info config-reloaded
         ;f: hint all tab-bg
         <: tab-move -
+        <Alt+Left>: back
+        <Alt+Right>: forward
         '>': tab-move +
-        cc: spawn mpv {hint-url}
+        O: set-cmd-text :open {url:pretty}
+        ce: config-edit
         cm: clear-messages
-        h: run-with-count 3 scroll left
+        ev: spawn mpv {url}
+        gh: open about:blank
+        h: run-with-count 2 scroll left
         j: run-with-count 3 scroll down
         k: run-with-count 3 scroll up
-        l: run-with-count 3 scroll right
+        l: run-with-count 2 scroll right
         tO: set-cmd-text -s :open -t {url}
         tg: set-cmd-text -s :tab-give
         to: set-cmd-text -s :open -t
@@ -30,13 +35,16 @@ settings:
   content.default_encoding:
     global: utf-8
   content.javascript.enabled:
-    '*://telefuturenow.bandcamp.com/*': true
+    '*://bandcamp.com/*': true
+    '*://duckduckgo.com/*': false
+    '*://gitlab.com/*': true
     '*://web6.codeprobe.de/*': false
+    '*://www.gmx.net/*': true
     '*://www.it-jobs.de/*': true
     '*://www.kontinuum-berlin.de/*': true
+    '*://www.musicforprogramming.net/*': true
     '*://www.openstreetmap.org/*': true
     '*://www.youtube.com/*': true
-    '*://ze.tt/*': true
     global: false
   editor.command:
     global:
@@ -47,8 +55,12 @@ settings:
     - normal {line}G{column0}l
   fonts.tabs:
     global: 11pt monospace
+  input.insert_mode.auto_enter:
+    global: true
   input.partial_timeout:
     global: 50000
+  input.spatial_navigation:
+    global: false
   keyhint.blacklist:
     global: null
   keyhint.delay:
