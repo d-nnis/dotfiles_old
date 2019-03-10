@@ -35,13 +35,18 @@
 
 
 
+#VolMute
+"amixer sset Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute 
+
 #VolDown
-"amixer -c 0 sset Master 1dB-"
+"amixer sset Master 1%-"
     m:0x0 + c:122
     XF86AudioLowerVolume 
 
 #VolUp
-"amixer -c 0 sset Master 1dB+"
+"amixer sset Master 1%+"
     m:0x0 + c:123
     XF86AudioRaiseVolume 
 
