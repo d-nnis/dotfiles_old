@@ -22,8 +22,6 @@ nnoremap yd :!echo %d | xclip<cr>
 " Yank current file path into the clipboard
 nnoremap yf :!echo %c:p | xclip<cr>
 
-nnoremap <f2> cw
-
 nnoremap gD :cd %D<cr>
 
 " command to change directory by picking it via fzf
@@ -73,7 +71,7 @@ set undolevels=100
 " If you installed the vim.txt help file set vimhelp.
 " If would rather use a plain text help file set novimhelp.
 
-set novimhelp
+set vimhelp
 
 " If you would like to run an executable file when you
 " press return on the file name set this.
@@ -448,23 +446,28 @@ nnoremap gb :file &<cr>l
 "nnoremap yf :!echo %c:p | xclip %i<cr>
 
 " Mappings for faster renaming
-nnoremap I cw<c-a>
+nnoremap cI cw<c-a>
 nnoremap cc cw<c-u>
-nnoremap A cw
+nnoremap cA cw
 
 " Open console in current directory
-nnoremap ,t :!xterm &<cr>
+"nnoremap ,t :!xterm &<cr>
+nnoremap ,t :!urxvtc &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
 " Open gvim to edit vifmrc
 nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 
+nnoremap ,r :restart<cr>
+
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
 
-" Example of standard two-panel file managers mappings
-nnoremap <f3> :!less %f<cr>
+"" Function keys
+nnoremap <f1> :help<cr>
+nnoremap <f2> cw
+nnoremap <f3> :!less %f && echo -n "Press Enter to continue..." && read -s<cr>
 nnoremap <f4> :edit<cr>
 nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
