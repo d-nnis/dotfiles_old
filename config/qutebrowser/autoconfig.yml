@@ -21,10 +21,10 @@ settings:
         cm: clear-messages
         ev: spawn mpv {url}
         gh: open about:blank
-        h: run-with-count 2 scroll left
-        j: run-with-count 3 scroll down
-        k: run-with-count 3 scroll up
-        l: run-with-count 2 scroll right
+        h: run-with-count 1 scroll left
+        j: run-with-count 2 scroll down
+        k: run-with-count 2 scroll up
+        l: run-with-count 1 scroll right
         tO: set-cmd-text -s :open -t {url}
         tg: set-cmd-text -s :tab-give
         to: set-cmd-text -s :open -t
@@ -32,12 +32,32 @@ settings:
         twi: set-cmd-text -s :open -t https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
         wc: close
         yo: spawn mpv {url}
-  content.default_encoding:
-    global: utf-8
+  #  colors.messages.error.bg:
+  #    global: darkred
+  #  colors.messages.error.border:
+  #    global: '#bb0000'
+  #  colors.messages.error.fg:
+  #    global: white
+  #  colors.tabs.even.bg:
+  #    global: black
+  #  colors.tabs.odd.bg:
+  #    global: grey
+  #  colors.tabs.selected.even.bg:
+  #    global: darkgreen
+  #  colors.tabs.selected.even.fg:
+  #    global: white
+  #  colors.tabs.selected.odd.bg:
+  #    global: darkgreen
+  #  colors.tabs.selected.odd.fg:
+  #    global: white
+  #  content.default_encoding:
+  #    global: utf-8
   content.javascript.enabled:
     '*://bandcamp.com/*': true
     '*://duckduckgo.com/*': false
+    '*://github.com/*': true
     '*://gitlab.com/*': true
+    '*://vim.fandom.com/*': true
     '*://web6.codeprobe.de/*': false
     '*://www.gmx.net/*': true
     '*://www.it-jobs.de/*': true
@@ -46,6 +66,8 @@ settings:
     '*://www.openstreetmap.org/*': true
     '*://www.youtube.com/*': true
     global: false
+    https://badmanrecordingco.bandcamp.com/album/lovers-welcome-home: true
+    https://web6.codeprobe.de/ownCloud/index.php/apps/files/: true
   editor.command:
     global:
     - gvim
@@ -57,6 +79,12 @@ settings:
     global: 11pt monospace
   input.insert_mode.auto_enter:
     global: true
+  input.insert_mode.auto_load:
+    global: true
+  input.insert_mode.plugins:
+    global: true
+  input.links_included_in_focus_chain:
+    global: false
   input.partial_timeout:
     global: 50000
   input.spatial_navigation:
@@ -82,7 +110,7 @@ settings:
   tabs.max_width:
     global: -1
   tabs.position:
-    global: left
+    global: top
   tabs.select_on_remove:
     global: next
   tabs.show:
