@@ -22,7 +22,6 @@ cmapclear
 imapclear
 comclear
 
-
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
@@ -37,7 +36,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " throws error after reloading vimrc: _neomake is not a command_
 call plug#begin('~/.vim/plugged')
-  Plug 'neomake/neomake'
+  "Plug 'neomake/neomake'
 
   Plug 'tpope/vim-surround'
   " Invalid URI?
@@ -67,12 +66,6 @@ call plug#end()
   "Plug 'https://github.com/tpope/vim-surround'
   "Plug 'tpope/vim-fugitive'
 
-" wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
-" https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
-" save power, check spell not in real-time!2017-03-20"au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
-"au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
-"au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
-"au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -82,17 +75,20 @@ let g:UtliSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 "" NERDTree
-nmap <leader>t :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
+noremap <leader>t :NERDTreeToggle<CR>
+noremap <leader>f :NERDTreeFind<CR>
 " always open NERDTree on opening
 "autocmd vimenter * NERDTree
 
 " close NERDTree when opening a file
 let NERDTreeQuitOnOpen=1
 
+" always show hidden files
+let NERDTreeShowHidden=1
+
 " NERDTree opening when starting with no file(s) specified
 "autocmd StdinReadPre * let s:std_in=1
-autocmd StdinReadPre * let s:std_in=2
+"autocmd StdinReadPre * let s:std_in=2
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if NERDTree is the only window left
@@ -110,14 +106,14 @@ endfun
 command! -nargs=1 FindFile call FindFiles(<q-args>)
 
 " navigate to last buffer
-nmap <leader># :b#<cr>
+noremap <leader># :b#<cr>
 
 "" Neomake
-augroup_neomake_config
-  au!
-  autocmd! BufWritePost * Neomake
-augroup END
-let g:neomake_open_list=2
+" augroup_neomake_config
+"   au!
+"   autocmd! BufWritePost * Neomake
+" augroup END
+" let g:neomake_open_list=2
 
 syntax enable
 set shiftwidth=2
@@ -144,7 +140,7 @@ if $USER != "root"
   color seoul256
 endif
 " this one only vor gvim?
-colorscheme seoul256
+"colorscheme seoul256
 " Light color scheme
 "colo seoul256-light
 
@@ -364,6 +360,7 @@ if !has('nvim') && exists('&t_SI')
     let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
     let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
   elseif &t_Co > 1 && $TERM != "linux"
+    " t_Co: number of terminal colors
     " Fallback: change only the color of the cursor.
     "let &t_SI = "\<Esc>]12;#0087ff\x7"
     let &t_SI = "\<Esc>]12;red\x7"
@@ -415,7 +412,8 @@ endfunction
 
 function! InsertLeaveActions()
   "org: hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
-  hi statusline guifg=darkgrey ctermfg=darkgrey guibg=white ctermfg=white
+  hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE guibg=NONE
+  "hi statusline guifg=darkgrey ctermfg=darkgrey guibg=white ctermfg=white
   "hi statusline guifg=orange ctermfg=NONE guibg=white ctermbg=white
   set nocursorcolumn
   "set nocursorline
@@ -431,12 +429,19 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 "hi statusline guibg=grey ctermfg=black ctermbg=white
 "hi statusline guibg=grey ctermfg=black ctermbg=white
 
-"map <F5> <Esc><C-s>:! ./%<cr>
-map <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
+"map <F5> <Esc><C-s>:! ./%<cr> "noremap <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
+noremap <F5> <Esc><C-s>:! ./%<cr>
 
 """"""""""""""""""
 " autocorrection "
 """"""""""""""""""
+
+" wann geladen wird # Maske # Aktivieren # Zu verwendende Sprache
+" https://wiki.archlinux.de/title/Rechtschreibprüfung_unter_Vim
+" save power, check spell not in real-time!2017-03-20"au BufNewFile,BufRead,BufEnter *.adoc setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter *.md setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=de_de
+"au BufNewFile,BufRead,BufEnter README setlocal spell spelllang=en_us
 
 "iabbrev teh the
 "iab INnovation Innovation
@@ -522,20 +527,21 @@ endif
 "" mediawiki {{{
 "" Insert a matching = automatically while starting a new header.
 if &filetype =~ 'mediawiki' " works?
-inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
+  inoremap <buffer> <silent> = <C-R>=(getline('.')==''\|\|getline('.')=~'^=\+$')?"==\<Lt>Left>":"="<CR>
 
-" Enable folding based on ==sections==
-setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
+  " Enable folding based on ==sections==
+  setlocal foldexpr=getline(v:lnum)=~'^\\(=\\+\\)[^=]\\+\\1\\(\\s*<!--.*-->\\)\\=\\s*$'?\">\".(len(matchstr(getline(v:lnum),'^=\\+'))-1):\"=\"
 endif
 
 " }}}
 
-setlocal fdm=expr
+setlocal fdm=marker
 
 " map <F8> :setfiletype mediawiki<CR>
-if has("autocmd")
+if has("autocmd")"{{{
+  autocmd!
   " native vimperator-Plugin <C-i>
-  au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki
+  au BufRead,BufNewFile *web6.codeprobe.de*.tmp* set filetype=mediawiki"}}}
   au BufRead,BufNewFile *freddy*.tmp* set filetype=mediawiki
   " FF-Plugin-It's all text <C-e>
   au BufRead,BufNewFile *web6.codeprobe.de_wiki_* set filetype=mediawiki
@@ -543,7 +549,11 @@ if has("autocmd")
   " Qutebrowser-External Editor <C-e>
   au BufRead,BufNewFile *qutebrowser-editor* set filetype=mediawiki
   " awesome-autocheck
-  autocmd BufWritePost *awesome/rc.lua !awesome -k
+  "autocmd BufWritePost *awesome/rc.lua !awesome -k | !echo -n "Press Enter to continue..." && read -s<cr>"
+  " waits for return after every errorcode
+  "autocmd BufWritePost *awesome/rc.lua :exe "! awesome -k && read -s"
+  " waits for return only after errorcode >=1
+  autocmd BufWritePost *awesome/rc.lua :exe "! awesome -k"
 endif
 
 fun! DemoteWikiTitels()
@@ -574,8 +584,9 @@ endfun
 
 command! -bar ReloadVimrc source $MYVIMRC | doautocmd <nomodeline> FileType | normal zv
 nnoremap <leader>R :ReloadVimrc<CR>
+nnoremap <leader>r :ReloadVimrc<CR>
 
-"nnoremap <leader><F5> ReloadVimrc<CR>
+nnoremap <leader>ce :e ~/.vimrc<CR>
 
 """""""""""""""""
 " amix settings "
@@ -606,17 +617,16 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-map <F5> <Esc><C-s>:! ./%<cr>
 
 """""""""""""""
 " Fast saving "
-nmap <leader>w :w!<cr>
+noremap <leader>w :w!<cr>
 " write and quit
-nmap <leader>W :wq
+noremap <leader>W :wq
 " quit all
-nmap <leader>Q :qa
+noremap <leader>Q :qa
 " quick save
-nmap <C-s> :w!<cr>
+noremap <C-s> :w!<cr>
 " TODO: does not return to INSERTMODE after reload
 imap <C-s> <Esc>:w<cr>
 
@@ -699,7 +709,7 @@ set t_vb=
 set tm=500
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=3
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -759,7 +769,7 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-map <leader>W :set wrap!<CR>
+noremap <leader>W :set wrap!<CR>
 set wrapscan
 
 
@@ -778,23 +788,23 @@ vnoremap ?? y?<C-R>0<CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 "map <space> /
 "map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+noremap <silent> <leader><cr> :noh<cr>
 
 
 " Smart way to move between windows
 " TODO: Always stuck when reloading vimrc
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " how to split
 set splitbelow
@@ -803,30 +813,30 @@ set splitright
 " Close the current buffer
 "map <leader>bd :Bclose<cr>:tabclose<cr>gT
 "map <leader>bd :Bclose<cr><leader>tc
-map <leader>bc :Bclose<cr>
+noremap <leader>bc :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
+noremap <leader>ba :bufdo bd<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove 
+noremap <leader>t<leader> :tabnext 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+noremap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers 
 try
@@ -865,8 +875,8 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ CWD:%r%{getcwd()}%h\ \ Line:%l\\%L
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 " does not work if bound with meta-key <M-j>
-nmap <A-j> mz:m+<cr>`z
-nmap <A-k> mz:m-2<cr>`z
+noremap <A-j> mz:m+<cr>`z
+noremap <A-k> mz:m-2<cr>`z
 vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
@@ -895,7 +905,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ag and put the cursor in the right position
-map <leader>g :Ag 
+noremap <leader>g :Ag 
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -911,10 +921,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+noremap <leader>cc :botright cope<cr>
+noremap <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+noremap <leader>n :cn<cr>
+noremap <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -923,13 +933,13 @@ map <leader>p :cp<cr>
 setlocal nospell
 setglobal nospell
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -938,11 +948,15 @@ map <leader>s? z=
 " default printer paper
 set printoptions=paper:A4
 
+" shortmessages
+" ORG: filnxtToO
+set shm=filnx
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+noremap <leader>q :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
 "map <leader>x :e ~/buffer.md<cr>
@@ -997,17 +1011,35 @@ endfunction
       "normal! /headtoday
       "normal! o
 "map <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
-nmap <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
+noremap <leader>x :e ~/buffer.adoc<cr>:call ScribbleIntro()<CR>
 
 
 
 " Toggle paste mode on and off
-nmap <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
+noremap <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" copy current line and comment out original line (detect comment-sign for tp)
+au! BufRead * call Commentswitch()
+"let b:commentstr = ""
+fun! Commentswitch()
+  let b:commentstr=split(&commentstring, '%s')[0]
+endfunction
+nnoremap <leader>c :.t-1<CR>:exe ":normal i" . b:commentstr<CR>j<Esc>
+" function! comment_str
+" let comment=split(&commentstring, '%s')
+"   if len(comment)==1
+"     call add(comment, '')
+"   endif
+" endfunction
+" insert something [https://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim]
+" dynamic comment character [https://vi.stackexchange.com/questions/13028/how-can-i-return-the-current-filetypes-comment-character-in-vimscript]
+
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
