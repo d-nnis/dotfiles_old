@@ -155,7 +155,10 @@ boWhite="\[\033[1;37m\]"
 # Enable 256 Colors for bash prompt
 function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
 
-PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\[\e[1;31m\] jobs:\j \[\e[m\]`EXT_COLOR 234`\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+#PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+
+#PS1='\[\e[1;32m\]\u@\H:\[\e[m\] \[\e[1;37m\]\w\[\e[m\]\n\[\e[1;33m\]hist:\! \[\e[0;33m\] \[\e[1;31m\]jobs:\j \$\[\e[m\] '
 
 PS2="> "
 PS3="> "
