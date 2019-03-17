@@ -104,7 +104,8 @@ alias configedit="cd ~/dotfiles && \
   ~/.zshenv \
   ~/.zshrc \
   ~/.tridactylrc \
-  ~/.config/qutebrowser/autoconfig.yml "
+  ~/.config/qutebrowser/autoconfig.yml \
+  ~/.config/qutebrowser/config.py "
 
 #alias awconf='vim ~/.config/awesome/rc.lua && awesome -k ~/.config/awesome/rc.lua'
 alias awconf='vim ~/.config/awesome/rc.lua'
