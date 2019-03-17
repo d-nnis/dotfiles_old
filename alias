@@ -58,6 +58,10 @@ if [[ $BASH != *bash ]]; then
   alias -g X='|xclip' # copy stdout to clipboard
   alias -g A='|xargs -0 aginfiles '  # find in a list with ag.
                                      # E.g. dpkg -L asciidoc A "-A2 -B2" "Vorwort"
+  alias -g H='|head ' # show head
+  alias -g T='|tail ' # show tail
+
+
 else  # is bash
   alias ..='cd ..'
   alias ...='cd ../..'
