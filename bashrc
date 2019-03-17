@@ -150,16 +150,26 @@ liCyan="\[\033[0;36m\]"
 boCyan="\[\033[1;36m\]"
 liWhite="\[\033[0;37m\]"
 boWhite="\[\033[1;37m\]"
+bgRed="\[\033[0;41m\]"
 
 
 # Enable 256 Colors for bash prompt
 function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
 
-PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\[\e[1;31m\] jobs:\j \[\e[m\]`EXT_COLOR 234`\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+#PROMPT_COMMAND='history -a'
+jobs_warning () {
+  count_jobs=$(jobs | wc -l)
+  if [[ $count_jobs > 0 ]]; then
+    jobs_highlight="$bgRed$boBlack`EXT_COLOR 234`"
+  else
+    jobs_highlight="\[\033[m\]$boBlack`EXT_COLOR 234`"
+  fi
+  PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200 $jobs_highlight jobs:\j \[\e[m\]`EXT_COLOR 234`\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
+}
+
+PROMPT_COMMAND='jobs_warning'
+
 #PS1="\n $boBlack($liBlack`EXT_COLOR 32`\$(ls -lah | grep -m 1 total | sed 's/total //')B, \$(ls -1 | wc -l | sed 's: ::g') files$boBlack)`EXT_COLOR 234`\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200[ $liBlack`EXT_COLOR 59`\T \d $boBlack`EXT_COLOR 234`]\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200\342\224\200$boBlack[ `EXT_COLOR 220`\u$boBlack@`EXT_COLOR 156`\h$boBlack ] \n $boBlack(`EXT_COLOR 33`\w$boBlack) $boWhite>$liWhite "
-
-#PS1='\[\e[1;32m\]\u@\H:\[\e[m\] \[\e[1;37m\]\w\[\e[m\]\n\[\e[1;33m\]hist:\! \[\e[0;33m\] \[\e[1;31m\]jobs:\j \$\[\e[m\] '
-
 PS2="> "
 PS3="> "
 PS4="+ "
@@ -170,7 +180,6 @@ shopt -s histappend	 		#append new history to existing file rather than rewritin
 shopt -s cdspell 			#ignore simple mistakes such as otp instead of opt or ect instead of etc
 shopt -s cmdhist			#multiple line commands stay together in history
 shopt -s extglob			#needed for working with files EXCEPT specific ones
-PROMPT_COMMAND='history -a'
 export HISTFILESIZE="12000" 		#the bash history should save 3000 commands
 export HISTSIZE="12000"
 export HISTCONTROL="ignoredups" 	#don't put duplicate lines in the history
