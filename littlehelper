@@ -51,7 +51,8 @@ function ii() {   # get current host related info
   echo -e "\n${RED}Machine stats :$NC " ; uptime
   echo -e "\n${RED}Memory stats :$NC " ; free
   my_ip 2>&- ;
-  echo -e "\n${RED}Local IP Address :$NC" ; /sbin/ifconfig | awk /'inet addr/ {print $2}'
+  #echo -e "\n${RED}Local IP Address :$NC" ; /sbin/ifconfig | awk /'inet addr/ {print $2}'
+  echo -e "\n${RED}Local IP Address :$NC" ; ip a | awk /inet/ | awk '{print $2}'
   echo -e "\n${RED}ISP Address :$NC" ; myip
   echo
 }
