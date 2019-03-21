@@ -41,12 +41,12 @@
     XF86AudioMute 
 
 #VolDown
-"amixer sset Master 1%-"
+"amixer sset Master 10%-"
     m:0x0 + c:122
     XF86AudioLowerVolume 
 
 #VolUp
-"amixer sset Master 1%+"
+"amixer sset Master 10%+"
     m:0x0 + c:123
     XF86AudioRaiseVolume 
 
