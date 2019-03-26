@@ -1,4 +1,6 @@
+# load config from autoconfig.yml
 config.load_autoconfig()
+
 #c.url.searchengines["DEFAULT"] = "https://www.google.com/search?q={}&pws=0&gl=be&gws_rd=cr"
 
 def bind_search(key, keyword, search_url):
@@ -34,9 +36,11 @@ c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 
 ## colors from https://bitbucket.org/kartikynwa/dotty2hotty/src/1a9ba9b80f07e1f63b740da5e6970dc5a97f1037/qutebrowser.py?at=master
 solarized = {
-    'base03': '#002b36',
+    'base0003': '#002727',# dark tab new
+    'base0002': '#004b4b',# bright tab new
+    'base03': '#002b36',  # dark tab
     'base02': '#073642',
-    'base002': '#006f6f',
+    'base002': '#006f6f', # bright tab
     'base002-bright': '#d8ffd8',
     'base01': '#586e75',
     'base00': '#657b83',
@@ -199,11 +203,12 @@ c.colors.downloads.start.fg = solarized['base3']
 ## Background color for hints. Note that you can use a `rgba(...)` value
 ## for transparency.
 ## Type: QssColor
-c.colors.hints.bg = solarized['violet']
-
+#c.colors.hints.bg = solarized['violet']
+c.colors.hints.bg = 'rgba(255,255,255, 50%)'
 ## Font color for hints.
 ## Type: QssColor
-c.colors.hints.fg = solarized['base3']
+# c.colors.hints.fg = solarized['base3']
+c.colors.hints.fg = solarized['base0003']
 
 ## Font color for the matched part of hints.
 ## Type: QssColor
@@ -211,7 +216,7 @@ c.colors.hints.match.fg = solarized['base1']
 
 ## Background color of the keyhint widget.
 ## Type: QssColor
-# c.colors.keyhint.bg = 'rgba(0, 0, 0, 80%)'
+c.colors.keyhint.bg = 'rgba(0, 0, 0, 10%)'
 
 ## Text color for the keyhint widget.
 ## Type: QssColor
@@ -307,11 +312,13 @@ c.colors.statusbar.command.private.fg = solarized['base3']
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = solarized['base02']
+# c.colors.statusbar.insert.bg = solarized['base02']
+c.colors.statusbar.insert.bg = solarized['green']
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.fg = solarized['base1']
+# c.colors.statusbar.insert.fg = solarized['base1']
+c.colors.statusbar.insert.fg = 'white'
 
 ## Background color of the statusbar.
 ## Type: QssColor
@@ -373,7 +380,8 @@ c.colors.statusbar.url.warn.fg = solarized['yellow']
 
 ## Background color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.bg = solarized['base03']
+#c.colors.tabs.odd.bg = solarized['base03']
+c.colors.tabs.odd.bg = solarized['base0003']
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
@@ -383,7 +391,8 @@ c.colors.tabs.odd.fg = 'white'
 ## Background color of unselected even tabs.
 ## Type: QtColor
 #ORG
-c.colors.tabs.even.bg = solarized['base002']
+c.colors.tabs.even.bg = solarized['base0002']
+#c.colors.tabs.even.bg = solarized['base002']
 #c.colors.tabs.even.bg = solarized['base01']
 #-->  c.colors.tabs.even.bg = solarized['red']
 
@@ -395,7 +404,7 @@ c.colors.tabs.even.fg = 'white'
 ## Background color of selected even tabs.
 ## Type: QtColor
 #c.colors.tabs.selected.even.bg = solarized['violet']
-c.colors.tabs.selected.even.bg = solarized['base002-bright']
+c.colors.tabs.selected.even.bg = solarized['base3']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
@@ -405,7 +414,7 @@ c.colors.tabs.selected.even.fg = 'black'
 ## Background color of selected odd tabs.
 ## Type: QtColor
 #c.colors.tabs.selected.odd.bg = solarized['violet']
-c.colors.tabs.selected.odd.bg = solarized['base002-bright']
+c.colors.tabs.selected.odd.bg = solarized['base3']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
@@ -418,11 +427,12 @@ c.colors.tabs.indicator.error = solarized['red']
 
 ## Color gradient start for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.start = solarized['violet']
+c.colors.tabs.indicator.start = solarized['base3']
 
 ## Color gradient end for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.stop = solarized['orange']
+#c.colors.tabs.indicator.stop = solarized['orange']
+c.colors.tabs.indicator.stop = solarized['green']
 
 ## Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -438,3 +448,6 @@ c.colors.tabs.indicator.stop = solarized['orange']
 ## color)
 ## Type: QtColor
 # c.colors.webpage.bg = 'white'
+
+# load config from autoconfig.yml
+#config.load_autoconfig()
