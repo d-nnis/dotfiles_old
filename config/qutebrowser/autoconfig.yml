@@ -9,15 +9,20 @@ settings:
     global: webengine
   bindings.commands:
     global:
+      insert:
+        <Ctrl+PgDown>: tab-next
+        <Ctrl+PgUp>: tab-prev
       normal:
-        ',r': config-source ;; message-info config-reloaded
+        ',ce': config-edit
+        ',ob': bookmark-load
+        ',r': message-info 'sourcing config(s)...' ;; config-source ;; message-info
+          'sourcing done.'
         ;f: hint all tab-bg
         <: tab-move -
         <Alt+Left>: back
         <Alt+Right>: forward
         '>': tab-move +
         O: set-cmd-text :open {url:pretty}
-        ce: config-edit
         cm: clear-messages
         ev: spawn mpv {url}
         gh: open about:blank
@@ -26,58 +31,112 @@ settings:
         k: run-with-count 2 scroll up
         l: run-with-count 1 scroll right
         tO: set-cmd-text -s :open -t {url}
+        ten: config-cycle content.javascript.enabled
         tg: set-cmd-text -s :tab-give
         to: set-cmd-text -s :open -t
         tt: tab-take
         twi: set-cmd-text -s :open -t https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
         wc: close
         yo: spawn mpv {url}
-  #  colors.messages.error.bg:
-  #    global: darkred
-  #  colors.messages.error.border:
-  #    global: '#bb0000'
-  #  colors.messages.error.fg:
-  #    global: white
-  #  colors.tabs.even.bg:
-  #    global: black
-  #  colors.tabs.odd.bg:
-  #    global: grey
-  #  colors.tabs.selected.even.bg:
-  #    global: darkgreen
-  #  colors.tabs.selected.even.fg:
-  #    global: white
-  #  colors.tabs.selected.odd.bg:
-  #    global: darkgreen
-  #  colors.tabs.selected.odd.fg:
-  #    global: white
-  #  content.default_encoding:
-  #    global: utf-8
+  colors.hints.bg:
+    global: rgba(255,255,255, 50%)
+  colors.hints.fg:
+    global: rgba(0, 0, 0, 80%)
+  colors.keyhint.bg:
+    global: rgba(0, 0, 0, 80%)
+  colors.keyhint.fg:
+    global: '#fdf6e3'
+  colors.messages.error.bg:
+    global: darkred
+  colors.messages.error.border:
+    global: '#bb0000'
+  colors.messages.error.fg:
+    global: white
+  colors.tabs.even.bg:
+    global: black
+  colors.tabs.odd.bg:
+    global: grey
+  colors.tabs.selected.even.bg:
+    global: darkgreen
+  colors.tabs.selected.even.fg:
+    global: white
+  colors.tabs.selected.odd.bg:
+    global: '#fdf6e3'
+  colors.tabs.selected.odd.fg:
+    global: white
+  completion.cmd_history_max_items:
+    global: 200
+  completion.delay:
+    global: 0
+  completion.min_chars:
+    global: 1
+  completion.shrink:
+    global: true
+  confirm_quit:
+    global:
+    - never
+  content.default_encoding:
+    global: utf-8
+  content.host_blocking.lists:
+    global:
+    - https://www.malwaredomainlist.com/hostslist/hosts.txt
+    - http://malwaredomains.lehigh.edu/files/justdomains.zip
+  content.host_blocking.whitelist:
+    global:
+    - piwik.org
+    - twitter.de
   content.javascript.enabled:
+    '*.bandcamp.com/*': true
     '*://bandcamp.com/*': true
     '*://duckduckgo.com/*': false
     '*://github.com/*': true
     '*://gitlab.com/*': true
-    '*://vim.fandom.com/*': true
+    '*://twitter.com/*': true
+    '*://vim.fandom.com/*': false
     '*://web6.codeprobe.de/*': false
     '*://www.gmx.net/*': true
     '*://www.it-jobs.de/*': true
     '*://www.kontinuum-berlin.de/*': true
+    '*://www.lesbonscomptes.com/*': true
     '*://www.musicforprogramming.net/*': true
     '*://www.openstreetmap.org/*': true
+    '*://www.wolframalpha.com/*': true
     '*://www.youtube.com/*': true
     global: false
-    https://badmanrecordingco.bandcamp.com/album/lovers-welcome-home: true
-    https://web6.codeprobe.de/ownCloud/index.php/apps/files/: true
+  content.pdfjs:
+    global: true
   editor.command:
     global:
     - gvim
     - -f
     - '{file}'
     - -c
-    - normal {line}G{column0}l
+    - normal {line}G{column}l
+  fonts.hints:
+    global: bold 10pt monospace
+  fonts.messages.warning:
+    global: bold 10pt monospace
   fonts.tabs:
     global: 11pt monospace
+  fonts.web.size.minimum_logical:
+    global: 6
+  hints.border:
+    global: .5px solid rgba(255,255,255, 50%)
+  hints.chars:
+    global: asdfghjkl
+  hints.hide_unmatched_rapid_hints:
+    global: true
+  hints.mode:
+    global: letter
+  hints.scatter:
+    global: false
+  hints.uppercase:
+    global: false
+  input.forward_unbound_keys:
+    global: none
   input.insert_mode.auto_enter:
+    global: true
+  input.insert_mode.auto_leave:
     global: true
   input.insert_mode.auto_load:
     global: true
@@ -93,8 +152,10 @@ settings:
     global: null
   keyhint.delay:
     global: 500
+  keyhint.radius:
+    global: 50
   messages.timeout:
-    global: 40000
+    global: 1000
   new_instance_open_target:
     global: tab
   qt.force_software_rendering:
@@ -103,6 +164,8 @@ settings:
     global: always
   scrolling.smooth:
     global: true
+  session.default_name:
+    global: qutesession
   session.lazy_restore:
     global: true
   statusbar.hide:
@@ -114,7 +177,7 @@ settings:
   tabs.select_on_remove:
     global: next
   tabs.show:
-    global: multiple
+    global: always
   tabs.show_switching_delay:
     global: 1200
   tabs.width:
