@@ -190,6 +190,9 @@ handle_mime() {
             # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
             exiftool "${FILE_PATH}" && exit 5
             exit 1;;
+        ## Ascii-previews of images:
+        #image/*)
+        #    img2txt --gamma=0.6 --width="$width" "$path" && exit 4 || exit 1;;
 
         # Video and audio
         video/* | audio/*)
