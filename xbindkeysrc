@@ -55,5 +55,15 @@
     m:0x0 + c:211
     XF86Launch4 
 
+#Monitor turn off
+"/home/dennis/dotfiles/bin/monitor_turn_off.sh"
+    m:0x0 + c:210
+    XF86Launch3 
+
+#Monitor switch
+"/home/dennis/bin/monitor_switch.sh"
+    m:0x0 + c:157
+    XF86Launch2 
+
 #
 # End of xbindkeys configuration
