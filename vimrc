@@ -16,15 +16,22 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-mapclear
-mapclear!
-cmapclear
-imapclear
-comclear
+"mapclear
+"mapclear!
+"cmapclear
+"imapclear
+"comclear
 
 " like <leader>w saves the current file
 let mapleader = ","
-let g:mapleader = ","
+"let g:mapleader = ","
+"command! -bar ReloadVimrc source $MYVIMRC | doautocmd <nomodeline> FileType | normal zv
+command! -bar ReloadVimrc source $MYVIMRC 
+nnoremap <leader>R :ReloadVimrc<CR>
+nnoremap <leader>r :ReloadVimrc<CR>
+
+nnoremap <leader>ce :e ~/.vimrc<CR>
+
 """"""""""""""""""""
 " plugins settings "
 """"""""""""""""""""
@@ -36,12 +43,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " throws error after reloading vimrc: _neomake is not a command_
 call plug#begin('~/.vim/plugged')
-  "Plug 'neomake/neomake'
-
+  Plug 'neomake/neomake'
   Plug 'tpope/vim-surround'
-  " Invalid URI?
   Plug 'https://github.com/tpope/vim-repeat'
-  Plug 'tpope/vim-unimpaired'
+  "Plug 'tpope/vim-unimpaired'
   Plug 'chikamichi/mediawiki.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'christoomey/vim-tmux-navigator'
@@ -51,12 +56,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/seoul256.vim'
   Plug 'https://github.com/nelstrom/vim-docopen'
   Plug 'https://github.com/nelstrom/vim-cutlass'
-  Plug 'scrooloose/nerdtree'
+  "Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'https://github.com/SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'https://github.com/vifm/vifm.vim'
 call plug#end()
+
+let g:tmux_navigator_disable_when_zoomed = 1
 
   "Plug 'junegunn/limelight.vim'
   "Plug 'junegunn/vim-peekaboo'
@@ -66,33 +73,40 @@ call plug#end()
   "Plug 'https://github.com/tpope/vim-surround'
   "Plug 'tpope/vim-fugitive'
 
-
 "" UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UtliSnipsJumpForwardTrigger="<c-b>"
 let g:UtliSnipsJumpBackwardTrigger="<c-z>"
-
+let g:UltiSnipsSnippetsDir="/home/dennis/dotfiles/UltiSnips/"
 let g:UltiSnipsEditSplit="vertical"
 
-"" NERDTree
-noremap <leader>t :NERDTreeToggle<CR>
-noremap <leader>f :NERDTreeFind<CR>
-" always open NERDTree on opening
-"autocmd vimenter * NERDTree
+"" FZF
+" double-binding...
+"map <silent> <c-space> :files<cr>
+"map <silent> <leader>t :tags<cr>
+"map <silent> <leader>m :marks<cr>
+let g:fzf_layout = { 'down': '~20%' }
 
-" close NERDTree when opening a file
-let NERDTreeQuitOnOpen=1
 
-" always show hidden files
-let NERDTreeShowHidden=1
-
-" NERDTree opening when starting with no file(s) specified
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd StdinReadPre * let s:std_in=2
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" close vim if NERDTree is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+""" NERDTree
+"noremap <leader>t :NERDTreeToggle<CR>
+"noremap <leader>f :NERDTreeFind<CR>
+"" always open NERDTree on opening
+""autocmd vimenter * NERDTree
+"
+"" close NERDTree when opening a file
+"let NERDTreeQuitOnOpen=1
+"
+"" always show hidden files
+"let NERDTreeShowHidden=1
+"
+"" NERDTree opening when starting with no file(s) specified
+""autocmd StdinReadPre * let s:std_in=1
+""autocmd StdinReadPre * let s:std_in=2
+""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"
+"" close vim if NERDTree is the only window left
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " find files and populate the quickfix list
 fun! FindFiles(filename)
@@ -108,12 +122,12 @@ command! -nargs=1 FindFile call FindFiles(<q-args>)
 " navigate to last buffer
 noremap <leader># :b#<cr>
 
-"" Neomake
-" augroup_neomake_config
-"   au!
-"   autocmd! BufWritePost * Neomake
-" augroup END
-" let g:neomake_open_list=2
+" Neomake
+augroup _neomake_config
+  au!
+  autocmd! BufWritePost * Neomake
+augroup END
+let g:neomake_open_list=2
 
 syntax enable
 set shiftwidth=2
@@ -278,12 +292,34 @@ function! MakeFileExecutable()
     "    :r this
 endfunction
 
-function! OpenFileInFirefox()
+function! OpenFileInBrowser()
   " TODO: use same tab every time (possible?)
-  :!firefox % > /dev/null 2>&1 &
+  :!x-www-browser % > /dev/null 2>&1 &
 endfunction
 
-nnoremap <leader>gf :call OpenFileInFirefox()<CR><CR>
+nnoremap <leader>gf :call OpenFileInBrowser()<CR><CR>
+
+"=== evoke a web browser
+function! Browser()
+  let line0 = getline (".")
+  "let line = matchstr (line0, "http[^ ]*")
+  " WIP: Stop at first closed bracket (markdown-links). Improve with matching opening bracket
+  let line = matchstr (line0, "http[^ |)]*")
+  echo "line1:".line1
+  if line==""
+    let line = matchstr (line0, "ftp[^ ]*")
+  endif
+  if line==""
+    let line = matchstr (line0, "file[^ ]*")
+  endif
+  let line = escape (line, "#?&;|%")
+  if line==""
+    let line = "\"" . (expand("%:p")) . "\""
+  endif
+  " TODO: --remote something
+  exec ':silent !x-www-browser ' . line . ' &'
+endfunction
+nnoremap <leader>gl :call Browser()<CR>:redraw!<CR>
 
 if exists("ChapterPrev")
 else
@@ -312,123 +348,55 @@ set modelines=5
 "inoremap <buffer> <C-v> <Left><C-O>"+p
 
 
-""""""""""""""""""""""""""""""""
-" appearance depending on MODE "
-""""""""""""""""""""""""""""""""
-" cursorshape, turn color when entering INSERT-/ NORMALMODE
-" throws funny signs with XFCE4-terminal
-" works vim gnome-terminal
-if $XDG_CURRENT_DESKTOP != "XFCE"
-  if &term =~ "screen-256color"
-    let &t_SI = "\<Esc>]12;red\x7"
-    let &t_EI = "\<Esc>]12;white\x7"
-  endif
-  if &term =~ "builtin_gui"
-    let &t_SI = "\<Esc>]12;red\x7"
-    let &t_EI = "\<Esc>]12;white\x7"
-  endif
-endif
-" 
-" Thanks to blueyed it works in Tmux and XFCE4
-" https://github.com/blueyed/dotfiles/issues/4
-" Change cursor shape for terminal mode. {{{1
-" See also ~/.dotfiles/oh-my-zsh/themes/blueyed.zsh-theme.
-" Note: with neovim, this gets controlled via $NVIM_TUI_ENABLE_CURSOR_SHAPE.
-if !has('nvim') && exists('&t_SI')
-  " 'start insert' and 'exit insert'.
-  if $_USE_XTERM_CURSOR_CODES == 1
-    " Reference: {{{
-    " P s = 0 → blinking block.
-    " P s = 1 → blinking block (default).
-    " P s = 2 → steady block.
-    " P s = 3 → blinking underline.
-    " P s = 4 → steady underline.
-    " P s = 5 → blinking bar (xterm, urxvt).
-    " P s = 6 → steady bar (xterm, urxvt).
-    " Source: http://vim.wikia.com/wiki/Configuring_the_cursor
-    " }}}
-    let &t_SI = "\<Esc>[5 q"
-    let &t_EI = "\<Esc>[1 q"
 
-    " let &t_SI = "\<Esc>]12;purple\x7"
-    " let &t_EI = "\<Esc>]12;blue\x7"
-
-    " mac / iTerm?!
-    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  elseif $KONSOLE_PROFILE_NAME =~ "^Solarized.*"
-    let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=1\x7"
-    let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=1\x7"
-  elseif &t_Co > 1 && $TERM != "linux"
-    " t_Co: number of terminal colors
-    " Fallback: change only the color of the cursor.
-    "let &t_SI = "\<Esc>]12;#0087ff\x7"
-    let &t_SI = "\<Esc>]12;red\x7"
-    let &t_EI = "\<Esc>]12;white\x7"
-    " red and white
-    "let &t_SI = "\<Esc>]12;#FF0000\x7"
-    "let &t_EI = "\<Esc>]12;#FFFFFF\x7"
-    " this throws funny signs in xfce4 and tmux
-    "let &t_SI = "\<Esc>]12;red\x7"
-    "let &t_EI = "\<Esc>]12;white\x7"
-  endif
-endif
+""" freddy {{{
 "
-" Wrap escape codes for tmux.
-" NOTE: wrapping it acts on the term, not just on the pane!
-"if len($TMUX)
-"  let &t_SI = "\<Esc>Ptmux;\<Esc>".&t_SI."\<Esc>\\"
-"  let &t_EI = "\<Esc>Ptmux;\<Esc>".&t_EI."\<Esc>\\"
-"endif
-" }}}
-" MiscCursorShape
-"    Specifies the shape of the cursor in the terminal. This can be either TERMINAL_CURSOR_SHAPE_BLOCK (the default), TERMINAL_CURSOR_SHAPE_IBEAM or TERMINAL_CURSOR_SHAPE_UNDERLINE. This option is only available when you compile against VTE 0.19.1 or newer.
-
-if isdirectory("/home/dennis/.config/xfce4/terminal")
-  if $COLORTERM == 'xfce4-terminal'
-    if has("autocmd")
-      au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
-      au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-      au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-    endif
-  endif
-endif
-
-" Mode Indication -Prominent!
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi statusline guifg=red ctermfg=red
-    set cursorcolumn
-  elseif a:mode == 'r'
-    hi statusline guifg=blue ctermfg=lightblue
-    "hi statusline ctermfg=green
-    set cursorcolumn
-  else
-    hi statusline guifg=magenta ctermfg=magenta
-  endif
-  " TODO: no cursorline if in Focus/Goyo-mode
-  "set cursorline
-endfunction
-
-function! InsertLeaveActions()
-  "org: hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
-  hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE guibg=NONE
-  "hi statusline guifg=darkgrey ctermfg=darkgrey guibg=white ctermfg=white
-  "hi statusline guifg=orange ctermfg=NONE guibg=white ctermbg=white
-  set nocursorcolumn
-  "set nocursorline
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * call InsertLeaveActions()
+"function! InsertStatuslineColor(mode)
+"  echo a:mode
+"  if a:mode == 'i'
+"    hi statusline guifg=red ctermfg=red
+"    set cursorcolumn
+"    set cul!
+"  elseif a:mode == 'r'
+"    hi statusline guifg=blue ctermfg=lightblue
+"    "hi statusline ctermfg=green
+"    set cursorcolumn
+"  else "(a:mode == 'v')
+"    hi statusline guifg=magenta ctermfg=magenta
+"  endif
+"  " TODO: no cursorline if in Focus/Goyo-mode
+"  "set cursorline
+"endfunction
+"
+"function! InsertLeaveActions()
+"  echo "sth newLEave"
+"  set nocul!
+"  "org: hi statusline guifg=NONE ctermfg=NONE ctermbg=NONE
+"  hi statusline guifg=darkgrey ctermfg=darkgrey guibg=white ctermfg=white
+"  "hi statusline guifg=orange ctermfg=NONE guibg=white ctermbg=white
+"  set nocursorcolumn
+"  "set nocursorline
+"endfunction
+"
+"func! Sth2()
+"  echo "sth newww"
+"endfunc
+"
+"au InsertEnter * call InsertStatuslineColor(v:insertmode)
+""au InsertEnter * call InsertStatslineColor(v:insertmode)
+""autocmd InsertEnter *
+"
+"au InsertLeave * call InsertLeaveActions()
 
 " to handle exiting insert mode via a control-C
-inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
+"inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 
 " default of statusline
 "hi statusline guibg=grey ctermfg=black ctermbg=white
 "hi statusline guibg=grey ctermfg=black ctermbg=white
 
+
+"}}}
 "map <F5> <Esc><C-s>:! ./%<cr> "noremap <F5> <Esc><C-s>:! echo "____________" && ./%<cr>
 noremap <F5> <Esc><C-s>:! ./%<cr>
 
@@ -582,11 +550,6 @@ endfun
 "endfunction
 "endif
 
-command! -bar ReloadVimrc source $MYVIMRC | doautocmd <nomodeline> FileType | normal zv
-nnoremap <leader>R :ReloadVimrc<CR>
-nnoremap <leader>r :ReloadVimrc<CR>
-
-nnoremap <leader>ce :e ~/.vimrc<CR>
 
 """""""""""""""""
 " amix settings "
@@ -636,7 +599,8 @@ endif
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee > /dev/null %
+cmap w!! %!sudo tee > /dev/null %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -687,9 +651,18 @@ set smartcase
 
 " Highlight search results
 set hlsearch
+noremap <silent> <leader><cr> :noh<cr>
+"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 " Makes search act like search in modern browsers
 set incsearch 
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+noremap <space> /
+noremap <c-space> ?
+
+" Disable highlight when <leader><cr> is pressed
+
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
@@ -747,7 +720,8 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
+set undodir=~/tmp/.vimundo
+set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -791,20 +765,13 @@ vnoremap ?? y?<C-R>0<CR>
 noremap j gj
 noremap k gk
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-"map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-noremap <silent> <leader><cr> :noh<cr>
-
 
 " Smart way to move between windows
-" TODO: Always stuck when reloading vimrc
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+" conflicts with vim-tmux-navigator (defines it anyway)
+"noremap <C-j> <C-W>j
+"noremap <C-k> <C-W>k
+"noremap <C-h> <C-W>h
+"noremap <C-l> <C-W>l
 
 " how to split
 set splitbelow
@@ -901,11 +868,28 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " => Ag searching and cope displaying
 "    requires ag.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NOTE: You must, of course, install ag / the_silver_searcher
+command! -bang -nargs=* -complete=file Ag call ag#Ag('grep<bang>',<q-args>)
+command! -bang -nargs=* -complete=file AgAdd call ag#Ag('grepadd<bang>', <q-args>)
+command! -bang -nargs=* -complete=file AgFromSearch call ag#AgFromSearch('grep<bang>', <q-args>)
+command! -bang -nargs=* -complete=file LAg call ag#Ag('lgrep<bang>', <q-args>)
+command! -bang -nargs=* -complete=file LAgAdd call ag#Ag('lgrepadd<bang>', <q-args>)
+command! -bang -nargs=* -complete=file AgFile call ag#Ag('grep<bang> -g', <q-args>)
+command! -bang -nargs=* -complete=help AgHelp call ag#AgHelp('grep<bang>',<q-args>)
+command! -bang -nargs=* -complete=help LAgHelp call ag#AgHelp('lgrep<bang>',<q-args>)
+
+" s.a. ~/.vim/doc/ag.txt
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
+" Stay in visual mode after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+vnoremap x xgv
+
 " Open Ag and put the cursor in the right position
-noremap <leader>g :Ag 
+noremap <leader>a :Ag 
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -1027,7 +1011,9 @@ noremap <leader>pp :setlocal paste!<cr>:setlocal paste?<cr>
 au! BufRead * call Commentswitch()
 "let b:commentstr = ""
 fun! Commentswitch()
-  let b:commentstr=split(&commentstring, '%s')[0]
+  if len(&commentstring)>=1
+    let b:commentstr=split(&commentstring, '%s')[0]
+  endif
 endfunction
 nnoremap <leader>c :.t-1<CR>:exe ":normal i" . b:commentstr<CR>j<Esc>
 " function! comment_str
@@ -1133,3 +1119,41 @@ endfunction
 "       http://amix.dk/vim/vimrc.txt
 "
 """""""""""""""""""""""""""""""""""""""""""
+
+
+"" Statusline color
+set laststatus=2
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatusLine ctermfg=white ctermbg=darkgreen
+    " w/o cterm=bold?
+    hi StatusLine guifg=white guibg=seagreen gui=bold
+    set cursorline
+  elseif a:mode == 'r'
+    hi statusline ctermbg=darkblue cterm=bold
+    hi statusline guibg=lightblue gui=bold
+    set cursorline
+  else
+    !echo "in Else!"
+    hi statusline ctermbg=grey ctermfg=blue
+    set cursorline
+  endif
+endfunction
+
+au InsertLeave * call ColorNorm()
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+
+"inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
+
+func! ColorNorm()
+  "hi statusline ctermfg=7* ctermbg=8 term=NONE cterm=NONE
+  " term necessary for urxvt as terminal?
+  " cterm=undercurl,bold
+  hi statusline ctermfg=7 ctermbg=black cterm=NONE term=NONE
+  hi statusline guifg=white guibg=DarkBlue gui=NONE guisp=NONE
+  set nocursorline
+endfunction
+
+call ColorNorm()
