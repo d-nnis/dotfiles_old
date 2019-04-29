@@ -1,3 +1,4 @@
+#
 # load config from autoconfig.yml
 config.load_autoconfig()
 
@@ -216,7 +217,7 @@ c.colors.hints.match.fg = solarized['base1']
 
 ## Background color of the keyhint widget.
 ## Type: QssColor
-c.colors.keyhint.bg = 'rgba(0, 0, 0, 10%)'
+c.colors.keyhint.bg = 'rgba(0, 0, 0, 80%)'
 
 ## Text color for the keyhint widget.
 ## Type: QssColor

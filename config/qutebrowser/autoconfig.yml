@@ -14,13 +14,14 @@ settings:
         <Ctrl+PgUp>: tab-prev
       normal:
         ',ce': config-edit
-        ',ob': bookmark-load
+        ',ob': set-cmd-text -s :bookmark-load
         ',r': message-info 'sourcing config(s)...' ;; config-source ;; message-info
           'sourcing done.'
         ;f: hint all tab-bg
         <: tab-move -
         <Alt+Left>: back
         <Alt+Right>: forward
+        <Ctrl+l>: set-cmd-text :open {url:pretty}
         '>': tab-move +
         O: set-cmd-text :open {url:pretty}
         cm: clear-messages
@@ -31,17 +32,20 @@ settings:
         k: run-with-count 2 scroll up
         l: run-with-count 1 scroll right
         tO: set-cmd-text -s :open -t {url}
-        ten: config-cycle content.javascript.enabled
+        ten: config-cycle -p content.javascript.enabled
         tg: set-cmd-text -s :tab-give
+        tis: set content.javascript.enabled?
         to: set-cmd-text -s :open -t
         tt: tab-take
         twi: set-cmd-text -s :open -t https://web6.codeprobe.de/wiki/index.php?title=Spezial%3ASuche&search=
         wc: close
         yo: spawn mpv {url}
   colors.hints.bg:
-    global: rgba(255,255,255, 50%)
+    global: rgba(255,255,255, 70%)
   colors.hints.fg:
-    global: rgba(0, 0, 0, 80%)
+    global: '#002b36'
+  colors.hints.match.fg:
+    global: '#93a1a1'
   colors.keyhint.bg:
     global: rgba(0, 0, 0, 80%)
   colors.keyhint.fg:
@@ -89,12 +93,18 @@ settings:
     '*.bandcamp.com/*': true
     '*://bandcamp.com/*': true
     '*://duckduckgo.com/*': false
-    '*://github.com/*': true
+    '*://github.com/*': false
     '*://gitlab.com/*': true
+    '*://posteo.de/*': true
+    '*://soundcloud.com/*': true
+    '*://stackoverflow.com/*': true
     '*://twitter.com/*': true
     '*://vim.fandom.com/*': false
     '*://web6.codeprobe.de/*': false
+    '*://www.ebay-kleinanzeigen.de/*': true
+    '*://www.ebay.com/*': true
     '*://www.gmx.net/*': true
+    '*://www.google.de/*': true
     '*://www.it-jobs.de/*': true
     '*://www.kontinuum-berlin.de/*': true
     '*://www.lesbonscomptes.com/*': true
@@ -155,7 +165,7 @@ settings:
   keyhint.radius:
     global: 50
   messages.timeout:
-    global: 1000
+    global: 5000
   new_instance_open_target:
     global: tab
   qt.force_software_rendering:
