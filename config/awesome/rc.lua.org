@@ -1,9 +1,8 @@
+-- new plugins
+-- local cyclefocus = require("cyclefocus")
+-- local lain  = require("lain")
 
 
-local cyclefocus = require('cyclefocus')
-local lain  = require("lain")
-
--- to access the widget: cpu.widget
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -17,10 +16,10 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
+
 -- Load Debian menu entries
 require("debian.menu")
 
-rofi = require("rofi")
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -46,25 +45,15 @@ do
 end
 -- }}}
 
---local config_path = awful.util.getdir("config") .. "/"
-local config_path = awful.util.getdir("config")
--- {{{ Error handling -- }}}
---dofile(config_path .. "main/error-handling.lua")
--- {{{ Themes -- }}}
-dofile(config_path .. "custom.lua")
-
-
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = "x-terminal-emulator"
-terminal = "urxvtc"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
-
-
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -76,17 +65,16 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.floating,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.spiral,
-    awful.layout.suit.tile,
-    -- awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile,
+    awful.layout.suit.tile.left, -- master is right
+    awful.layout.suit.tile.bottom, -- master is top
     -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+    awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle, awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -202,8 +190,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "home", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "home", "2", "3", "4" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -239,7 +227,6 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            --mytextclock2,
             s.mylayoutbox,
         },
     }
@@ -253,41 +240,9 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-appfinder = "xfce4-appfinder"
-
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-
-    -- appfinder
---    -- awful.key({ "Mod1",}, "F3", function () awful.spawn(appfinder) end,
---    awful.key({ "Mod1",}, "F3", function () awful.spawn("xfce4-appfinder") end,
---              {description = "open xfce appfinder", group = "launcher"}
---              ),
---    -- /appfinder
---    -- awful.key({ "Mod1",}, "F3", function () awful.spawn(appfinder) end,
-      -- pure app-launcher: rofi -show run
-      -- combi-launcher: window and run mode
-    -- awful.key({ "Mod1",}, "F3", function () awful.spawn("rofi -combi-modi window,drun,run -show combi -show run -modi combi") end,
-    --awful.key({ "Mod1",}, "F3", function () awful.spawn("rofi -combi-modi window,drun -show combi -modi combi -matching fuzzy -monitor -2 -i") end,
-    awful.key({ "Mod1",}, "F3", function () awful.spawn("rofi -show drun -modi drun,window -matching fuzzy -i") end,
-              {description = "open xfce appfinder", group = "launcher"}
-              ),
-    -- /appfinder
-
-    awful.key({ modkey }, "g", function (c) rofi.client_flags(c) end,
-              {description = "rofi-something"}),
-    -- Application switcher
-    awful.key({ "Mod1" }, "Escape", function ()
-        -- If you want to always position the menu on the same place set coordinates
-        awful.menu.menu_keys.down = { "Down", "Alt_L" }
-        awful.menu.clients({theme = { width = 250 }}, { keygrabber=true, coords={x=525, y=330} })
-    end),
-
--- pdf-opener
-    awful.key({ modkey, "Control" }, "d", function () awful.spawn("download-opener.sh") end,
-              {description="Download Opener", group="program"}),
-
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -297,16 +252,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-awful.key({ modkey, "Mod1"    }, "Right",     function () awful.tag.incmwfact( 0.01)    end),
-awful.key({ modkey, "Mod1"    }, "Left",     function () awful.tag.incmwfact(-0.01)    end),
-awful.key({ modkey, "Mod1"    }, "Down",     function () awful.client.incwfact( 0.01)    end),
-awful.key({ modkey, "Mod1"    }, "Up",     function () awful.client.incwfact(-0.01)    end),
---awful.key({ modkey, "Mod1"   }, "Down",   function (c) c:relative_move(  0,  20,   0,   0) end),
---awful.key({ modkey, "Mod1"   }, "Up",     function (c) c:relative_move(  0, -20,   0,   0) end),
---awful.key({ modkey, "Mod1"   }, "Left",   function (c) c:relative_move(-20,   0,   0,   0) end),
---awful.key({ modkey, "Mod1"  }, "Right",  function (c) c:relative_move( 20,   0,   0,   0) end),
-
-awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
         end,
@@ -332,41 +278,18 @@ awful.key({ modkey,           }, "j",
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
---    awful.key({ modkey,           }, "Tab",
---        function ()
---            awful.client.focus.history.previous()
---            if client.focus then
---                client.focus:raise()
---            end
---        end,
---        {description = "go back", group = "client"}),
-
-		-- cyclefocus
-		-- modkey+Tab: cycle through all clients.
-		awful.key({ modkey }, "Tab", function(c)
-		    cyclefocus.cycle({modifier="Super_L"})
-		end),
-		-- modkey+Shift+Tab: backwards
-		awful.key({ modkey, "Shift" }, "Tab", function(c)
-		    cyclefocus.cycle({modifier="Super_L"})
-		end),
+    awful.key({ modkey,           }, "Tab",
+        function ()
+            awful.client.focus.history.previous()
+            if client.focus then
+                client.focus:raise()
+            end
+        end,
+        {description = "go back", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open terminal", group = "program"}
-              ),
-    awful.key({ "Control", "Mod1"  }, "t", function () awful.spawn(terminal) end,
-              {description = "open terminal", group = "program"}
-              ),
-    awful.key({ "Control", "Mod1"  }, "g", function () awful.spawn("gvim") end,
-              {description = "open gvim", group = "program"}
-              ),
-    awful.key({ "Control", "Mod1"  }, "q", function () awful.spawn("qutebrowser") end,
-              {description = "open qutebrowser", group = "program"}
-              ),
-    awful.key({ "Control", "Mod1"  }, "a", function () awful.spawn("gvim /home/dennis/.vimrc") end,
-              {description = "open awesome config", group = "program"}
-              ),
+              {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -420,20 +343,6 @@ awful.key({ modkey,           }, "j",
 )
 
 clientkeys = awful.util.table.join(
-
-
-    -- Cyclefocus
-    -- Alt-Tab: cycle through clients on the same screen.
-    -- This must be a clientkeys mapping to have source_c available in the callback.
-    cyclefocus.key({ "Mod1", }, "Tab", {
-        -- cycle_filters as a function callback:
-        -- cycle_filters = { function (c, source_c) return c.screen == source_c.screen end },
-    
-        -- cycle_filters from the default filters:
-        cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag },
-        keys = {'Tab', 'ISO_Left_Tab'}  -- default, could be left out
-    }),
-
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
@@ -442,13 +351,7 @@ clientkeys = awful.util.table.join(
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    
-    awful.key({ "Mod1",}, "F4", function (c) c:kill()                         end,
-              {description = "close", group = "client"}),
-    
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
-              {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "f",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
@@ -469,7 +372,6 @@ clientkeys = awful.util.table.join(
             c:raise()
         end ,
         {description = "maximize", group = "client"})
-
 )
 
 -- Bind all key numbers to tags.
@@ -530,6 +432,18 @@ clientbuttons = awful.util.table.join(
 -- Set keys
 root.keys(globalkeys)
 -- }}}
+-- -- {{{cyclefocus
+-- 
+-- -- modkey+Tab: cycle through all clients.
+-- awful.key({ modkey }, "Tab", function(c)
+--     cyclefocus.cycle({modifier="Super_L"})
+-- end),
+-- -- modkey+Shift+Tab: backwards
+-- awful.key({ modkey, "Shift" }, "Tab", function(c)
+--     cyclefocus.cycle({modifier="Super_L"})
+-- end),
+-- 
+-- -- cyclefocus}}}
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -552,7 +466,6 @@ awful.rules.rules = {
         instance = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
-          "xfce4-appfinder",
         },
         class = {
           "Arandr",
@@ -563,8 +476,7 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer",
-          },
+          "xtightvncviewer"},
 
         name = {
           "Event Tester",  -- xev.
@@ -581,11 +493,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "4" } },
-    --{ rule =  { name = "Thunar" },
-    --    properties = { screen = 1, tag = "4" }
-    --},
+    -- { rule = { class = "Firefox" },
+    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -647,18 +556,15 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal("mouse::enter", function(c)
---     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
---         and awful.client.focus.filter(c) then
---         client.focus = c
---     end
--- end)
-
--- }}}
-
-
+client.connect_signal("mouse::enter", function(c)
+    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+        and awful.client.focus.filter(c) then
+        client.focus = c
+    end
+end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
 
 -- vim:ft=lua
