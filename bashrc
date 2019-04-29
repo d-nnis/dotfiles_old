@@ -113,6 +113,8 @@ if [ -f $HOME/.bashrc.local ]; then
   source "$HOME/.bashrc.local"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export BINLOG="$HOME/bin/bin.log"
 
 # disable xon/xoff
