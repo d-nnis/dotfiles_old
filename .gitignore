@@ -1,6 +1,7 @@
 
 ## qutebrowser
 config/qutebrowser/bookmarks
+config/qutebrowser/quickmarks
 
 ## tmux
 tmux/resurrect/*
@@ -34,6 +35,7 @@ moc/last_directory
 moc/pid
 moc/mocp_client_log
 moc/playlist.m3u
+moc/equalizer
 
 ## w3m
 w3m/cookie
@@ -48,6 +50,7 @@ vimperator/info/ffRoteDomain/*
 
 ## misc
 .netrwhist
+w3m/cookies
 
 ## sockets
 socket*
