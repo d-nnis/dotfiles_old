@@ -5,13 +5,14 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-  alias less='less -R'
-  alias xclip='xclip -selection clip'
+  alias ls='ls --color=always'
+  alias grep='grep --color=always'
+  alias fgrep='fgrep --color=always'
+  alias egrep='egrep --color=always'
+  #alias less='less -R'
 fi
+
+#export LESS='-F -i -M -R -w -X -z-4 -j.1'
 
 TS1="+%y-%m-%d %H-%M"
 TS2="+%y-%m-%d %H-%M-%S"
@@ -36,6 +37,9 @@ alias diffdir='/usr/bin/diff -rq'
 alias tmux='tmux -2'
 alias info='info --vi-keys'
 alias vifm='vifm .'
+alias xclip='xclip -selection clip'
+alias xsel='xsel -b'
+#alias tar='tar -v' # only works with UNIX-style usage
 
 alias r='fc -s'
 
