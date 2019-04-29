@@ -1,4 +1,7 @@
 
+## qutebrowser
+config/qutebrowser/bookmarks
+
 ## tmux
 tmux/resurrect/*
 tmux/plugins/tmux-colors-solarized/
