@@ -82,6 +82,8 @@ mcview_eof=
 ignore_ftp_chattr_errors=true
 skin=gotar
 
+editor_state_full_filename=1
+
 [Layout]
 message_visible=1
 keybar_visible=1
@@ -94,7 +96,7 @@ horizontal_split=1
 vertical_equal=1
 left_panel_size=52
 horizontal_equal=1
-top_panel_size=23
+top_panel_size=32
 
 [Misc]
 timeformat_recent=%b %e %H:%M
@@ -142,6 +144,8 @@ quick_search_mode=2
 select_flags=6
 
 simple_swap=true
+
+panel_scroll_center=false
 
 [FindFile]
 file_case_sens=true
